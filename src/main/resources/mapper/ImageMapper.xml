@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.exam.mapper.ImageMapper">
+  <resultMap id="BaseResultMap" type="com.kgc.exam.entity.Image">
+    <!--@mbg.generated-->
+    <!--@Table image-->
+    <id column="img_id" jdbcType="INTEGER" property="imgId" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="g_id" jdbcType="INTEGER" property="gId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    img_id, img_url, g_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from image
+    where img_id = #{imgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from image
+    where img_id = #{imgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.exam.entity.Image">
+    <!--@mbg.generated-->
+    insert into image (img_id, img_url, g_id
+      )
+    values (#{imgId,jdbcType=INTEGER}, #{imgUrl,jdbcType=VARCHAR}, #{gId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.exam.entity.Image">
+    <!--@mbg.generated-->
+    insert into image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imgId != null">
+        img_id,
+      </if>
+      <if test="imgUrl != null">
+        img_url,
+      </if>
+      <if test="gId != null">
+        g_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imgId != null">
+        #{imgId,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gId != null">
+        #{gId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.exam.entity.Image">
+    <!--@mbg.generated-->
+    update image
+    <set>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="gId != null">
+        g_id = #{gId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where img_id = #{imgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.exam.entity.Image">
+    <!--@mbg.generated-->
+    update image
+    set img_url = #{imgUrl,jdbcType=VARCHAR},
+      g_id = #{gId,jdbcType=INTEGER}
+    where img_id = #{imgId,jdbcType=INTEGER}
+  </update>
+</mapper>

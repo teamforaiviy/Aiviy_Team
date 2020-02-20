@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.exam.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.kgc.exam.entity.Goods">
+    <!--@mbg.generated-->
+    <!--@Table goods-->
+    <id column="g_id" jdbcType="INTEGER" property="gId" />
+    <result column="g_name" jdbcType="VARCHAR" property="gName" />
+    <result column="g_price" jdbcType="DOUBLE" property="gPrice" />
+    <result column="g_content" jdbcType="VARCHAR" property="gContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    g_id, g_name, g_price, g_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where g_id = #{gId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from goods
+    where g_id = #{gId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.exam.entity.Goods">
+    <!--@mbg.generated-->
+    insert into goods (g_id, g_name, g_price, 
+      g_content)
+    values (#{gId,jdbcType=INTEGER}, #{gName,jdbcType=VARCHAR}, #{gPrice,jdbcType=DOUBLE}, 
+      #{gContent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.exam.entity.Goods">
+    <!--@mbg.generated-->
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gId != null">
+        g_id,
+      </if>
+      <if test="gName != null">
+        g_name,
+      </if>
+      <if test="gPrice != null">
+        g_price,
+      </if>
+      <if test="gContent != null">
+        g_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gId != null">
+        #{gId,jdbcType=INTEGER},
+      </if>
+      <if test="gName != null">
+        #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gPrice != null">
+        #{gPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gContent != null">
+        #{gContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.exam.entity.Goods">
+    <!--@mbg.generated-->
+    update goods
+    <set>
+      <if test="gName != null">
+        g_name = #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gPrice != null">
+        g_price = #{gPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gContent != null">
+        g_content = #{gContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where g_id = #{gId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.exam.entity.Goods">
+    <!--@mbg.generated-->
+    update goods
+    set g_name = #{gName,jdbcType=VARCHAR},
+      g_price = #{gPrice,jdbcType=DOUBLE},
+      g_content = #{gContent,jdbcType=VARCHAR}
+    where g_id = #{gId,jdbcType=INTEGER}
+  </update>
+</mapper>

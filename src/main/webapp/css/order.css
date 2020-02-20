@@ -1,0 +1,311 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-color: #F4F5FA;
+}
+
+.fone li {
+	margin-right: 20px;
+	display: inline-block;
+}
+
+.background {
+	margin: 20px auto;
+	background-color: white;
+	width: 1170px;
+	height:574px;
+	/* transform: translate(-150px,-150px); */
+}
+
+.fone {
+	display: inline-block;
+	padding: 21px;
+	width: 620px;
+	float: left;
+	margin-right: 15px;
+	height: 594px;
+	box-shadow: rgba(69, 73, 91, 0.08) 0px 0px 0px 0px;
+}
+
+.fone>img {
+	width: 100%;
+	height: 70%;
+
+}
+
+.ftwo {
+	display: inline-block;
+	width: 479px;
+	height: 604px;
+	line-height: 30px;
+	padding: 5px;
+}
+
+.fone ul {
+	height: 112px;
+
+}
+
+.qian {
+	background-color: rgb(241, 124, 103);
+	color: rgb(255, 255, 255);
+	display: inline-block;
+	font-size: 24px;
+	font-weight: 400;
+	height: 35px;
+	margin: 5px;
+	width: 100px;
+	padding-top: 5px;
+	padding-left: 5px;
+
+
+
+
+}
+
+.PC {
+	border-bottom: 1px solid rgb(221, 223, 231);
+	border-top: 1px solid rgb(221, 223, 231);
+	box-sizing: border-box;
+	color: rgb(107, 111, 129);
+	display: block;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 15px;
+	font-weight: 400;
+	height: 51.2px;
+	line-height: 25.65px;
+	margin-block-end: 0px;
+	margin-block-start: 0px;
+	margin-bottom: 10px;
+	margin-inline-end: 0px;
+	margin-inline-start: 0px;
+	margin-top: 10px;
+	overflow-wrap: break-word;
+	text-size-adjust: 100%;
+	width: 437.7px;
+}
+
+h3 {
+
+
+	color: rgb(37, 198, 252);
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.fone li {
+	border: 1px solid;
+	padding: 5px;
+	border-color: rgb(221, 223, 231);
+	width: 88px;
+	height: 88px;
+}
+
+.fone li>img {
+	width: 100%;
+}
+
+h5 {
+
+	color: rgb(137, 141, 159);
+	cursor: default;
+	display: inline;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 13px;
+	font-weight: 400;
+	height: auto;
+	line-height: 22.23px;
+	overflow-wrap: break-word;
+	text-size-adjust: 100%;
+	text-transform: uppercase;
+	width: auto;
+	margin: 15px 0px;
+}
+
+select {
+
+	display: block;
+	border-bottom-color: rgb(221, 223, 231);
+	color: rgb(137, 142, 162);
+	height: 48px;
+	width: 220px;
+	margin: 15px 0px;
+}
+
+.yuanjia {
+
+
+	margin-right: 25px;
+	text-decoration: line-through;
+	color: rgb(137, 142, 162);
+}
+
+input[type=submit]{
+	width: 300px;
+	height: 46px;
+	font-size: 14px;
+	background-color:rgb(37, 198, 252);
+	color: white;
+	border: none;
+}
+.add{
+	text-align: center;
+	margin-top: 20px;
+}
+input[name="amount"]{
+    width: 60px;
+    text-align: center;
+    border: 1px solid #999999;
+    border-left: none;
+    border-right: none;
+    height: 44px;
+	outline-style: none;	
+}
+input[name="minus"]{
+	height: 44px;
+	border: 1px #999999 solid;
+	width:43px;
+	text-align: center;
+	margin-right: -5px;
+	outline-style: none;
+}
+input[name="plus"]{
+	height: 44px;
+	border: 1px #999999 solid;
+	width:43px;
+	margin-left: -5px;
+	text-align: center;
+	outline-style: none;
+}
+.xg li{
+	display: inline-block;
+	width: 230px;
+	height: 380.984px;
+	background-color: white;
+	margin: 20px 0px;
+}
+.xg li:nth-of-type(1){
+	margin-right: 62px;
+}
+.xg li:nth-of-type(2){
+	margin-right: 62px;
+}
+.xg li:nth-of-type(3){
+	margin-right: 62px;
+}
+.footimg{
+	width: 229.984px;
+	height: 229.984px;
+	background: url(../img/order/foot1.jpg);
+	background-size: cover;
+	margin: 0px auto;
+	}
+.footimg:hover{
+	background: url(../img/order/foot1a.png);
+	background-size: cover;
+	transition:1s;
+}
+.q{
+	cursor:pointer;	
+	color:rgb(70, 72, 85);
+	font-size:16px;
+	font-weight:500;
+	height:56px;
+	line-height:28px;
+	text-align: center;
+	margin: 20px 0px;
+}
+.money{
+	
+	color:rgb(157, 161, 179);
+	cursor:pointer;
+	font-size:16px;
+	font-weight:400;
+	height:21px;
+	line-height:normal;
+	text-align:center;
+	display: inline-block;
+}
+.renmingbi{
+	cursor:pointer;
+	display: inline-block;
+	width: 100%;
+	text-align:center;
+}
+.renmingbi:hover span{
+	color:rgb(70, 72, 85);
+	
+}
+.money{
+	width: 100%;
+	text-align:center;
+}
+.yuan{
+	
+	color:rgb(37, 198, 252);
+	font-size:16px;
+	font-weight:400;
+	line-height:22.08px;
+}
+.yuana{
+	text-decoration: line-through;
+	color:rgb(150, 198, 252);
+	font-size:16px;
+	font-weight:400;
+	line-height:22.08px;
+	
+}
+.footspan{
+	
+	height: 53px;
+}
+.footimgtwo{
+	width: 229.984px;
+	height: 229.984px;
+	background: url(../img/order/foot2.jpg);
+	background-size: cover;
+	margin: 0px auto;
+	}
+.footimgtwo:hover{
+	background: url(../img/order/footb.jpg);
+	background-size: cover;
+	transition:1s;
+}
+.footimgthree{
+	width: 229.984px;
+	height: 229.984px;
+	background: url(../img/order/foot3.jpg);
+	background-size: cover;
+	margin: 0px auto;
+	}
+.footimgthree:hover{
+	background: url(../img/order/footc.jpg);
+	background-size: cover;
+	transition:1s;
+	
+}
+.footimgfour{
+	width: 229.984px;
+	height: 229.984px;
+	background: url(../img/order/foot4.jpg);
+	background-size: cover;
+	margin: 0px auto;
+	}
+.footimgfour:hover{
+	background: url(../img/order/footd.jpg);
+	background-size: cover;
+	transition:1s;
+	
+}
+.foot{
+	margin: 20px auto;
+	width: 1170px;
+	height: 500px;
+}
+hr{
+	color:rgb(37, 198, 252);
+	margin-top: 15px;
+}

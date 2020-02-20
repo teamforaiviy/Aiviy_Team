@@ -1,0 +1,256 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.content-bg{
+	width: 100%;
+	height: 560px;
+	background-image: url(../img/index/slider-background.jpg);
+	background-size: cover;
+}
+.content-body{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,234,176,0.5);
+}
+.content-body-one{
+	width: 75%;
+	height: 560px;
+	margin: auto;
+}
+.content-body-two{
+	width: 100%;
+	height: 500px;
+	margin: auto;
+}
+.content-body-two-left{
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+.content-body-two-left-1{
+	width: 90%;
+	height: 78%;
+	margin: auto;
+	margin-top: 100px;
+}
+.content-body-two-left-1 p{
+	color: #464855;
+	font-size: 26px;
+	line-height: 40px;
+}
+.content-body-two-left-1 span{
+	color: #D92231;
+}
+.content-body-two-left-1 ul{
+	line-height: 30px;
+	margin-left: 28px;
+	margin-top: 30px;
+	color: #6B6F81;
+}
+.content-body-two-left-1 a{
+	width: 180px;
+	height: 54px;
+	display: block;
+	border-radius: 28px;
+	background-color: #FFC06A;
+	color: #000;
+	font-size: 16px;
+	text-align: center;
+	padding: 14px 0px;
+	margin-top: 35px;
+	text-decoration: none;
+	border: 2px solid #FFC06A;
+}
+.content-body-two-left-1 a:hover{
+	border: 2px solid #FFC06A;
+	background-color: rgba(255,234,176,0);
+	color: #FFC06A;
+}
+.content-body-two-right{
+	width: 50%;
+	height: 100%;
+	float: right;
+}
+
+.carousel-indicators li {
+  width: 20px;
+  height: 2px;
+  border: 2px solid grey;
+  border-radius: 1px;
+}
+.carousel-indicators .active {
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+  border: 2px solid #25C6FC;
+}
+
+.content-one{
+	background-image: url(../img/index/shop-4071232.png);
+	height: 364px;
+	margin: 15px 0;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+.content-one-first{
+	width: 290px;
+	height: 160px;
+	background-color: white;
+	position: absolute;
+	margin-top: 100px;
+	margin-left: 38%;
+	text-align: center;
+	padding-top: 28px;
+	line-height: 40px;
+}
+.content-one-first h2{
+	color: #464855;
+    font-weight: 550;
+    font-size: 26px;
+}
+.content-one-first a{
+	color: #25C6FC;
+	text-decoration: none;
+	font-size: 16px;
+}
+.content-one-first a:hover{
+	color: #414B92;
+}
+
+.content-two{
+	width: 100%;
+	height: 560px;
+}
+.content-two-first{
+	background-color: #D92231;
+	height: 540px;
+	padding-top: 20px;
+}
+.content-two-first-1{
+	width: 90%;
+	height: 500px;
+	margin: 10px 20px;
+	color: white;
+}
+.content-two-first-1 h2{
+	font-size: 22px;
+	margin: 0;
+	text-align: center;
+	margin-bottom: 25px;
+}
+.content-two-first-1 p{
+	line-height: 30px;
+}
+.content-two-first-1 img{
+	margin-top: 10px;
+}
+.content-two-first-1 a{
+	width: 122px;
+	height: 48px;
+	display: block;
+	font-size: 16px;
+	text-decoration: none;
+	background-color: #FFEAB0;
+	color: #000;
+	text-align: center;
+	padding: 12px 0px;
+	margin: auto;
+	margin-top: 35px;
+}
+.content-two-first-1 a:hover{
+	background-color: #D92231;
+	border: 2px solid #FFEAB0;
+}
+.content-two-second{
+	background-color: #FFEAB0;
+	height: 540px;
+	padding-top: 20px;
+}
+.content-two-second-1{
+	width: 50%;
+	float: left;
+}
+.content-two-second-11{
+	width: 70%;
+	margin-left: 70px;
+	margin-top: 50px;
+}
+.content-two-second-1 h2{
+	font-size: 31px;
+	color: #464855;
+	line-height: 40px;
+}
+.content-two-second-1 p{
+	line-height: 30px;
+	color: #6B6F81;
+}
+.content-two-second-1 a{
+	width: 142px;
+	height: 50px;
+	display: block;
+	font-size: 14px;
+	text-decoration: none;
+	background-color: #464855;
+	color: #FFF;
+	text-align: center;
+	padding: 14px 0px;
+	margin-top: 30px;
+}
+.content-two-second-1 a:hover{
+	background-color: #FFEAB0;
+	color: #000;
+	border: 2px solid #464855;
+}
+.content-two-second-2{
+	width: 50%;
+	float: right;
+}
+.content-two-second-2 img{
+	margin-top: 40px;
+	margin-left: 20px;
+}
+.content-two-third{
+	height: 540px;
+}
+.content-two-third a{
+	text-decoration: none;
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: relative;
+}
+.content-two-third-1{
+	height: 200px;
+	width: 100%;
+	background-image: url(../img/index/Aiviy-pdf-Expert-bg1.jpg);
+	background-size: cover;
+	animation: dwlbQp 40s linear infinite;
+	-webkit-animation:dwlbQp 40s linear infinite;
+}
+@keyframes dwlbQp { 
+ 	from { background-position: 0 0 } 
+ 	to { background-position: -900px 0 } 
+}
+.content-two-third-1 img{
+	width: 130px;
+	height: 130px;
+	position: absolute;
+	top: 38px;
+	left: 70px;
+}
+.content-two-third-2{
+	margin-top: 18px;
+	height: 320px;
+	width: 100%;
+	background-image: url(../img/index/Aiviy-idm-bg2.jpg);
+	background-size: cover;
+}
+.content-two-third-2 img{
+	width: 227px;
+	height: 217px;
+	position: absolute;
+	bottom: 0px;
+	left: 20px;
+}

@@ -1,0 +1,142 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#background {
+	background-image: url(../img/aiviy_login_bg.png);
+	height: 677px;
+	background-size: cover;
+	min-width: 70%;
+	padding-top: 45px;
+}
+
+.whole {
+	width: 462px;
+	margin: auto;
+}
+
+.aiviy img {
+	width: 180px;
+	margin-bottom: 10px;
+}
+
+form {
+	width: 400px;
+	padding: 40px 30px;
+	background-color: #fcfbfa;
+	border: 1px solid #eee;
+	border-radius: 5px;
+}
+
+form input {
+	height: 30px;
+	width: 70%;
+	padding-left: 10px;
+	border: none;
+	outline: none;
+	background-color: #FCFBFA;
+	border-bottom: 2px solid #cbc5bf;
+}
+.mode span{
+	float: left;
+	vertical-align: middle;
+	color: #666666;
+}
+.mode select{
+	width: 70%;
+	
+}
+.iphonecode input:last-of-type {
+	color: #666666;
+	border: none;
+	width: 20%;
+	background-color: #FCFBFA;
+}
+.photocode img{
+	width: 80px;
+	vertical-align: bottom;
+}
+
+form>div {
+	margin-bottom: 20px;
+}
+
+form>div span {
+	color: #666666;
+}
+
+form>div>div {
+	width: 72%;
+	height: 25px;
+	font-size: 12px;
+	line-height: 25px;
+	color: #826F81;
+	display: none;
+	margin-left: 72px;
+}
+
+.register {
+	font-size: 20px;
+	color: #826F81;
+	width: 100%;
+	height: 35px;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.iphone input {
+	width: 64%;
+	float: left;
+}
+
+select {
+	color: #25D0FD;
+	height: 34px;
+	float: left;
+	border: none;
+	background-color: #FCFBFA;
+	outline: none;
+}
+
+.iphone:after {
+	clear: both;
+	content: '';
+	display: block;
+}
+
+.new button {
+	width: 100%;
+	height: 40px;
+	font-size: 20px;
+	color: white;
+	background-color: #25C6FC;
+	border: none;
+	margin-top: 20px;
+}
+
+.fast span {
+	color: #6B6F81;
+}
+
+div>span>span {
+	content: "*";
+	color: #BB501C;
+	display: inline-block;
+	font-size: 20px;
+	margin-left: 2px;
+}
+.tail a{
+	color: #999;
+	font-size: 17px;
+}
+.tail span{
+	color: #DDDEE6;
+}
+.tail{
+	margin-top: 40px;
+	text-align: center;
+	width: 100%;
+}
+

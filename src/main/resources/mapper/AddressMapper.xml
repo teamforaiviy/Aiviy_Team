@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.exam.mapper.AddressMapper">
+  <resultMap id="BaseResultMap" type="com.kgc.exam.entity.Address">
+    <!--@mbg.generated-->
+    <!--@Table address-->
+    <id column="ad_id" jdbcType="INTEGER" property="adId" />
+    <result column="ad_address" jdbcType="VARCHAR" property="adAddress" />
+    <result column="ad_phone" jdbcType="VARCHAR" property="adPhone" />
+    <result column="ad_user" jdbcType="VARCHAR" property="adUser" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    ad_id, ad_address, ad_phone, ad_user, user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from address
+    where ad_id = #{adId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from address
+    where ad_id = #{adId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.exam.entity.Address">
+    <!--@mbg.generated-->
+    insert into address (ad_id, ad_address, ad_phone, 
+      ad_user, user_id)
+    values (#{adId,jdbcType=INTEGER}, #{adAddress,jdbcType=VARCHAR}, #{adPhone,jdbcType=VARCHAR}, 
+      #{adUser,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.exam.entity.Address">
+    <!--@mbg.generated-->
+    insert into address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adId != null">
+        ad_id,
+      </if>
+      <if test="adAddress != null">
+        ad_address,
+      </if>
+      <if test="adPhone != null">
+        ad_phone,
+      </if>
+      <if test="adUser != null">
+        ad_user,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adId != null">
+        #{adId,jdbcType=INTEGER},
+      </if>
+      <if test="adAddress != null">
+        #{adAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="adPhone != null">
+        #{adPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="adUser != null">
+        #{adUser,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.exam.entity.Address">
+    <!--@mbg.generated-->
+    update address
+    <set>
+      <if test="adAddress != null">
+        ad_address = #{adAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="adPhone != null">
+        ad_phone = #{adPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="adUser != null">
+        ad_user = #{adUser,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ad_id = #{adId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.exam.entity.Address">
+    <!--@mbg.generated-->
+    update address
+    set ad_address = #{adAddress,jdbcType=VARCHAR},
+      ad_phone = #{adPhone,jdbcType=VARCHAR},
+      ad_user = #{adUser,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER}
+    where ad_id = #{adId,jdbcType=INTEGER}
+  </update>
+</mapper>

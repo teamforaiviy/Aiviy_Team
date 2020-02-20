@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.exam.mapper.MemberMapper">
+  <resultMap id="BaseResultMap" type="com.kgc.exam.entity.Member">
+    <!--@mbg.generated-->
+    <!--@Table member-->
+    <id column="v_id" jdbcType="INTEGER" property="vId" />
+    <result column="v_name" jdbcType="VARCHAR" property="vName" />
+    <result column="v_count" jdbcType="DOUBLE" property="vCount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    v_id, v_name, v_count
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from member
+    where v_id = #{vId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from member
+    where v_id = #{vId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.exam.entity.Member">
+    <!--@mbg.generated-->
+    insert into member (v_id, v_name, v_count
+      )
+    values (#{vId,jdbcType=INTEGER}, #{vName,jdbcType=VARCHAR}, #{vCount,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.exam.entity.Member">
+    <!--@mbg.generated-->
+    insert into member
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="vId != null">
+        v_id,
+      </if>
+      <if test="vName != null">
+        v_name,
+      </if>
+      <if test="vCount != null">
+        v_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="vId != null">
+        #{vId,jdbcType=INTEGER},
+      </if>
+      <if test="vName != null">
+        #{vName,jdbcType=VARCHAR},
+      </if>
+      <if test="vCount != null">
+        #{vCount,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.exam.entity.Member">
+    <!--@mbg.generated-->
+    update member
+    <set>
+      <if test="vName != null">
+        v_name = #{vName,jdbcType=VARCHAR},
+      </if>
+      <if test="vCount != null">
+        v_count = #{vCount,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where v_id = #{vId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.exam.entity.Member">
+    <!--@mbg.generated-->
+    update member
+    set v_name = #{vName,jdbcType=VARCHAR},
+      v_count = #{vCount,jdbcType=DOUBLE}
+    where v_id = #{vId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,214 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.bar{
+	widows: 100%;
+	height: 55px;
+	background-color: #464855;
+	padding: 15px;
+}
+.bar-text{
+	font-family: "微软雅黑";
+	color: #CDCDCD;
+	
+}
+.bar-text a{
+	text-decoration: none;
+	color: #FFFFFF;
+}
+.bar-text a:hover{
+	text-decoration: none;
+	color: #CDCDCD;
+}
+.sale-content{
+	background-color: #F4F5FA;
+	padding: 35px;
+}
+.sale-content-firstrow{
+	height: 444px;
+}
+.sale-content-all{
+	list-style: none;
+}
+.sale-content-secondtrow{
+	height: 472px;
+}
+.sale-content-thirdtrow{
+	height: 444px;
+}
+.col-md-3{
+	margin: 0px;
+	padding: 0px;
+}
+.Good{
+	width: 280px;
+	height: 444px;
+}
+.Good1{
+	height: 100%;
+	margin: 0px 30px 0px 0px;
+	padding: 20px 20px 57px;
+	background-color: #FFFFFF;
+}
+.Good1 a{
+	display: block;
+	text-decoration: none;
+	width: 90%;
+	height: 90%;
+	margin: auto;
+}
+.Good2{
+	height: 100%;
+	margin: 30px 30px 0px 0px;
+	padding: 20px 20px 57px;
+	background-color: #FFFFFF;
+}
+.Good2 a{
+	display: block;
+	height: 100%;
+	text-decoration: none;
+	
+}
+.Good3{
+	height: 100%;
+	margin: 30px 30px 0px 0px;
+	padding: 20px 20px 57px;
+	background-color: #FFFFFF;
+}
+.Good3 a{
+	display: block;
+	height: 100%;
+	text-decoration: none;
+}
+.Good-off{
+	background-color: #FF4961;
+	text-decoration: none;
+	padding: 8px 11px;
+	color: #FFFFFF;
+	width: 110px;
+	height: 32px;
+	font size: 12px;
+}
+.changePicture{
+	height: 230px;
+	background-image:url(../img/Goods/Aiviy-iobit-asc-box-418x418.jpg);
+	background-size: cover;
+}
+.changePicture:hover{
+	background-image: url(../img/Goods/Aiviy-iobit-ascu-img01-418x418.jpg);
+}
+.Good-Name{
+	margin-top: 20px;
+	height: 56px;
+	text-align: center;
+	line-height: 20px;
+}
+.Good-price{
+	text-align: center;
+	font-size: 15px;
+	color: #9DA1B3;
+	line-height: 30px;
+}
+.orignal-price{
+	font-size: 10x;
+	color: #45CEFC;
+	margin: 2px;
+	opacity: 0.5;
+	text-decoration: line-through;
+	
+}
+.price{
+	font-size: 10x;
+	color: #45CEFC;
+	margin: 2px;
+}
+.changePicture2{
+	height: 230px;
+	background-image:url(../img/Goods/Good2-1.jpg);
+	background-size: cover;
+}
+.changePicture2:hover{
+	background-image: url(../img/Goods/Good2-2.png);
+}
+.changePicture3{
+	height: 230px;
+	background-image:url(../img/Goods/Good3-1.jpg);
+	background-size: cover;
+}
+.changePicture3:hover{
+	background-image: url(../img/Goods/Good3-2.jpg);
+}
+.changePicture4{
+	height: 230px;
+	background-image:url(../img/Goods/Good4-1.jpg);
+	background-size: cover;
+}
+.changePicture4:hover{
+	background-image: url(../img/Goods/Good4-2.jpg);
+}
+.changePicture5{
+	height: 230px;
+	background-image:url(../img/Goods/Good5-1.jpg);
+	background-size: cover;
+}
+.changePicture5:hover{
+	background-image: url(../img/Goods/Good5-2.png);
+}
+.changePicture6{
+	height: 230px;
+	background-image:url(../img/Goods/Good6-1.jpg);
+	background-size: cover;
+}
+.changePicture6:hover{
+	background-image: url(../img/Goods/Good6-2.png);
+}
+.changePicture7{
+	height: 230px;
+	background-image:url(../img/Goods/Good7-1.jpg);
+	background-size: cover;
+}
+.changePicture7:hover{
+	background-image: url(../img/Goods/Good6-2.png);
+}
+.changePicture8{
+	height: 230px;
+	background-image:url(../img/Goods/Good8-1.jpg);
+	background-size: cover;
+}
+.changePicture8:hover{
+	background-image: url(../img/Goods/Good8-2.jpg);
+}
+.changePicture9{
+	height: 230px;
+	background-image:url(../img/Goods/Good9-1.jpg);
+	background-size: cover;
+}
+.changePicture9:hover{
+	background-image: url(../img/Goods/Good9-2.jpg);
+}
+.changePicture10{
+	height: 230px;
+	background-image:url(../img/Goods/Good10-1.jpg);
+	background-size: cover;
+}
+.changePicture10:hover{
+	background-image: url(../img/Goods/Good10-2.jpg);
+}
+.changePicture11{
+	height: 230px;
+	background-image:url(../img/Goods/Good11-1.png);
+	background-size: cover;
+}
+.changePicture11:hover{
+	background-image: url(../img/Goods/Good11-2.png);
+}
+.changePicture12{
+	height: 230px;
+	background-image:url(../img/Goods/Good12-1.jpg);
+	background-size: cover;
+}
+.changePicture12:hover{
+	background-image: url(../img/Goods/Good12-2.jpg);
+}
+

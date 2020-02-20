@@ -1,0 +1,224 @@
+.* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.Group-buying-content {
+	color: #6B6F81;
+	height: 1680px;
+	background-color: #F4F5FA;
+}
+
+.Group-buying-content-top {
+	background-image: url(../img/Group-buying/tuangou-banner-img.jpg);
+	background-size: cover;
+	height: 560px;
+	padding-top: 100px;
+}
+
+.Group-buying-content-poweroack {
+	/* background-color: #FFFFFF; */
+	height: 360px;
+	width: 1170px;
+	margin: auto;
+
+}
+
+.Group-buying-content-poweroack-text {
+	float: right;
+	background-color: #FFFFFF;
+	height: 100%;
+	width: 400px;
+	padding: 0px 20px;
+}
+
+.Group-buying-content-poweroack-text-top {
+	background-color: #FFFFFF;
+	width: 100%;
+	height: 70px;
+}
+
+.Group-buying-content-poweroack-text-1 {
+	background-color: #FFFFFF;
+	width: 100%;
+	height: 36px;
+}
+
+.has-mako-color {
+	margin: 0px 0px 21.25px;
+	font-size: 21.25px;
+}
+
+.Group-buying-content-poweroack-text-2 {
+	margin: auto;
+}
+
+.percent {
+	text-align: center;
+}
+
+.Group-buying-content-poweroack-text-bar {
+	height: 30px;
+}
+
+.Group-buying-content-poweroack-text-3-text {
+	text-align: center;
+	font-weight: bold;
+	font-size: 13.6px;
+}
+
+.Group-buying-content-goods {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	height: 830px;
+}
+
+.Group-buying-content-goods-firstrow {
+	margin-bottom: 50px;
+	height: 390px;
+}
+
+.Group-buying-content-goods-secondrow {
+	margin-bottom: 50px;
+	height: 390px;
+}
+
+.Group-buying-content-goods-thirdrow {
+	height: 130px;
+}
+
+.col-md-4 {
+	padding: 0px;
+}
+
+.Group-buying-content-good-type1 {
+	margin-right: 20px;
+	width: 100%;
+	height: 390px;
+	background-color: #FFFFFF;
+}
+
+.Group-buying-content-good-type2 {
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 100%;
+	height: 390px;
+	background-color: #FFFFFF;
+}
+
+.Group-buying-content-good-type3 {
+	margin-left: 20px;
+	width: 100%;
+	height: 390px;
+	background-color: #FFFFFF;
+}
+
+.Group-buying-content-good-block {
+	width: 100%;
+	height: 186px;
+	display: block;
+}
+
+.Group-buying-content-good-firstblock {
+	border: 1px solid #E4E5EC;
+	width: 240px;
+	height: 186px;
+	display: block;
+	float: left;
+}
+
+.Group-buying-content-good-firstblock img {
+	height: 100%;
+	width: auto;
+}
+
+.Group-buying-content-good-secondblock {
+	border: 1px solid #E4E5EC;
+	width: 140px;
+	height: 186px;
+	float: right;
+	padding: 40px 0px;
+}
+
+.Group-buying-content-good-secondblock img {
+	width: 100%;
+	height: auto;
+}
+
+.Group-buying-content-good-thirdblock {
+	border: 1px solid #E4E5EC;
+	width: 100%;
+	height: 204px;
+	float: right;
+	text-align: center;
+
+}
+
+.Group-buying-content-good-thirdblock h2 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+}
+
+.Group-buying-content-good-thirdblock p {
+	color: #ADB1C3;
+	margin-bottom: 14px;
+}
+
+.Group-buying-content-good-thirdblock a {
+	display: block;
+	width: 215px;
+	height: 48px;
+	margin: auto;
+	background-color: #25C6FC;
+	border-radius: 30px;
+	color: #FFFFFF;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	font-size: 14px;
+	text-decoration: none;
+
+}
+
+.bottom-Block1 {
+	width: 380px;
+	height: 130px;
+	margin-right: 20px;
+	background-color: #E4E5EC;
+	padding: 27px;
+}
+.bottom-Block1 h3{
+	margin: 0px;
+}
+.bottom-Block1 p{
+	margin: 5px 0px 0px 10px;
+}
+.bottom-Block2 {
+	width: 380px;
+	height: 130px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background-color: #414B92;
+	padding: 27px;
+}
+.bottom-Block2 h3{
+	margin: 0px;
+	color: #FFFFFF;
+}
+.bottom-Block2 p{
+	margin: 5px 0px 0px 10px;
+	color: #D3D5E2;
+}
+.bottom-Block3 {
+	width: 380px;
+	height: 130px;
+	margin-left: 20px;
+	background-color: #E4E5EC;
+	padding: 27px;
+}
+.bottom-Block3 h3{
+	margin: 0px;
+}
+.bottom-Block3 p{
+	margin: 5px 0px 0px 10px;
+}

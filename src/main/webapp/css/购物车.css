@@ -1,0 +1,108 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.ione{
+	width: 90px;
+}
+.tone tr:first-of-type{
+	color:rgb(107, 111, 129);
+	font-size:16px;
+	font-weight:400;
+	height:45.8px;
+	line-height:27.36px;
+	width:1169.6px;
+	
+}
+.tone tr:last-of-type{
+	color:rgb(107, 111, 129);
+	font-size:16px;
+	font-weight:400;
+	height:132.2px;
+	line-height:27.36px;
+	width:1169.6px;
+	text-align: center;
+}
+input[name="amount"]{
+	background-color: white;
+    width: 50px;
+    text-align: center;
+    border:  0.5px solid #999999;
+    border-left: none;
+    border-right: none;
+    height: 35.5px;
+	outline-style: none;	
+}
+input[name="minus"]{
+	background-color: white;
+	height: 35.5px;
+	border: 0.5px #999999 solid;
+	width:38px;
+	text-align: center;
+	margin-right: -5px;
+	outline-style: none;
+	color: rgb(37, 198, 252);
+	border-right: none;
+}
+input[name="plus"]{
+	background-color: white;
+	color: rgb(37, 198, 252);
+	height: 35.5px;
+	border:  0.5px #999999 solid;
+	width:38px;
+	margin-left: -5px;
+	text-align: center;
+	outline-style: none;
+	border-left: none;
+}
+.shop{
+	width: 1100px;
+	margin: 0px auto;
+}
+.cfoot button{
+	height: 48px;
+	width: 200px;
+	border: 1px solid #25C6FC;
+	padding: 11px 40px;
+	font-size: 14px;
+	background-color: #25C6FC;
+	color: white;
+}
+.shopping{
+	background-color: #F4F5FA;
+	padding-bottom: 5px;
+}
+.ttwo th{
+	width: 139.73px;
+	color: #6B6F81;
+	padding: 20px 0px 20px 10px;
+	font-size: 14px;
+}
+.ttwo td{
+	width: 279.46px;
+	color: #6B6F81;
+	padding: 20px 10px;
+}
+.count{
+	width: 421px;
+	margin-left: 600px;
+	margin-bottom: 50px;
+}
+.cfoot button:first-of-type{
+	margin-right: 15px;
+	
+}
+.cfoot button:hover{
+	background-color: white;
+	color: #25C6FC;
+}
+.count div{
+	margin-bottom: 30px;
+}
+
+.cbody{
+	width: 421px;
+	background-color: white;
+	padding: 0px 10px;
+}

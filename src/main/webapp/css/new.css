@@ -1,0 +1,156 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.new-cotent{
+	background-color: #F4F5FA;
+	border-top: 1px solid #EFF0F5;
+}
+.new-cotent-one{
+	height: 506px;
+	background-image: url(../img/new/Aiviy-new-bg.jpg);
+	margin: 20px 0px;
+	background-size: cover;
+}
+.new-cotent-one-first{
+	background-color: rgba(0,0,0,0.7);
+	height: 506px;
+	padding-top: 128px;
+	
+}
+.new-cotent-one-first h2{
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 35px;
+	line-height: 50px;
+}
+.new-cotent-two-first{
+	height: 444px;
+	width: 100%;
+	background-color: #FFFFFF;
+	padding-top: 20px;
+	margin-bottom: 20px;
+}
+.new-cotent-two-first a{
+	width: 90%;
+	height: 90%;
+	display: block;
+	margin: auto;
+	text-decoration: none;
+	text-align: center;
+}
+.new-cotent-two-first-1{
+	background-image: url(../img/new/Aiviy-DAEMON-Tools-box-418x418.jpg);
+	width: 230px;
+	height: 230px;
+	background-size: cover;
+}
+.new-cotent-two-first-1:hover{
+	background-image: url(../img/new/Aiviy-DAEMON-Tools-box01-418x418.jpg);
+}
+.discount{
+	width: 90px;
+	height: 34px;
+	display: block;
+	background-color: #FF4961;
+	color: #FFFFFF;
+	font-size: 12px;
+	padding: 8px 0;
+	margin-bottom: 10px;
+}
+.new-flash{
+	width: 90px;
+	height: 34px;
+	display: block;
+	background-color: #28D094;
+	color: #FFFFFF;
+	font-size: 12px;
+	padding: 8px 0;
+}
+.new-cotent-two-first h2{
+	color: #464855;
+	font-size: 16px;
+	margin-top: 10px;
+	line-height: 30px;
+	font-family: "微软雅黑";
+}
+.price-lable{
+	color: #9DA1B3;
+	font-size: 16px;
+}
+.price{
+	color: #25C6FC;
+	font-size: 16px;
+}
+.price>span{
+	font-size: 14px;
+	text-decoration: line-through;
+	opacity: 0.5;
+}
+.price:hover{
+	color: #414B92;
+}
+.new-cotent-two-first-2{
+	background-image: url(../img/new/Aiviy-boom-3d-box-418x418.jpg);
+	width: 230px;
+	height: 230px;
+	background-size: cover;
+}
+.new-cotent-two-first-2:hover{
+	background-image: url(../img/new/Aiviy-boom-3d-box02-418x418.jpg);
+}
+.new-cotent-two-first-3{
+	background-image: url(../img/new/Aiviy-AdGuard-box-418x418.png);
+	width: 230px;
+	height: 230px;
+	background-size: cover;
+}
+.new-cotent-two-first-3:hover{
+	background-image: url(../img/new/Aiviy-AdGuard-box01-418x418.png);
+}
+.new-cotent-two-first-4{
+	background-image: url(../img/new/Aiviy-Fences-box-418x418.png);
+	width: 230px;
+	height: 230px;
+	background-size: cover;
+}
+.new-cotent-two-first-4:hover{
+	background-image: url(../img/new/Aiviy-fences-box01-418x418.jpg);
+}
+
+.new-cotent-two-first-5{
+	background-image: url(../img/new/Aiviy-iMazing_box-418x418.png);
+	width: 230px;
+	height: 230px;
+	background-size: cover;
+}
+.new-cotent-two-first-5:hover{
+	background-image: url(../img/new/Aiviy-iMazing_box01-418x418.png);
+}
+.new-cotent-two-first-6{
+	background-image: url(../img/new/Aiviy-eagle-box01-418x418.jpg);
+	width: 230px;
+	height: 230px;
+	background-size: cover;
+}
+.new-cotent-two-first-6:hover{
+	background-image: url(../img/new/Aiviy-eagle-box04-418x418.jpg);
+}
+.new-cotent-two-first-7{
+	background-image: url(../img/new/Aiviy-office365-business-box-418x418.png);
+	width: 230px;
+	height: 230px;
+	background-size: cover;
+}
+.new-cotent-two-first-7:hover{
+	background-image: url(../img/new/aiviy-office365img01-418x418.jpg);
+}
+.new-cotent-two-first-8{
+	background-image: url(../img/new/Aiviy-WonderFox-DVD-Ripper-box-418x418.jpg);
+	width: 230px;
+	height: 230px;
+	background-size: cover;
+}
+.new-cotent-two-first-8:hover{
+	background-image: url(../img/new/Aiviy-WonderFox-DVD-Ripper-box04-418x418.jpg);
+}

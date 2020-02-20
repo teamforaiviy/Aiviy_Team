@@ -1,0 +1,28 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.bar{
+	widows: 100%;
+	height: 55px;
+	background-color: #464855;
+	padding: 15px;
+}
+.bar-text{
+	font-family: "微软雅黑";
+	color: #CDCDCD;
+	
+}
+.bar-text a{
+	text-decoration: none;
+	color: #FFFFFF;
+}
+.bar-text a:hover{
+	text-decoration: none;
+	color: #CDCDCD;
+}
+.information-content{
+	border: 1px solid #000000;
+	width: auto;
+	height: 4550px;
+}

@@ -1,6 +1,9 @@
 package com.kgc.exam.mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.kgc.exam.entity.Image;
+
+import java.util.List;
 
 public interface ImageMapper {
     int deleteByPrimaryKey(Integer imgId);
@@ -14,4 +17,8 @@ public interface ImageMapper {
     int updateByPrimaryKeySelective(Image record);
 
     int updateByPrimaryKey(Image record);
+
+    List<Image> queryAllByGId(@Param("gId")Integer gId);
+
+
 }

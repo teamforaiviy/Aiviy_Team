@@ -18,7 +18,27 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
-
+        //获取地址栏参数,可以是中文参数
+        function getUrlParam(key) {
+            // 获取参数
+            var url = window.location.search;
+            // 正则筛选地址栏
+            var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+            // 匹配目标参数
+            var result = url.substr(1).match(reg);
+            //返回参数值
+            return result ? decodeURIComponent(result[2]) : null;
+        }
+        var status = getUrlParam("status")==undefined?"":getUrlParam("status");
+        $(function () {
+            if(status!=""){
+                if (status=0){
+                    alert("商品上传失败!")
+                } else {
+                    alert("商品上传成功!")
+                }
+            }
+        })
     </script>
 </head>
 <body>
@@ -39,7 +59,7 @@
                         </tr>
                         <tr>
                             <td>商品描述:</td>
-                            <td><textarea class="form-control" name="gContent"></td>
+                            <td><textarea class="form-control" name="gContent" style="resize: none;"></textarea></td>
                         </tr>
                         <tr>
                             <td>图片:</td>

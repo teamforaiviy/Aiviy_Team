@@ -39,7 +39,7 @@
                         </tr>
                         <tr>
                             <td>商品描述:</td>
-                            <td><textarea class="form-control" name="gContent"></td>
+                            <td><textarea class="form-control" name="gContent" style="resize: none;"></textarea></td>
                         </tr>
                         <tr>
                             <td>图片:</td>

@@ -8,10 +8,12 @@
     <result column="g_name" jdbcType="VARCHAR" property="gName" />
     <result column="g_price" jdbcType="DOUBLE" property="gPrice" />
     <result column="g_content" jdbcType="VARCHAR" property="gContent" />
+    <result column="uploadTime" jdbcType="TIMESTAMP" property="uploadtime" />
+    <result column="countStatus" jdbcType="INTEGER" property="countstatus" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    g_id, g_name, g_price, g_content
+    g_id, g_name, g_price, g_content, uploadTime, countStatus
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -28,9 +30,11 @@
   <insert id="insert" parameterType="com.kgc.exam.entity.Goods">
     <!--@mbg.generated-->
     insert into goods (g_id, g_name, g_price, 
-      g_content)
+      g_content, uploadTime, countStatus
+      )
     values (#{gId,jdbcType=INTEGER}, #{gName,jdbcType=VARCHAR}, #{gPrice,jdbcType=DOUBLE}, 
-      #{gContent,jdbcType=VARCHAR})
+      #{gContent,jdbcType=VARCHAR}, #{uploadtime,jdbcType=TIMESTAMP}, #{countstatus,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.kgc.exam.entity.Goods">
     <!--@mbg.generated-->
@@ -48,6 +52,12 @@
       <if test="gContent != null">
         g_content,
       </if>
+      <if test="uploadtime != null">
+        uploadTime,
+      </if>
+      <if test="countstatus != null">
+        countStatus,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="gId != null">
@@ -61,6 +71,12 @@
       </if>
       <if test="gContent != null">
         #{gContent,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null">
+        #{uploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countstatus != null">
+        #{countstatus,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -77,6 +93,12 @@
       <if test="gContent != null">
         g_content = #{gContent,jdbcType=VARCHAR},
       </if>
+      <if test="uploadtime != null">
+        uploadTime = #{uploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countstatus != null">
+        countStatus = #{countstatus,jdbcType=INTEGER},
+      </if>
     </set>
     where g_id = #{gId,jdbcType=INTEGER}
   </update>
@@ -85,7 +107,9 @@
     update goods
     set g_name = #{gName,jdbcType=VARCHAR},
       g_price = #{gPrice,jdbcType=DOUBLE},
-      g_content = #{gContent,jdbcType=VARCHAR}
+      g_content = #{gContent,jdbcType=VARCHAR},
+      uploadTime = #{uploadtime,jdbcType=TIMESTAMP},
+      countStatus = #{countstatus,jdbcType=INTEGER}
     where g_id = #{gId,jdbcType=INTEGER}
   </update>
 </mapper>

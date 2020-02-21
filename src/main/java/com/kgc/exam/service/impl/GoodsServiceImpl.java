@@ -13,10 +13,18 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private GoodsMapper goodsMapper;
-
     @Override
-    public List<Goods> queryGoods(String gName) {
-        return goodsMapper.queryGoods(gName);
+    public Boolean addGoods(Goods goods) {
+        return goodsMapper.insertSelective(goods)==1;
     }
 
+    @Override
+    public List<Goods> queryAllGoods() {
+        return goodsMapper.queryAll();
+    }
+
+    @Override
+    public Goods queryGoodByGname(String gName) {
+        return goodsMapper.queryAllByGName(gName);
+    }
 }

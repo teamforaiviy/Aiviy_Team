@@ -21,7 +21,7 @@ USE `aiviy`;
 DROP TABLE IF EXISTS `address`;
 
 CREATE TABLE `address` (
-  `ad_id` int(8) NOT NULL COMMENT '地址编号',
+  `ad_id` int(8) NOT NULL auto_increment COMMENT '地址编号',
   `ad_address` varchar(55) default NULL COMMENT '收货地址',
   `ad_phone` varchar(11) default NULL COMMENT '收货人电话',
   `ad_user` varchar(20) default NULL COMMENT '收货人姓名',
@@ -36,7 +36,7 @@ CREATE TABLE `address` (
 DROP TABLE IF EXISTS `comment`;
 
 CREATE TABLE `comment` (
-  `c_id` int(8) NOT NULL COMMENT '评论编号（自增）',
+  `c_id` int(8) NOT NULL auto_increment COMMENT '评论编号（自增）',
   `c_comment` varchar(255) default NULL COMMENT '评论内容',
   `user_id` int(8) default NULL COMMENT '用户id',
   `g_id` int(8) default NULL COMMENT '商品编号',
@@ -50,7 +50,7 @@ CREATE TABLE `comment` (
 DROP TABLE IF EXISTS `goods`;
 
 CREATE TABLE `goods` (
-  `g_id` int(8) NOT NULL COMMENT '商品编号',
+  `g_id` int(8) NOT NULL auto_increment COMMENT '商品编号',
   `g_name` varchar(35) default NULL COMMENT '商品名',
   `g_price` double default NULL COMMENT '商品价格',
   `g_content` varchar(255) default NULL COMMENT '商品描述',
@@ -66,7 +66,7 @@ CREATE TABLE `goods` (
 DROP TABLE IF EXISTS `image`;
 
 CREATE TABLE `image` (
-  `img_id` int(8) NOT NULL COMMENT '图片编号',
+  `img_id` int(8) NOT NULL auto_increment COMMENT '图片编号',
   `img_url` varchar(255) default NULL COMMENT '图片路径',
   `g_id` int(8) default NULL COMMENT '商品编号',
   PRIMARY KEY  (`img_id`)
@@ -79,7 +79,7 @@ CREATE TABLE `image` (
 DROP TABLE IF EXISTS `member`;
 
 CREATE TABLE `member` (
-  `v_id` int(1) NOT NULL COMMENT '会员等级（1、2、3、4）',
+  `v_id` int(1) NOT NULL auto_increment COMMENT '会员等级（1、2、3、4）',
   `v_name` varchar(4) default NULL COMMENT '等级描述',
   `v_count` double default NULL COMMENT '折扣',
   PRIMARY KEY  (`v_id`)
@@ -92,7 +92,7 @@ CREATE TABLE `member` (
 DROP TABLE IF EXISTS `order`;
 
 CREATE TABLE `order` (
-  `o_id` int(8) NOT NULL COMMENT '订单自增id',
+  `o_id` int(8) NOT NULL auto_increment COMMENT '订单自增id',
   `o_no` int(8) default NULL COMMENT '订单号',
   `o_state` int(1) default NULL COMMENT '订单状态',
   `o_num` int(3) default NULL COMMENT '商品数量',

@@ -15,4 +15,11 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    //登录
+    User login(@Param("id") Integer id);
+
+    //注册
+    Integer add(@Param("user") User user);
+
 }

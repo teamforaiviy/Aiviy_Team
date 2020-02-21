@@ -1,4 +1,6 @@
 package com.kgc.exam.mapper;
+import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
 import com.kgc.exam.entity.Goods;
 
@@ -14,4 +16,9 @@ public interface GoodsMapper {
     int updateByPrimaryKeySelective(Goods record);
 
     int updateByPrimaryKey(Goods record);
+
+    List<Goods> queryAll();
+
+    Goods queryAllByGName(@Param("gName")String gName);
+
 }

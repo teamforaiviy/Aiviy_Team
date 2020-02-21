@@ -2,7 +2,7 @@
 SQLyog Ultimate v12.08 (64 bit)
 MySQL - 5.0.45-community-nt : Database - aiviy
 *********************************************************************
-*/
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -54,6 +54,8 @@ CREATE TABLE `goods` (
   `g_name` varchar(35) default NULL COMMENT '商品名',
   `g_price` double default NULL COMMENT '商品价格',
   `g_content` varchar(255) default NULL COMMENT '商品描述',
+  `uploadTime` datetime default NULL COMMENT '上传日期',
+  `countStatus` int(10) default NULL COMMENT '折扣状态',
   PRIMARY KEY  (`g_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

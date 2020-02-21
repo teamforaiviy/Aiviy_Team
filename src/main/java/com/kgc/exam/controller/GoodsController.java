@@ -20,8 +20,8 @@ public class GoodsController {
     private GoodsService goodsService;
 
     @RequestMapping("/queryGoods")
-    public List<Goods> queryGoods(@RequestParam("gName") String gName) {
-        return goodsService.queryGoods(gName);
+    public List<Goods> queryGoods() {
+        return goodsService.queryAllGoods();
     }
 
 }

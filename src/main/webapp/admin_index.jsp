@@ -18,7 +18,11 @@
     <style>
         #myTable{
             width: 80%;
-            margin: 20px;
+            margin: 20px auto;
+        }
+        #myTable1{
+            width: 60%;
+            margin: 20px auto;
         }
         table{
             width: 60%;
@@ -60,7 +64,7 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#user" aria-controls="user" role="tab" data-toggle="tab">用户管理</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                    <li role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">地址管理</a></li>
                     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
                     <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
                 </ul>
@@ -71,7 +75,7 @@
                         <table class="table table-striped" id="myTable">
                             <thead>
                             <tr>
-                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">添加</button></td>
+                                <td colspan="9"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">添加用户</button></td>
                             </tr>
                             <tr>
                                 <th>用户ID</th>
@@ -85,6 +89,19 @@
                                 <th>操作</th>
                             </tr>
                             </thead>
+                            <tbody>
+                            <tr>
+                                <td>admin</td>
+                                <td>admin</td>
+                                <td>admin</td>
+                                <td>admin</td>
+                                <td>admin</td>
+                                <td>admin</td>
+                                <td>admin</td>
+                                <td>admin</td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal1">添加地址</a>&nbsp;&nbsp;<a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></td>
+                            </tr>
+                            </tbody>
                         </table>
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">
@@ -130,8 +147,42 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel1">添加地址</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <table>
+                                                <tr>
+                                                    <td>收货地址：</td>
+                                                    <td><input type="text" class="form-control" name="adAddress"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>收货人电话：</td>
+                                                    <td><input type="tel" class="form-control" name="adPhone"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>收货人姓名：</td>
+                                                    <td><input type="text" class="form-control" name="adUser"></td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="profile">...</div>
+                    <div role="tabpanel" class="tab-pane" id="address">
+                        <jsp:include page="admin/address.jsp"></jsp:include>
+                    </div>
                     <div role="tabpanel" class="tab-pane" id="messages">...</div>
                     <div role="tabpanel" class="tab-pane" id="settings">...</div>
                 </div>
@@ -145,6 +196,7 @@
             e.preventDefault()
             $(this).tab('show')
         })
+
     })
 </script>
 </html>

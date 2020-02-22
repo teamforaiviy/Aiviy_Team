@@ -13,16 +13,17 @@
 
     <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/admin.js" type="text/javascript" charset="UTF-8"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        #myTable{
+        #myTable,#myTable1{
             width: 80%;
             margin: 20px auto;
         }
-        #myTable1{
-            width: 60%;
-            margin: 20px auto;
+        .tab-content nav{
+            width: 80%;
+            margin: auto;
         }
         table{
             width: 60%;
@@ -75,7 +76,7 @@
                         <table class="table table-striped" id="myTable">
                             <thead>
                             <tr>
-                                <td colspan="9"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">添加用户</button></td>
+                                <td colspan="9"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createUser">添加用户</button></td>
                             </tr>
                             <tr>
                                 <th>用户ID</th>
@@ -90,20 +91,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>admin</td>
-                                <td>admin</td>
-                                <td>admin</td>
-                                <td>admin</td>
-                                <td>admin</td>
-                                <td>admin</td>
-                                <td>admin</td>
-                                <td>admin</td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal1">添加地址</a>&nbsp;&nbsp;<a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></td>
-                            </tr>
                             </tbody>
                         </table>
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                            </ul>
+                        </nav>
+                        <div class="modal fade" id="createUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -123,11 +117,11 @@
                                                 </tr>
                                                 <tr>
                                                     <td>密码：</td>
-                                                    <td><input type="password" class="form-control" name="password"></td>
+                                                    <td><input type="password" class="form-control" name="userPwd"></td>
                                                 </tr>
                                                 <tr>
                                                     <td>邮箱：</td>
-                                                    <td><input type="email" class="form-control" name="email"></td>
+                                                    <td><input type="email" class="form-control" name="userMail"></td>
                                                 </tr>
                                                 <tr>
                                                     <td>手机号：</td>
@@ -142,12 +136,12 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save</button>
+                                        <button type="button" class="btn btn-primary" onclick="insertUser()">Save</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal fade" id="insertAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -170,11 +164,12 @@
                                                     <td><input type="text" class="form-control" name="adUser"></td>
                                                 </tr>
                                             </table>
+                                            <input type="hidden" name="userId" value="">
                                         </form>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save</button>
+                                        <button type="button" class="btn btn-primary" onclick="insertAddress()">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -191,12 +186,60 @@
     </div>
 </body>
 <script type="text/javascript">
+    var pn=1;
+    var ps=5;
     $(function () {
         $('#myTabs a').click(function (e) {
             e.preventDefault()
             $(this).tab('show')
         })
-
+        queryUser(pn,ps)
     })
+    function queryUser(pn,ps) {
+        $.getJSON("user/queryUser",{"pn":pn,"ps":ps},function (data) {
+            var page =eval(data);
+            var str="";
+            $(page.list).each(function() {
+                str += "<tr>" +
+                    "<td>"+this.userId+"</td>" +
+                    "<td>"+this.userName+"</td>" +
+                    "<td>"+this.nickname+"</td>" +
+                    "<td>"+this.userPwd+"</td>" +
+                    "<td>"+this.userMail+"</td>" +
+                    "<td>"+this.userPhone+"</td>" +
+                    "<td>"+(this.userMoney==null?"":this.userMoney)+"</td>" +
+                    "<td>"+this.member.vName+"</td>" +
+                    "<td><a href='#' data-toggle='modal' data-target='#insertAddress' onclick='addAdd("+this.userId+")'>添加地址</a>&nbsp;&nbsp;<a href='#'>修改</a>&nbsp;&nbsp;<a href='#'>删除</a></td>" +
+                    "</tr>";
+            })
+            $("#user #myTable tbody").empty().append(str);
+
+            var pageStr="";
+            pageStr +="<li><a href='javascript:queryUser(1,"+ps+")'>首页</a></li>";
+            if(page.hasPreviousPage){
+                pageStr +="<li>" +
+                    "<a href='javascript:queryUser("+(page.pageNum-1)+","+ps+")' aria-label='Previous'>" +
+                    "<span aria-hidden=''true'>&laquo;</span>" +
+                    "</a>" +
+                    "</li>";
+            }
+            $(page.navigatepageNums).each(function () {
+                if(page.pageNum==this){
+                    pageStr +="<li><a class='active' href='javascript:queryUser("+this+","+ps+")'>"+this+"</a></li>";
+                }else {
+                    pageStr +="<li><a href='javascript:queryUser("+this+","+ps+")'>"+this+"</a></li>";
+                }
+            })
+            if(page.hasNextPage){
+                pageStr +="<li>" +
+                    "<a href='javascript:queryUser("+(page.pageNum+1)+","+ps+")' aria-label='Previous'>" +
+                    "<span aria-hidden='true'>&raquo;</span>" +
+                    "</a>" +
+                    "</li>";
+            }
+            pageStr +="<li><a href='javascript:queryUser("+page.pages+","+ps+")'>尾页</a></li>";
+            $("#user .pagination").empty().append(pageStr);
+        })
+    }
 </script>
 </html>

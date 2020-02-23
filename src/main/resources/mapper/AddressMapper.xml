@@ -2,18 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kgc.exam.mapper.AddressMapper">
   <resultMap id="BaseResultMap" type="com.kgc.exam.entity.Address">
-    <!--@mbg.generated-->
-    <!--@Table address-->
     <id column="ad_id" jdbcType="INTEGER" property="adId" />
     <result column="ad_address" jdbcType="VARCHAR" property="adAddress" />
     <result column="ad_phone" jdbcType="VARCHAR" property="adPhone" />
     <result column="ad_user" jdbcType="VARCHAR" property="adUser" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="aduserId" jdbcType="INTEGER" property="userId" />
+    <association property="user" javaType="com.kgc.exam.entity.User">
+      <id column="uuserId" property="userId"></id>
+      <result column="user_name" property="userName"></result>
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated-->
     ad_id, ad_address, ad_phone, ad_user, user_id
   </sql>
+
+  <select id="queryAddress" resultMap="BaseResultMap">
+    select ad_id, ad_address, ad_phone, ad_user, ad.user_id aduserId,u.user_id uuserId,user_name
+    from address ad inner join user u on ad.user_id=u.user_id
+    <where>
+      <if test="userName != null and userName !=''">
+        user_name like concat('%',#{userName},'%')
+      </if>
+    </where>
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select 
@@ -27,11 +39,8 @@
     where ad_id = #{adId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.kgc.exam.entity.Address">
-    <!--@mbg.generated-->
-    insert into address (ad_id, ad_address, ad_phone, 
-      ad_user, user_id)
-    values (#{adId,jdbcType=INTEGER}, #{adAddress,jdbcType=VARCHAR}, #{adPhone,jdbcType=VARCHAR}, 
-      #{adUser,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
+    insert into address (ad_address, ad_phone,ad_user, user_id)
+    values (#{address.adAddress}, #{address.adPhone}, #{address.adUser}, #{address.userId})
   </insert>
   <insert id="insertSelective" parameterType="com.kgc.exam.entity.Address">
     <!--@mbg.generated-->

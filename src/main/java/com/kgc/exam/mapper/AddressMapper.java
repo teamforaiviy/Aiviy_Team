@@ -1,11 +1,14 @@
 package com.kgc.exam.mapper;
 
 import com.kgc.exam.entity.Address;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AddressMapper {
     int deleteByPrimaryKey(Integer adId);
 
-    int insert(Address record);
+    int insert(@Param("address") Address address);
 
     int insertSelective(Address record);
 
@@ -14,4 +17,6 @@ public interface AddressMapper {
     int updateByPrimaryKeySelective(Address record);
 
     int updateByPrimaryKey(Address record);
+
+    List<Address> queryAddress(@Param("userName") String userName);
 }

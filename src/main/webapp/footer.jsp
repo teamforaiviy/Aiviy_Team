@@ -10,17 +10,17 @@
                             <span>联系</span>
                         </div>
                         <div class="col12">
-                            <img src="img/footer/footer-phone.PNG" width="48px" height="48px" />
+                            <img src="/img/footer/footer-phone.PNG" width="48px" height="48px" />
                             <a>400-632-8878</a>
                         </div>
                         <div class="col12">
-                            <img src="img/footer/footer-email.PNG" width="48px" height="48px" />
+                            <img src="/img/footer/footer-email.PNG" width="48px" height="48px" />
                             <a>support@aiviysoft.com</a>
                         </div>
                         <div class="col13">
-                            <img src="img/footer/footer-facebook.PNG" />
-                            <img src="img/footer/footer-twitter.PNG" />
-                            <img src="img/footer/footer-ins.PNG" />
+                            <img src="/img/footer/footer-facebook.PNG" />
+                            <img src="/img/footer/footer-twitter.PNG" />
+                            <img src="/img/footer/footer-ins.PNG" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -59,7 +59,7 @@
                             <ul>
                                 <li>
                                     <a href="#">
-                                        <img src="img/footer/Aiviy-ESET-NOD32-box-418x418.jpg" />
+                                        <img src="/img/footer/Aiviy-ESET-NOD32-box-418x418.jpg" />
                                         <span  class="col31">ESET NOD32 互联网安全软件和防毒软件 3年1PC</span>
                                     </a>
                                     <span class="col32"></span>
@@ -67,7 +67,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="img/footer/Aiviy-idm-box-418x418.jpg" />
+                                        <img src="/img/footer/Aiviy-idm-box-418x418.jpg" />
                                         <span  class="col31">Internet Download Manager (IDM) 极速下载工具</span>
                                     </a>
                                 </li>
@@ -79,7 +79,7 @@
 
             <div class="footer-body-second">
                 <div class="footer-body-second-img">
-                    <img src="img/footer/footer-pay.PNG" width="560px" height="80px" />
+                    <img src="/img/footer/footer-pay.PNG" width="560px" height="80px" />
                 </div>
             </div>
 

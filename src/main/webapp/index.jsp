@@ -51,12 +51,12 @@
                                         <li>摆脱恼人广告，在线跟踪， 拦截广告和危险网站 </li>
                                         <li>支持全平台设备：WIN/MAC/IOS/ANDROID</li>
                                     </ul>
-                                    <a href="订单页面.html">立即购买</a>
+                                    <a href="订单页面.jsp">立即购买</a>
                                 </div>
                             </div>
                             <div class="content-body-two-right">
                                 <div style="width: 100%;height: 60px;"></div>
-                                <img src="img/index/Aiviy-img_AdGuard-imac.png" width="522px" height="392px" />
+                                <img src="/img/index/Aiviy-img_AdGuard-imac.png" width="522px" height="392px" />
                             </div>
                         </div>
                     </div>
@@ -72,12 +72,12 @@
                                         <li>快速收藏任何图片，高效整理大量图片</li>
                                         <li>解决素材整理的各种难题</li>
                                     </ul>
-                                    <a href="订单页面.html">立即购买</a>
+                                    <a href="订单页面.jsp">立即购买</a>
                                 </div>
                             </div>
                             <div class="content-body-two-right">
                                 <div style="width: 100%;height: 100px;"></div>
-                                <img src="img/index/Aiviy-img_EagleMacbook.png" width="570px" height="329px" />
+                                <img src="/img/index/Aiviy-img_EagleMacbook.png" width="570px" height="329px" />
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                             </div>
                             <div class="content-body-two-right">
                                 <div style="width: 100%;height: 80px;"></div>
-                                <img src="img/index/aiviy_macbooster-slide.png" width="570px" height="328px" />
+                                <img src="/img/index/aiviy_macbooster-slide.png" width="570px" height="328px" />
                             </div>
                         </div>
                     </div>
@@ -114,12 +114,12 @@
                                         <li>丰富多彩的 PDF 批注工具 </li>
                                         <li>合并、分享您的计划</li>
                                     </ul>
-                                    <a href="订单页面.html">立即购买</a>
+                                    <a href="订单页面.jsp">立即购买</a>
                                 </div>
                             </div>
                             <div class="content-body-two-right">
                                 <div style="width: 100%;height: 100px;"></div>
-                                <img src="img/index/aiviy_pdfexpert_slide-1024x551.png" width="570px" height="307px" />
+                                <img src="/img/index/aiviy_pdfexpert_slide-1024x551.png" width="570px" height="307px" />
                             </div>
                         </div>
                     </div>
@@ -135,12 +135,12 @@
                                         <li>全天候访问办公室计算机 </li>
                                         <li>PC 机和服务器故障排除</li>
                                     </ul>
-                                    <a href="订单页面.html">立即购买</a>
+                                    <a href="订单页面.jsp">立即购买</a>
                                 </div>
                             </div>
                             <div class="content-body-two-right">
                                 <div style="width: 100%;height: 60px;"></div>
-                                <img src="img/index/aiviy_radmin_slide.png" width="477px" height="418px" />
+                                <img src="/img/index/aiviy_radmin_slide.png" width="477px" height="418px" />
                             </div>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                                 <p>iMindQ 8.0 全平台支持</p>
                                 <p>概念图、头脑风暴、流程图、应有具有。强大的视觉冲击力并提供整个主题的概述</p>
                                 <p>激发创造力，激发头脑从现在开始！</p><br />
-                                <img src="img/index/Aiviy-trial_start-img.png" width="230px" height="130px" />
+                                <img src="/img/index/Aiviy-trial_start-img.png" width="230px" height="130px" />
                                 <a href="">立即查看</a>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                                 </div>
                             </div>
                             <div class="content-two-second-2">
-                                <img src="img/index/Aiviy-Office_HomeStudent-bg.png" width="230px" height="310px" />
+                                <img src="/img/index/Aiviy-Office_HomeStudent-bg.png" width="230px" height="310px" />
                             </div>
                         </div>
                     </div>
@@ -208,12 +208,12 @@
                         <div class="content-two-third">
                             <div class="content-two-third-1">
                                 <a href="">
-                                    <img src="img/index/PDF-Expert-icon.png" />
+                                    <img src="/img/index/PDF-Expert-icon.png" />
                                 </a>
                             </div>
                             <div class="content-two-third-2">
                                 <a href="">
-                                    <img src="img/index/idm-icon.png" />
+                                    <img src="/img/index/idm-icon.png" />
                                 </a>
                             </div>
                         </div>

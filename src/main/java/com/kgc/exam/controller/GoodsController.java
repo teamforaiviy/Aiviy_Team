@@ -24,4 +24,9 @@ public class GoodsController {
         return goodsService.queryAllGoods();
     }
 
+    @RequestMapping("/queryNew")
+    public List<Goods> queryNew() {
+        return goodsService.queryNew();
+    }
+
 }

@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <div class="new-cotent-three">
+        <%--<div class="new-cotent-three">
             <div class="row">
                 <div class="col-md-3">
                     <div class="new-cotent-two-first">
@@ -141,7 +141,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
     </div>
 </div>
 </div>
@@ -151,7 +151,23 @@
 </body>
 <script type="text/javascript">
     $(function () {
-
+        $.getJSON("goods/queryNew",function (data) {
+            var newGoods="";
+            $(data).each(function () {
+                newGoods +="<div class=\"col-md-3\">" +
+                    "           <div class=\"new-cotent-two-first\">" +
+                    "               <a href=\"#\">" +
+                    "                   <div class=\"new-cotent-two-first-1\">" +
+                    "                       <span class=\"new-flash\">新品</span>" +
+                    "                   </div>" +
+                    "                   <h2>"+this.gName+"</h2>" +
+                    "                   <span class=\"price-lable\">价格</span><br />" +
+                    "                   <span class=\"price\">￥"+this.gPrice+"</span>" +
+                    "               </a>" +
+                    "            </div>" +
+                    "        </div>";
+            })
+        })
     })
 </script>
 </html>

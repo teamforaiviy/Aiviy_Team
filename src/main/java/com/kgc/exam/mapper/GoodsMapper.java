@@ -21,4 +21,6 @@ public interface GoodsMapper {
 
     Goods queryAllByGName(@Param("gName")String gName);
 
+    List<Goods> queryNew();
+
 }

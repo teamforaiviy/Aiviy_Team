@@ -19,4 +19,9 @@ public interface GoodsService {
     * 根据名字查单个商品
     * */
     Goods queryGoodByGname(String gName);
+
+    /*
+     * 根据上传时间排序查新品
+     * */
+    List<Goods> queryNew();
 }

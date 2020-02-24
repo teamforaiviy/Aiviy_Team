@@ -9,6 +9,15 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="css/public.css"/>
+    <link rel="stylesheet" type="text/css" href="css/new.css"/>
+
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -140,4 +149,9 @@
 <!-------------------------------------footer----------------------------------------------->
 <jsp:include page="footer.jsp"></jsp:include>
 </body>
+<script type="text/javascript">
+    $(function () {
+
+    })
+</script>
 </html>

@@ -41,6 +41,16 @@ public class User {
     */
     private Integer vId;
 
+    private Member member;
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
     public Integer getUserId() {
         return userId;
     }

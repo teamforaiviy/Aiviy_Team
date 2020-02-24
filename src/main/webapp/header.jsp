@@ -3,15 +3,15 @@
     <nav class="navbar navbar-default" style="background-color: #dbdbdb;">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html"><img src="img/logo.png" width="90px" width="23px" /></a>
+                <a class="navbar-brand" href="index.jsp"><img src="/img/logo.png" width="90px" width="23px" /></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>您好，请登录！</li>
-                    <li><a href="login.html">登录</a></li>
-                    <li><a href="register.html">注册</a></li>
-                    <li><a href="personal.html">我的账户</a></li>
+                    <li><a href="login.jsp">登录</a></li>
+                    <li><a href="register.jsp">注册</a></li>
+                    <li><a href="personal.jsp">我的账户</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">服务 <span class="glyphicon glyphicon-menu-down"></span></a>
                         <ul class="dropdown-menu">
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="header-shop">
-                <a href="购物车.html">
+                <a href="购物车.jsp">
                     <div class="header-shop-sp1">
                         <span>￥1026</span><br />
                         <span>3件</span>
@@ -53,15 +53,15 @@
         <div class="clear"></div>
         <div class="header-ul">
             <ul>
-                <li><a href="index.html">首页</a></li>
-                <li><a href="new.html">新品</a></li>
-                <li><a href="sale.html">秒杀</a></li>
-                <li><a href="Hot-commodities.html">最畅销</a></li>
-                <li><a href="information.html">资讯</a></li>
+                <li><a href="index.jsp">首页</a></li>
+                <li><a href="new.jsp">新品</a></li>
+                <li><a href="sale.jsp">秒杀</a></li>
+                <li><a href="Hot-commodities.jsp">最畅销</a></li>
+                <li><a href="information.jsp">资讯</a></li>
                 <li><a href="#">Mac专区</a></li>
                 <li><a href="#">Windows</a></li>
-                <li><a href="auctions.html">拍卖会</a></li>
-                <li><a href="Group-buying.html">团购</a></li>
+                <li><a href="auctions.jsp">拍卖会</a></li>
+                <li><a href="Group-buying.jsp">团购</a></li>
             </ul>
         </div>
     </div>

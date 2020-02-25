@@ -127,4 +127,10 @@
     from goods
     where g_name=#{gName,jdbcType=VARCHAR}
   </select>
+
+  <select id="queryNew" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from goods
+    order by uploadTime desc limit 4
+  </select>
+
 </mapper>

@@ -32,5 +32,10 @@ GoodsServiceImpl implements GoodsService {
     @Override
     public Goods selectByPrimaryKey(Integer gId) {
         return goodsMapper.selectByPrimaryKey(gId);
+
+    @Override
+    public List<Goods> queryNew() {
+        return goodsMapper.queryNew();
+
     }
 }

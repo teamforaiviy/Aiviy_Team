@@ -28,4 +28,9 @@ public class GoodsController {
         return  goodsService.selectByPrimaryKey(gId);
     }
 
+    @RequestMapping("/queryNew")
+    public List<Goods> queryNew() {
+        return goodsService.queryNew();
+    }
+
 }

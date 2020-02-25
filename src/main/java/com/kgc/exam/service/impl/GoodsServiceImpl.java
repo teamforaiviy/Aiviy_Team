@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GoodsServiceImpl implements GoodsService {
+public class
+GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private GoodsMapper goodsMapper;
@@ -29,7 +30,12 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public Goods selectByPrimaryKey(Integer gId) {
+        return goodsMapper.selectByPrimaryKey(gId);
+
+    @Override
     public List<Goods> queryNew() {
         return goodsMapper.queryNew();
+
     }
 }

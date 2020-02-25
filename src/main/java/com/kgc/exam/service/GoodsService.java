@@ -21,7 +21,13 @@ public interface GoodsService {
     Goods queryGoodByGname(String gName);
 
     /*
+     * 根据id查单个商品
+     * */
+    Goods selectByPrimaryKey(Integer gId);
+  
+    /*
      * 根据上传时间排序查新品
      * */
     List<Goods> queryNew();
+
 }

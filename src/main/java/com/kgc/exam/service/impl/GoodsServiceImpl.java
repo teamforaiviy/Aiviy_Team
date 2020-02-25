@@ -29,7 +29,13 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> queryNew() {
+    public Goods selectByPrimaryKey(Integer gId) {
+        return goodsMapper.selectByPrimaryKey(gId);
+    }
+
+    @Override
+    public List<Goods> queryNew(){
         return goodsMapper.queryNew();
+
     }
 }

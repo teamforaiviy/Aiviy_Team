@@ -167,6 +167,7 @@
                     "            </div>" +
                     "        </div>";
             })
+            $(".new-cotent-two>div").empty().append(newGoods); 
         })
     })
 </script>

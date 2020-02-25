@@ -27,4 +27,9 @@ public class GoodsServiceImpl implements GoodsService {
     public Goods queryGoodByGname(String gName) {
         return goodsMapper.queryAllByGName(gName);
     }
+
+    @Override
+    public List<Goods> queryNew() {
+        return goodsMapper.queryNew();
+    }
 }

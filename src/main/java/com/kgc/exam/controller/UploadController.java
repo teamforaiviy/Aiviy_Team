@@ -62,6 +62,7 @@ public class UploadController {
             goods = goodsService.queryGoodByGname(gName);
             //添加图片
             Image image = new Image();
+            imgUrl="/img/"+goodIMGName+"."+ext;
             image.setImgUrl(imgUrl);
             image.setgId(goods.getgId());
             imageService.addIMG(image);

@@ -35,7 +35,7 @@
 
         <div class="new-cotent-two">
             <div class="row">
-                <div class="col-md-3">
+<%--                <div class="col-md-3">
                     <div class="new-cotent-two-first">
                         <a href="#">
                             <div class="new-cotent-two-first-1">
@@ -85,7 +85,7 @@
                             <span class="price"><span>￥74.99</span>￥69.00</span>
                         </a>
                     </div>
-                </div>
+                </div>--%>
             </div>
         </div>
 
@@ -166,9 +166,15 @@
                     "               </a>" +
                     "            </div>" +
                     "        </div>";
+                bgImg(this.gId)
             })
             $(".new-cotent-two>div").empty().append(newGoods); 
         })
     })
+    function bgImg(gid) {
+        $.getJSON("img/query",{"gid":gid},function (data) {
+            $(".new-cotent-two>div .new-cotent-two-first-1").css({"background-image":"url('"+data[0].imgUrl+"')"})
+        })
+    }
 </script>
 </html>

@@ -169,7 +169,6 @@
 <script type="text/javascript">
 
     function bg(url) {
-        console.log(url);
        $("div[id=foneback]").css("background","url("+url+")")
 
     }

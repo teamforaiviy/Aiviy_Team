@@ -19,4 +19,8 @@ public interface GoodsService {
     * 根据名字查单个商品
     * */
     Goods queryGoodByGname(String gName);
+    /*
+     * 根据id查单个商品
+     * */
+    Goods selectByPrimaryKey(Integer gId);
 }

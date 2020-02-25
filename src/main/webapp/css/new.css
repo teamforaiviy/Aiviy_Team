@@ -40,13 +40,9 @@
 	text-align: center;
 }
 .new-cotent-two-first-1{
-	background-image: url(/img/new/Aiviy-DAEMON-Tools-box-418x418.jpg);
 	width: 230px;
 	height: 230px;
 	background-size: cover;
-}
-.new-cotent-two-first-1:hover{
-	background-image: url(/img/new/Aiviy-DAEMON-Tools-box01-418x418.jpg);
 }
 .discount{
 	width: 90px;
@@ -89,68 +85,4 @@
 }
 .price:hover{
 	color: #414B92;
-}
-.new-cotent-two-first-2{
-	background-image: url(/img/new/Aiviy-boom-3d-box-418x418.jpg);
-	width: 230px;
-	height: 230px;
-	background-size: cover;
-}
-.new-cotent-two-first-2:hover{
-	background-image: url(/img/new/Aiviy-boom-3d-box02-418x418.jpg);
-}
-.new-cotent-two-first-3{
-	background-image: url(/img/new/Aiviy-AdGuard-box-418x418.png);
-	width: 230px;
-	height: 230px;
-	background-size: cover;
-}
-.new-cotent-two-first-3:hover{
-	background-image: url(/img/new/Aiviy-AdGuard-box01-418x418.png);
-}
-.new-cotent-two-first-4{
-	background-image: url(/img/new/Aiviy-Fences-box-418x418.png);
-	width: 230px;
-	height: 230px;
-	background-size: cover;
-}
-.new-cotent-two-first-4:hover{
-	background-image: url(/img/new/Aiviy-fences-box01-418x418.jpg);
-}
-
-.new-cotent-two-first-5{
-	background-image: url(/img/new/Aiviy-iMazing_box-418x418.png);
-	width: 230px;
-	height: 230px;
-	background-size: cover;
-}
-.new-cotent-two-first-5:hover{
-	background-image: url(/img/new/Aiviy-iMazing_box01-418x418.png);
-}
-.new-cotent-two-first-6{
-	background-image: url(/img/new/Aiviy-eagle-box01-418x418.jpg);
-	width: 230px;
-	height: 230px;
-	background-size: cover;
-}
-.new-cotent-two-first-6:hover{
-	background-image: url(/img/new/Aiviy-eagle-box04-418x418.jpg);
-}
-.new-cotent-two-first-7{
-	background-image: url(/img/new/Aiviy-office365-business-box-418x418.png);
-	width: 230px;
-	height: 230px;
-	background-size: cover;
-}
-.new-cotent-two-first-7:hover{
-	background-image: url(/img/new/aiviy-office365img01-418x418.jpg);
-}
-.new-cotent-two-first-8{
-	background-image: url(/img/new/Aiviy-WonderFox-DVD-Ripper-box-418x418.jpg);
-	width: 230px;
-	height: 230px;
-	background-size: cover;
-}
-.new-cotent-two-first-8:hover{
-	background-image: url(/img/new/Aiviy-WonderFox-DVD-Ripper-box04-418x418.jpg);
 }

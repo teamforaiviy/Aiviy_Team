@@ -10,6 +10,11 @@
     <result column="g_content" jdbcType="VARCHAR" property="gContent" />
     <result column="uploadTime" jdbcType="TIMESTAMP" property="uploadtime" />
     <result column="countStatus" jdbcType="INTEGER" property="countstatus" />
+    <association property="image" javaType="com.kgc.exam.entity.Image">
+      <id column="img_id" property="imgId"></id>
+      <result column="img_url" property="imgUrl"></result>
+      <result column="g_id" property="gId"></result>
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
@@ -132,5 +137,12 @@
     select <include refid="Base_Column_List"/> from goods
     order by uploadTime desc limit 4
   </select>
+
+
+  <select id="queryImgAndGoods" resultMap="BaseResultMap">
+    select  g.g_id,g_name,g_price,g_content,uploadTime,countStatus,i.img_url from goods g  inner join image i on g.g_id=i.g_id
+  </select>
+
+
 
 </mapper>

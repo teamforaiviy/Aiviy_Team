@@ -33,4 +33,9 @@ public class GoodsController {
         return goodsService.queryNew();
     }
 
+    @RequestMapping("/queryImgAndGoods")
+    public List<Goods> queryImgAndGoods(@RequestParam("gid") Integer gId){
+        return goodsService.queryImgAndGoods(gId);
+    }
+
 }

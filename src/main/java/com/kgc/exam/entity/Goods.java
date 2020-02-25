@@ -33,6 +33,16 @@ public class Goods {
     */
     private Integer countstatus;
 
+    private Image image;
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
     public Integer getgId() {
         return gId;
     }

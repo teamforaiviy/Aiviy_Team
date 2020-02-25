@@ -38,4 +38,9 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.queryNew();
 
     }
+
+    @Override
+    public List<Goods> queryImgAndGoods(Integer gId) {
+        return goodsMapper.queryImgAndGoods(gId);
+    }
 }

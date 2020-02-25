@@ -30,4 +30,6 @@ public interface GoodsService {
      * */
     List<Goods> queryNew();
 
+    List<Goods> queryImgAndGoods(Integer gId);
+
 }

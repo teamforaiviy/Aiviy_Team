@@ -128,6 +128,32 @@
     where g_name=#{gName,jdbcType=VARCHAR}
   </select>
 
+  <resultMap id="goodsWithImageMap" type="com.kgc.exam.entity.Goods">
+    <id column="g_id" jdbcType="INTEGER" property="gId" />
+    <result column="g_name" jdbcType="VARCHAR" property="gName" />
+    <result column="g_price" jdbcType="DOUBLE" property="gPrice" />
+    <result column="g_content" jdbcType="VARCHAR" property="gContent" />
+    <result column="uploadTime" jdbcType="TIMESTAMP" property="uploadtime" />
+    <result column="countStatus" jdbcType="INTEGER" property="countstatus" />
+    <collection property="images" ofType="com.kgc.exam.entity.Image">
+      <id column="img_id" property="imgId"></id>
+      <result column="img_url" property="imgUrl"></result>
+    </collection>
+  </resultMap>
+
+  <select id="queryGoodsWithImage" resultMap="goodsWithImageMap">
+    SELECT G.g_id,g_name,g_price,g_content,uploadTime,countStatus,I.img_id,I.img_url
+    FROM `goods` AS G
+    INNER JOIN `image` AS I
+    ON I.g_id=G.g_id
+  </select>
+
+  <select id="queryNew" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from goods
+    order by uploadTime desc limit 4
+  </select>
+
+
   <select id="queryNew" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/> from goods
     order by uploadTime desc limit 4

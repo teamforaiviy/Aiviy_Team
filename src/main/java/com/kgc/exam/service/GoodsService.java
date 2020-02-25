@@ -30,4 +30,9 @@ public interface GoodsService {
      * */
     List<Goods> queryNew();
 
+    /*
+    * 查询商品以及图片
+    * */
+    List<Goods> queryGoodsWithImage();
+
 }

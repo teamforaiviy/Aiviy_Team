@@ -16,6 +16,11 @@
 
     <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function () {
+
+        })
+    </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>

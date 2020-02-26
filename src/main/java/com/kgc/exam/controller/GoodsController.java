@@ -24,7 +24,7 @@ public class GoodsController {
         return goodsService.queryAllGoods();
     }
 
-    @RequestMapping("select")
+    @RequestMapping("/select")
     public Goods selectByPrimaryKey(@RequestParam("gid") Integer gId){
         return  goodsService.selectByPrimaryKey(gId);
     }

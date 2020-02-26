@@ -35,12 +35,12 @@
             </tr>
             <tr >
                 <td class="image"></td>
-                <td class="gName"><span></span></td>
-                <td class="price">¥<span class="gPrice"></span>.00</td>
+                <td class="sName"><span></span></td>
+                <td class="price">¥<span class="sPrice"></span>.00</td>
                 <td><input type="button" class="minus" name="minus" value="-">
-                    <input type="button" class="amount" name="amount" value="2" >
+                    <input type="button" class="amount" name="amount" value=" " >
                     <input type="button" class="plus" name="plus" value="+"></td>
-                <td >¥298.00</td>
+                <td >¥<span class="sTotal"></span>.00</td>
                 <td>☠</td>
             </tr>
         </table>
@@ -54,12 +54,12 @@
                 <table  class="ttwo">
                     <tr style="border-bottom: 1px solid #DDDFE7;">
                         <th>小计</th>
-                        <td>¥298.00</td>
+                        <td>¥<span class="sPrice"></span>.00</td>
                     </tr>
 
                     <tr>
                         <th>合计</th>
-                        <td><span class="total">¥596.00</span></td>
+                        <td>¥<span class="sTotal"></span>.00</td>
                     </tr>
                 </table>
 
@@ -93,15 +93,21 @@
     var gid = getUrlParam("gid");
 
 
+
     $(
         function() {
 
-            $.getJSON("goods/queryImgAndGoods",{"gid":gid},function (data) {
+            $.getJSON("shop/query",{"gid":gid},function (data) {
 
-                $(".gName").html(data[0].gName);
-                $(".gPrice").html(data[0].gPrice);
-                var str = "<img src='"+data[0].image.imgUrl+"' class='ione'>"
+                $(".sName").html(data[0].sName);
+                $(".sPrice").html(data[0].sPrice);
+                var str = "<img src='"+data[0].images[0].imgUrl+"' class='ione'>"
                 $(".image").append(str)
+                $("input[name=amount]").val(data[0].sNum);
+                var am = $("input[name=amount]").val();
+                 var num = $(".sPrice").html();
+                 var sum = am*num;
+                $(".sTotal").html(sum);
 
             })
 
@@ -120,9 +126,18 @@
             })
 
             $(".update").click(function(){
-                var count = $(".amount").val()*$(".price span").html();
-                $(".total").html("￥"+parseFloat(count)+".00");
+                var am = $("input[name=amount]").val();
+                var num = $(".sPrice").html();
+                var sum = am*num;
 
+
+                $.getJSON("shop/update",{"sNum":am,"gId":gid},function (data){
+                    if (data){
+
+                        $(".sTotal").html(sum);
+                    }
+
+                })
             })
         }
     )

@@ -161,11 +161,4 @@
     order by uploadTime desc limit 8
   </select>
 
-
-  <select id="queryImgAndGoods" resultMap="BaseResultMap">
-    select  g.g_id,g_name,g_price,g_content,uploadTime,countStatus,i.img_url from goods g  inner join image i on g.g_id=i.g_id
-  </select>
-
-
-
 </mapper>

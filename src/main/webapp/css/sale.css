@@ -23,192 +23,68 @@
 }
 .sale-content{
 	background-color: #F4F5FA;
-	padding: 35px;
+	border-top: 1px solid #EFF0F5
 }
-.sale-content-firstrow{
+.sale-cotent-two-first{
 	height: 444px;
-}
-.sale-content-all{
-	list-style: none;
-}
-.sale-content-secondtrow{
-	height: 472px;
-}
-.sale-content-thirdtrow{
-	height: 444px;
-}
-.col-md-3{
-	margin: 0px;
-	padding: 0px;
-}
-.Good{
-	width: 280px;
-	height: 444px;
-}
-.Good1{
-	height: 100%;
-	margin: 0px 30px 0px 0px;
-	padding: 20px 20px 57px;
+	width: 100%;
 	background-color: #FFFFFF;
+	padding-top: 20px;
+	margin-bottom: 20px;
 }
-.Good1 a{
-	display: block;
-	text-decoration: none;
+.sale-cotent-two-first a{
 	width: 90%;
 	height: 90%;
+	display: block;
 	margin: auto;
-}
-.Good2{
-	height: 100%;
-	margin: 30px 30px 0px 0px;
-	padding: 20px 20px 57px;
-	background-color: #FFFFFF;
-}
-.Good2 a{
-	display: block;
-	height: 100%;
 	text-decoration: none;
-	
+	text-align: center;
 }
-.Good3{
-	height: 100%;
-	margin: 30px 30px 0px 0px;
-	padding: 20px 20px 57px;
-	background-color: #FFFFFF;
-}
-.Good3 a{
-	display: block;
-	height: 100%;
-	text-decoration: none;
-}
-.Good-off{
-	background-color: #FF4961;
-	text-decoration: none;
-	padding: 8px 11px;
-	color: #FFFFFF;
-	width: 110px;
-	height: 32px;
-	font size: 12px;
-}
-.changePicture{
+.sale-cotent-two-first-1{
+	width: 230px;
 	height: 230px;
-	background-image:url(/img/Goods/Aiviy-iobit-asc-box-418x418.jpg);
 	background-size: cover;
 }
-.changePicture:hover{
-	background-image: url(/img/Goods/Aiviy-iobit-ascu-img01-418x418.jpg);
+.discount{
+	width: 90px;
+	height: 34px;
+	display: block;
+	background-color: #FF4961;
+	color: #FFFFFF;
+	font-size: 12px;
+	padding: 8px 0;
+	margin-bottom: 10px;
 }
-.Good-Name{
-	margin-top: 20px;
-	height: 56px;
-	text-align: center;
-	line-height: 20px;
+.sale-flash{
+	width: 90px;
+	height: 34px;
+	display: block;
+	background-color: #28D094;
+	color: #FFFFFF;
+	font-size: 12px;
+	padding: 8px 0;
 }
-.Good-price{
-	text-align: center;
-	font-size: 15px;
-	color: #9DA1B3;
+.sale-cotent-two-first h2{
+	color: #464855;
+	font-size: 16px;
+	margin-top: 10px;
 	line-height: 30px;
+	font-family: "微软雅黑";
 }
-.orignal-price{
-	font-size: 10x;
-	color: #45CEFC;
-	margin: 2px;
-	opacity: 0.5;
-	text-decoration: line-through;
-	
+.price-lable{
+	color: #9DA1B3;
+	font-size: 16px;
 }
 .price{
-	font-size: 10x;
-	color: #45CEFC;
-	margin: 2px;
+	color: #25C6FC;
+	font-size: 16px;
 }
-.changePicture2{
-	height: 230px;
-	background-image:url(/img/Goods/Good2-1.jpg);
-	background-size: cover;
+.price>span{
+	font-size: 14px;
+	text-decoration: line-through;
+	opacity: 0.5;
 }
-.changePicture2:hover{
-	background-image: url(/img/Goods/Good2-2.png);
-}
-.changePicture3{
-	height: 230px;
-	background-image:url(/img/Goods/Good3-1.jpg);
-	background-size: cover;
-}
-.changePicture3:hover{
-	background-image: url(/img/Goods/Good3-2.jpg);
-}
-.changePicture4{
-	height: 230px;
-	background-image:url(/img/Goods/Good4-1.jpg);
-	background-size: cover;
-}
-.changePicture4:hover{
-	background-image: url(/img/Goods/Good4-2.jpg);
-}
-.changePicture5{
-	height: 230px;
-	background-image:url(/img/Goods/Good5-1.jpg);
-	background-size: cover;
-}
-.changePicture5:hover{
-	background-image: url(/img/Goods/Good5-2.png);
-}
-.changePicture6{
-	height: 230px;
-	background-image:url(/img/Goods/Good6-1.jpg);
-	background-size: cover;
-}
-.changePicture6:hover{
-	background-image: url(/img/Goods/Good6-2.png);
-}
-.changePicture7{
-	height: 230px;
-	background-image:url(/img/Goods/Good7-1.jpg);
-	background-size: cover;
-}
-.changePicture7:hover{
-	background-image: url(/img/Goods/Good6-2.png);
-}
-.changePicture8{
-	height: 230px;
-	background-image:url(/img/Goods/Good8-1.jpg);
-	background-size: cover;
-}
-.changePicture8:hover{
-	background-image: url(/img/Goods/Good8-2.jpg);
-}
-.changePicture9{
-	height: 230px;
-	background-image:url(/img/Goods/Good9-1.jpg);
-	background-size: cover;
-}
-.changePicture9:hover{
-	background-image: url(/img/Goods/Good9-2.jpg);
-}
-.changePicture10{
-	height: 230px;
-	background-image:url(/img/Goods/Good10-1.jpg);
-	background-size: cover;
-}
-.changePicture10:hover{
-	background-image: url(/img/Goods/Good10-2.jpg);
-}
-.changePicture11{
-	height: 230px;
-	background-image:url(/img/Goods/Good11-1.png);
-	background-size: cover;
-}
-.changePicture11:hover{
-	background-image: url(/img/Goods/Good11-2.png);
-}
-.changePicture12{
-	height: 230px;
-	background-image:url(/img/Goods/Good12-1.jpg);
-	background-size: cover;
-}
-.changePicture12:hover{
-	background-image: url(/img/Goods/Good12-2.jpg);
+.price:hover{
+	color: #414B92;
 }
 

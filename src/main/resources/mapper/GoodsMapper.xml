@@ -148,15 +148,12 @@
     ON I.g_id=G.g_id
   </select>
 
-  <select id="queryNew" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"/> from goods
-    order by uploadTime desc limit 4
-  </select>
-
-
-  <select id="queryNew" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"/> from goods
-    order by uploadTime desc limit 4
+  <select id="queryNew" resultMap="goodsWithImageMap">
+    SELECT G.g_id,g_name,g_price,g_content,uploadTime,countStatus,I.img_id,I.img_url
+    FROM `goods` AS G
+    INNER JOIN `image` AS I
+    ON I.g_id=G.g_id
+    order by uploadTime desc limit 8
   </select>
 
 </mapper>

@@ -158,7 +158,8 @@
     FROM `goods` AS G
     INNER JOIN `image` AS I
     ON I.g_id=G.g_id
-    order by uploadTime desc limit 8
+    where countStatus =1
+    order by uploadTime desc
   </select>
 
 </mapper>

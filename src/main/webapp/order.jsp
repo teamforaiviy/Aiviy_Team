@@ -187,11 +187,21 @@
         return result ? decodeURIComponent(result[2]) : null;
     }
     var gid = getUrlParam("gid");
-    $(
-        function() {
+    $(function() {
 
             $("input[type=submit]").click(function () {
-                window.location.href="shoppingcar.jsp?gid="+gid;
+
+                var sName=$("h3[name=gName]").html();
+                var sPrice=$("span[name=gPrice]").html();
+                var sNum=$("input[name=amount]").val();
+                $.getJSON("shop/add",{"sName":sName,"sPrice":sPrice,"sNum":sNum,"gId":gid},function (data) {
+                    if (data){
+                        window.location.href="shoppingcar.jsp?gid="+gid;
+                    }
+
+
+
+                })
 
 
             })

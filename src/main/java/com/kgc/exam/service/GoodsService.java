@@ -35,4 +35,5 @@ public interface GoodsService {
     * */
     List<Goods> queryGoodsWithImage();
 
+
 }

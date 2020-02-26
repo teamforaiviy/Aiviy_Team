@@ -34,6 +34,7 @@ public class Goods {
     */
     private Integer countstatus;
 
+
     /*
     * 商品图片
     * */

@@ -41,8 +41,8 @@
         <span class="PC" name="gContent"></span>
         <h5>用户：</h5>
         <select name="">
-            <option value="">windows</option>
             <option value="" selected="selected">选择一个选项</option>
+            <option value="">windows</option>
         </select>
         <h5>许可：</h5>
         <select name="">
@@ -148,7 +148,7 @@
                     <span class="money">价钱</span><br/>
                     <span class="renmingbi"><span class="yuana">￥279.00</span>&nbsp;<span
                             class="yuan">￥99.00</span></span>
-                </div>
+                </div>s
             </li>
             <li>
                 <div class="footimgfour">
@@ -169,7 +169,9 @@
 <script type="text/javascript">
 
     function bg(url) {
-       $("div[id=foneback]").css("background","url("+url+")")
+       $("div[id=foneback]").css({"background-image":"url("+url+")",
+           "background-size":"cover"}
+       )
 
     }
 
@@ -187,7 +189,15 @@
     var gid = getUrlParam("gid");
     $(
         function() {
-            //$("div[id=foneback]").css("background","url(/img/order/大1.jpg)")
+
+            $("input[type=submit]").click(function () {
+                window.location.href="shoppingcar.jsp?gid="+gid;
+
+
+            })
+
+
+         // $("div[id=foneback]").css("background","url(/img/order/大1.jpg)")
             $.getJSON("goods/select",{"gid":gid},function (data) {
                 $("h3[name=gName]").html(data.gName);
                 $("span[name=gContent]").html(data.gContent);
@@ -206,6 +216,9 @@
             })
 
             $.getJSON("img/query",{"gid":gid},function (data) {
+                $("div[id=foneback]").css({"background-image":"url('"+data[0].imgUrl+"')",
+                    "background-size":"cover"}
+                )
                 str ="";
                 $(data).each(function () {
                     str +="<li onclick='bg(\""+this.imgUrl+"\")'><img src='"+this.imgUrl+"' style='line-height: 27.5px;' ></li>"

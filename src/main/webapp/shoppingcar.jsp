@@ -24,19 +24,19 @@
     <div class="shop">
         <table class="tone">
             <tr>
-                <th>产品</th>
-                <th></th>
+                <th colspan="2">产品</th>
                 <th style="width: 150px;">价格</th>
                 <th style="width: 150px;">数量</th>
                 <th style="width: 150px;">合计</th>
+                <th style="width: 150px;">操作</th>
             </tr>
             <tr>
                 <td colspan="5"><hr ></td>
             </tr>
-            <tr>
-                <td><img src="/img/购物车.jpg" class="ione"></td>
-                <td>DAEMON Tools Ultra 5 虚拟光驱软件 -旗舰版 - Windows, 永久</td>
-                <td class="price">¥<span>298.00</span></td>
+            <tr >
+                <td class="image"></td>
+                <td class="gName"><span></span></td>
+                <td class="price">¥<span class="gPrice"></span>.00</td>
                 <td><input type="button" class="minus" name="minus" value="-">
                     <input type="button" class="amount" name="amount" value="2" >
                     <input type="button" class="plus" name="plus" value="+"></td>
@@ -79,8 +79,35 @@
 <jsp:include page="footer.jsp"></jsp:include>
 
 <script type="text/javascript">
+    //获取地址栏参数,可以是中文参数
+    function getUrlParam(key) {
+        // 获取参数
+        var url = window.location.search;
+        // 正则筛选地址栏
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        // 匹配目标参数
+        var result = url.substr(1).match(reg);
+        //返回参数值
+        return result ? decodeURIComponent(result[2]) : null;
+    }
+    var gid = getUrlParam("gid");
+
+
     $(
         function() {
+
+            $.getJSON("goods/queryImgAndGoods",{"gid":gid},function (data) {
+
+                $(".gName").html(data[0].gName);
+                $(".gPrice").html(data[0].gPrice);
+                var str = "<img src='"+data[0].image.imgUrl+"' class='ione'>"
+                $(".image").append(str)
+
+            })
+
+
+
+
             $(".minus").click(function minus() {
                 if (($(".amount").val()) <= 1) {
                     alert("不能再减了，再减就没有啦！");

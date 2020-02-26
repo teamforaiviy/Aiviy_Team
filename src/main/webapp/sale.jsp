@@ -66,26 +66,4 @@
 <!-------------------------------------footer----------------------------------------------->
 <jsp:include page="footer.jsp"></jsp:include>
 </body>
-<script type="text/javascript">
-    $(function () {
-        $.getJSON("goods/queryNew",function (data) {
-            var newGoods="";
-            $(data).each(function () {
-                newGoods +="<div class=\"col-md-3\">" +
-                    "           <div class=\"sale-cotent-two-first\">" +
-                    "               <a href=\"#\">" +
-                    "                   <div class=\"sale-cotent-two-first-1\">" +
-                    "                       <span class=\"sale-flash\">新品</span>" +
-                    "                   </div>" +
-                    "                   <h2>"+this.gName+"</h2>" +
-                    "                   <span class=\"price-lable\">价格</span><br />" +
-                    "                   <span class=\"price\">￥"+this.gPrice+"</span>" +
-                    "               </a>" +
-                    "            </div>" +
-                    "        </div>";
-            })
-            $(".new-cotent-two>div").empty().append(newGoods);
-        })
-    })
-</script>
 </html>

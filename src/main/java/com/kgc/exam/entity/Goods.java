@@ -1,6 +1,7 @@
 package com.kgc.exam.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Goods {
     /**
@@ -33,14 +34,18 @@ public class Goods {
     */
     private Integer countstatus;
 
-    private Image image;
 
-    public Image getImage() {
-        return image;
+    /*
+    * 商品图片
+    * */
+    private List<Image> images;
+
+    public List<Image> getImages() {
+        return images;
     }
 
-    public void setImage(Image image) {
-        this.image = image;
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
     public Integer getgId() {

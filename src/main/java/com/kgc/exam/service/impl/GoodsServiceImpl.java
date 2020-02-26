@@ -40,7 +40,7 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public List<Goods> queryImgAndGoods(Integer gId) {
-        return goodsMapper.queryImgAndGoods(gId);
+    public List<Goods> queryGoodsWithImage() {
+        return goodsMapper.queryGoodsWithImage();
     }
 }

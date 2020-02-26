@@ -23,6 +23,6 @@ public interface GoodsMapper {
 
     List<Goods> queryNew();
 
-    List<Goods> queryImgAndGoods(Integer gId);
+    List<Goods> queryGoodsWithImage();
 
 }

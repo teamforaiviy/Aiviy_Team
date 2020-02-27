@@ -5,14 +5,13 @@
     <!--@mbg.generated-->
     <!--@Table order-->
     <id column="o_id" jdbcType="INTEGER" property="oId" />
-    <result column="o_no" jdbcType="INTEGER" property="oNo" />
+    <result column="o_no" jdbcType="VARCHAR" property="oNo" />
     <result column="o_state" jdbcType="INTEGER" property="oState" />
     <result column="o_num" jdbcType="INTEGER" property="oNum" />
-    <result column="g_id" jdbcType="INTEGER" property="gId" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    o_id, o_no, o_state, o_num, g_id
+    o_id, o_no, o_state, o_num
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -26,20 +25,17 @@
     delete from order
     where o_id = #{oId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.kgc.exam.entity.Order">
+  <insert id="insert" keyColumn="o_id" keyProperty="oId" parameterType="com.kgc.exam.entity.Order" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into order (o_id, o_no, o_state, 
-      o_num, g_id)
-    values (#{oId,jdbcType=INTEGER}, #{oNo,jdbcType=INTEGER}, #{oState,jdbcType=INTEGER}, 
-      #{oNum,jdbcType=INTEGER}, #{gId,jdbcType=INTEGER})
+    insert into order (o_no, o_state, o_num
+      )
+    values (#{oNo,jdbcType=VARCHAR}, #{oState,jdbcType=INTEGER}, #{oNum,jdbcType=INTEGER}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.kgc.exam.entity.Order">
+  <insert id="insertSelective" keyColumn="o_id" keyProperty="oId" parameterType="com.kgc.exam.entity.Order" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into order
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="oId != null">
-        o_id,
-      </if>
       <if test="oNo != null">
         o_no,
       </if>
@@ -49,25 +45,16 @@
       <if test="oNum != null">
         o_num,
       </if>
-      <if test="gId != null">
-        g_id,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="oId != null">
-        #{oId,jdbcType=INTEGER},
-      </if>
       <if test="oNo != null">
-        #{oNo,jdbcType=INTEGER},
+        #{oNo,jdbcType=VARCHAR},
       </if>
       <if test="oState != null">
         #{oState,jdbcType=INTEGER},
       </if>
       <if test="oNum != null">
         #{oNum,jdbcType=INTEGER},
-      </if>
-      <if test="gId != null">
-        #{gId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -76,7 +63,7 @@
     update order
     <set>
       <if test="oNo != null">
-        o_no = #{oNo,jdbcType=INTEGER},
+        o_no = #{oNo,jdbcType=VARCHAR},
       </if>
       <if test="oState != null">
         o_state = #{oState,jdbcType=INTEGER},
@@ -84,19 +71,15 @@
       <if test="oNum != null">
         o_num = #{oNum,jdbcType=INTEGER},
       </if>
-      <if test="gId != null">
-        g_id = #{gId,jdbcType=INTEGER},
-      </if>
     </set>
     where o_id = #{oId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kgc.exam.entity.Order">
     <!--@mbg.generated-->
     update order
-    set o_no = #{oNo,jdbcType=INTEGER},
+    set o_no = #{oNo,jdbcType=VARCHAR},
       o_state = #{oState,jdbcType=INTEGER},
-      o_num = #{oNum,jdbcType=INTEGER},
-      g_id = #{gId,jdbcType=INTEGER}
+      o_num = #{oNum,jdbcType=INTEGER}
     where o_id = #{oId,jdbcType=INTEGER}
   </update>
 </mapper>

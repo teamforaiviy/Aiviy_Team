@@ -43,4 +43,15 @@ public class UserController {
         return userService.insert(user);
     }
 
+    @RequestMapping("add")
+    @ResponseBody
+    public Boolean add(@RequestParam("user") User user){
+        return userService.add(user);
+    }
+
+    @RequestMapping("login")
+    @ResponseBody
+    public User login(@RequestParam("userName") String userName){
+        return userService.login(userName);
+    }
 }

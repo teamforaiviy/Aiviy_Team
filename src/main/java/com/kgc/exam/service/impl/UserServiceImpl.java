@@ -23,4 +23,16 @@ public class UserServiceImpl implements UserService {
     public Boolean insert(User user) {
         return userMapper.insert(user)==1;
     }
+
+    @Override
+    public Boolean add(User user) {
+        return userMapper.add(user)==1;
+    }
+
+    @Override
+    public User login(String userName) {
+        return userMapper.login(userName);
+    }
+
+
 }

@@ -21,6 +21,11 @@
     user_id, user_name, user_mail, user_phone, user_pwd, user_money, nickname, v_id
   </sql>
 
+  <insert id="insert">
+        insert into user(user_name,user_mail,user_phone,user_pwd)
+        values(#{user.userName},#{user.userMail},#{user.userPhone},#{user.userPwd})
+    </insert>
+
   <select id="queryUser" resultMap="BaseResultMap">
     select user_id, user_name, user_mail, user_phone, user_pwd, user_money, nickname, u.v_id uvid,m.v_id mvid,v_name
     from user u inner join member m on u.v_id=m.v_id
@@ -40,10 +45,10 @@
     where user_id = #{userId,jdbcType=INTEGER}
       and user_name = #{userName,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.kgc.exam.entity.User">
-    insert into user (user_name, user_mail, user_phone,user_pwd, user_money, nickname, v_id)
-    values (#{user.userName}, #{user.userMail}, #{user.userPhone},#{user.userPwd}, #{user.userMoney}, #{user.nickname},1)
-  </insert>
+<!--  <insert id="insert" parameterType="com.kgc.exam.entity.User">-->
+<!--    insert into user (user_name, user_mail, user_phone,user_pwd, user_money, nickname, v_id)-->
+<!--    values (#{user.userName}, #{user.userMail}, #{user.userPhone},#{user.userPwd}, #{user.userMoney}, #{user.nickname},1)-->
+<!--  </insert>-->
 
   <insert id="insertSelective" keyColumn="user_id" keyProperty="userId" parameterType="com.kgc.exam.entity.User" useGeneratedKeys="true">
     insert into user
@@ -130,16 +135,18 @@
   </update>
 
 
-  <select id="login" resultType="com.kgc.exam.entity.Users">
+  <select id="login" resultType="com.kgc.exam.entity.User">
     select id,user_name,user_mail,user_phone,user_pwd,user_money,nickname,v_id from user
     <where>
       id=#{id}
     </where>
   </select>
 
+
   <insert id="add">
         insert into user(user_name,user_mail,user_phone,user_pwd)
-        values(#{user.user_name},#{user.user_mail},#{user.user_phone},#{user.user_pwd})
+        values(#{user.userName},#{user.userMail},#{user.userPhone},#{user.userPwd})
     </insert>
+
 
 </mapper>

@@ -36,4 +36,8 @@ public class UserController {
         return userService.insert(user);
     }
 
+    @RequestMapping("/del")
+    public Boolean deleteByUserId(@RequestParam("userId") Integer userId) {
+        return userService.deleteByUserId(userId);
+    }
 }

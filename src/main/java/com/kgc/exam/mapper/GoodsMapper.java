@@ -5,7 +5,8 @@ import java.util.List;
 import com.kgc.exam.entity.Goods;
 
 public interface GoodsMapper {
-    int deleteByPrimaryKey(Integer gId);
+
+    int del(@Param("gId") Integer gId);
 
     int insert(Goods record);
 

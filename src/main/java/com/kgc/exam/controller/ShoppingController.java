@@ -41,4 +41,8 @@ public class ShoppingController {
         shopping.setsNum(sNum);
         return shoppingService.update(shopping);
     }
+    @RequestMapping("queryId")
+    public List<Shopping> querybyuId(@RequestParam("uid")Integer uId) {
+        return shoppingService.querybyuId(uId);
+    }
 }

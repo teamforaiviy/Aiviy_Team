@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>购物车</title>
-    <link rel="stylesheet" type="text/css" href="css/购物车.css" />
+    <link rel="stylesheet" type="text/css" href="css/购物车.css"/>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/public.css"/>
     <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
@@ -23,6 +23,7 @@
 <div class="shopping">
     <div class="shop">
         <table class="tone">
+            <thead>
             <tr>
                 <th colspan="2">产品</th>
                 <th style="width: 150px;">价格</th>
@@ -30,28 +31,32 @@
                 <th style="width: 150px;">合计</th>
                 <th style="width: 150px;">操作</th>
             </tr>
-            <tr>
-                <td colspan="5"><hr ></td>
-            </tr>
-            <tr >
-                <td class="image"></td>
-                <td class="sName"><span></span></td>
-                <td class="price">¥<span class="sPrice"></span>.00</td>
-                <td><input type="button" class="minus" name="minus" value="-">
-                    <input type="button" class="amount" name="amount" value=" " >
-                    <input type="button" class="plus" name="plus" value="+"></td>
-                <td >¥<span class="sTotal"></span>.00</td>
-                <td>☠</td>
-            </tr>
+            </thead>
+            <tbody class="list"></tbody>
+<%--            <tr>--%>
+<%--                <td colspan="5">--%>
+<%--                    <hr>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td class="image"></td>--%>
+<%--                <td class="sName"><span></span></td>--%>
+<%--                <td class="price">¥<span class="sPrice"></span>.00</td>--%>
+<%--                <td><input type="button" class="minus" name="minus" value="-">--%>
+<%--                    <input type="button" class="amount" name="amount" value=" ">--%>
+<%--                    <input type="button" class="plus" name="plus" value="+"></td>--%>
+<%--                <td>¥<span class="sTotal"></span>.00</td>--%>
+<%--                <td>☠</td>--%>
+<%--            </tr>--%>
         </table>
 
         <div class="count">
             <div class="chead">
                 <span>购物车总计</span>
-                <hr >
+                <hr>
             </div>
             <div class="cbody">
-                <table  class="ttwo">
+                <table class="ttwo">
                     <tr style="border-bottom: 1px solid #DDDFE7;">
                         <th>小计</th>
                         <td>¥<span class="sPrice"></span>.00</td>
@@ -90,49 +95,74 @@
         //返回参数值
         return result ? decodeURIComponent(result[2]) : null;
     }
-    var gid = getUrlParam("gid");
 
+    var gid = getUrlParam("gid");
+    var uid = getUrlParam("uid");
+    function minus(obj) {
+        if (($(obj).parents("tr").find(".amount").val()) <= 1) {
+            alert("不能再减了，再减就没有啦！");
+        } else {
+            $(obj).parents("tr").find(".amount").val(parseInt($(obj).parents("tr").find(".amount").val()) - 1);
+        }
+    }
+    function plus(obj) {
+        $(obj).parents("tr").find(".amount").val(parseInt($(obj).parents("tr").find(".amount").val()) + 1);
+    }
 
 
     $(
-        function() {
+        function () {
 
-            $.getJSON("shop/query",{"gid":gid},function (data) {
+            $.getJSON("shop/queryId", {"uid": uid}, function (data) {
 
-                $(".sName").html(data[0].sName);
-                $(".sPrice").html(data[0].sPrice);
-                var str = "<img src='"+data[0].images[0].imgUrl+"' class='ione'>"
-                $(".image").append(str)
-                $("input[name=amount]").val(data[0].sNum);
-                var am = $("input[name=amount]").val();
-                 var num = $(".sPrice").html();
-                 var sum = am*num;
-                $(".sTotal").html(sum);
+                var str = "  ";
+                var sum;
+                $(data).each(function () {
+
+                    // var am = $("input[name=amount]").val();
+                    // var num = $(".sPrice").html();
+                    // var sum =am * num;
+
+                    str += "<tr>\n" +
+                        "                <td colspan=\"5\"><hr ></td>\n" +
+                        "            </tr>\n" +
+                        "            <tr >\n" +
+                        "                <td class=\"image\"><img src='" + this.images[0].imgUrl + "'class='ione'></td>\n" +
+                        "                <td class=\"sName\" style='text-align: center'><span>"+this.sName+"</span></td>\n" +
+                        "                <td class=\"price\" style='text-align: center'>¥<span class=\"sPrice\">"+this.sPrice+"</span>.00</td>\n" +
+                        "                <td style='text-align: center'><input type=\"button\" class=\"minus\" name=\"minus\" value=\"-\" onclick='minus(this)'>\n" +
+                        "                    <input type=\"button\" class=\"amount\" name=\"amount\" value='"+this.sNum+"'>\n" +
+                        "                    <input type=\"button\" class=\"plus\" name=\"plus\" value=\"+\" onclick='plus(this)'></td>\n" +
+                        "                <td style='text-align: center'>¥<span class=\"sTotal\">"+(this.sNum)*(this.sPrice)+"</span>.00</td>\n" +
+                        "                <td style=\"cursor:pointer;text-align: center\" class='del' >☠</td>\n" +
+                        "            </tr> "
+                    // $(".sName").html(data[0].sName);
+                    // $(".sPrice").html(data[0].sPrice);
+                    // var str = "<img src='" + data[0].images[0].imgUrl + "' class='ione'>"
+                    // $(".image").append(str)
+                    // $("input[name=amount]").val(data[0].sNum);
+                    // $(".sTotal").html(sum);
+                    sum +=$(".sTotal").html();
+                })
+                console.log(sum);
+                $(".list").empty().append(str);
+
+
 
             })
 
+            $(".del").click(function () {
 
-
-
-            $(".minus").click(function minus() {
-                if (($(".amount").val()) <= 1) {
-                    alert("不能再减了，再减就没有啦！");
-                } else {
-                    $(".amount").val(parseInt($(".amount").val()) - 1);
-                }
-            })
-            $(".plus").click(function plus() {
-                $(".amount").val(parseInt($(".amount").val()) + 1);
             })
 
-            $(".update").click(function(){
+            $(".update").click(function () {
                 var am = $("input[name=amount]").val();
                 var num = $(".sPrice").html();
-                var sum = am*num;
+                var sum = am * num;
 
 
-                $.getJSON("shop/update",{"sNum":am,"gId":gid},function (data){
-                    if (data){
+                $.getJSON("shop/update", {"sNum": am, "gId": gid}, function (data) {
+                    if (data) {
 
                         $(".sTotal").html(sum);
                     }

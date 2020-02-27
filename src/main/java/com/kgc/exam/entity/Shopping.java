@@ -9,7 +9,16 @@ public class Shopping {
     private Integer sNum;
     private Double sTotal;
     private Integer gId;
+    private Integer uId;
     private List<Image> images;
+
+    public Integer getuId() {
+        return uId;
+    }
+
+    public void setuId(Integer uId) {
+        this.uId = uId;
+    }
 
     public List<Image> getImages() {
         return images;

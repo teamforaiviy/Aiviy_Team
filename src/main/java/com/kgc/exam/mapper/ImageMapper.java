@@ -8,6 +8,8 @@ import java.util.List;
 public interface ImageMapper {
     int deleteByPrimaryKey(Integer imgId);
 
+    int deleteByGId(@Param("gId") Integer gId);
+
     int insert(Image record);
 
     int insertSelective(Image record);

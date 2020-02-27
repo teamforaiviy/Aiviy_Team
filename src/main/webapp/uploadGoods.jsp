@@ -62,6 +62,10 @@
                             <td><textarea class="form-control" name="gContent" style="resize: none;"></textarea></td>
                         </tr>
                         <tr>
+                            <td>图片名称:</td>
+                            <td><input class="form-control" type="text" name="goodIMGName"></td>
+                        </tr>
+                        <tr>
                             <td>图片:</td>
                             <td><input class="form-control" type="file" name="goodIMG"></td>
                         </tr>

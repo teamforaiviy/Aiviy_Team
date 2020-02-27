@@ -35,12 +35,11 @@ public class UploadController {
     * 返回结果status=0图片未上传，status=1图片上传成功
     * */
     @RequestMapping("uploadIMG")
-    public String uploadIMG(String gName,Double gPrice,String gContent,@RequestParam MultipartFile goodIMG) throws IOException, ParseException {
+    public String uploadIMG(String goodIMGName,String gName,Double gPrice,String gContent,@RequestParam MultipartFile goodIMG) throws IOException, ParseException {
         if(goodIMG.isEmpty()){
             return "redirect:/uploadGoods.jsp?status="+0;
         }else {
             //将商品添加到D:\Aiviy_Img\img
-            String goodIMGName = gName;
             String ext = FilenameUtils.getExtension(goodIMG.getOriginalFilename());
             String imgUrl="D:\\Aiviy_Img\\img\\"+goodIMGName+"."+ext;
             goodIMG.transferTo(new File(imgUrl));

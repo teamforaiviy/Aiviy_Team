@@ -1,4 +1,6 @@
 package com.kgc.exam.service.impl;
 
-public class OrderServiceImpl {
+import com.kgc.exam.service.OrderService;
+
+public class OrderServiceImpl implements OrderService {
 }

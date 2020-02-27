@@ -12,10 +12,10 @@ public class AlipayAttr {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw9BZowTY8zanLI4Qn+SwTh34SdC/qD6epUxp36P4ceB5hW5B17NmfsniuM4NCLUEdjjzCE3e+FxEOEG9q7i15xY49TKK1vKcnZFEA+Z+jf6bXKeodAqFc/0nEb9BRM6OsYEvmLQFLnm30A9WH3FpOmf84Uq+ViWdKPRejtPxDioWXmNJL9QUiqzPRYmWdHbsQVwBpxfPKtJBxTtCCx0Ax4tfkYXytxorBnCwxFBFVWjya2dIfxYfN16DVDvwuWvd0uRuwxyCpnVGTCr5e3vG6JtTwViscfvB3On++p9rkGipuxsxpwebRIi4UPgrdVHpTm5ei9t7J1m0IVp01sECsQIDAQAB";
 
     // 服务器异步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "http://localhost:8080/Aiviy/notify";
+    public static String notify_url = "http://localhost:8080/Aiviy_Team_war_exploded/notify";
 
     // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String return_url = "http://localhost:8080/Aiviy/alipayReturn";
+    public static String return_url = "http://localhost:8080/Aiviy_Team_war_exploded/alipayReturn";
 
     // 签名方式
     public static String sign_type = "RSA2";

@@ -1,6 +1,7 @@
 package com.kgc.exam.service;
 
 import com.kgc.exam.entity.Goods;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -35,5 +36,11 @@ public interface GoodsService {
     * */
     List<Goods> queryGoodsWithImage();
 
+    /**
+     * 根据gId删除商品
+     * @param gId
+     * @return
+     */
+    Boolean del(Integer gId);
 
 }

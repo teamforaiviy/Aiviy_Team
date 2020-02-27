@@ -202,7 +202,6 @@
     var str = "";
     $(function() {
 
-
         // var username = getUrlParam("");
         $.getJSON("comment/queryAll",{},function (data) {
                 $(data).each(function () {
@@ -235,14 +234,19 @@
             })
         })
 
-
-
             $("input[type=submit]").click(function () {
-                window.location.href="shoppingcar.jsp?gid="+gid;
 
+                var sName=$("h3[name=gName]").html();
+                var sPrice=$("span[name=gPrice]").html();
+                var sNum=$("input[name=amount]").val();
+                $.getJSON("shop/add",{"sName":sName,"sPrice":sPrice,"sNum":sNum,"gId":gid},function (data) {
+                    if (data){
+                        window.location.href="shoppingcar.jsp?gid="+gid+"&uid="+uid;
+                    }
+
+                })
 
             })
-
 
          // $("div[id=foneback]").css("background","url(/img/order/大1.jpg)")
             $.getJSON("goods/select",{"gid":gid},function (data) {

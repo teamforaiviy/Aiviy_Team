@@ -1,15 +1,22 @@
 package com.kgc.exam.mapper;
 
 import com.kgc.exam.entity.Comment;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CommentMapper {
-    int deleteByPrimaryKey(Integer cId);
+    List<Comment> queryAll(@Param("gId") Integer gId);
 
-    int insert(Comment record);
-
-    int insertSelective(Comment record);
+    Integer insert(@Param("comment")Comment comment);
 
     Comment selectByPrimaryKey(Integer cId);
+
+    int deleteByPrimaryKey(Integer cId);
+
+
+
+    int insertSelective(Comment record);
 
     int updateByPrimaryKeySelective(Comment record);
 

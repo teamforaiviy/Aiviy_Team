@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kgc.exam.mapper.CommentMapper">
+
+  <resultMap id="CommentWithGoodsMap" type="com.kgc.exam.entity.Comment">
+    <id column="c_id" jdbcType="INTEGER" property="cId" />
+    <result column="c_comment" jdbcType="VARCHAR" property="cComment" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="g_id" jdbcType="INTEGER" property="gId" />
+    <result column="ctime" jdbcType="INTEGER" property="ctime" />
+    <association property="goods" javaType="com.kgc.exam.entity.Goods">
+      <id column="g_id" jdbcType="INTEGER" property="gId" />
+      <result column="g_name" jdbcType="VARCHAR" property="gName" />
+      <result column="g_price" jdbcType="DOUBLE" property="gPrice" />
+      <result column="g_content" jdbcType="VARCHAR" property="gContent" />
+      <result column="uploadTime" jdbcType="TIMESTAMP" property="uploadtime" />
+      <result column="countStatus" jdbcType="INTEGER" property="countstatus" />
+    </association>
+  </resultMap>
+
+  <select id="queryAll" resultMap="CommentWithGoodsMap">
+    select c_id, c_comment, user_id, c.g_id,ctime, g.g_id, g_name, g_price, g_content, uploadTime, countStatus
+    from comment c inner join goods g on c.g_id=g.g_id
+    <where>
+      <if test="g_id !=null and g_id != 0">
+        g_id = #{gId}
+      </if>
+    </where>
+    order by ctime desc
+  </select>
+
+
+  <insert id="insert" parameterType="com.kgc.exam.entity.Comment">
+    <!--@mbg.generated-->
+    insert into comment (c_id, c_comment, user_id,g_id,ctime)
+    values (#{comment.cId},#{comment.cComment},#{comment.userId},#{comment.gId},curdate())
+  </insert>
+
+
   <resultMap id="BaseResultMap" type="com.kgc.exam.entity.Comment">
     <!--@mbg.generated-->
     <!--@Table comment-->
@@ -25,13 +61,7 @@
     delete from comment
     where c_id = #{cId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.kgc.exam.entity.Comment">
-    <!--@mbg.generated-->
-    insert into comment (c_id, c_comment, user_id, 
-      g_id)
-    values (#{cId,jdbcType=INTEGER}, #{cComment,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{gId,jdbcType=INTEGER})
-  </insert>
+
   <insert id="insertSelective" parameterType="com.kgc.exam.entity.Comment">
     <!--@mbg.generated-->
     insert into comment

@@ -1,0 +1,67 @@
+/* 评论开始 */
+.talk{
+    width: 666px;
+    overflow: hidden;
+    padding-top: 30px;
+    margin: 0 auto;
+}
+.talk_box{
+    height: 202px;
+    border-radius: 7px;
+    background: #f9f9f9;
+    overflow: hidden;
+    padding: 20px;
+}
+.talk_box_s{
+    margin-left: 54px;
+    background: none;
+    padding: 0;
+}
+
+.talk_tit{
+    width: 50px;
+    line-height: 18px;
+    height: 18px;
+    font-size: 18px;
+    color: #555555;
+    margin-bottom: 20px;
+    border-left: 2px solid #3bcd86;
+    padding-left: 12px;
+}
+.talk_box textarea{
+    width: calc(100% - 32px);
+    height: 96px;
+    background: #fff;
+    border: none;
+    resize: none;
+    padding:8px 16px;
+}
+.talk_box_s.talk_box textarea{
+    border: 2px solid #ececec;
+    border-radius: 10px;
+    width: calc(100% - 36px);
+}
+.talk_box button{
+    width: 96px;
+    height: 32px;
+    line-height: 30px;
+    border-radius: 5px;
+    color: #3bcd86;
+    border:1px solid #3bcd86;
+    background: #fff;
+    float: right;
+    margin-top: 16px;
+}
+.talk_box button.cancelbtn{
+    border:none;
+    color: #555555;
+    background: none;
+    font-size: 18px;
+}
+
+/* 评论头部 */
+.talk_content{
+    padding-bottom: 24px;
+    font-size: 14px;
+    color: #555555;
+}

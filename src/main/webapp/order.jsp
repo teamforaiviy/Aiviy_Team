@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/public.css"/>
     <link rel="stylesheet" type="text/css" href="css/order-comment.css"/>
+    <link rel="stylesheet" type="text/css" href="css/comment.css"/>
 
 
     <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
@@ -108,8 +109,18 @@
             </div>
             <div class="d4">
                 <h4>评价</h4>
-                <p>🔔 目前还没有评论</p>
+                <div class="talk">
+                    <div class="talk_box">
+                        <div class="talk_tit">评论</div>
+                        <textarea name="talk" id="textareaBox" placeholder="写下你的评论..."></textarea>
+                        <button id="talk_submit">发布</button>
+                        <button id="cancelbtn" class="cancelbtn hidden none">取消</button>
+                    </div>
+                    <div id="talk_content" class="talk_content">
 
+                    </div>
+                </div>
+<%--                <p>🔔 目前还没有评论</p>--%>
             </div>
 
         </div>
@@ -187,8 +198,41 @@
         return result ? decodeURIComponent(result[2]) : null;
     }
     var gid = getUrlParam("gid");
-    var uid = getUrlParam("uid");
+
+    var str = "";
     $(function() {
+
+        // var username = getUrlParam("");
+        $.getJSON("comment/queryAll",{},function (data) {
+                $(data).each(function () {
+                    str += "<span>${sessionScope.username}<span>"+
+                        "<span>"+this.ctime+"</span><br>"+
+                        "<p>"+this.content+"</p><br>";
+                })
+            $("#talk_content").append(str);
+        })
+
+        $("#talk_submit").click(function () {
+            var date = new Date();
+            var content = $("#textareaBox").val();
+            str += "<span>${sessionScope.username}<span>"+
+                "<span>"+date+"</span><br>"+
+                "<p>"+content+"</p>";
+            $("#talk_content").append(str);
+
+        $.ajax({
+                url:"comment/insert",
+                type:"post",
+                // data:{"comment":comment},
+                dataType:"json",
+                success:function (data) {
+                    if(data){
+                    }else {
+                        alert("保存失败！")
+                    }
+                }
+            })
+        })
 
             $("input[type=submit]").click(function () {
 
@@ -200,13 +244,9 @@
                         window.location.href="shoppingcar.jsp?gid="+gid+"&uid="+uid;
                     }
 
-
-
                 })
 
-
             })
-
 
          // $("div[id=foneback]").css("background","url(/img/order/大1.jpg)")
             $.getJSON("goods/select",{"gid":gid},function (data) {

@@ -36,4 +36,9 @@ public class ShoppingServiceImpl implements ShoppingService {
     public Boolean update(Shopping shopping) {
         return shoppingMapper.update(shopping)==1;
     }
+
+    @Override
+    public List<Shopping> querybyuId(Integer uId) {
+        return shoppingMapper.querybyuId(uId);
+    }
 }

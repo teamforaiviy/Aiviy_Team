@@ -18,11 +18,16 @@
             <result column="img_url" property="imgUrl"></result>
         </collection>
     </resultMap>
-    <select id="query" resultMap="ShopResultMap">
-        SELECT S.s_name,s_price,s_num,s_total,S.g_id,I.img_id,I.img_url
+    <select id="querybyuId" resultMap="ShopResultMap">
+        SELECT S.s_name,s_price,s_num,s_total,S.g_id,S.u_id,I.img_id,I.img_url
         FROM `shoppingcar` AS S
         INNER JOIN `image` AS I
         ON I.g_id=S.g_id
+        where S.u_id=#{uId}
+    </select>
+    <select id="query" resultType="com.kgc.exam.entity.Shopping">
+        SELECT s_name,s_price,s_num,s_total,g_id
+        FROM `shoppingcar` where g_id=#{gId}
     </select>
     <update id="update" parameterType="com.kgc.exam.entity.Shopping">
         <!--@mbg.generated-->

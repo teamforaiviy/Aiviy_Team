@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface ShoppingMapper {
     Integer add(@Param("shopping") Shopping shopping);
-    List<Shopping> query(Integer gId);
+    List<Shopping> query(@Param("gId") Integer gId);
+    List<Shopping> querybyuId(@Param("uId") Integer uId);
     Integer update(@Param("shopping") Shopping shopping);
 
 }

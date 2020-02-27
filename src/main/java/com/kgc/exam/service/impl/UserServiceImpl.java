@@ -23,4 +23,9 @@ public class UserServiceImpl implements UserService {
     public Boolean insert(User user) {
         return userMapper.insert(user)==1;
     }
+
+    @Override
+    public Boolean deleteByUserId(Integer userId) {
+        return userMapper.deleteByUserId(userId)==1;
+    }
 }

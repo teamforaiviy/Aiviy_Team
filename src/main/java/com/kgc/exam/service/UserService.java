@@ -10,4 +10,6 @@ public interface UserService {
 
     Boolean insert(User user);
 
+    Boolean deleteByUserId(Integer userId);
+
 }

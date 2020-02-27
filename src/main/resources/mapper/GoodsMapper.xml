@@ -154,7 +154,6 @@
     INNER JOIN `image` AS I
     ON I.g_id=G.g_id
     where countStatus =1
-    order by uploadTime desc
   </select>
 
 </mapper>

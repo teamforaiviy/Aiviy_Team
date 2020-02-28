@@ -121,7 +121,7 @@
     var status = getUrlParam("status")==undefined?"":getUrlParam("status");
     $(function () {
         if(status!=""){
-            if (status=0){
+            if (status==0){
                 alert("商品上传失败!")
             } else {
                 alert("商品上传成功!")

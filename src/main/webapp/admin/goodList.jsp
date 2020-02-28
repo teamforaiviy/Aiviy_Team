@@ -25,10 +25,10 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <style>
-        table{
+        /*table{
             width: 80%;
             margin: auto;
-        }
+        }*/
         .form-control{
             margin-top: 10px;
             width: 250px;
@@ -114,13 +114,13 @@
             var str="";
             $(page.list).each(function() {
                 str += "<tr>" +
-                    "<td>"+this.gId+"</td>" +
-                    "<td>"+this.gName+"</td>" +
-                    "<td>"+this.gPrice+"</td>" +
-                    "<td>"+this.gContent+"</td>" +
-                    "<td>"+this.uploadtime+"</td>" +
-                    "<td>"+this.countstatus+"</td>" +
-                    "<td><a href='#'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.gId+")'>删除</a></td>" +
+                    "<td style='width: 82px'>"+this.gId+"</td>" +
+                    "<td style='width: 250px'>"+this.gName+"</td>" +
+                    "<td style='width: 82px'>"+this.gPrice+"</td>" +
+                    "<td style='width: 360px'>"+this.gContent+"</td>" +
+                    "<td style='width: 120px'>"+this.uploadtime+"</td>" +
+                    "<td style='width: 82px'>"+this.countstatus+"</td>" +
+                    "<td style='width: 41px'><a href='#'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.gId+")'>删除</a></td>" +
                     "</tr>";
             })
             $("#myTable tbody").empty().append(str);

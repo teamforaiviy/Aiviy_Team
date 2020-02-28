@@ -2,6 +2,8 @@ package com.kgc.exam.mapper;
 
 import com.kgc.exam.entity.Member;
 
+import java.util.List;
+
 public interface MemberMapper {
     int deleteByPrimaryKey(Integer vId);
 
@@ -14,4 +16,6 @@ public interface MemberMapper {
     int updateByPrimaryKeySelective(Member record);
 
     int updateByPrimaryKey(Member record);
+
+    List<Member> queryAll();
 }

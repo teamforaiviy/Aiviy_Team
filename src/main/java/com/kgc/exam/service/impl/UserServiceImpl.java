@@ -20,8 +20,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User queryById(Integer userId) {
+        return userMapper.queryById(userId);
+    }
+
+    @Override
     public Boolean insert(User user) {
         return userMapper.insert(user)==1;
+    }
+
+    @Override
+    public Boolean update(User user) {
+        return userMapper.updateByPrimaryKeySelective(user)==1;
     }
 
     @Override

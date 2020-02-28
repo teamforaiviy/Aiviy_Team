@@ -31,9 +31,19 @@ public class UserController {
         return pageInfo;
     }
 
+    @RequestMapping("/queryById")
+    public User queryById(@RequestParam("userId") Integer userId) {
+        return userService.queryById(userId);
+    }
+
     @RequestMapping("/insert")
     public Boolean insert(User user) {
         return userService.insert(user);
+    }
+
+    @RequestMapping("/update")
+    public Boolean update(User user) {
+        return userService.update(user);
     }
   
     @RequestMapping("/del")

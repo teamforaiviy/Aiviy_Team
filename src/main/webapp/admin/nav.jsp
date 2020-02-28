@@ -33,6 +33,8 @@
                 <li><a href="addGood.jsp">AddGood</a></li>
             </ul>
         </li>
+        <li> <a href="#"> <i class="icon-list"></i>Order </a></li>
+        <li> <a href="#"> <i class="icon-check"></i>Comment </a></li>
 
         <li><a href="tables.jsp"> <i class="icon-grid"></i>Tables </a></li>
         <li><a href="charts.jsp"> <i class="fa fa-bar-chart"></i>Charts </a></li>

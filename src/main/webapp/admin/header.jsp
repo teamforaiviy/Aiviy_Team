@@ -89,7 +89,7 @@
                         </ul>
                     </li>
                     <!-- Logout    -->
-                    <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                    <li class="nav-item"><a href="login.jsp" class="nav-link logout"> <span class="d-none d-sm-inline">Logout</span><i class="fa fa-sign-out"></i></a></li>
                 </ul>
             </div>
         </div>

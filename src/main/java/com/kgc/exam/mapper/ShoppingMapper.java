@@ -10,5 +10,8 @@ public interface ShoppingMapper {
     List<Shopping> query(@Param("gId") Integer gId);
     List<Shopping> querybyuId(@Param("uId") Integer uId);
     Integer update(@Param("shopping") Shopping shopping);
+    Integer del(@Param("gId") Integer gId);
+    Integer updateuId(@Param("shopping") Shopping shopping);
+
 
 }

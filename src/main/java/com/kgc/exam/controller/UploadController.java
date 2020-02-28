@@ -36,7 +36,7 @@ public class UploadController {
     * */
     @RequestMapping("uploadIMG")
     public String uploadIMG(String goodIMGName,String gName,Double gPrice,String gContent,@RequestParam MultipartFile goodIMG) throws IOException, ParseException {
-        if(goodIMG.isEmpty()){
+        if(gName.isEmpty()){
             return "redirect:/admin/addGood.jsp?status="+0;
         }else {
             //将商品添加到D:\Aiviy_Img\img

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.kgc.exam.mapper.ShoppingMapper">
     <insert id="add">
-        insert into shoppingcar (g_id,s_name,s_price,s_num,s_total)
-        values(#{shopping.gId},#{shopping.sName},#{shopping.sPrice},#{shopping.sNum},#{shopping.sPrice}*#{shopping.sNum})
+        insert into shoppingcar (g_id,s_name,s_price,s_num,s_total,u_id)
+        values(#{shopping.gId},#{shopping.sName},#{shopping.sPrice},#{shopping.sNum},#{shopping.sPrice}*#{shopping.sNum},#{shopping.uId})
     </insert>
     <resultMap id="ShopResultMap" type="com.kgc.exam.entity.Shopping">
         <!--@mbg.generated-->
@@ -32,8 +32,17 @@
     <update id="update" parameterType="com.kgc.exam.entity.Shopping">
         <!--@mbg.generated-->
         update shoppingcar
-        set s_num = #{shopping.sNum}
+        set s_num = #{shopping.sNum},s_total=#{shopping.sPrice}*#{shopping.sNum}
         where g_id = #{shopping.gId}
+    </update>
+    <delete id="del">
+        delete from shoppingcar where g_id=#{gId}
+    </delete>
+    <update id="updateuId" parameterType="com.kgc.exam.entity.Shopping">
+        <!--@mbg.generated-->
+        update shoppingcar
+        set s_num = #{shopping.sNum},s_total=#{shopping.sPrice}*#{shopping.sNum}
+        where u_id = #{shopping.uId}
     </update>
 
 </mapper>

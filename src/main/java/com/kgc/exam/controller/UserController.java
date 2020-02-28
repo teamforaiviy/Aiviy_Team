@@ -35,9 +35,21 @@ public class UserController {
     public Boolean insert(User user) {
         return userService.insert(user);
     }
-
+  
     @RequestMapping("/del")
     public Boolean deleteByUserId(@RequestParam("userId") Integer userId) {
         return userService.deleteByUserId(userId);
+    }
+
+    @RequestMapping("add")
+    @ResponseBody
+    public Boolean add(@RequestParam("user") User user){
+        return userService.add(user);
+    }
+
+    @RequestMapping("login")
+    @ResponseBody
+    public User login(@RequestParam("userName") String userName){
+        return userService.login(userName);
     }
 }

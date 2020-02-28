@@ -9,7 +9,7 @@ public class Order {
     /**
     * 订单号
     */
-    private Integer oNo;
+    private String oNo;
 
     /**
     * 订单状态
@@ -21,11 +21,6 @@ public class Order {
     */
     private Integer oNum;
 
-    /**
-    * 商品id
-    */
-    private Integer gId;
-
     public Integer getoId() {
         return oId;
     }
@@ -34,11 +29,11 @@ public class Order {
         this.oId = oId;
     }
 
-    public Integer getoNo() {
+    public String getoNo() {
         return oNo;
     }
 
-    public void setoNo(Integer oNo) {
+    public void setoNo(String oNo) {
         this.oNo = oNo;
     }
 
@@ -56,13 +51,5 @@ public class Order {
 
     public void setoNum(Integer oNum) {
         this.oNum = oNum;
-    }
-
-    public Integer getgId() {
-        return gId;
-    }
-
-    public void setgId(Integer gId) {
-        this.gId = gId;
     }
 }

@@ -21,8 +21,10 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--@mbg.generated-->
-    delete from image
-    where img_id = #{imgId,jdbcType=INTEGER}
+    delete from image where img_id = #{imgId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByGId">
+    delete from image where g_id = #{gId}
   </delete>
   <insert id="insert" parameterType="com.kgc.exam.entity.Image">
     <!--@mbg.generated-->

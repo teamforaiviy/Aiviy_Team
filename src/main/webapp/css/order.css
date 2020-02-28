@@ -30,7 +30,7 @@ body {
 	box-shadow: rgba(69, 73, 91, 0.08) 0px 0px 0px 0px;
 }
 
-.fone>img {
+.fone>div {
 	width: 100%;
 	height: 70%;
 
@@ -46,6 +46,7 @@ body {
 
 .fone ul {
 	height: 112px;
+	margin-top: 25px;
 
 }
 
@@ -98,14 +99,15 @@ h3 {
 
 .fone li {
 	border: 1px solid;
-	padding: 5px;
+
 	border-color: rgb(221, 223, 231);
-	width: 88px;
+	width: 106px;
 	height: 88px;
 }
 
 .fone li>img {
 	width: 100%;
+	height: 100%;
 }
 
 h5 {
@@ -162,7 +164,7 @@ input[name="amount"]{
     border-left: none;
     border-right: none;
     height: 44px;
-	outline-style: none;	
+	outline-style: none;
 }
 input[name="minus"]{
 	height: 44px;
@@ -199,17 +201,17 @@ input[name="plus"]{
 .footimg{
 	width: 229.984px;
 	height: 229.984px;
-	background: url(../img/order/foot1.jpg);
+	background: url(/img/order/foot1.jpg);
 	background-size: cover;
 	margin: 0px auto;
 	}
 .footimg:hover{
-	background: url(../img/order/foot1a.png);
+	background: url(/img/order/foot1a.png);
 	background-size: cover;
 	transition:1s;
 }
 .q{
-	cursor:pointer;	
+	cursor:pointer;
 	color:rgb(70, 72, 85);
 	font-size:16px;
 	font-weight:500;
@@ -219,7 +221,7 @@ input[name="plus"]{
 	margin: 20px 0px;
 }
 .money{
-	
+
 	color:rgb(157, 161, 179);
 	cursor:pointer;
 	font-size:16px;
@@ -237,14 +239,14 @@ input[name="plus"]{
 }
 .renmingbi:hover span{
 	color:rgb(70, 72, 85);
-	
+
 }
 .money{
 	width: 100%;
 	text-align:center;
 }
 .yuan{
-	
+
 	color:rgb(37, 198, 252);
 	font-size:16px;
 	font-weight:400;
@@ -256,51 +258,52 @@ input[name="plus"]{
 	font-size:16px;
 	font-weight:400;
 	line-height:22.08px;
-	
+
 }
 .footspan{
-	
+
 	height: 53px;
 }
 .footimgtwo{
 	width: 229.984px;
 	height: 229.984px;
-	background: url(../img/order/foot2.jpg);
+	background: url(/img/order/foot2.jpg);
 	background-size: cover;
 	margin: 0px auto;
 	}
 .footimgtwo:hover{
-	background: url(../img/order/footb.jpg);
+	background: url(/img/order/footb.jpg);
 	background-size: cover;
 	transition:1s;
 }
 .footimgthree{
 	width: 229.984px;
 	height: 229.984px;
-	background: url(../img/order/foot3.jpg);
+	background: url(/img/order/foot3.jpg);
 	background-size: cover;
 	margin: 0px auto;
 	}
 .footimgthree:hover{
-	background: url(../img/order/footc.jpg);
+	background: url(/img/order/footc.jpg);
 	background-size: cover;
 	transition:1s;
-	
+
 }
 .footimgfour{
 	width: 229.984px;
 	height: 229.984px;
-	background: url(../img/order/foot4.jpg);
+	background: url(/img/order/foot4.jpg);
 	background-size: cover;
 	margin: 0px auto;
 	}
 .footimgfour:hover{
-	background: url(../img/order/footd.jpg);
+	background: url(/img/order/footd.jpg);
 	background-size: cover;
 	transition:1s;
-	
+
 }
 .foot{
+	margin-top: 200px ;
 	margin: 20px auto;
 	width: 1170px;
 	height: 500px;

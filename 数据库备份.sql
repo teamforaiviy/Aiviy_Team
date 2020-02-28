@@ -2,7 +2,7 @@
 SQLyog Ultimate v12.08 (64 bit)
 MySQL - 5.0.45-community-nt : Database - aiviy
 *********************************************************************
-*/
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -51,15 +51,17 @@ DROP TABLE IF EXISTS `goods`;
 
 CREATE TABLE `goods` (
   `g_id` int(8) NOT NULL auto_increment COMMENT '商品编号',
-  `g_name` varchar(35) default NULL COMMENT '商品名',
+  `g_name` varchar(255) default NULL COMMENT '商品名',
   `g_price` double default NULL COMMENT '商品价格',
   `g_content` varchar(255) default NULL COMMENT '商品描述',
   `uploadTime` datetime default NULL COMMENT '上传日期',
-  `countStatus` int(10) default NULL COMMENT '折扣状态',
+  `countStatus` int(10) default '0' COMMENT '折扣状态',
   PRIMARY KEY  (`g_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 /*Data for the table `goods` */
+
+insert  into `goods`(`g_id`,`g_name`,`g_price`,`g_content`,`uploadTime`,`countStatus`) values (1,'Advanced SystemCare 12 Ultimate 清理杀毒软件',129,'全新的反病毒引擎，超敏感的检测和删除最新的病毒，木马软件，间谍软件','2020-02-21 14:21:29',0),(2,'Advanced SystemCare 13 Pro 清理优化工具',149,'一键清理优化和修复、深度您的PC，清理Windows注册表、自动在线反浏览器跟踪保护隐私，提升电脑速度高达200％。','2020-02-25 10:29:23',0),(3,'AMC Security 手机管家- 清理',99,'加速、安全','2020-02-25 10:32:01',0),(4,'Ashampoo Burning Studio 20 刻录软件 许可证',50,'许可证','2020-02-25 10:33:20',0),(5,'Avast Business Antivirus Pro Plus 商业专业增强版 企业全面保护',379,'防护软件','2020-02-25 10:34:32',0),(6,'Avast Business Antivirus Pro Plus 商业专业增强版 企业全面保护',254,'许可证','2020-02-25 10:35:19',0),(7,'Avast Business Antivirus Pro 商业专业版 企业杀毒软件',216,'许可证','2020-02-25 10:35:47',0),(8,'Avast Business Antivirus 商业版 小型企业防病毒软件',230,'许可证','2020-02-25 10:36:11',0),(9,'Avast Premier 杀毒软件 高级版 激活码',99,'许可证','2020-02-25 10:36:53',1),(10,'AVG PC TuneUp 2019 系统优化神器 序列码',152,'序列码','2020-02-25 10:41:10',1),(11,'Axure RP 9.0 PRO 专业版 原型设计软件 一年/终身授权',60,'安全软件','2020-02-25 10:41:12',1),(12,'Bitlocker 赤友数据恢复 PC/Mac 专业版',98,'数据恢复','2020-02-25 10:41:15',1),(13,'Bitl 数据恢复 PC/Mac 专业版',85,'数据恢复2','2020-02-25 10:42:46',0);
 
 /*Table structure for table `image` */
 
@@ -70,9 +72,11 @@ CREATE TABLE `image` (
   `img_url` varchar(255) default NULL COMMENT '图片路径',
   `g_id` int(8) default NULL COMMENT '商品编号',
   PRIMARY KEY  (`img_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 /*Data for the table `image` */
+
+insert  into `image`(`img_id`,`img_url`,`g_id`) values (1,'/img/Goods/Aiviy-iobit-asc-box-418x418.jpg',1),(2,'/img/Goods/Aiviy-iobit-ascu-img01-418x418.jpg',1),(3,'/img/Goods/Good2-1.jpg',2),(4,'/img/Goods/Good2-2.png',2),(5,'/img/Goods/Good3-1.jpg',3),(6,'/img/Goods/Good3-2.jpg',3),(7,'/img/Goods/Good4-1.jpg',4),(8,'/img/Goods/Good4-2.jpg',4),(9,'/img/Goods/Good5-1.jpg',5),(10,'/img/Goods/Good5-2.png',5),(11,'/img/Goods/Good6-1.jpg',6),(12,'/img/Goods/Good6-2.png',6),(13,'/img/Goods/Good7-1.jpg',7),(14,'/img/Goods/Good7-2.png',7),(15,'/img/Goods/Good8-1.jpg',8),(16,'/img/Goods/Good8-2.jpg',8),(17,'/img/Goods/Good9-1.jpg',9),(18,'/img/Goods/Good9-2.jpg',9),(19,'/img/Goods/Good10-1.jpg',10),(20,'/img/Goods/Good10-2.jpg',10),(21,'/img/Goods/Good11-1.png',11),(22,'/img/Goods/Good11-2.png',11),(23,'/img/Goods/Good12-1.jpg',12),(24,'/img/Goods/Good12-2.jpg',12),(25,'/img/Goods/Good12-1.jpg',13),(26,'/img/Goods/Good12-2.jpg',13);
 
 /*Table structure for table `member` */
 
@@ -93,14 +97,43 @@ DROP TABLE IF EXISTS `order`;
 
 CREATE TABLE `order` (
   `o_id` int(8) NOT NULL auto_increment COMMENT '订单自增id',
-  `o_no` int(8) default NULL COMMENT '订单号',
+  `o_no` varchar(12) default NULL COMMENT '订单号',
   `o_state` int(1) default NULL COMMENT '订单状态',
   `o_num` int(3) default NULL COMMENT '商品数量',
-  `g_id` int(8) default NULL COMMENT '商品id',
   PRIMARY KEY  (`o_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `order` */
+
+/*Table structure for table `ordertogoodsrelation` */
+
+DROP TABLE IF EXISTS `ordertogoodsrelation`;
+
+CREATE TABLE `ordertogoodsrelation` (
+  `id` int(11) NOT NULL,
+  `o_no` varchar(12) NOT NULL,
+  `g_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `ordertogoodsrelation` */
+
+/*Table structure for table `shoppingcar` */
+
+DROP TABLE IF EXISTS `shoppingcar`;
+
+CREATE TABLE `shoppingcar` (
+  `s_id` int(11) NOT NULL auto_increment,
+  `s_name` varchar(255) NOT NULL,
+  `s_price` double NOT NULL,
+  `s_num` int(11) NOT NULL,
+  `s_total` double NOT NULL,
+  `g_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY  (`s_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `shoppingcar` */
 
 /*Table structure for table `user` */
 

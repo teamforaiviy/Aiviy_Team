@@ -25,6 +25,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Boolean deleteByUserId(Integer userId) {
+        return userMapper.deleteByUserId(userId)==1;
+    }
+  
+    @Override
     public Boolean add(User user) {
         return userMapper.add(user)==1;
     }
@@ -33,6 +38,5 @@ public class UserServiceImpl implements UserService {
     public User login(String userName) {
         return userMapper.login(userName);
     }
-
 
 }

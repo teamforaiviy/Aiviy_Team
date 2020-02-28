@@ -11,7 +11,10 @@ public interface UserService {
 
     Boolean insert(User user);
 
+    Boolean deleteByUserId(Integer userId);
+  
     Boolean add(User user);
 
     User login(String userName);
+
 }

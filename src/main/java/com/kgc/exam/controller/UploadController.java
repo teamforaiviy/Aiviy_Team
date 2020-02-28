@@ -35,14 +35,13 @@ public class UploadController {
     * 返回结果status=0图片未上传，status=1图片上传成功
     * */
     @RequestMapping("uploadIMG")
-    public String uploadIMG(String gName,Double gPrice,String gContent,@RequestParam MultipartFile goodIMG) throws IOException, ParseException {
+    public String uploadIMG(String goodIMGName,String gName,Double gPrice,String gContent,@RequestParam MultipartFile goodIMG) throws IOException, ParseException {
         if(goodIMG.isEmpty()){
-            return "redirect:/uploadGoods.jsp?status="+0;
+            return "redirect:/admin/addGood.jsp?status="+0;
         }else {
             //将商品添加到D:\Aiviy_Img\img
-            String goodIMGName = gName;
             String ext = FilenameUtils.getExtension(goodIMG.getOriginalFilename());
-            String imgUrl="D:\\Aiviy_Img\\img\\"+goodIMGName+"."+ext;
+            String imgUrl="D:\\Aiviy_Img\\img\\Goods\\"+goodIMGName+"."+ext;
             goodIMG.transferTo(new File(imgUrl));
             //数据库录入记录
             //查询商品，数据库中存在该商品就只添加图片，不存在就添加商品
@@ -62,10 +61,11 @@ public class UploadController {
             goods = goodsService.queryGoodByGname(gName);
             //添加图片
             Image image = new Image();
+            imgUrl="/img/Goods/"+goodIMGName+"."+ext;
             image.setImgUrl(imgUrl);
             image.setgId(goods.getgId());
             imageService.addIMG(image);
-            return "redirect:/uploadGoods.jsp?status="+1;
+            return "redirect:/admin/addGood.jsp?status="+1;
         }
     }
 }

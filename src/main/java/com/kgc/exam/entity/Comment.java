@@ -1,10 +1,23 @@
 package com.kgc.exam.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class Comment {
     /**
     * 评论编号（自增）
     */
     private Integer cId;
+
+    public Date getCtime() {
+        return ctime;
+    }
+
+    public void setCtime(Date ctime) {
+        this.ctime = ctime;
+    }
 
     /**
     * 评论内容
@@ -20,6 +33,24 @@ public class Comment {
     * 商品编号
     */
     private Integer gId;
+
+    /**
+     * 评论时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GTM+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date ctime;
+
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
+
+    private Goods goods;
+
 
     public Integer getcId() {
         return cId;

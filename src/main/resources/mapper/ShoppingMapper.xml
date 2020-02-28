@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.kgc.exam.mapper.ShoppingMapper">
+    <insert id="add">
+        insert into shoppingcar (g_id,s_name,s_price,s_num,s_total)
+        values(#{shopping.gId},#{shopping.sName},#{shopping.sPrice},#{shopping.sNum},#{shopping.sPrice}*#{shopping.sNum})
+    </insert>
+    <resultMap id="ShopResultMap" type="com.kgc.exam.entity.Shopping">
+        <!--@mbg.generated-->
+        <!--@Table goods-->
+        <id column="g_id" jdbcType="INTEGER" property="gId" />
+        <result column="s_name" jdbcType="VARCHAR" property="sName" />
+        <result column="s_price" jdbcType="DOUBLE" property="sPrice" />
+        <result column="s_num" jdbcType="DOUBLE" property="sNum" />
+        <result column="s_total" jdbcType="DOUBLE" property="sTotal" />
+        <collection property="images" ofType="com.kgc.exam.entity.Image">
+            <id column="img_id" property="imgId"></id>
+            <result column="img_url" property="imgUrl"></result>
+        </collection>
+    </resultMap>
+    <select id="querybyuId" resultMap="ShopResultMap">
+        SELECT S.s_name,s_price,s_num,s_total,S.g_id,S.u_id,I.img_id,I.img_url
+        FROM `shoppingcar` AS S
+        INNER JOIN `image` AS I
+        ON I.g_id=S.g_id
+        where S.u_id=#{uId}
+    </select>
+    <select id="query" resultType="com.kgc.exam.entity.Shopping">
+        SELECT s_name,s_price,s_num,s_total,g_id
+        FROM `shoppingcar` where g_id=#{gId}
+    </select>
+    <update id="update" parameterType="com.kgc.exam.entity.Shopping">
+        <!--@mbg.generated-->
+        update shoppingcar
+        set s_num = #{shopping.sNum}
+        where g_id = #{shopping.gId}
+    </update>
+
+</mapper>

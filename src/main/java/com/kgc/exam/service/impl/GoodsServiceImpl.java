@@ -2,6 +2,7 @@ package com.kgc.exam.service.impl;
 
 import com.kgc.exam.entity.Goods;
 import com.kgc.exam.mapper.GoodsMapper;
+import com.kgc.exam.mapper.ImageMapper;
 import com.kgc.exam.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private GoodsMapper goodsMapper;
+    @Autowired
+    private ImageMapper imageMapper;
+
     @Override
     public Boolean addGoods(Goods goods) {
         return goodsMapper.insertSelective(goods)==1;
@@ -26,5 +30,27 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public Goods queryGoodByGname(String gName) {
         return goodsMapper.queryAllByGName(gName);
+    }
+
+    @Override
+    public Goods selectByPrimaryKey(Integer gId) {
+        return goodsMapper.selectByPrimaryKey(gId);
+    }
+
+    @Override
+    public List<Goods> queryNew(){
+        return goodsMapper.queryNew();
+
+    }
+
+    @Override
+    public List<Goods> queryGoodsWithImage() {
+        return goodsMapper.queryGoodsWithImage();
+    }
+
+    @Override
+    public Boolean del(Integer gId) {
+        imageMapper.deleteByGId(gId);
+        return goodsMapper.del(gId)==1;
     }
 }

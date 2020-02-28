@@ -1,5 +1,8 @@
 package com.kgc.exam.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.kgc.exam.entity.Address;
 import com.kgc.exam.entity.Goods;
 import com.kgc.exam.mapper.GoodsMapper;
 import com.kgc.exam.service.GoodsService;
@@ -24,4 +27,32 @@ public class GoodsController {
         return goodsService.queryAllGoods();
     }
 
+    @RequestMapping("/queryGood")
+    public PageInfo queryGood(@RequestParam(value = "pn",defaultValue = "1") Integer pn,
+                                 @RequestParam(value = "ps",defaultValue = "5") Integer ps) {
+        PageHelper.startPage(pn,ps);
+        List<Goods> goods = goodsService.queryAllGoods();
+        PageInfo pageInfo = new PageInfo(goods,3);
+        return  pageInfo;
+    }
+
+    @RequestMapping("/select")
+    public Goods selectByPrimaryKey(@RequestParam("gid") Integer gId){
+        return  goodsService.selectByPrimaryKey(gId);
+    }
+
+    @RequestMapping("/queryNew")
+    public List<Goods> queryNew() {
+        return goodsService.queryNew();
+    }
+
+    @RequestMapping("/queryGoodsWithImages")
+    public List<Goods> queryGoodsWithImages(){
+        return goodsService.queryGoodsWithImage();
+    }
+
+    @RequestMapping("/del")
+    public Boolean del(@RequestParam("gId") Integer gId) {
+        return goodsService.del(gId);
+    }
 }

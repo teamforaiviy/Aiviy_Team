@@ -1,6 +1,7 @@
 package com.kgc.exam.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Goods {
     /**
@@ -32,6 +33,20 @@ public class Goods {
     * 折扣状态
     */
     private Integer countstatus;
+
+
+    /*
+    * 商品图片
+    * */
+    private List<Image> images;
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
 
     public Integer getgId() {
         return gId;

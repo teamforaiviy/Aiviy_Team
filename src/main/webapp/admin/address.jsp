@@ -1,36 +1,112 @@
 <%--
   Created by IntelliJ IDEA.
-  User: chensijia
-  Date: 2020/2/22
-  Time: 10:32
+  Address: chensijia
+  Date: 2020/2/27
+  Time: 10:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<table class="table table-striped" id="myTable1">
-    <thead>
-    <tr>
-        <td colspan="6">
-            用户名：<input type="text" name="userName">
-            <button type="button" class="btn btn-primary">查询</button>
-        </td>
-    </tr>
-    <tr>
-        <th>地址编号</th>
-        <th>收货地址</th>
-        <th>收货人电话</th>
-        <th>收货人姓名</th>
-        <th>用户名</th>
-        <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
-<nav aria-label="Page navigation">
-    <ul class="pagination">
-    </ul>
-</nav>
-<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+<html>
+<head>
+    <title>Address</title>
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <style>
+        table{
+            width: 80%;
+            margin: auto;
+        }
+        .form-control{
+            margin-top: 10px;
+        }
+        .pagination li {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- Main Navbar-->
+    <jsp:include page="header.jsp"></jsp:include>
+    <div class="page-content d-flex align-items-stretch">
+        <!-- Side Navbar -->
+        <jsp:include page="nav.jsp"></jsp:include>
+        <div class="content-inner">
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-holder container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
+                    <li class="breadcrumb-item active">Address            </li>
+                </ul>
+            </div>
+            <!-- Forms Section-->
+            <section class="Address">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center">
+                                    <h3 class="h4">Address</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" id="myTable">
+                                            <thead>
+                                            <tr>
+                                                <td colspan="6">
+                                                    用户名：<input type="text" name="userName">
+                                                    <button type="button" class="btn btn-primary">查询</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>地址编号</th>
+                                                <th>收货地址</th>
+                                                <th>收货人电话</th>
+                                                <th>收货人姓名</th>
+                                                <th>地址名</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination">
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- JavaScript files-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/popper.js/umd/popper.min.js"> </script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="vendor/chart.js/Chart.min.js"></script>
+<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- Main File-->
+<script src="js/front.js"></script>
 <script type="text/javascript">
     var pn=1;
     var ps=5;
@@ -42,7 +118,7 @@
     })
     function queryAddress(pn,ps) {
         var userName = $("input[name=userName]").val();
-        $.getJSON("address/queryAddress",{"pn":pn,"ps":ps,"userName":userName},function (data) {
+        $.getJSON("../address/queryAddress",{"pn":pn,"ps":ps,"userName":userName},function (data) {
             var str="";
             var page =eval(data);
             $(page.list).each(function() {
@@ -50,19 +126,19 @@
                     "<td>"+this.adId+"</td>" +
                     "<td>"+this.adAddress+"</td>" +
                     "<td>"+this.adPhone+"</td>" +
-                    "<td>"+this.adUser+"</td>" +
+                    "<td>"+this.adAddress+"</td>" +
                     "<td>"+this.user.userName+"</td>" +
-                    "<td><a href='#'>修改</a>&nbsp;&nbsp;<a href='#'>删除</a></td>" +
+                    "<td><a href='#'>修改</a>&nbsp;&nbsp;<a href='del("+this.adId+")'>删除</a></td>" +
                     "</tr>";
             })
-            $("#address #myTable1 tbody").empty().append(str);
+            $("#myTable tbody").empty().append(str);
 
             var pageStr="";
             pageStr +="<li><a href='javascript:queryAddress(1,"+ps+")'>首页</a></li>";
             if(page.hasPreviousPage){
                 pageStr +="<li>" +
                     "<a href='javascript:queryAddress("+(page.pageNum-1)+","+ps+")' aria-label='Previous'>" +
-                    "<span aria-hidden=''true'>&laquo;</span>" +
+                    "<span aria-hidden=''true'>上一页</span>" +
                     "</a>" +
                     "</li>";
             }
@@ -76,7 +152,7 @@
             if(page.hasNextPage){
                 pageStr +="<li>" +
                     "<a href='javascript:queryAddress("+(page.pageNum+1)+","+ps+")' aria-label='Previous'>" +
-                    "<span aria-hidden='true'>&raquo;</span>" +
+                    "<span aria-hidden='true'>下一页</span>" +
                     "</a>" +
                     "</li>";
             }
@@ -84,5 +160,25 @@
             $("#address .pagination").empty().append(pageStr);
         })
     }
-
+    /**
+     * 删除地址
+     */
+    function del(adId) {
+        $.ajax({
+            url:"../Address/del",
+            type:"get",
+            data:{"adId":adId},
+            dataType:"json",
+            success:function (data) {
+                if(data){
+                    alert("删除成功！")
+                    window.location.reload();
+                }else {
+                    alert("删除失败！")
+                }
+            }
+        })
+    }
 </script>
+</body>
+</html>

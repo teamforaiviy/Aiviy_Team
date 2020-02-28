@@ -5,7 +5,6 @@ public class Address {
     * 地址编号
     */
     private Integer adId;
-
     /**
     * 收货地址
     */

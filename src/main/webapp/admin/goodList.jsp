@@ -156,20 +156,22 @@
      * 删除商品
      */
     function del(gId) {
-        $.ajax({
-            url:"../goods/del",
-            type:"get",
-            data:{"gId":gId},
-            dataType:"json",
-            success:function (data) {
-                if(data){
-                    alert("删除成功！")
-                    window.location.reload();
-                }else {
-                    alert("删除失败！")
+        if("确认删除商品吗？"){
+            $.ajax({
+                url:"../goods/del",
+                type:"get",
+                data:{"gId":gId},
+                dataType:"json",
+                success:function (data) {
+                    if(data){
+                        alert("删除成功！")
+                        window.location.reload();
+                    }else {
+                        alert("删除失败！")
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 </script>
 </body>

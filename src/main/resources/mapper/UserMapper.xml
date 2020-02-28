@@ -21,11 +21,6 @@
     user_id, user_name, user_mail, user_phone, user_pwd, user_money, nickname, v_id
   </sql>
 
-  <insert id="insert">
-        insert into user(user_name,user_mail,user_phone,user_pwd)
-        values(#{user.userName},#{user.userMail},#{user.userPhone},#{user.userPwd})
-    </insert>
-
   <select id="queryUser" resultMap="BaseResultMap">
     select user_id, user_name, user_mail, user_phone, user_pwd, user_money, nickname, u.v_id uvid,m.v_id mvid,v_name
     from user u inner join member m on u.v_id=m.v_id

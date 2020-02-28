@@ -21,6 +21,11 @@ public class Order {
     */
     private Integer oNum;
 
+    /**
+    * 用户id
+    */
+    private Integer userId;
+
     public Integer getoId() {
         return oId;
     }
@@ -51,5 +56,13 @@ public class Order {
 
     public void setoNum(Integer oNum) {
         this.oNum = oNum;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }

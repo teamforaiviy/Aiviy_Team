@@ -45,4 +45,17 @@
         where u_id = #{shopping.uId}
     </update>
 
+    <delete id="deleteBySStatusAndUserId">
+        delete from shoppingcar where s_status=#{sStatus} and user_id=#{userId}
+    </delete>
+
+    <update id="updateByUId">
+        update shoppingcar
+        <set>
+            s_status=1
+        </set>
+        <where>
+            user_id = #{userId}
+        </where>
+    </update>
 </mapper>

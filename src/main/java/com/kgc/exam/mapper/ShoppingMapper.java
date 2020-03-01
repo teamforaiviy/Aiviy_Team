@@ -13,5 +13,7 @@ public interface ShoppingMapper {
     Integer del(@Param("gId") Integer gId);
     Integer updateuId(@Param("shopping") Shopping shopping);
 
+    Integer deleteBySStatusAndUserId(@Param("sStatus") Integer sStatus,@Param("userId") Integer userId);
 
+    Integer updateByUId(@Param("userId") Integer userId);
 }

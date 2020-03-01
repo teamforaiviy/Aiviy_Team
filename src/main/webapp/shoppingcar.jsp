@@ -72,7 +72,7 @@
             </div>
             <div class="cfoot">
                 <button type="button" class="update">更新购物车</button>
-                <button type="button" href="结算页面.html" onclick="window.location.href='bill.jsp'">去结算GO☞</button>
+                <button type="button" href="结算页面.html" onclick="window.location.href='bill.jsp?uid='+uid">去结算GO☞</button>
 
             </div>
 

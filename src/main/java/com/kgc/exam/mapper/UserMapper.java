@@ -20,5 +20,11 @@ public interface UserMapper {
 
     List<User> queryAll();
 
-	List<User> queryAllByUserName(@Param("userName")String userName);
+	User queryAllByUserName(@Param("userName")String userName);
+
+	User queryAllByUserId(@Param("userId")Integer userId);
+
+	int deleteByUserId(@Param("userId")Integer userId);
+
+
 }

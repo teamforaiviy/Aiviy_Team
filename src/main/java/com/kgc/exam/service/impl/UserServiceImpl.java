@@ -16,12 +16,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> queryUser() {
-        return userMapper.queryUser();
+        return userMapper.queryAll();
     }
 
     @Override
     public User queryById(Integer userId) {
-        return userMapper.queryById(userId);
+        return userMapper.queryAllByUserId(userId);
     }
 
     @Override
@@ -41,12 +41,12 @@ public class UserServiceImpl implements UserService {
   
     @Override
     public Boolean add(User user) {
-        return userMapper.add(user)==1;
+        return userMapper.insertSelective(user)==1;
     }
 
     @Override
     public User login(String userName) {
-        return userMapper.login(userName);
+        return userMapper.queryAllByUserName(userName);
     }
 
 }

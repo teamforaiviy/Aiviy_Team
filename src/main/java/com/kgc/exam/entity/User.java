@@ -1,5 +1,10 @@
 package com.kgc.exam.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class User {
     /**
     * 自增id
@@ -41,15 +46,12 @@ public class User {
     */
     private Integer vId;
 
-    private Member member;
-
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
+    /**
+    * 创建日期
+    */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GTM+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createddate;
 
     public Integer getUserId() {
         return userId;
@@ -113,5 +115,13 @@ public class User {
 
     public void setvId(Integer vId) {
         this.vId = vId;
+    }
+
+    public Date getCreateddate() {
+        return createddate;
+    }
+
+    public void setCreateddate(Date createddate) {
+        this.createddate = createddate;
     }
 }

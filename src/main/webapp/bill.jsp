@@ -10,6 +10,42 @@
 <head>
     <title>结算</title>
     <link rel="stylesheet" type="text/css" href="css/结算页面.css" />
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        //获取地址栏参数,可以是中文参数
+        function getUrlParam(key) {
+            // 获取参数
+            var url = window.location.search;
+            // 正则筛选地址栏
+            var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+            // 匹配目标参数
+            var result = url.substr(1).match(reg);
+            //返回参数值
+            return result ? decodeURIComponent(result[2]) : null;
+        }
+        var gid = getUrlParam("gid");
+        var uid = getUrlParam("uid");
+        $(function () {
+
+            $.getJSON("bill/queryaddress",{"uId":uid},function (data) {
+                if (data==1){
+                    $("input[name=sname]").val(data.sName);
+                    $("input[name=name]").val(data.sName);
+                    $("input[name=address]").val(data.adAddress);
+                    $("input[name=phone]").val(data.adPhone);
+                }
+
+            })
+
+        })
+
+
+
+
+
+
+
+    </script>
 </head>
 <body>
 <div class="head">
@@ -26,7 +62,7 @@
             </div>
             <div class="name">
                 <h4>姓氏&nbsp; <span class="x">*</span></h4>
-                <input type="text" name="name" />
+                <input type="text" name="sname" />
             </div>
             <div class="address">
                 <h4>详细地址&nbsp; <span class="x">*</span></h4>

@@ -12,11 +12,8 @@ public class BillServiceImpl implements BillService {
     @Autowired
     private BillMapper billMapper;
     @Override
-    public Integer queryaddress(Integer uId) {
-        Address address= billMapper.queryaddress(uId);
-        if (address==null){
-            return 0;
-        }
-        return 1;
+    public Address queryaddress(Integer uId) {
+        return billMapper.queryaddress(uId);
+
     }
 }

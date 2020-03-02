@@ -28,28 +28,37 @@
         $(function () {
 
             $.getJSON("bill/queryaddress",{"uId":uid},function (data) {
-                if (data==1){
-                    $("input[name=sname]").val(data.sName);
-                    $("input[name=name]").val(data.sName);
+                console.log(data);
+                if (data!=" "){
+                    $("input[name=sname]").val(data.adSname);
+                    $("input[name=name]").val(data.adName);
                     $("input[name=address]").val(data.adAddress);
                     $("input[name=phone]").val(data.adPhone);
+                    $("input[type=button]").click(function () {
+                        window.location.href="payforGoods.jsp"
+
+                    })
                 }
 
             })
 
+
+
+
+
+
+
+
+
+
+
         })
-
-
-
-
-
-
 
     </script>
 </head>
 <body>
 <div class="head">
-    <img src="/img/logo.png">
+    <img src="/img/logo.png" onclick="window.location.href='index.jsp'">
 </div>
 <div class="bfather">
     <div class="body">
@@ -93,7 +102,7 @@
     </div>
 </div>
 <div class="close">
-    <button type="button" class="ok">确认订单</button>
+    <input type="button" class="ok" value="确认订单"></button>
 </div>
 
 </body>

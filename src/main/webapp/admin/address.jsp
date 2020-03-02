@@ -74,7 +74,6 @@
                                             <tr>
                                                 <th>地址编号</th>
                                                 <th>用户名</th>
-                                                <th>收货人姓名</th>
                                                 <th>收货地址</th>
                                                 <th>收货人电话</th>
                                                 <th>操作</th>
@@ -125,7 +124,6 @@
                 str += "<tr>" +
                     "<td>"+this.adId+"</td>" +
                     "<td>"+this.user.userName+"</td>" +
-                    "<td>"+this.adUser+"</td>" +
                     "<td>"+this.adPhone+"</td>" +
                     "<td>"+this.adAddress+"</td>" +
                     "<td><a href='#'>修改</a>&nbsp;&nbsp;<a href='del("+this.adId+")'>删除</a></td>" +

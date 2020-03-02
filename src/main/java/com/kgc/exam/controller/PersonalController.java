@@ -1,21 +1,27 @@
 package com.kgc.exam.controller;
 
-import com.kgc.exam.entity.Address;
-import com.kgc.exam.service.BillService;
+import com.kgc.exam.entity.Order;
+import com.kgc.exam.service.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("bill")
 @ResponseBody
-public class BillController {
+@RequestMapping("/Personal")
+public class PersonalController {
+
     @Autowired
-    private BillService billService;
-    @RequestMapping("queryaddress")
-    public Address queryaddress(@RequestParam("uId") Integer uId){
-        return billService.queryaddress(uId);
+    private PersonalService personalService;
+
+    @RequestMapping("order")
+    public List<Order> queryOrder(@RequestParam("userId") Integer userId){
+        return personalService.queryOrder(userId);
     }
+
+
 }

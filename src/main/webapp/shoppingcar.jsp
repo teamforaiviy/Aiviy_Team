@@ -135,7 +135,15 @@
         })
     }
 
-
+    function updateShoppingCarStatus(gId,sStatus){
+        $.getJSON("shop/updateShoppingCarStatus",{"gId":gId,"sStatus":sStatus},function (data) {
+            if(data){
+                window.location.reload();
+            }else {
+                alert("更改出错")
+            }
+        })
+    }
     $(
         function () {
 
@@ -153,19 +161,45 @@
                     // var num = $(".sPrice").html();
                     // var sum =am * num;
 
-                    str += "<tr>\n" +
-                        "                <td colspan=\"5\"><hr ></td>\n" +
-                        "            </tr>\n" +
-                        "            <tr >\n" +
-                        "                <td class=\"image\"><img src='" + this.images[0].imgUrl + "'class='ione'></td>\n" +
-                        "                <td class=\"sName\" style='text-align: center'><span>" + this.sName + "</span></td>\n" +
-                        "                <td class=\"price\" style='text-align: center'>¥<span class=\"sPrice\">" + this.sPrice + "</span>.00</td>\n" +
-                        "                <td style='text-align: center'><input type=\"button\" class=\"minus\" name=\"minus\" value=\"-\" onclick='minus(this)'>\n" +
-                        "                    <input type=\"button\" class=\"amount\" name=\"amount\" value='" + this.sNum + "'>\n" +
-                        "                    <input type=\"button\" class=\"plus\" name=\"plus\" value=\"+\" onclick='plus(this)'></td>\n" +
-                        "                <td style='text-align: center'>¥<span class=\"sTotal\">" + (this.sNum) * (this.sPrice) + "</span>.00</td>\n" +
-                        "                <td style=\"text-align: center\" class='del' ><span style='cursor:pointer' onclick='del(" + this.gId + ")'>☠</span></td>\n" +
-                        "            </tr> "
+                    if(this.sStatus==0){
+                        str += "<tr>\n" +
+                            "                <td colspan=\"5\"><hr ></td>\n" +
+                            "            </tr>\n" +
+                            "            <tr >\n" +"<td><div class=\"checkbox\" onclick='updateShoppingCarStatus("+this.gId+","+this.sStatus+")'>\n" +
+                            "  <label>\n" +
+                            "    <input type=\"checkbox\" value=\"\" >\n" +
+                            "    " +
+                            "  </label>\n" +
+                            "</div></td>"+
+                            "                <td class=\"image\"><img src='" + this.images[0].imgUrl + "'class='ione'></td>\n" +
+                            "                <td class=\"sName\" style='text-align: center'><span>" + this.sName + "</span></td>\n" +
+                            "                <td class=\"price\" style='text-align: center'>¥<span class=\"sPrice\">" + this.sPrice + "</span>.00</td>\n" +
+                            "                <td style='text-align: center'><input type=\"button\" class=\"minus\" name=\"minus\" value=\"-\" onclick='minus(this)'>\n" +
+                            "                    <input type=\"button\" class=\"amount\" name=\"amount\" value='" + this.sNum + "'>\n" +
+                            "                    <input type=\"button\" class=\"plus\" name=\"plus\" value=\"+\" onclick='plus(this)'></td>\n" +
+                            "                <td style='text-align: center'>¥<span class=\"sTotal\">" + (this.sNum) * (this.sPrice) + "</span>.00</td>\n" +
+                            "                <td style=\"text-align: center\" class='del' ><span style='cursor:pointer' onclick='del(" + this.gId + ")'>☠</span></td>\n" +
+                            "            </tr> "
+                    }else {
+                        str += "<tr>\n" +
+                            "                <td colspan=\"5\"><hr ></td>\n" +
+                            "            </tr>\n" +
+                            "            <tr >\n" +"<td><div class=\"checkbox\">\n" +
+                            "  <label>\n" +
+                            "    <input type=\"checkbox\" value=\"\" onclick='updateShoppingCarStatus("+this.gId+","+this.sStatus+")'checked>\n" +
+                            "    " +
+                            "  </label>\n" +
+                            "</div></td>"+
+                            "                <td class=\"image\"><img src='" + this.images[0].imgUrl + "'class='ione'></td>\n" +
+                            "                <td class=\"sName\" style='text-align: center'><span>" + this.sName + "</span></td>\n" +
+                            "                <td class=\"price\" style='text-align: center'>¥<span class=\"sPrice\">" + this.sPrice + "</span>.00</td>\n" +
+                            "                <td style='text-align: center'><input type=\"button\" class=\"minus\" name=\"minus\" value=\"-\" onclick='minus(this)'>\n" +
+                            "                    <input type=\"button\" class=\"amount\" name=\"amount\" value='" + this.sNum + "'>\n" +
+                            "                    <input type=\"button\" class=\"plus\" name=\"plus\" value=\"+\" onclick='plus(this)'></td>\n" +
+                            "                <td style='text-align: center'>¥<span class=\"sTotal\">" + (this.sNum) * (this.sPrice) + "</span>.00</td>\n" +
+                            "                <td style=\"text-align: center\" class='del' ><span style='cursor:pointer' onclick='del(" + this.gId + ")'>☠</span></td>\n" +
+                            "            </tr> "
+                    }
                     // $(".sName").html(data[0].sName);
                     // $(".sPrice").html(data[0].sPrice);
                     // var str = "<img src='" + data[0].images[0].imgUrl + "' class='ione'>"
@@ -174,7 +208,6 @@
                     // $(".sTotal").html(sum);
                 })
                 $(".list").empty().append(str);
-
 
             })
 

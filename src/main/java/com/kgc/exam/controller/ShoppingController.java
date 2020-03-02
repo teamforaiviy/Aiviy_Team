@@ -20,7 +20,10 @@ public class ShoppingController {
     @Autowired
     private ShoppingService shoppingService;
     @RequestMapping("add")
-    public Boolean add(@RequestParam("gId") Integer gId, @RequestParam("sPrice") Double sPrice, @RequestParam("sNum") Integer sNum, @RequestParam("sName") String sName,@RequestParam("uId") Integer uId){
+    public Boolean add( @RequestParam("sName") String sName, @RequestParam("sPrice") Double sPrice, @RequestParam("sNum") Integer sNum,@RequestParam("gId") Integer gId,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("user");
+        Integer uId = user.getUserId();
         Shopping shopping = new Shopping();
         shopping.setgId(gId);
         shopping.setsPrice(sPrice);

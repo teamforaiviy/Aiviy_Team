@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -25,7 +26,16 @@ public class CommentController {
     }
 
     @RequestMapping("insert")
-    public Boolean insert(Comment comment){
-        return commentService.insert(comment);
+    public Boolean insert(@RequestParam("gId") Integer gId,
+                          @RequestParam("cComment") String comment,
+                          @RequestParam("ctime") Date ctime,
+                          @RequestParam("uid") Integer uid){
+        Comment comment1 = new Comment();
+        comment1.setcComment(comment);
+        comment1.setCtime(ctime);
+        comment1.setgId(gId);
+        comment1.setUserId(uid);
+
+        return commentService.insert(comment1);
     }
 }

@@ -37,8 +37,8 @@ public class Comment {
     /**
      * 评论时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GTM+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GTM+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date ctime;
 
     public Goods getGoods() {

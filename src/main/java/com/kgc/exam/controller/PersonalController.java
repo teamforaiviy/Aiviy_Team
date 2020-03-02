@@ -1,5 +1,6 @@
 package com.kgc.exam.controller;
 
+import com.kgc.exam.entity.Address;
 import com.kgc.exam.entity.Order;
 import com.kgc.exam.service.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,14 @@ public class PersonalController {
         return personalService.queryOrder(userId);
     }
 
+    @RequestMapping("/updateAddress")
+    public boolean updateAddress(Address address){
+        return personalService.updateAddress(address);
+    }
+
+    @RequestMapping("/queryAddress")
+    public Address queryAddress(@RequestParam("userId") Integer userId){
+        return personalService.queryAddress(userId);
+    }
 
 }

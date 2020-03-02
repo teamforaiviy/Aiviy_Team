@@ -58,7 +58,7 @@
 </head>
 <body>
 <div class="head">
-    <img src="/img/logo.png">
+    <img src="/img/logo.png" onclick="window.location.href='index.jsp'">
 </div>
 <div class="bfather">
     <div class="body">

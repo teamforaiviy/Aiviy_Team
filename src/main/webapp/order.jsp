@@ -40,12 +40,12 @@
         ♕♕♕♕♕（999条用户评价）
         <p><span class="qian">￥<span name="gPrice"></span>.00</span></p>
         <span class="PC" name="gContent"></span>
-        <h5>用户：</h5>
+        <h5><span>用户：</span></h5>
         <select name="">
             <option value="" selected="selected">选择一个选项</option>
             <option value="">windows</option>
         </select>
-        <h5>许可：</h5>
+        <h5><span>许可</span>：</h5>
         <select name="">
             <option value="">选择一个选项</option>
             <option value="">一年</option>
@@ -269,7 +269,7 @@
 
             $.getJSON("img/query",{"gid":gid},function (data) {
                 $("div[id=foneback]").css({"background-image":"url('"+data[0].imgUrl+"')",
-                    "background-size":"cover"}
+                    "background-size":"578px 386px"}
                 )
                 str ="";
                 $(data).each(function () {

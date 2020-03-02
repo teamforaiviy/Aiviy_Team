@@ -97,7 +97,7 @@
     }
 
     var gid = getUrlParam("gid");
-    var uid = getUrlParam("uid");
+    var uid = ${user.userId};
 
     function minus(obj) {
         if (($(obj).parents("tr").find(".amount").val()) <= 1) {

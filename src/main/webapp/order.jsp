@@ -159,7 +159,7 @@
                     <span class="money">价钱</span><br/>
                     <span class="renmingbi"><span class="yuana">￥279.00</span>&nbsp;<span
                             class="yuan">￥99.00</span></span>
-                </div>s
+                </div>
             </li>
             <li>
                 <div class="footimgfour">
@@ -198,7 +198,7 @@
         return result ? decodeURIComponent(result[2]) : null;
     }
     var gid = getUrlParam("gid");
-    var uid = getUrlParam("uid");
+    var uid = ${user.userId};
 
     var str = "";
     $(function() {

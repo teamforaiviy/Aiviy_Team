@@ -15,10 +15,10 @@
                     </c:if>
                     <c:if test="${user!=null}">
                         <li>您好，${user.userName}</li>
+                        <li><a onclick="window.location.href='user/exit'">退出登录</a></li>
                     </c:if>
                     <li><a href="register.jsp">注册</a></li>
-                    <li><a href="personal.jsp">我的账户</a></li>
-                    <li><a href="#" onclick="window.location.href='user/exit'">退出登录</a></li>
+                    <li><a href="management.jsp">个人中心</a></li>
                     <%--<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">服务 <span class="glyphicon glyphicon-menu-down"></span></a>
                         <ul class="dropdown-menu">
@@ -45,12 +45,19 @@
                     <input type="button" value="搜索" class="header-search-btn" />
                 </div>
             </div>
-            <div class="header-shop">
+            <%--<div class="header-shop">
                 <a href="购物车.jsp">
                     <div class="header-shop-sp1">
                         <span>￥1026</span><br />
                         <span>3件</span>
                     </div>
+                    <div class="header-shop-sp2">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                    </div>
+                </a>
+            </div>--%>
+            <div class="header-shop">
+                <a href="shoppingcar.jsp">
                     <div class="header-shop-sp2">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
                     </div>
@@ -65,8 +72,7 @@
                 <li><a href="sale.jsp">秒杀</a></li>
                 <li><a href="Hot-commodities.jsp">最畅销</a></li>
                 <li><a href="information.jsp">资讯</a></li>
-                <li><a href="#">Mac专区</a></li>
-                <li><a href="#">Windows</a></li>
+                <li><a href="#">全部商品</a></li>
                 <li><a href="auctions.jsp">拍卖会</a></li>
                 <li><a href="Group-buying.jsp">团购</a></li>
             </ul>

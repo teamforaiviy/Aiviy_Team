@@ -91,7 +91,7 @@
 <div class="personal-content">
     <div class="account" >
         <img src="img/footer/footer-email.PNG">
-        <p>您好？ <strong class="nc"></strong> <a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退出</a></p><br>
+        <p>您好？ <strong class="nc"></strong> <a onclick="window.location.href='user/exit'">退出</a></p><br>
         <p>在您的账户，您可查看<a href="https://www.aiviy.com/my-account/orders/">最近的订单</a>增加您的<a href="">配送地址 </a>，并可<a href="">修改您的密码和账户详情</a></p>
     </div>
 
@@ -126,7 +126,7 @@
             </tr>
             <tr class="one-two">
                 <td class="hydj"></td>
-                <td>${sessionScope.user.uDate}</td>
+                <td>${sessionScope.user.createddate}</td>
                 <td>N/A</td>
                 <td>有效</td>
             </tr>

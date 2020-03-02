@@ -74,8 +74,6 @@ public class ShoppingController {
 
     /*
     * 更改购物车中商品状态
-    * !!!!!!!!!!!
-    * 注意：暂时将用户定死，之后将从session中获取用户
     * */
     @RequestMapping("updateShoppingCarStatus")
     public Boolean updateShoppingCarStatus(Integer gId, Integer sStatus, HttpServletRequest request){

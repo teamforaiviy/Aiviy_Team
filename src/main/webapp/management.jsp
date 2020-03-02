@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>艾维商城个人中心</title>
@@ -82,8 +83,8 @@
         <li class="a1"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;账户详情</li>
         <li class="a2"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;我的订单</li>
         <li class="a3"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;我的会员</li>
-        <li class="a4"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;我的积分</li>
-        <li class="a5"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;拍卖设置</li>
+<%--        <li class="a4"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;我的积分</li>--%>
+<%--        <li class="a5"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;拍卖设置</li>--%>
         <li class="a6"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;添加地址</li>
         <li class="a7"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;账户修改</li>
     </ul>
@@ -91,8 +92,10 @@
 <div class="personal-content">
     <div class="account" >
         <img src="img/footer/footer-email.PNG">
-        <p>您好？ <strong class="nc"></strong> <a onclick="window.location.href='user/exit'">退出</a></p><br>
-        <p>在您的账户，您可查看<a href="https://www.aiviy.com/my-account/orders/">最近的订单</a>增加您的<a href="">配送地址 </a>，并可<a href="">修改您的密码和账户详情</a></p>
+        <p>您好!
+            <strong class="nc">${user.userName}</strong>
+            <a onclick="window.location.href='user/exit'">退出</a></p><br>
+        <p>在您的账户，您可查看<a href="order.jsp">最近的订单</a>增加您的<a href="">配送地址 </a>，并可<a href="">修改您的密码和账户详情</a></p>
     </div>
 
     <div class="wddd" style="display: none;">

@@ -18,9 +18,6 @@ public class ShoppingController {
     private ShoppingService shoppingService;
     @RequestMapping("add")
     public Boolean add(@RequestParam("gId") Integer gId, @RequestParam("sPrice") Double sPrice, @RequestParam("sNum") Integer sNum, @RequestParam("sName") String sName,@RequestParam("uId") Integer uId){
-
-
-
         Shopping shopping = new Shopping();
         shopping.setgId(gId);
         shopping.setsPrice(sPrice);

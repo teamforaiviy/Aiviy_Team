@@ -38,7 +38,7 @@
                 <div class="passwordError"></div>
             </div>
             <div class="new">
-                <input type="button" class="dl" value="登录"> </input>
+                <input type="button" class="dl" value="登录">
             </div>
             <div class="zhuce">
                 <b><p>没有aiviy账号？</p></b>

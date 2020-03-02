@@ -40,7 +40,7 @@ public class PayController {
     * 创建订单并提交给阿里
     * */
     @RequestMapping("payForGoods")
-    public void payForGoods(String price, HttpServletRequest request, HttpServletResponse response) throws IOException{
+    public void payForGoods(@RequestParam("price") String price, HttpServletRequest request, HttpServletResponse response) throws IOException{
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         String phoneNumber = user.getUserName();

@@ -72,7 +72,7 @@
             </div>
             <div class="cfoot">
                 <button type="button" class="update">更新购物车</button>
-                <button type="button" href="结算页面.html" onclick="window.location.href='bill.jsp?uid='+uid">去结算GO☞</button>
+                <button type="button" href="结算页面.html" onclick="window.location.href='bill.jsp?uid='+uid+'&price='+">去结算GO☞</button>
 
             </div>
 
@@ -104,11 +104,19 @@
             alert("不能再减了，再减就没有啦！");
         } else {
             $(obj).parents("tr").find(".amount").val(parseInt($(obj).parents("tr").find(".amount").val()) - 1);
+            var sprice = $(obj).parents("tr").find(".sPrice").html();
+            var num = parseInt($(obj).parents("tr").find(".amount").val());
+            var stotalprice = num*sprice;
+            $(obj).parents("tr").find(".sTotal").html(stotalprice);
         }
     }
 
     function plus(obj) {
         $(obj).parents("tr").find(".amount").val(parseInt($(obj).parents("tr").find(".amount").val()) + 1);
+        var sprice = $(obj).parents("tr").find(".sPrice").html();
+        var num = parseInt($(obj).parents("tr").find(".amount").val());
+        var stotalprice = num*sprice;
+        $(obj).parents("tr").find(".sTotal").html(stotalprice);
     }
 
     function del(gid) {

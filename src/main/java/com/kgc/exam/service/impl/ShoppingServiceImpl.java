@@ -57,5 +57,15 @@ public class ShoppingServiceImpl implements ShoppingService {
         return shoppingMapper.updateByUserIdAndGId(userId,gId,sStatus)==1;
     }
 
+    @Override
+    public Boolean deleteBySStatusAndUserId(Integer sStatus, Integer userId) {
+        return shoppingMapper.deleteBySStatusAndUserId(sStatus,userId)==shoppingMapper.countBySStatusAndUserId(sStatus,userId);
+    }
+
+    @Override
+    public List<Shopping> queryByUserIdAndSStatus(Integer userId, Integer sStatus) {
+        return null;
+    }
+
 
 }

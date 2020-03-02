@@ -6,6 +6,7 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.kgc.exam.entity.AlipayAttr;
 import com.kgc.exam.entity.Order;
+import com.kgc.exam.entity.Shopping;
 import com.kgc.exam.entity.User;
 import com.kgc.exam.service.OrderService;
 import com.kgc.exam.service.OrderToGoodsRelationService;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("pay")
@@ -64,7 +66,14 @@ public class PayController {
         order.setoState(0);
         order.setoNum(Double.parseDouble(price));
         order.setUserId(user.getUserId());
-
+        order.setCreateddate(new Date());
+        //在数据库生成订单，订单状态未支付
+        orderService.insertIntoOrder(order);
+        List<Shopping> shoppings = shoppingService.queryByUserIdAndSStatus(user.getUserId(),1);
+        //在订单-商品关系表中添加数据
+        orderToGoodsRelationService.addOrderToGoodsRelation(shoppings,out_trade_no);
+        //购物车中已生成的数据删除
+        shoppingService.deleteBySStatusAndUserId(1,user.getUserId());
         // 拼接订单名称
 		String subject = name + "的订单";
         // 总价格设置

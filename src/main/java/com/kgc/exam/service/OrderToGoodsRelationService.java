@@ -1,6 +1,6 @@
 package com.kgc.exam.service;
 
-import com.kgc.exam.entity.Goods;
+import com.kgc.exam.entity.Shopping;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ public interface OrderToGoodsRelationService {
     * 参数oNo插入数据的订单号
     * 插入成功则返回true
     * */
-    Boolean addOrderToGoodsRelation(List<Goods> goods,String oNo);
+    Boolean addOrderToGoodsRelation(List<Shopping> goods, String oNo);
 }

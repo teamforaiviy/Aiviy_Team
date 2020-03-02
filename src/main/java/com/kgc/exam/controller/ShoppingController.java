@@ -1,6 +1,7 @@
 package com.kgc.exam.controller;
 
 import com.kgc.exam.entity.Shopping;
+import com.kgc.exam.entity.User;
 import com.kgc.exam.service.ShoppingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -18,9 +21,6 @@ public class ShoppingController {
     private ShoppingService shoppingService;
     @RequestMapping("add")
     public Boolean add(@RequestParam("gId") Integer gId, @RequestParam("sPrice") Double sPrice, @RequestParam("sNum") Integer sNum, @RequestParam("sName") String sName,@RequestParam("uId") Integer uId){
-
-
-
         Shopping shopping = new Shopping();
         shopping.setgId(gId);
         shopping.setsPrice(sPrice);
@@ -78,11 +78,13 @@ public class ShoppingController {
     * 注意：暂时将用户定死，之后将从session中获取用户
     * */
     @RequestMapping("updateShoppingCarStatus")
-    public Boolean updateShoppingCarStatus(Integer gId,Integer sStatus){
+    public Boolean updateShoppingCarStatus(Integer gId, Integer sStatus, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
         if(sStatus==0){
-            return shoppingService.updateByUserIdAndGId(1,gId,1);
+            return shoppingService.updateByUserIdAndGId(user.getUserId(),gId,1);
         }else {
-            return shoppingService.updateByUserIdAndGId(1,gId,0);
+            return shoppingService.updateByUserIdAndGId(user.getUserId(),gId,0);
         }
 
     }

@@ -14,4 +14,11 @@ public class OrderServiceImpl implements OrderService {
     public Integer insertIntoOrder(Order order) {
         return orderMapper.insertSelective(order);
     }
+
+    @Override
+    public Boolean updateOStateByONo(String oNo) {
+        Order order = orderMapper.queryAllByONo(oNo);
+        order.setoState(1);
+        return orderMapper.updateByPrimaryKey(order)==1;
+    }
 }

@@ -44,13 +44,36 @@
             </trim>
         </set>
         <where>
-            <if test="entry.id != null">
+            <if test="Address.adId != null">
                 ad_id=#{Address.adId}
             </if>
         </where>
     </update>
 
-
+    <update id="updateUser">
+        update user
+        <set>
+            <trim suffix="" suffixOverrides=",">
+                <if test="User.nickname != null and User.nickname != ''">
+                    nickname=#{User.nickname},
+                </if>
+                <if test="User.userMail != null and Address.userMail != ''">
+                    user_mail=#{User.userMail},
+                </if>
+                <if test="User.userPhone != null and  User.userPhone!= ''">
+                    user_phone=#{User.userPhone},
+                </if>
+                <if test="User.userPwd != null and  User.userPwd!= ''">
+                    user_pwd=#{User.userPwd},
+                </if>
+            </trim>
+        </set>
+        <where>
+            <if test="User.userId != null">
+                user_id=#{User.userId}
+            </if>
+        </where>
+    </update>
 
 
 </mapper>

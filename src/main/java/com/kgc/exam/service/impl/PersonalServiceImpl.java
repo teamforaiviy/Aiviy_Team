@@ -2,6 +2,7 @@ package com.kgc.exam.service.impl;
 
 import com.kgc.exam.entity.Address;
 import com.kgc.exam.entity.Order;
+import com.kgc.exam.entity.User;
 import com.kgc.exam.mapper.PersonalMapper;
 import com.kgc.exam.service.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,11 @@ public class PersonalServiceImpl implements PersonalService {
     public Address queryAddress(Integer userId) {
         return personalMapper.queryAddress(userId);
     }
+
+    @Override
+    public Boolean updateUser(User user) {
+        return personalMapper.updateUser(user)==1;
+    }
+
+
 }

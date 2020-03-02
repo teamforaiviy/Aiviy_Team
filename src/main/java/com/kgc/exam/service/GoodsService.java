@@ -22,6 +22,11 @@ public interface GoodsService {
     Goods queryGoodByGname(String gName);
 
     /*
+     * 模糊查询商品
+     * */
+    List<Goods> queryByName(String gName);
+
+    /*
      * 根据id查单个商品
      * */
     Goods selectByPrimaryKey(Integer gId);

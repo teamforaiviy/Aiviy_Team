@@ -121,6 +121,13 @@
     select
     <include refid="Base_Column_List"/>
     from goods
+    where g_name = #{gName}
+  </select>
+
+  <select id="queryByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from goods
     where g_name like concat('%',#{gName},'%')
   </select>
 

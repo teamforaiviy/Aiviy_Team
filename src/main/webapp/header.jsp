@@ -88,10 +88,14 @@
         $(".header-bg input[type=button]").click(function () {
             var gName = $(".header-bg input[type=text]").val();
             if(gName==""){
-
+                window.location.href="information.jsp";
             }else {
-                $.getJSON("goods/queryGoodByGname",{"gName":gName},function (data) {
-                    window.location.href="order.jsp?gid="+data.gId;
+                $.getJSON("goods/queryByName",{"gName":gName},function (data) {
+                    if(data.length>1){
+                        window.location.href="information.jsp";
+                    }else {
+                        window.location.href="order.jsp?gid="+data[0].gId;
+                    }
                 })
             }
         })

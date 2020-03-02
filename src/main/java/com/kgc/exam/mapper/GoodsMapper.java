@@ -22,6 +22,8 @@ public interface GoodsMapper {
 
     Goods queryAllByGName(@Param("gName")String gName);
 
+    List<Goods> queryByName(@Param("gName")String gName);
+
     List<Goods> queryNew();
 
     List<Goods> queryGoodsWithImage();

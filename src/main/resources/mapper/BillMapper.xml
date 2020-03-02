@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.kgc.exam.mapper.BillMapper">
+    <select id="queryaddress" resultType="com.kgc.exam.entity.Address">
+        select ad_id,ad_address,ad_phone,user_id,ad_sname,ad_name from address where user_id=#{uid}
+    </select>
+</mapper>

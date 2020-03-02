@@ -16,9 +16,14 @@ public class Address {
     private String adPhone;
 
     /**
-    * 收货人姓名
+    * 收货人姓
     */
-    private String adUser;
+    private String adSname;
+
+    /**
+    * 收货人名
+    */
+    private String adName;
 
     /**
     * 用户id
@@ -26,6 +31,22 @@ public class Address {
     private Integer userId;
 
     private User user;
+
+    public String getAdSname() {
+        return adSname;
+    }
+
+    public void setAdSname(String adSname) {
+        this.adSname = adSname;
+    }
+
+    public String getAdName() {
+        return adName;
+    }
+
+    public void setAdName(String adName) {
+        this.adName = adName;
+    }
 
     public User getUser() {
         return user;
@@ -58,15 +79,6 @@ public class Address {
     public void setAdPhone(String adPhone) {
         this.adPhone = adPhone;
     }
-
-    public String getAdUser() {
-        return adUser;
-    }
-
-    public void setAdUser(String adUser) {
-        this.adUser = adUser;
-    }
-
     public Integer getUserId() {
         return userId;
     }

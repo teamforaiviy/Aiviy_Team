@@ -76,9 +76,9 @@
             </div>
         </form>
         <div class="tail">
-            <a href="">首页</a>
+            <a href="index.jsp">首页</a>
             <span>|</span>
-            <a href="login.html">登录</a>
+            <a href="login.jsp">登录</a>
         </div>
     </div>
 </div>

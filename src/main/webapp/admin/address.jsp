@@ -73,10 +73,9 @@
                                             </tr>
                                             <tr>
                                                 <th>地址编号</th>
+                                                <th>用户名</th>
                                                 <th>收货地址</th>
                                                 <th>收货人电话</th>
-                                                <th>收货人姓名</th>
-                                                <th>地址名</th>
                                                 <th>操作</th>
                                             </tr>
                                             </thead>
@@ -124,10 +123,9 @@
             $(page.list).each(function() {
                 str += "<tr>" +
                     "<td>"+this.adId+"</td>" +
-                    "<td>"+this.adAddress+"</td>" +
+                    "<td>"+this.user.userName+"</td>" +
                     "<td>"+this.adPhone+"</td>" +
                     "<td>"+this.adAddress+"</td>" +
-                    "<td>"+this.user.userName+"</td>" +
                     "<td><a href='#'>修改</a>&nbsp;&nbsp;<a href='del("+this.adId+")'>删除</a></td>" +
                     "</tr>";
             })
@@ -164,20 +162,22 @@
      * 删除地址
      */
     function del(adId) {
-        $.ajax({
-            url:"../Address/del",
-            type:"get",
-            data:{"adId":adId},
-            dataType:"json",
-            success:function (data) {
-                if(data){
-                    alert("删除成功！")
-                    window.location.reload();
-                }else {
-                    alert("删除失败！")
+        if("确认删除地址吗？"){
+            $.ajax({
+                url:"../Address/del",
+                type:"get",
+                data:{"adId":adId},
+                dataType:"json",
+                success:function (data) {
+                    if(data){
+                        alert("删除成功！")
+                        window.location.reload();
+                    }else {
+                        alert("删除失败！")
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 </script>
 </body>

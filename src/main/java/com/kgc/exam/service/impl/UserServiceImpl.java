@@ -15,13 +15,23 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public List<User> queryUser() {
-        return userMapper.queryUser();
+    public List<User> queryAll() {
+        return userMapper.queryAll();
+    }
+
+    @Override
+    public User queryById(Integer userId) {
+        return userMapper.queryAllByUserId(userId);
     }
 
     @Override
     public Boolean insert(User user) {
         return userMapper.insert(user)==1;
+    }
+
+    @Override
+    public Boolean update(User user) {
+        return userMapper.updateByPrimaryKeySelective(user)==1;
     }
 
     @Override
@@ -31,12 +41,12 @@ public class UserServiceImpl implements UserService {
   
     @Override
     public Boolean add(User user) {
-        return userMapper.add(user)==1;
+        return userMapper.insertSelective(user)==1;
     }
 
     @Override
     public User login(String userName) {
-        return userMapper.login(userName);
+        return userMapper.queryAllByUserName(userName);
     }
 
 }

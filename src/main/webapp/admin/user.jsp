@@ -35,6 +35,14 @@
         .pagination li {
             margin-left: 10px;
         }
+        #updateUser select {
+            margin-top: 10px;
+            background-color: #e9ecef;
+            width: 100px;
+            height: 30px;
+            border: 0px;
+            padding-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -76,6 +84,7 @@
                                                 <th>手机号</th>
                                                 <th>消费金额</th>
                                                 <th>会员等级</th>
+                                                <th>创建时间</th>
                                                 <th>操作</th>
                                             </tr>
                                             </thead>
@@ -132,6 +141,53 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="modal fade" id="updateUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel1">修改用户</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <input type="hidden" class="form-control" name="userId">
+                                                    <table>
+                                                        <tr>
+                                                            <td>用户名：</td>
+                                                            <td><input type="text" class="form-control" name="userName" readonly></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>昵称：</td>
+                                                            <td><input type="text" class="form-control" name="nickname" readonly></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>邮箱：</td>
+                                                            <td><input type="email" class="form-control" name="userMail" readonly></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>手机号：</td>
+                                                            <td><input type="text" class="form-control" name="userPhone" readonly></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>消费金额：</td>
+                                                            <td><input type="text" class="form-control" name="userMoney" readonly></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>会员等级：</td>
+                                                            <td>
+                                                                <select name="vId"></select>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" onclick="updateUser()">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -154,6 +210,13 @@
     var ps=5;
     $(function () {
         queryUser(pn,ps)
+        $.getJSON("../member/queryAll",function (data) {
+            var opStr = "";
+            $(data).each(function () {
+                opStr +="<option value='"+this.vId+"'>"+this.vName+"</option>";
+            })
+            $("#updateUser select").append(opStr);
+        })
     })
     function queryUser(pn,ps) {
         $.getJSON("../user/queryUser",{"pn":pn,"ps":ps},function (data) {
@@ -169,7 +232,8 @@
                     "<td>"+this.userPhone+"</td>" +
                     "<td>"+(this.userMoney==null?"":this.userMoney)+"</td>" +
                     "<td>"+this.member.vName+"</td>" +
-                    "<td><a href='#'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.userId+")'>删除</a></td>" +
+                    "<td>"+this.createddate+"</td>" +
+                    "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateUser\" onclick='queryById("+this.userId+")'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.userId+")'>删除</a></td>" +
                     "</tr>";
             })
             $("#myTable tbody").empty().append(str);
@@ -208,7 +272,7 @@
         $.ajax({
             url:"../user/insert",
             type:"get",
-            data:$("form").serialize(),
+            data:$("#createUser form").serialize(),
             dataType:"json",
             success:function (data) {
                 if(data){
@@ -221,23 +285,64 @@
         })
     }
     /**
-     * 删除用户
+     * 通过Id查询用户
      */
-    function del(userId) {
+    function queryById(userId) {
         $.ajax({
-            url:"../user/del",
+            url:"../user/queryById",
             type:"get",
             data:{"userId":userId},
             dataType:"json",
             success:function (data) {
+                $("#updateUser input[name=userId]").val(data.userId);
+                $("#updateUser input[name=userName]").val(data.userName);
+                $("#updateUser input[name=nickname]").val(data.nickname);
+                $("#updateUser input[name=userMail]").val(data.userMail);
+                $("#updateUser input[name=userPhone]").val(data.userPhone);
+                $("#updateUser input[name=userMoney]").val(data.userMoney);
+                $("#updateUser select").val(data.member.vId);
+            }
+        })
+    }
+    /**
+     * 修改用户
+     */
+    function updateUser() {
+        $.ajax({
+            url:"../user/update",
+            type:"get",
+            data:$("#updateUser form").serialize(),
+            dataType:"json",
+            success:function (data) {
                 if(data){
-                    alert("删除成功！")
+                    alert("修改成功！")
                     window.location.reload();
                 }else {
-                    alert("删除失败！")
+                    alert("修改失败！")
                 }
             }
         })
+    }
+    /**
+     * 删除用户
+     */
+    function del(userId) {
+        if(confirm("确定删除用户吗？")){
+            $.ajax({
+                url:"../user/del",
+                type:"get",
+                data:{"userId":userId},
+                dataType:"json",
+                success:function (data) {
+                    if(data){
+                        alert("删除成功！")
+                        window.location.reload();
+                    }else {
+                        alert("删除失败！")
+                    }
+                }
+            })
+        }
     }
 </script>
 </body>

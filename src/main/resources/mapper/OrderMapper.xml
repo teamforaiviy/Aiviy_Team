@@ -7,12 +7,13 @@
     <id column="o_id" jdbcType="INTEGER" property="oId" />
     <result column="o_no" jdbcType="VARCHAR" property="oNo" />
     <result column="o_state" jdbcType="INTEGER" property="oState" />
-    <result column="o_num" jdbcType="INTEGER" property="oNum" />
+    <result column="o_num" jdbcType="DECIMAL" property="oNum" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="createdDate" jdbcType="TIMESTAMP" property="createddate" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    o_id, o_no, o_state, o_num, user_id
+    o_id, o_no, o_state, o_num, user_id, createdDate
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -29,9 +30,9 @@
   <insert id="insert" keyColumn="o_id" keyProperty="oId" parameterType="com.kgc.exam.entity.Order" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into order (o_no, o_state, o_num, 
-      user_id)
-    values (#{oNo,jdbcType=VARCHAR}, #{oState,jdbcType=INTEGER}, #{oNum,jdbcType=INTEGER}, 
-      #{userId,jdbcType=INTEGER})
+      user_id, createdDate)
+    values (#{oNo,jdbcType=VARCHAR}, #{oState,jdbcType=INTEGER}, #{oNum,jdbcType=DECIMAL}, 
+      #{userId,jdbcType=INTEGER}, #{createddate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" keyColumn="o_id" keyProperty="oId" parameterType="com.kgc.exam.entity.Order" useGeneratedKeys="true">
     <!--@mbg.generated-->
@@ -49,6 +50,9 @@
       <if test="userId != null">
         user_id,
       </if>
+      <if test="createddate != null">
+        createdDate,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="oNo != null">
@@ -58,10 +62,13 @@
         #{oState,jdbcType=INTEGER},
       </if>
       <if test="oNum != null">
-        #{oNum,jdbcType=INTEGER},
+        #{oNum,jdbcType=DECIMAL},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createddate != null">
+        #{createddate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -76,10 +83,13 @@
         o_state = #{oState,jdbcType=INTEGER},
       </if>
       <if test="oNum != null">
-        o_num = #{oNum,jdbcType=INTEGER},
+        o_num = #{oNum,jdbcType=DECIMAL},
       </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createddate != null">
+        createdDate = #{createddate,jdbcType=TIMESTAMP},
       </if>
     </set>
     where o_id = #{oId,jdbcType=INTEGER}
@@ -89,8 +99,9 @@
     update order
     set o_no = #{oNo,jdbcType=VARCHAR},
       o_state = #{oState,jdbcType=INTEGER},
-      o_num = #{oNum,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER}
+      o_num = #{oNum,jdbcType=DECIMAL},
+      user_id = #{userId,jdbcType=INTEGER},
+      createdDate = #{createddate,jdbcType=TIMESTAMP}
     where o_id = #{oId,jdbcType=INTEGER}
   </update>
 </mapper>

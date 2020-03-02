@@ -33,21 +33,21 @@
             </tr>
             </thead>
             <tbody class="list"></tbody>
-<%--            <tr>--%>
-<%--                <td colspan="5">--%>
-<%--                    <hr>--%>
-<%--                </td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td class="image"></td>--%>
-<%--                <td class="sName"><span></span></td>--%>
-<%--                <td class="price">¥<span class="sPrice"></span>.00</td>--%>
-<%--                <td><input type="button" class="minus" name="minus" value="-">--%>
-<%--                    <input type="button" class="amount" name="amount" value=" ">--%>
-<%--                    <input type="button" class="plus" name="plus" value="+"></td>--%>
-<%--                <td>¥<span class="sTotal"></span>.00</td>--%>
-<%--                <td>☠</td>--%>
-<%--            </tr>--%>
+            <%--            <tr>--%>
+            <%--                <td colspan="5">--%>
+            <%--                    <hr>--%>
+            <%--                </td>--%>
+            <%--            </tr>--%>
+            <%--            <tr>--%>
+            <%--                <td class="image"></td>--%>
+            <%--                <td class="sName"><span></span></td>--%>
+            <%--                <td class="price">¥<span class="sPrice"></span>.00</td>--%>
+            <%--                <td><input type="button" class="minus" name="minus" value="-">--%>
+            <%--                    <input type="button" class="amount" name="amount" value=" ">--%>
+            <%--                    <input type="button" class="plus" name="plus" value="+"></td>--%>
+            <%--                <td>¥<span class="sTotal"></span>.00</td>--%>
+            <%--                <td>☠</td>--%>
+            <%--            </tr>--%>
         </table>
 
         <div class="count">
@@ -59,7 +59,7 @@
                 <table class="ttwo">
                     <tr style="border-bottom: 1px solid #DDDFE7;">
                         <th>小计</th>
-                        <td>¥<span class="sPrice"></span>.00</td>
+                        <td>¥<span class="sTotal"></span>.00</td>
                     </tr>
 
                     <tr>
@@ -72,7 +72,7 @@
             </div>
             <div class="cfoot">
                 <button type="button" class="update">更新购物车</button>
-                <button type="button" href="结算页面.html">去结算GO☞</button>
+                <button type="button" href="结算页面.html" onclick="window.location.href='bill.jsp?uid='+uid">去结算GO☞</button>
 
             </div>
 
@@ -97,7 +97,8 @@
     }
 
     var gid = getUrlParam("gid");
-    var uid = getUrlParam("uid");
+    var uid = ${user.userId};
+
     function minus(obj) {
         if (($(obj).parents("tr").find(".amount").val()) <= 1) {
             alert("不能再减了，再减就没有啦！");
@@ -105,18 +106,47 @@
             $(obj).parents("tr").find(".amount").val(parseInt($(obj).parents("tr").find(".amount").val()) - 1);
         }
     }
+
     function plus(obj) {
         $(obj).parents("tr").find(".amount").val(parseInt($(obj).parents("tr").find(".amount").val()) + 1);
+    }
+
+    function del(gid) {
+
+        if (confirm("是否确认删除！")) {
+            $.getJSON("shop/del", {"gid": gid}, function (data) {
+
+                if (data) {
+                    alert("删除成功")
+                    window.location.reload();
+                } else {
+                    alert("删除失败")
+                }
+
+            })
+        }
+
+    }
+
+    function queryTotal(){
+        $.getJSON("shop/queryTotal",{"uId":uid},function (data) {
+            $(".sTotal").html(data);
+
+        })
     }
 
 
     $(
         function () {
 
+            queryTotal();
+
+
+
+
             $.getJSON("shop/queryId", {"uid": uid}, function (data) {
 
                 var str = "  ";
-                var sum;
                 $(data).each(function () {
 
                     // var am = $("input[name=amount]").val();
@@ -128,13 +158,13 @@
                         "            </tr>\n" +
                         "            <tr >\n" +
                         "                <td class=\"image\"><img src='" + this.images[0].imgUrl + "'class='ione'></td>\n" +
-                        "                <td class=\"sName\" style='text-align: center'><span>"+this.sName+"</span></td>\n" +
-                        "                <td class=\"price\" style='text-align: center'>¥<span class=\"sPrice\">"+this.sPrice+"</span>.00</td>\n" +
+                        "                <td class=\"sName\" style='text-align: center'><span>" + this.sName + "</span></td>\n" +
+                        "                <td class=\"price\" style='text-align: center'>¥<span class=\"sPrice\">" + this.sPrice + "</span>.00</td>\n" +
                         "                <td style='text-align: center'><input type=\"button\" class=\"minus\" name=\"minus\" value=\"-\" onclick='minus(this)'>\n" +
-                        "                    <input type=\"button\" class=\"amount\" name=\"amount\" value='"+this.sNum+"'>\n" +
+                        "                    <input type=\"button\" class=\"amount\" name=\"amount\" value='" + this.sNum + "'>\n" +
                         "                    <input type=\"button\" class=\"plus\" name=\"plus\" value=\"+\" onclick='plus(this)'></td>\n" +
-                        "                <td style='text-align: center'>¥<span class=\"sTotal\">"+(this.sNum)*(this.sPrice)+"</span>.00</td>\n" +
-                        "                <td style=\"cursor:pointer;text-align: center\" class='del' >☠</td>\n" +
+                        "                <td style='text-align: center'>¥<span class=\"sTotal\">" + (this.sNum) * (this.sPrice) + "</span>.00</td>\n" +
+                        "                <td style=\"text-align: center\" class='del' ><span style='cursor:pointer' onclick='del(" + this.gId + ")'>☠</span></td>\n" +
                         "            </tr> "
                     // $(".sName").html(data[0].sName);
                     // $(".sPrice").html(data[0].sPrice);
@@ -142,32 +172,26 @@
                     // $(".image").append(str)
                     // $("input[name=amount]").val(data[0].sNum);
                     // $(".sTotal").html(sum);
-                    sum +=$(".sTotal").html();
                 })
-                console.log(sum);
                 $(".list").empty().append(str);
 
-
-
-            })
-
-            $(".del").click(function () {
 
             })
 
             $(".update").click(function () {
-                var am = $("input[name=amount]").val();
-                var num = $(".sPrice").html();
-                var sum = am * num;
 
-
-                $.getJSON("shop/update", {"sNum": am, "gId": gid}, function (data) {
-                    if (data) {
-
-                        $(".sTotal").html(sum);
-                    }
-
-                })
+                // var am = $("input[name=amount]").val();
+                // var num = $(".sPrice").html();
+                // var sum = am * num;
+                // $.getJSON("shop/updateId", {"uId":uid,"sNum": am,"sTotal":sum}, function (data) {
+                //     $(data).each(function () {
+                //
+                //         $(".sTotal").html(sum);
+                //         queryTotal();
+                //
+                //     })
+                //
+                // })
             })
         }
     )

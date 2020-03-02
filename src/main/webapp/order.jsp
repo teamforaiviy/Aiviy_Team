@@ -40,12 +40,12 @@
         ♕♕♕♕♕（999条用户评价）
         <p><span class="qian">￥<span name="gPrice"></span>.00</span></p>
         <span class="PC" name="gContent"></span>
-        <h5>用户：</h5>
+        <h5><span>用户：</span></h5>
         <select name="">
             <option value="" selected="selected">选择一个选项</option>
             <option value="">windows</option>
         </select>
-        <h5>许可：</h5>
+        <h5><span>许可</span>：</h5>
         <select name="">
             <option value="">选择一个选项</option>
             <option value="">一年</option>
@@ -159,7 +159,7 @@
                     <span class="money">价钱</span><br/>
                     <span class="renmingbi"><span class="yuana">￥279.00</span>&nbsp;<span
                             class="yuan">￥99.00</span></span>
-                </div>s
+                </div>
             </li>
             <li>
                 <div class="footimgfour">
@@ -198,7 +198,7 @@
         return result ? decodeURIComponent(result[2]) : null;
     }
     var gid = getUrlParam("gid");
-    var uid = getUrlParam("uid")
+    var uid = ${user.userId}
 
     //评论提交
     function fnDate(){
@@ -273,7 +273,7 @@
                 var sName=$("h3[name=gName]").html();
                 var sPrice=$("span[name=gPrice]").html();
                 var sNum=$("input[name=amount]").val();
-                $.getJSON("shop/add",{"sName":sName,"sPrice":sPrice,"sNum":sNum,"gId":gid},function (data) {
+                $.getJSON("shop/add",{"sName":sName,"sPrice":sPrice,"sNum":sNum,"gId":gid,"uId":uid},function (data) {
                     if (data){
                         window.location.href="shoppingcar.jsp?gid="+gid+"&uid="+uid;
                     }
@@ -302,7 +302,7 @@
 
             $.getJSON("img/query",{"gid":gid},function (data) {
                 $("div[id=foneback]").css({"background-image":"url('"+data[0].imgUrl+"')",
-                    "background-size":"cover"}
+                    "background-size":"578px 386px"}
                 )
                 str ="";
                 $(data).each(function () {

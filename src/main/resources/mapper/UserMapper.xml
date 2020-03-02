@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kgc.exam.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.kgc.exam.entity.User">
+    <!--@mbg.generated-->
+    <!--@Table user-->
     <id column="user_id" jdbcType="INTEGER" property="userId" />
     <id column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_mail" jdbcType="VARCHAR" property="userMail" />
@@ -9,23 +11,15 @@
     <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
     <result column="user_money" jdbcType="DOUBLE" property="userMoney" />
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
-    <result column="uvid" jdbcType="INTEGER" property="vId" />
-    <association property="member" javaType="com.kgc.exam.entity.Member">
-      <id column="mvid" property="vId"></id>
-      <result column="v_name" property="vName"></result>
-      <result column="v_count" property="vCount"></result>
-    </association>
+    <result column="v_id" jdbcType="INTEGER" property="vId" />
+    <result column="createdDate" jdbcType="TIMESTAMP" property="createddate" />
   </resultMap>
+
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    user_id, user_name, user_mail, user_phone, user_pwd, user_money, nickname, v_id
+    user_id, user_name, user_mail, user_phone, user_pwd, user_money, nickname, v_id, 
+    createdDate
   </sql>
-
-  <select id="queryUser" resultMap="BaseResultMap">
-    select user_id, user_name, user_mail, user_phone, user_pwd, user_money, nickname, u.v_id uvid,m.v_id mvid,v_name
-    from user u inner join member m on u.v_id=m.v_id
-  </select>
-
   <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select 
@@ -34,60 +28,75 @@
     where user_id = #{userId,jdbcType=INTEGER}
       and user_name = #{userName,jdbcType=VARCHAR}
   </select>
-
-  <delete id="deleteByUserId">
-    delete from user where user_id = #{userId}
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from user
+    where user_id = #{userId,jdbcType=INTEGER}
+      and user_name = #{userName,jdbcType=VARCHAR}
   </delete>
-
-  <insert id="insert" parameterType="com.kgc.exam.entity.User">
-    insert into user (user_name, user_mail, user_phone,user_pwd, user_money, nickname, v_id)
-    values (#{user.userName}, #{user.userMail}, #{user.userPhone},#{user.userPwd}, #{user.userMoney}, #{user.nickname},1)
+  <insert id="insert" keyColumn="user_id" keyProperty="userId" parameterType="com.kgc.exam.entity.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user (user_name, user_mail, user_phone, 
+      user_pwd, user_money, nickname, 
+      v_id, createdDate)
+    values (#{userName,jdbcType=VARCHAR}, #{userMail,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
+      #{userPwd,jdbcType=VARCHAR}, #{userMoney,jdbcType=DOUBLE}, #{nickname,jdbcType=VARCHAR}, 
+      1, now())
   </insert>
-
-
   <insert id="insertSelective" keyColumn="user_id" keyProperty="userId" parameterType="com.kgc.exam.entity.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="user.userName != null">
+      <if test="userName != null">
         user_name,
       </if>
-      <if test="user.userMail != null">
+      <if test="userMail != null">
         user_mail,
       </if>
-      <if test="user.userPhone != null">
+      <if test="userPhone != null">
         user_phone,
       </if>
-      <if test="user.userPwd != null">
+      <if test="userPwd != null">
         user_pwd,
       </if>
-      <if test="user.userMoney != null">
+      <if test="userMoney != null">
         user_money,
       </if>
-      <if test="user.nickname != null">
+      <if test="nickname != null">
         nickname,
       </if>
-      v_id
+      <if test="vId != null">
+        v_id,
+      </if>
+      <if test="createddate != null">
+        createdDate,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="user.userName != null">
-        #{user.userName,jdbcType=VARCHAR},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="user.userMail != null">
-        #{user.userMail,jdbcType=VARCHAR},
+      <if test="userMail != null">
+        #{userMail,jdbcType=VARCHAR},
       </if>
-      <if test="user.userPhone != null">
-        #{user.userPhone,jdbcType=VARCHAR},
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
       </if>
-      <if test="user.userPwd != null">
-        #{user.userPwd,jdbcType=VARCHAR},
+      <if test="userPwd != null">
+        #{userPwd,jdbcType=VARCHAR},
       </if>
-      <if test="user.userMoney != null">
-        #{user.userMoney,jdbcType=DOUBLE},
+      <if test="userMoney != null">
+        #{userMoney,jdbcType=DOUBLE},
       </if>
-      <if test="user.nickname != null">
-        #{user.nickname,jdbcType=VARCHAR},
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
       </if>
-      1
+      <if test="vId != null">
+        #{vId,jdbcType=INTEGER},
+      </if>
+      <if test="createddate != null">
+        #{createddate,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.kgc.exam.entity.User">
@@ -112,6 +121,9 @@
       <if test="vId != null">
         v_id = #{vId,jdbcType=INTEGER},
       </if>
+      <if test="createddate != null">
+        createdDate = #{createddate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
       and user_name = #{userName,jdbcType=VARCHAR}
@@ -124,24 +136,52 @@
       user_pwd = #{userPwd,jdbcType=VARCHAR},
       user_money = #{userMoney,jdbcType=DOUBLE},
       nickname = #{nickname,jdbcType=VARCHAR},
-      v_id = #{vId,jdbcType=INTEGER}
+      v_id = #{vId,jdbcType=INTEGER},
+      createdDate = #{createddate,jdbcType=TIMESTAMP}
     where user_id = #{userId,jdbcType=INTEGER}
       and user_name = #{userName,jdbcType=VARCHAR}
   </update>
 
-
-  <select id="login" resultType="com.kgc.exam.entity.User">
-    select id,user_name,user_mail,user_phone,user_pwd,user_money,nickname,v_id from user
-    <where>
-      id=#{id}
-    </where>
+<!--auto generated by MybatisCodeHelper on 2020-03-01-->
+  <select id="queryAll" resultMap="UserMap">
+        select user_id, user_name, user_mail, user_phone, user_pwd, user_money, nickname, u.v_id uvId,createdDate,m.v_id mvId,v_Name
+        from user u inner join member m on u.v_id=m.v_id
+    </select>
+  <resultMap id="UserMap" type="com.kgc.exam.entity.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_mail" jdbcType="VARCHAR" property="userMail" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="user_money" jdbcType="DOUBLE" property="userMoney" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="uvId" jdbcType="INTEGER" property="vId" />
+    <result column="createdDate" property="createddate" />
+    <association property="member" javaType="com.kgc.exam.entity.Member">
+      <id column="mvId" property="vId"></id>
+      <result column="v_name" property="vName"></result>
+      <result column="v_count" property="vCount"></result>
+    </association>
+  </resultMap>
+<!--auto generated by MybatisCodeHelper on 2020-03-01-->
+  <select id="queryAllByUserName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+    where user_name=#{userName,jdbcType=VARCHAR}
   </select>
 
+<!--auto generated by MybatisCodeHelper on 2020-03-01-->
+  <select id="queryAllByUserId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+    where user_id=#{userId,jdbcType=INTEGER}
+  </select>
 
-  <insert id="add">
-        insert into user(user_name,user_mail,user_phone,user_pwd)
-        values(#{user.userName},#{user.userMail},#{user.userPhone},#{user.userPwd})
-    </insert>
-
-
+<!--auto generated by MybatisCodeHelper on 2020-03-01-->
+  <delete id="deleteByUserId">
+    delete from user
+    where user_id=#{userId,jdbcType=INTEGER}
+  </delete>
 </mapper>

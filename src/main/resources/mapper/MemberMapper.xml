@@ -77,4 +77,10 @@
       v_count = #{vCount,jdbcType=DOUBLE}
     where v_id = #{vId,jdbcType=INTEGER}
   </update>
+
+  <select id="queryAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from member
+  </select>
 </mapper>

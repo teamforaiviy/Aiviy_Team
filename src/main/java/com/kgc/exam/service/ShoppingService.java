@@ -10,4 +10,6 @@ public interface ShoppingService {
     List<Shopping> query(Integer gId);
     Boolean update(Shopping shopping);
     List<Shopping> querybyuId(Integer uId);
+    Integer del(Integer gId);
+    Boolean updateuId(Shopping shopping);
 }

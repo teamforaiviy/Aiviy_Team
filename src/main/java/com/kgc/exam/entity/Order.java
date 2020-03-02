@@ -1,5 +1,10 @@
 package com.kgc.exam.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class Order {
     /**
     * 订单自增id
@@ -17,14 +22,21 @@ public class Order {
     private Integer oState;
 
     /**
-    * 商品数量
+    * 商品总价
     */
-    private Integer oNum;
+    private Long oNum;
 
     /**
     * 用户id
     */
     private Integer userId;
+
+    /**
+    * 创建时间
+    */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GTM+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createddate;
 
     public Integer getoId() {
         return oId;
@@ -50,11 +62,11 @@ public class Order {
         this.oState = oState;
     }
 
-    public Integer getoNum() {
+    public Long getoNum() {
         return oNum;
     }
 
-    public void setoNum(Integer oNum) {
+    public void setoNum(Long oNum) {
         this.oNum = oNum;
     }
 
@@ -64,5 +76,13 @@ public class Order {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Date getCreateddate() {
+        return createddate;
+    }
+
+    public void setCreateddate(Date createddate) {
+        this.createddate = createddate;
     }
 }

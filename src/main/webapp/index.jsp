@@ -51,7 +51,7 @@
                                         <li>摆脱恼人广告，在线跟踪， 拦截广告和危险网站 </li>
                                         <li>支持全平台设备：WIN/MAC/IOS/ANDROID</li>
                                     </ul>
-                                    <a href="订单页面.jsp">立即购买</a>
+                                    <a href="#">立即购买</a>
                                 </div>
                             </div>
                             <div class="content-body-two-right">
@@ -221,19 +221,11 @@
                 </div>
             </div>
 
-            <div class="content-three">
-            </div>
-
-            <div class="content-four">
-            </div>
-
-            <div class="content-five">
-            </div>
-
         </div>
     </div>
 
     <!-------------------------------footer----------------------------------->
     <jsp:include page="footer.jsp"></jsp:include>
 </body>
+
 </html>

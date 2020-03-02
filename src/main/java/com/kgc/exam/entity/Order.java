@@ -24,7 +24,7 @@ public class Order {
     /**
     * 商品总价
     */
-    private Long oNum;
+    private double oNum;
 
     /**
     * 用户id
@@ -62,11 +62,11 @@ public class Order {
         this.oState = oState;
     }
 
-    public Long getoNum() {
+    public double getoNum() {
         return oNum;
     }
 
-    public void setoNum(Long oNum) {
+    public void setoNum(Double oNum) {
         this.oNum = oNum;
     }
 

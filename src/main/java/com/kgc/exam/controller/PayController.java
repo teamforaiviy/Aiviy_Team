@@ -5,6 +5,12 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.kgc.exam.entity.AlipayAttr;
+import com.kgc.exam.entity.Order;
+import com.kgc.exam.entity.User;
+import com.kgc.exam.service.OrderService;
+import com.kgc.exam.service.OrderToGoodsRelationService;
+import com.kgc.exam.service.ShoppingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,11 +27,22 @@ import java.util.Date;
 @RequestMapping("pay")
 public class PayController {
 
+    @Autowired
+    private OrderService orderService;
+    @Autowired
+    private OrderToGoodsRelationService orderToGoodsRelationService;
+    @Autowired
+    private ShoppingService shoppingService;
+
     /*
     * 创建订单并提交给阿里
     * */
     @RequestMapping("payForGoods")
-    public void payForGoods(@RequestParam(value = "name",defaultValue = "无名氏") String name,@RequestParam(value = "phoneNumber",defaultValue = "12357846662") String phoneNumber, String price, HttpServletRequest request, HttpServletResponse response) throws IOException{
+    public void payForGoods(String price, HttpServletRequest request, HttpServletResponse response) throws IOException{
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        String phoneNumber = user.getUserName();
+        String name = user.getUserPhone();
         AlipayClient alipayClient = new DefaultAlipayClient(
                 AlipayAttr.gatewayUrl, AlipayAttr.app_id,
                 AlipayAttr.merchant_private_key, "json", AlipayAttr.charset,
@@ -36,6 +54,17 @@ public class PayController {
         // 订单号拼接规则：手机号后四位+当前时间后四位+随机数四位数
         String out_trade_no = phoneNumber.substring(7) + dateStr.substring(10)
                 + random;
+        /*
+        * 在数据库生成订单，订单状态未支付
+        * 购物车中已生成的数据删除
+        * 在订单-商品关系表中添加数据
+        * */
+        Order order = new Order();
+        order.setoNo(out_trade_no);
+        order.setoState(0);
+        order.setoNum(Double.parseDouble(price));
+        order.setUserId(user.getUserId());
+
         // 拼接订单名称
 		String subject = name + "的订单";
         // 总价格设置

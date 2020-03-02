@@ -12,4 +12,6 @@ public interface ShoppingService {
     List<Shopping> querybyuId(Integer uId);
     Integer del(Integer gId);
     Boolean updateuId(Shopping shopping);
+
+    Boolean updateByUserIdAndGId(Integer userId,Integer gId,Integer sStatus);
 }

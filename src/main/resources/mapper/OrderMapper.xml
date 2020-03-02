@@ -7,7 +7,7 @@
     <id column="o_id" jdbcType="INTEGER" property="oId" />
     <result column="o_no" jdbcType="VARCHAR" property="oNo" />
     <result column="o_state" jdbcType="INTEGER" property="oState" />
-    <result column="o_num" jdbcType="DECIMAL" property="oNum" />
+    <result column="o_num" jdbcType="DOUBLE" property="oNum" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="createdDate" jdbcType="TIMESTAMP" property="createddate" />
   </resultMap>
@@ -31,7 +31,7 @@
     <!--@mbg.generated-->
     insert into order (o_no, o_state, o_num, 
       user_id, createdDate)
-    values (#{oNo,jdbcType=VARCHAR}, #{oState,jdbcType=INTEGER}, #{oNum,jdbcType=DECIMAL}, 
+    values (#{oNo,jdbcType=VARCHAR}, #{oState,jdbcType=INTEGER}, #{oNum,jdbcType=DOUBLE},
       #{userId,jdbcType=INTEGER}, #{createddate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" keyColumn="o_id" keyProperty="oId" parameterType="com.kgc.exam.entity.Order" useGeneratedKeys="true">
@@ -62,7 +62,7 @@
         #{oState,jdbcType=INTEGER},
       </if>
       <if test="oNum != null">
-        #{oNum,jdbcType=DECIMAL},
+        #{oNum,jdbcType=DOUBLE},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
@@ -83,7 +83,7 @@
         o_state = #{oState,jdbcType=INTEGER},
       </if>
       <if test="oNum != null">
-        o_num = #{oNum,jdbcType=DECIMAL},
+        o_num = #{oNum,jdbcType=DOUBLE},
       </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
@@ -99,7 +99,7 @@
     update order
     set o_no = #{oNo,jdbcType=VARCHAR},
       o_state = #{oState,jdbcType=INTEGER},
-      o_num = #{oNum,jdbcType=DECIMAL},
+      o_num = #{oNum,jdbcType=DOUBLE},
       user_id = #{userId,jdbcType=INTEGER},
       createdDate = #{createddate,jdbcType=TIMESTAMP}
     where o_id = #{oId,jdbcType=INTEGER}

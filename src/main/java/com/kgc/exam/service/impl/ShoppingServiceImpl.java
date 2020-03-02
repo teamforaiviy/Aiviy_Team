@@ -51,4 +51,11 @@ public class ShoppingServiceImpl implements ShoppingService {
     public Boolean updateuId(Shopping shopping) {
         return shoppingMapper.updateuId(shopping)==1;
     }
+
+    @Override
+    public Boolean updateByUserIdAndGId(Integer userId, Integer gId, Integer sStatus) {
+        return shoppingMapper.updateByUserIdAndGId(userId,gId,sStatus)==1;
+    }
+
+
 }

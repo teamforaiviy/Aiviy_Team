@@ -56,7 +56,9 @@ public class ShoppingController {
         List<Shopping> totals=shoppingService.querybyuId(uId);
         Double totalPrice=0.0;
         for (Shopping shopping:totals){
-            totalPrice += shopping.getsTotal();
+            if(shopping.getsStatus()==1){
+                totalPrice += shopping.getsTotal();
+            }
         }
         return totalPrice;
 
@@ -70,5 +72,18 @@ public class ShoppingController {
         return shoppingService.updateuId(shopping);
     }
 
+    /*
+    * 更改购物车中商品状态
+    * !!!!!!!!!!!
+    * 注意：暂时将用户定死，之后将从session中获取用户
+    * */
+    @RequestMapping("updateShoppingCarStatus")
+    public Boolean updateShoppingCarStatus(Integer gId,Integer sStatus){
+        if(sStatus==0){
+            return shoppingService.updateByUserIdAndGId(1,gId,1);
+        }else {
+            return shoppingService.updateByUserIdAndGId(1,gId,0);
+        }
 
+    }
 }

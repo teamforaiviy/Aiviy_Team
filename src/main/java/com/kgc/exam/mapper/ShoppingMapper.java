@@ -19,8 +19,9 @@ public interface ShoppingMapper {
     Integer deleteBySStatusAndUserId(@Param("sStatus") Integer sStatus,@Param("userId") Integer userId);
 
     /*
+    * 逻辑:哪个用户的哪些商品已经生成订单了
     * 更改购物车中数据状态s_status：0->1
     * 表示以生成订单，为删除购物车中数据做准备
     * */
-    Integer updateByUId(@Param("userId") Integer userId);
+    Integer updateByUserIdAndGId(@Param("userId") Integer userId,@Param("gId") Integer gId,@Param("sStatus") Integer sStatus);
 }

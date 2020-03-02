@@ -21,10 +21,10 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/queryUser")
-    public PageInfo queryUser(@RequestParam(value = "pn",defaultValue = "1") Integer pn,
+    public PageInfo queryAll(@RequestParam(value = "pn",defaultValue = "1") Integer pn,
                               @RequestParam(value = "ps",defaultValue = "5") Integer ps) {
         PageHelper.startPage(pn,ps);
-        List<User> users = userService.queryUser();
+        List<User> users = userService.queryAll();
         PageInfo pageInfo = new PageInfo(users,3);
         return pageInfo;
     }

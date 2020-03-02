@@ -125,7 +125,6 @@
                 str += "<tr>" +
                     "<td>"+this.adId+"</td>" +
                     "<td>"+this.user.userName+"</td>" +
-                    "<td>"+this.adUser+"</td>" +
                     "<td>"+this.adPhone+"</td>" +
                     "<td>"+this.adAddress+"</td>" +
                     "<td><a href='#'>修改</a>&nbsp;&nbsp;<a href='del("+this.adId+")'>删除</a></td>" +

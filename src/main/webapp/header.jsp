@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header>
-    <nav class="navbar navbar-default" style="background-color: #dbdbdb;">
+    <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.jsp"><img src="/img/logo.png" width="90px" width="23px" /></a>

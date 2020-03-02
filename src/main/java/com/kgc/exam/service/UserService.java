@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserService {
 
-    List<User> queryUser();
+    List<User> queryAll();
 
     User queryById(Integer userId);
 

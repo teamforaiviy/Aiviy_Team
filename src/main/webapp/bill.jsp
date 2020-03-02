@@ -102,7 +102,7 @@
     </div>
 </div>
 <div class="close">
-    <input type="button" class="ok" value="确认订单"></button>
+    <input type="button" class="ok" value="确认订单" onclick="window.location.href='payforGoods.jsp'"></button>
 </div>
 
 </body>

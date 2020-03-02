@@ -15,7 +15,7 @@
 <body>
 <div id="background">
     <div class="whole">
-        <div class="aiviy"><img src="/img/logo.png" ></div>
+        <div class="aiviy"><img src="/img/logo.png" onclick="window.location.href='index.jsp'"></div>
         <form>
             <div class="register">注册</div>
             <div class="username">
@@ -50,10 +50,10 @@
                 <input type="text" name="userPhone" placeholder="手机账号" />
                 <div class="phoneError"></div>
             </div>
-            <div class="photocode">
+            <%--<div class="photocode">
                 <input type="text" name="" value="" placeholder="图形验证码"/>
                 <span><img src="/img/timg.jpg" ></span>
-            </div>
+            </div>--%>
             <div class="iphonecode">
                 <input type="text" name="verifyCode" value="" placeholder="手机验证码" />
                 <input type="submit" class="btn btn-default" id="btn" name="btn"  value="发送验证码" onclick="sendMessage()" />
@@ -138,7 +138,7 @@
                 success:function (data) {
                 if (data){
                     alert("注册成功！")
-                    window.location.href="index.jsp";
+                    window.location.href="login.jsp";
                     }
                 }
             })

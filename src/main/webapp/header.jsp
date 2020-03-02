@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+    a:hover{
+       cursor: pointer;
+    }
+</style>
 <header>
     <nav class="navbar navbar-default">
         <div class="container">
@@ -71,9 +76,7 @@
                 <li><a href="new.jsp">新品</a></li>
                 <li><a href="sale.jsp">秒杀</a></li>
                 <li><a href="Hot-commodities.jsp">最畅销</a></li>
-                <li><a href="information.jsp">资讯</a></li>
-                <li><a href="#">全部商品</a></li>
-                <li><a href="auctions.jsp">拍卖会</a></li>
+                <li><a href="information.jsp">全部商品</a></li>
                 <li><a href="Group-buying.jsp">团购</a></li>
             </ul>
         </div>

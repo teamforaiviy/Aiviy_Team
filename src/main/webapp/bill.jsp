@@ -25,6 +25,7 @@
         }
         var gid = getUrlParam("gid");
         var uid = getUrlParam("uid");
+        var price = getUrlParam("price")
         $(function () {
 
             $.getJSON("bill/queryaddress",{"uId":uid},function (data) {
@@ -35,7 +36,7 @@
                     $("input[name=address]").val(data.adAddress);
                     $("input[name=phone]").val(data.adPhone);
                     $("input[type=button]").click(function () {
-                        window.location.href="payforGoods.jsp"
+                        window.location.href="pay/payForGoods?price="+price;
 
                     })
                 }

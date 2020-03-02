@@ -14,9 +14,8 @@
     </association>
   </resultMap>
   <sql id="Base_Column_List">
-    ad_id, ad_address, ad_phone, ad_user, user_id
+    ad_id, ad_address, ad_phone, ad_name, ad_sname, user_id
   </sql>
-
   <select id="queryAddress" resultMap="BaseResultMap">
     select ad_id, ad_address, ad_phone, ad_name, ad_sname, ad.user_id aduserId,u.user_id uuserId,user_name
     from address ad inner join user u on ad.user_id=u.user_id

@@ -15,7 +15,7 @@ public class BillController {
     @Autowired
     private BillService billService;
     @RequestMapping("queryaddress")
-    public Integer queryaddress(@RequestParam("uId") Integer uId){
+    public Address queryaddress(@RequestParam("uId") Integer uId){
         return billService.queryaddress(uId);
     }
 }

@@ -79,3 +79,18 @@
         </div>
     </div>
 </header>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".header-bg input[type=button]").click(function () {
+            var gName = $(".header-bg input[type=text]").val();
+            if(gName==""){
+
+            }else {
+                $.getJSON("goods/queryGoodByGname",{"gName":gName},function (data) {
+                    window.location.href="order.jsp?gid="+data.gId;
+                })
+            }
+        })
+    })
+</script>

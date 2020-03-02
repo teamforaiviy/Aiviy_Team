@@ -121,7 +121,7 @@
     select
     <include refid="Base_Column_List"/>
     from goods
-    where g_name=#{gName,jdbcType=VARCHAR}
+    where g_name like concat('%',#{gName},'%')
   </select>
 
   <resultMap id="goodsWithImageMap" type="com.kgc.exam.entity.Goods">

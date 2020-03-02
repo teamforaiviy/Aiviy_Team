@@ -198,7 +198,7 @@
         return result ? decodeURIComponent(result[2]) : null;
     }
     var gid = getUrlParam("gid");
-    var uid = ${user.userId};
+    var uid = ${user.userId}
 
     var str = "";
     $(function() {

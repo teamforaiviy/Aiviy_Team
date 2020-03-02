@@ -221,19 +221,11 @@
                 </div>
             </div>
 
-            <div class="content-three">
-            </div>
-
-            <div class="content-four">
-            </div>
-
-            <div class="content-five">
-            </div>
-
         </div>
     </div>
 
     <!-------------------------------footer----------------------------------->
     <jsp:include page="footer.jsp"></jsp:include>
 </body>
+
 </html>

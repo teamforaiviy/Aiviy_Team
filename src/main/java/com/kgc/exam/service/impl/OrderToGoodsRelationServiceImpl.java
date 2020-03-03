@@ -1,6 +1,5 @@
 package com.kgc.exam.service.impl;
 
-import com.kgc.exam.entity.Goods;
 import com.kgc.exam.entity.OrderToGoodsRelation;
 import com.kgc.exam.entity.Shopping;
 import com.kgc.exam.mapper.OrderToGoodsRelationMapper;

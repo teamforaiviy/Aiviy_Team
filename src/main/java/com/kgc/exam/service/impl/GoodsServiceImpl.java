@@ -33,6 +33,11 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public List<Goods> queryByName(String gName) {
+        return goodsMapper.queryByName(gName);
+    }
+
+    @Override
     public Goods selectByPrimaryKey(Integer gId) {
         return goodsMapper.selectByPrimaryKey(gId);
     }

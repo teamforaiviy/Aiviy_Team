@@ -84,6 +84,7 @@
                                                 <th>手机号</th>
                                                 <th>消费金额</th>
                                                 <th>会员等级</th>
+                                                <th>创建时间</th>
                                                 <th>操作</th>
                                             </tr>
                                             </thead>
@@ -231,6 +232,7 @@
                     "<td>"+this.userPhone+"</td>" +
                     "<td>"+(this.userMoney==null?"":this.userMoney)+"</td>" +
                     "<td>"+this.member.vName+"</td>" +
+                    "<td>"+this.createddate+"</td>" +
                     "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateUser\" onclick='queryById("+this.userId+")'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.userId+")'>删除</a></td>" +
                     "</tr>";
             })

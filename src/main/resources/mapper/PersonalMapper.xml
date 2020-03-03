@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.kgc.exam.mapper.PersonalMapper">
+    <resultMap id="orderMap" type="com.kgc.exam.entity.Orders">
+        <id column="o_id" property="oId"></id>
+        <result column="o_no" property="oNo"></result>
+        <result column="o_state" property="oState"></result>
+        <result column="o_num" property="oNum"></result>
+        <association property="user" javaType="com.kgc.exam.entity.User">
+            <id column="user_id" property="userId"></id>
+            <result column="user_money" property="userMoney"></result>
+        </association>
+    </resultMap>
+
+    <select id="queryOrder" resultMap="orderMap">
+        select O.o_id,O.o_no,O.o_state,O.o_num,O.user_id,U.user_money
+        from orders O INNER JOIN user U on O.user_id=U.user_id
+        <where>
+            <if test="userId!=null and userId!=0">
+                u_id=#{userId}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryAddress" resultType="com.kgc.exam.entity.Address">
+        select ad_id,ad_address,ad_phone,user_id,ad_sname,ad_name from address where user_id=#{userId}
+    </select>
+
+    <update id="updateAddress">
+        update address
+        <set>
+            <trim suffix="" suffixOverrides=",">
+                <if test="address.adName != null and address.adName != ''">
+                    ad_user=#{address.adName},
+                </if>
+                <if test="address.adAddress != null and address.adAddress != ''">
+                    ad_address=#{address.adAddress},
+                </if>
+                <if test="address.adName != null and  address.adName!= ''">
+                    ad_user=#{address.adName},
+                </if>
+            </trim>
+        </set>
+        <where>
+            <if test="address.adId != null">
+                ad_id=#{address.adId}
+            </if>
+        </where>
+    </update>
+
+    <update id="updateUser">
+        update user
+        <set>
+            <trim suffix="" suffixOverrides=",">
+                <if test="user.nickname != null and user.nickname != ''">
+                    nickname=#{user.nickname},
+                </if>
+                <if test="user.userMail != null and user.userMail != ''">
+                    user_mail=#{user.userMail},
+                </if>
+                <if test="user.userPhone != null and  user.userPhone!= ''">
+                    user_phone=#{user.userPhone},
+                </if>
+                <if test="user.userPwd != null and  user.userPwd!= ''">
+                    user_pwd=#{user.userPwd},
+                </if>
+            </trim>
+        </set>
+        <where>
+            <if test="user.userId != null">
+                user_id=#{user.userId}
+            </if>
+        </where>
+    </update>
+
+
+</mapper>

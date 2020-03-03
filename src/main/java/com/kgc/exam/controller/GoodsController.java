@@ -36,6 +36,16 @@ public class GoodsController {
         return  pageInfo;
     }
 
+    @RequestMapping("/queryGoodByGname")
+    public Goods queryGoodByGname(@RequestParam("gName") String gName) {
+        return goodsService.queryGoodByGname(gName);
+    }
+
+    @RequestMapping("/queryByName")
+    public List<Goods> queryByName(@RequestParam("gName") String gName) {
+        return goodsService.queryByName(gName);
+    }
+
     @RequestMapping("/select")
     public Goods selectByPrimaryKey(@RequestParam("gid") Integer gId){
         return  goodsService.selectByPrimaryKey(gId);

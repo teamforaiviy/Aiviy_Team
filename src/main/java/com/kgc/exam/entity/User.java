@@ -53,6 +53,16 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createddate;
 
+    private Member member;
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
     public Integer getUserId() {
         return userId;
     }

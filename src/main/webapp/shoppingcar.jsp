@@ -25,6 +25,7 @@
         <table class="tone">
             <thead>
             <tr>
+                <th style="width: 150px;">选中</th>
                 <th colspan="2">产品</th>
                 <th style="width: 150px;">价格</th>
                 <th style="width: 150px;">数量</th>
@@ -51,20 +52,20 @@
         </table>
 
         <div class="count">
-            <div class="chead">
+            <%--<div class="chead">
                 <span>购物车总计</span>
                 <hr>
-            </div>
+            </div>--%>
             <div class="cbody">
                 <table class="ttwo">
                     <tr style="border-bottom: 1px solid #DDDFE7;">
                         <th>小计</th>
-                        <td>¥<span class="sTotal"></span>.00</td>
+                        <td>¥<span class="sPriceTotal"></span>.00</td>
                     </tr>
 
                     <tr>
                         <th>合计</th>
-                        <td>¥<span class="sTotal"></span>.00</td>
+                        <td>¥<span class="sPriceTotal"></span>.00</td>
                     </tr>
                 </table>
 
@@ -72,7 +73,7 @@
             </div>
             <div class="cfoot">
                 <button type="button" class="update">更新购物车</button>
-                <button type="button" href="结算页面.html" onclick="window.location.href='bill.jsp?uid='+uid">去结算GO☞</button>
+                <button type="button" href="结算页面.html" onclick="jump()">去结算GO☞</button>
 
             </div>
 
@@ -97,18 +98,40 @@
     }
 
     var gid = getUrlParam("gid");
-    var uid = getUrlParam("uid");
-
-    function minus(obj) {
+    var uid = ${user.userId};
+    function jump(){
+        var price = $(".ttwo").find(".sPriceTotal").html();
+        window.location.href="bill.jsp?uid="+uid+"&price="+price;
+    }
+    function minus(obj,gId) {
         if (($(obj).parents("tr").find(".amount").val()) <= 1) {
             alert("不能再减了，再减就没有啦！");
         } else {
             $(obj).parents("tr").find(".amount").val(parseInt($(obj).parents("tr").find(".amount").val()) - 1);
+            var sprice = $(obj).parents("tr").find(".sPrice").html();
+            var num = parseInt($(obj).parents("tr").find(".amount").val());
+            var stotalprice = num*sprice;
+            $(obj).parents("tr").find(".sTotal").html(stotalprice);
+            $.getJSON("shop/updateNumAndTotalPrice",{"gId":gId,"num":num,"totalPrice":stotalprice},function (data) {
+                if (data){
+                    window.location.reload()
+                }
+            })
         }
     }
 
-    function plus(obj) {
+    function plus(obj,gId) {
+        console.log(obj)
         $(obj).parents("tr").find(".amount").val(parseInt($(obj).parents("tr").find(".amount").val()) + 1);
+        var sprice = $(obj).parents("tr").find(".sPrice").html();
+        var num = parseInt($(obj).parents("tr").find(".amount").val());
+        var stotalprice = num*sprice;
+        $(obj).parents("tr").find(".sTotal").html(stotalprice);
+        $.getJSON("shop/updateNumAndTotalPrice",{"gId":gId,"num":num,"totalPrice":stotalprice},function (data) {
+            if (data){
+                window.location.reload()
+            }
+        })
     }
 
     function del(gid) {
@@ -130,42 +153,64 @@
 
     function queryTotal(){
         $.getJSON("shop/queryTotal",{"uId":uid},function (data) {
-            $(".sTotal").html(data);
-
+            $(".sPriceTotal").html(data);
         })
     }
 
-
+    function updateShoppingCarStatus(gId,sStatus){
+        $.getJSON("shop/updateShoppingCarStatus",{"gId":gId,"sStatus":sStatus},function (data) {
+            if(data){
+                window.location.reload();
+            }else {
+                alert("更改出错")
+            }
+        })
+    }
     $(
         function () {
-
             queryTotal();
-
-
-
-
             $.getJSON("shop/queryId", {"uid": uid}, function (data) {
-
                 var str = "  ";
                 $(data).each(function () {
-
-                    // var am = $("input[name=amount]").val();
-                    // var num = $(".sPrice").html();
-                    // var sum =am * num;
-
-                    str += "<tr>\n" +
-                        "                <td colspan=\"5\"><hr ></td>\n" +
-                        "            </tr>\n" +
-                        "            <tr >\n" +
-                        "                <td class=\"image\"><img src='" + this.images[0].imgUrl + "'class='ione'></td>\n" +
-                        "                <td class=\"sName\" style='text-align: center'><span>" + this.sName + "</span></td>\n" +
-                        "                <td class=\"price\" style='text-align: center'>¥<span class=\"sPrice\">" + this.sPrice + "</span>.00</td>\n" +
-                        "                <td style='text-align: center'><input type=\"button\" class=\"minus\" name=\"minus\" value=\"-\" onclick='minus(this)'>\n" +
-                        "                    <input type=\"button\" class=\"amount\" name=\"amount\" value='" + this.sNum + "'>\n" +
-                        "                    <input type=\"button\" class=\"plus\" name=\"plus\" value=\"+\" onclick='plus(this)'></td>\n" +
-                        "                <td style='text-align: center'>¥<span class=\"sTotal\">" + (this.sNum) * (this.sPrice) + "</span>.00</td>\n" +
-                        "                <td style=\"text-align: center\" class='del' ><span style='cursor:pointer' onclick='del(" + this.gId + ")'>☠</span></td>\n" +
-                        "            </tr> "
+                    if(this.sStatus==0){
+                        str += "<tr>\n" +
+                            "                <td colspan=\"5\"><hr ></td>\n" +
+                            "            </tr>\n" +
+                            "            <tr >\n" +"<td style='text-align: center'><div class=\"checkbox\" onclick='updateShoppingCarStatus("+this.gId+","+this.sStatus+")'>\n" +
+                            "  <label>\n" +
+                            "    <input type=\"checkbox\" value=\"\" >\n" +
+                            "    " +
+                            "  </label>\n" +
+                            "</div></td>"+
+                            "                <td class=\"image\"><img src='" + this.images[0].imgUrl + "'class='ione'></td>\n" +
+                            "                <td class=\"sName\" style='text-align: center'><span>" + this.sName + "</span></td>\n" +
+                            "                <td class=\"price\" style='text-align: center'>¥<span class=\"sPrice\">" + this.sPrice + "</span>.00</td>\n" +
+                            "                <td style='text-align: center'><input type=\"button\" class=\"minus\" name=\"minus\" value=\"-\" onclick='minus(this,"+this.gId+")'>\n" +
+                            "                    <input type=\"button\" class=\"amount\" name=\"amount\" value='" + this.sNum + "'>\n" +
+                            "                    <input type=\"button\" class=\"plus\" name=\"plus\" value=\"+\" onclick='plus(this,"+this.gId+")'></td>\n" +
+                            "                <td style='text-align: center'>¥<span class=\"sTotal\">" + (this.sNum) * (this.sPrice) + "</span>.00</td>\n" +
+                            "                <td style=\"text-align: center\" class='del' ><span style='cursor:pointer' onclick='del(" + this.gId + ")'>☠</span></td>\n" +
+                            "            </tr> "
+                    }else {
+                        str += "<tr>\n" +
+                            "                <td colspan=\"5\"><hr ></td>\n" +
+                            "            </tr>\n" +
+                            "            <tr >\n" +"<td style='text-align: center'><div class=\"checkbox\">\n" +
+                            "  <label>\n" +
+                            "    <input type=\"checkbox\" value=\"\" onclick='updateShoppingCarStatus("+this.gId+","+this.sStatus+")'checked>\n" +
+                            "    " +
+                            "  </label>\n" +
+                            "</div></td>"+
+                            "                <td class=\"image\"><img src='" + this.images[0].imgUrl + "'class='ione'></td>\n" +
+                            "                <td class=\"sName\" style='text-align: center'><span>" + this.sName + "</span></td>\n" +
+                            "                <td class=\"price\" style='text-align: center'>¥<span class=\"sPrice\">" + this.sPrice + "</span>.00</td>\n" +
+                            "                <td style='text-align: center'><input type=\"button\" class=\"minus\" name=\"minus\" value=\"-\" onclick='minus(this,"+this.gId+")'>\n" +
+                            "                    <input type=\"button\" class=\"amount\" name=\"amount\" value='" + this.sNum + "'>\n" +
+                            "                    <input type=\"button\" class=\"plus\" name=\"plus\" value=\"+\" onclick='plus(this,"+this.gId+")'></td>\n" +
+                            "                <td style='text-align: center'>¥<span class=\"sTotal\">" + (this.sNum) * (this.sPrice) + "</span>.00</td>\n" +
+                            "                <td style=\"text-align: center\" class='del' ><span style='cursor:pointer' onclick='del(" + this.gId + ")'>☠</span></td>\n" +
+                            "            </tr> "
+                    }
                     // $(".sName").html(data[0].sName);
                     // $(".sPrice").html(data[0].sPrice);
                     // var str = "<img src='" + data[0].images[0].imgUrl + "' class='ione'>"
@@ -174,7 +219,6 @@
                     // $(".sTotal").html(sum);
                 })
                 $(".list").empty().append(str);
-
 
             })
 

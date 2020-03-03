@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.kgc.exam.mapper.ShoppingMapper">
     <insert id="add">
-        insert into shoppingcar (g_id,s_name,s_price,s_num,s_total,u_id)
+        insert into shoppingcar (g_id,s_name,s_price,s_num,s_total,user_id)
         values(#{shopping.gId},#{shopping.sName},#{shopping.sPrice},#{shopping.sNum},#{shopping.sPrice}*#{shopping.sNum},#{shopping.uId})
     </insert>
     <resultMap id="ShopResultMap" type="com.kgc.exam.entity.Shopping">
@@ -13,20 +13,21 @@
         <result column="s_price" jdbcType="DOUBLE" property="sPrice" />
         <result column="s_num" jdbcType="DOUBLE" property="sNum" />
         <result column="s_total" jdbcType="DOUBLE" property="sTotal" />
+        <result column="s_status" jdbcType="INTEGER" property="sStatus"/>
         <collection property="images" ofType="com.kgc.exam.entity.Image">
             <id column="img_id" property="imgId"></id>
             <result column="img_url" property="imgUrl"></result>
         </collection>
     </resultMap>
     <select id="querybyuId" resultMap="ShopResultMap">
-        SELECT S.s_name,s_price,s_num,s_total,S.g_id,S.u_id,I.img_id,I.img_url
+        SELECT S.s_name,s_price,s_num,s_total,S.g_id,user_id,S.s_status,I.img_id,I.img_url
         FROM `shoppingcar` AS S
         INNER JOIN `image` AS I
         ON I.g_id=S.g_id
-        where S.u_id=#{uId}
+        where user_id=#{uId}
     </select>
     <select id="query" resultType="com.kgc.exam.entity.Shopping">
-        SELECT s_name,s_price,s_num,s_total,g_id
+        SELECT s_name,s_price,s_num,s_total,g_id,s_status
         FROM `shoppingcar` where g_id=#{gId}
     </select>
     <update id="update" parameterType="com.kgc.exam.entity.Shopping">
@@ -42,20 +43,59 @@
         <!--@mbg.generated-->
         update shoppingcar
         set s_num = #{shopping.sNum},s_total=#{shopping.sPrice}*#{shopping.sNum}
-        where u_id = #{shopping.uId}
+        where user_id = #{shopping.uId}
     </update>
 
     <delete id="deleteBySStatusAndUserId">
         delete from shoppingcar where s_status=#{sStatus} and user_id=#{userId}
     </delete>
 
-    <update id="updateByUId">
+    <update id="updateSStatusByUserIdAndGId">
         update shoppingcar
         <set>
-            s_status=1
+            s_status=#{sStatus}
         </set>
         <where>
-            user_id = #{userId}
+            user_id = #{userId} and g_id = #{gId}
         </where>
     </update>
+
+    <select id="countBySStatusAndUserId" resultType="java.lang.Integer">
+        select count(1)
+        from shoppingcar
+        <where>
+            s_status=#{sStatus} and user_id=#{userId}
+        </where>
+    </select>
+    <select id="queryByUserIdAndSStatus" resultMap="ShopResultMap">
+        SELECT S.s_name,s_price,s_num,s_total,S.g_id,user_id,S.s_status,I.img_id,I.img_url
+        FROM `shoppingcar` AS S
+        INNER JOIN `image` AS I
+        ON I.g_id=S.g_id
+        <where>
+            user_id = #{userId} and s_status = #{sStatus}
+        </where>
+    </select>
+
+    <update id="updateByUserIdAndGId">
+        update shoppingcar
+        <set>
+            <if test="shopping.sNum != null">
+                s_num = #{shopping.sNum,jdbcType=INTEGER},
+            </if>
+            <if test="shopping.sTotal != null ">
+                s_total = #{shopping.sTotal,jdbcType=DOUBLE}
+            </if>
+            <where>
+                user_id = #{shopping.uId,jdbcType=INTEGER} and g_id = #{shopping.gId,jdbcType=INTEGER}
+            </where>
+        </set>
+    </update>
+    <select id="countByUIdAndGId" resultType="java.lang.Integer">
+        select count(1)
+        from shoppingcar
+        <where>
+            user_id=#{userId} and g_id = #{gId}
+        </where>
+    </select>
 </mapper>

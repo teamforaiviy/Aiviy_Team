@@ -3,6 +3,8 @@ package com.kgc.exam.controller;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.kgc.exam.entity.AlipayAttr;
+import com.kgc.exam.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,6 +18,9 @@ import java.util.Map;
 
 @Controller
 public class AlipayReturnController {
+    @Autowired
+    private OrderService orderService;
+
     /*
     * 阿里支付模块返回；
     * */
@@ -53,7 +58,16 @@ public class AlipayReturnController {
             System.out.println(msg);
             request.setAttribute("msg", msg);
             try {
-                request.getRequestDispatcher("success.jsp").forward(request, response);
+                /*
+                 * 更新数据库，将订单状态修改为已支付
+                 * */
+                if(orderService.updateOStateByONo(out_trade_no)){
+                    request.getRequestDispatcher("success.jsp?msg=1").forward(request, response);
+
+                }else {
+                    request.getRequestDispatcher("success.jsp？msg=0").forward(request, response);
+
+                }
             } catch (ServletException e) {
                 e.printStackTrace();
             }

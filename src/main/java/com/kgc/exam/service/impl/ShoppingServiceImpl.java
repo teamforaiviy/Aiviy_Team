@@ -51,4 +51,26 @@ public class ShoppingServiceImpl implements ShoppingService {
     public Boolean updateuId(Shopping shopping) {
         return shoppingMapper.updateuId(shopping)==1;
     }
+
+    @Override
+    public Boolean updateSStatusByUserIdAndGId(Integer userId, Integer gId, Integer sStatus) {
+        return shoppingMapper.updateSStatusByUserIdAndGId(userId,gId,sStatus)==1;
+    }
+
+    @Override
+    public Boolean deleteBySStatusAndUserId(Integer sStatus, Integer userId) {
+        return shoppingMapper.deleteBySStatusAndUserId(sStatus,userId)==shoppingMapper.countBySStatusAndUserId(sStatus,userId);
+    }
+
+    @Override
+    public List<Shopping> queryByUserIdAndSStatus(Integer userId, Integer sStatus) {
+        return shoppingMapper.queryByUserIdAndSStatus(userId,sStatus);
+    }
+
+    @Override
+    public Boolean updateByUserIdAndGId(Shopping shopping) {
+        return shoppingMapper.updateByUserIdAndGId(shopping)==shoppingMapper.countByUIdAndGId(shopping.getuId(),shopping.getgId());
+    }
+
+
 }

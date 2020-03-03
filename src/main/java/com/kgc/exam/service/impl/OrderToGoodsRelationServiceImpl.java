@@ -1,7 +1,7 @@
 package com.kgc.exam.service.impl;
 
-import com.kgc.exam.entity.Goods;
 import com.kgc.exam.entity.OrderToGoodsRelation;
+import com.kgc.exam.entity.Shopping;
 import com.kgc.exam.mapper.OrderToGoodsRelationMapper;
 import com.kgc.exam.service.OrderToGoodsRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +17,9 @@ public class OrderToGoodsRelationServiceImpl implements OrderToGoodsRelationServ
 
 
     @Override
-    public Boolean addOrderToGoodsRelation(List<Goods> goods,String oNo) {
+    public Boolean addOrderToGoodsRelation(List<Shopping> goods, String oNo) {
         OrderToGoodsRelation orderToGoodsRelation = null;
-        for(Goods goods1:goods){
+        for(Shopping goods1:goods){
             orderToGoodsRelation = new OrderToGoodsRelation();
             orderToGoodsRelation.setoNo(oNo);
             orderToGoodsRelation.setgId(goods1.getgId());

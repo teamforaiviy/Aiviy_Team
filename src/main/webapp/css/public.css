@@ -26,7 +26,7 @@
 	width: 750px;
 	height: 80px;
 	float: left;
-	margin: 10px 0px 10px 50px;
+	margin: 10px 0px 10px 80px;
 }
 .header-search-sch{
 	width: 580px;
@@ -70,13 +70,13 @@
 .header-shop{
 	height: 80px;
 	float: right;
-	margin: 10px 50px 10px 0px;
+	margin: 10px 80px 10px 0px;
 }
 .header-shop a{
 	display: block;
 	background-color: #25C6FC;
 	color: white;
-	width: 200px;
+	width: 140px;
 	height: 52px;
 	text-decoration: none;
 }
@@ -85,7 +85,7 @@
 	background-color: white;
 	border: 1px solid #25C6FC;
 }
-.header-shop-sp1{
+/*.header-shop-sp1{
 	width: 60%;
 	height: 52px;
 	float: left;
@@ -96,10 +96,10 @@
 	display: inline-block;
 	width: 40%;
 	height: 40%;
-}
+}*/
 
 .header-shop-sp2{
-	width: 30%;
+	width: 80%;
 	height: 52px;
 	float: right;
 }

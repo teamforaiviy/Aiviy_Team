@@ -3,8 +3,6 @@ package com.kgc.exam.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kgc.exam.entity.Address;
-import com.kgc.exam.entity.User;
-import com.kgc.exam.mapper.AddressMapper;
 import com.kgc.exam.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -24,8 +24,9 @@ CREATE TABLE `address` (
   `ad_id` int(8) NOT NULL auto_increment COMMENT '地址编号',
   `ad_address` varchar(55) default NULL COMMENT '收货地址',
   `ad_phone` varchar(11) default NULL COMMENT '收货人电话',
-  `ad_user` varchar(20) default NULL COMMENT '收货人姓名',
+  `ad_sname` varchar(20) default NULL COMMENT '收货人姓',
   `user_id` int(8) default NULL COMMENT '用户id',
+  `ad_name` varchar(55) default NULL COMMENT '收货人名',
   PRIMARY KEY  (`ad_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -91,32 +92,38 @@ CREATE TABLE `member` (
 
 /*Data for the table `member` */
 
-/*Table structure for table `order` */
+/*Table structure for table `orders` */
 
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `orders`;
 
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `o_id` int(8) NOT NULL auto_increment COMMENT '订单自增id',
-  `o_no` varchar(12) default NULL COMMENT '订单号',
-  `o_state` int(1) default NULL COMMENT '订单状态',
-  `o_num` int(3) default NULL COMMENT '商品数量',
+  `o_no` varchar(12) NOT NULL COMMENT '订单号',
+  `o_state` int(1) NOT NULL default '0' COMMENT '订单状态',
+  `o_num` double NOT NULL COMMENT '商品总价',
+  `user_id` int(11) NOT NULL COMMENT '用户id',
+  `createdDate` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY  (`o_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
-/*Data for the table `order` */
+/*Data for the table `orders` */
+
+insert  into `orders`(`o_id`,`o_no`,`o_state`,`o_num`,`user_id`,`createdDate`) values (1,'199717199457',0,272,1,'2020-02-28 00:00:00'),(2,'199729575180',0,272,1,'2020-03-02 19:29:57'),(3,'199746556214',0,272,1,'2020-03-02 19:46:55'),(4,'199747473781',0,272,1,'2020-03-02 19:47:52'),(5,'199748041625',0,272,1,'2020-03-02 19:48:07'),(6,'19975027453',0,272,1,'2020-03-02 19:50:27'),(7,'199751333254',0,272,1,'2020-03-02 19:51:33'),(8,'199753019978',0,272,1,'2020-03-02 19:53:01'),(9,'199754371359',0,272,1,'2020-03-02 19:54:37'),(10,'199759005786',0,272,1,'2020-03-02 19:59:00'),(11,'199759199339',0,272,1,'2020-03-02 19:59:19'),(12,'199701317080',0,272,1,'2020-03-02 20:01:31'),(13,'199703389321',0,272,1,'2020-03-02 20:03:38'),(14,'199758534609',1,410,1,'2020-03-03 08:58:53');
 
 /*Table structure for table `ordertogoodsrelation` */
 
 DROP TABLE IF EXISTS `ordertogoodsrelation`;
 
 CREATE TABLE `ordertogoodsrelation` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL auto_increment,
   `o_no` varchar(12) NOT NULL,
   `g_id` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `ordertogoodsrelation` */
+
+insert  into `ordertogoodsrelation`(`id`,`o_no`,`g_id`) values (1,'199703389321',10),(2,'199703389321',11),(3,'199758534609',9),(4,'199758534609',10),(5,'199758534609',11);
 
 /*Table structure for table `shoppingcar` */
 
@@ -130,8 +137,9 @@ CREATE TABLE `shoppingcar` (
   `s_total` double NOT NULL,
   `g_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `s_status` int(11) NOT NULL default '0' COMMENT '默认0表示未生成订单，1表示已生成订单',
   PRIMARY KEY  (`s_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 /*Data for the table `shoppingcar` */
 
@@ -142,16 +150,19 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(8) NOT NULL auto_increment COMMENT '自增id',
   `user_name` varchar(20) NOT NULL COMMENT '用户名',
-  `user_mail` varchar(35) default NULL COMMENT '邮箱',
-  `user_phone` varchar(11) default NULL COMMENT '电话号码',
-  `user_pwd` varchar(20) default NULL COMMENT '密码',
+  `user_mail` varchar(35) NOT NULL COMMENT '邮箱',
+  `user_phone` varchar(11) NOT NULL COMMENT '电话号码',
+  `user_pwd` varchar(20) NOT NULL COMMENT '密码',
   `user_money` double default NULL COMMENT '消费金额',
-  `nickname` varchar(20) default NULL COMMENT '昵称',
-  `v_id` int(8) default NULL COMMENT '会员id',
+  `nickname` varchar(20) default '' COMMENT '昵称',
+  `v_id` int(8) NOT NULL COMMENT '会员id',
+  `createdDate` datetime NOT NULL COMMENT '创建日期',
   PRIMARY KEY  (`user_id`,`user_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user` */
+
+insert  into `user`(`user_id`,`user_name`,`user_mail`,`user_phone`,`user_pwd`,`user_money`,`nickname`,`v_id`,`createdDate`) values (1,'admin','631671241@qq.com','13675141997','123456',NULL,NULL,1,'2020-03-02 16:20:06');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

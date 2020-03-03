@@ -1,4 +1,6 @@
 package com.kgc.exam.mapper;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 import com.kgc.exam.entity.Order;
 
 public interface OrderMapper {
@@ -31,5 +33,11 @@ public interface OrderMapper {
     * 更新数据（数据必须是全的）
     * */
     int updateByPrimaryKey(Order record);
+
+    /*
+    * 根据订单号查询订单
+    * */
+    Order queryAllByONo(@Param("oNo")String oNo);
+
 
 }

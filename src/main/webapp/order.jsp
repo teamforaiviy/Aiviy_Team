@@ -40,12 +40,12 @@
         ♕♕♕♕♕（999条用户评价）
         <p><span class="qian">￥<span name="gPrice"></span>.00</span></p>
         <span class="PC" name="gContent"></span>
-        <h5>用户：</h5>
+        <h5><span>用户：</span></h5>
         <select name="">
             <option value="" selected="selected">选择一个选项</option>
             <option value="">windows</option>
         </select>
-        <h5>许可：</h5>
+        <h5><span>许可</span>：</h5>
         <select name="">
             <option value="">选择一个选项</option>
             <option value="">一年</option>
@@ -159,7 +159,7 @@
                     <span class="money">价钱</span><br/>
                     <span class="renmingbi"><span class="yuana">￥279.00</span>&nbsp;<span
                             class="yuan">￥99.00</span></span>
-                </div>s
+                </div>
             </li>
             <li>
                 <div class="footimgfour">
@@ -198,33 +198,66 @@
         return result ? decodeURIComponent(result[2]) : null;
     }
     var gid = getUrlParam("gid");
-    var uid = getUrlParam("uid");
+    var uid = ${user.userId}
 
-    var str = "";
+    //评论提交
+    function fnDate(){
+        var date=new Date();
+        var year=date.getFullYear();//当前年份
+        var month=date.getMonth();//当前月份
+        var data=date.getDate();//天
+        var hours=date.getHours();//小时
+        var minute=date.getMinutes();//分
+        var second=date.getSeconds();//秒
+        var time=year+"-"+fnW((month+1))+"-"+fnW(data)+" "+fnW(hours)+":"+fnW(minute)+":"+fnW(second);
+        return time;
+    }
+
+    //补位 当某个字段不是两位数时补0
+    function fnW(str){
+        var num;
+        str>10?num=str:num="0"+str;
+        return num;
+    }
+
     $(function() {
 
-        // var username = getUrlParam("");
-        $.getJSON("comment/queryAll",{},function (data) {
+
+        $.getJSON("comment/queryAll",{"gId":gid},function (data) {
+            var str = "";
+
                 $(data).each(function () {
-                    str += "<span>${sessionScope.username}<span>"+
+                    str +="<span>"+this.userName+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
                         "<span>"+this.ctime+"</span><br>"+
-                        "<p>"+this.content+"</p><br>";
+                        "<span>"+this.cComment+"</span><br>"+
+                        "<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br>";
                 })
             $("#talk_content").append(str);
         })
 
         $("#talk_submit").click(function () {
-            var date = new Date();
+
+            var str = "";
+            var date = fnDate();
             var content = $("#textareaBox").val();
-            str += "<span>${sessionScope.username}<span>"+
+
+            if (content == "") {
+                return false;
+            }
+            str += "<span>"+uid+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
                 "<span>"+date+"</span><br>"+
-                "<p>"+content+"</p>";
+                "<span>"+content+"</span><br>"+
+                "<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br>";
             $("#talk_content").append(str);
+            $("#textareaBox").val("");
 
         $.ajax({
                 url:"comment/insert",
                 type:"post",
-                // data:{"comment":comment},
+                data:{"cComment":content,
+                      "gId":gid,
+                      "ctime":date,
+                       "uid":uid},
                 dataType:"json",
                 success:function (data) {
                     if(data){
@@ -240,7 +273,7 @@
                 var sName=$("h3[name=gName]").html();
                 var sPrice=$("span[name=gPrice]").html();
                 var sNum=$("input[name=amount]").val();
-                $.getJSON("shop/add",{"sName":sName,"sPrice":sPrice,"sNum":sNum,"gId":gid,"uId":uid},function (data) {
+                $.getJSON("shop/add",{"sName":sName,"sPrice":sPrice,"sNum":sNum,"gId":gid},function (data) {
                     if (data){
                         window.location.href="shoppingcar.jsp?gid="+gid+"&uid="+uid;
                     }
@@ -269,7 +302,7 @@
 
             $.getJSON("img/query",{"gid":gid},function (data) {
                 $("div[id=foneback]").css({"background-image":"url('"+data[0].imgUrl+"')",
-                    "background-size":"cover"}
+                    "background-size":"578px 386px"}
                 )
                 str ="";
                 $(data).each(function () {

@@ -14,9 +14,8 @@
     </association>
   </resultMap>
   <sql id="Base_Column_List">
-    ad_id, ad_address, ad_phone, ad_user, user_id
+    ad_id, ad_address, ad_phone, ad_name, ad_sname, user_id
   </sql>
-
   <select id="queryAddress" resultMap="BaseResultMap">
     select ad_id, ad_address, ad_phone, ad_name, ad_sname, ad.user_id aduserId,u.user_id uuserId,user_name
     from address ad inner join user u on ad.user_id=u.user_id
@@ -41,7 +40,7 @@
   </delete>
   <insert id="insert" parameterType="com.kgc.exam.entity.Address">
     insert into address (ad_address, ad_phone,ad_name, ad_sname,user_id)
-    values (#{address.adAddress}, #{address.adPhone}, #{address.ad_sname},#{address.ad_name}, #{address.userId})
+    values (#{address.adAddress}, #{address.adPhone}, #{address.adSname},#{address.adName}, #{address.userId})
   </insert>
   <insert id="insertSelective" parameterType="com.kgc.exam.entity.Address">
     <!--@mbg.generated-->
@@ -56,10 +55,10 @@
       <if test="adPhone != null">
         ad_phone,
       </if>
-      <if test="ad_name != null">
+      <if test="adName != null">
         ad_name,
       </if>
-      <if test="ad_sname != null">
+      <if test="adSname != null">
         ad_sname,
       </if>
       <if test="userId != null">
@@ -76,11 +75,11 @@
       <if test="adPhone != null">
         #{adPhone,jdbcType=VARCHAR},
       </if>
-      <if test="ad_sname != null">
-        #{adUser,jdbcType=VARCHAR},
+      <if test="adSname != null">
+        #{adSname,jdbcType=VARCHAR},
       </if>
-      <if test="ad_name != null">
-        #{adUser,jdbcType=VARCHAR},
+      <if test="adName != null">
+        #{adName,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
@@ -97,11 +96,11 @@
       <if test="adPhone != null">
         ad_phone = #{adPhone,jdbcType=VARCHAR},
       </if>
-      <if test="ad_name != null">
-        ad_user = #{adUser,jdbcType=VARCHAR},
+      <if test="adName != null">
+        ad_user = #{adName,jdbcType=VARCHAR},
       </if>
-      <if test="ad_sname != null">
-        ad_user = #{adUser,jdbcType=VARCHAR},
+      <if test="adSname != null">
+        ad_user = #{adSname,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
@@ -114,8 +113,8 @@
     update address
     set ad_address = #{adAddress,jdbcType=VARCHAR},
       ad_phone = #{adPhone,jdbcType=VARCHAR},
-    ad_name = #{ad_name,jdbcType=VARCHAR},
-    ad_sname = #{ad_sname,jdbcType=VARCHAR},
+    ad_name = #{adName,jdbcType=VARCHAR},
+    ad_sname = #{adSname,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER}
     where ad_id = #{adId,jdbcType=INTEGER}
   </update>

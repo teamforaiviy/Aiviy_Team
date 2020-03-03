@@ -1,6 +1,5 @@
 package com.kgc.exam.mapper;
 import org.apache.ibatis.annotations.Param;
-import java.util.List;
 
 import com.kgc.exam.entity.Orders;
 

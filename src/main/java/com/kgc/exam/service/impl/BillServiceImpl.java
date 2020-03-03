@@ -16,4 +16,9 @@ public class BillServiceImpl implements BillService {
         return billMapper.queryaddress(uId);
 
     }
+
+    @Override
+    public Integer add(Address address) {
+        return billMapper.add(address);
+    }
 }

@@ -221,7 +221,11 @@
     }
 
     $(function() {
-
+        $.getJSON("user/ifLogin",{},function (data) {
+            if (!data){
+                alert("请登录，否则无法购买")
+            }
+        })
 
         $.getJSON("comment/queryAll",{"gId":gid},function (data) {
             var str = "";
@@ -269,7 +273,6 @@
         })
 
             $("input[type=submit]").click(function () {
-
                 var sName=$("h3[name=gName]").html();
                 var sPrice=$("span[name=gPrice]").html();
                 var sNum=$("input[name=amount]").val();

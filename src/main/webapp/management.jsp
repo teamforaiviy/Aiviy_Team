@@ -198,7 +198,7 @@
             <h3>账单地址</h3>
             <div class="">
                 <p>名字</p>
-                <p><input type="text"></p>
+                <p><input type="text" name="shmz"></p>
             </div>
             <div class="">
                 <p>地址</p>
@@ -220,22 +220,22 @@
             <div class="clear"></div>
             <div class="xxdz">
                 <p>详细地址</p>
-                <p><input type="text" placeholder="请输入详细地址信息,如道路、门牌号、小区、楼栋号、单元等信息" /></p>
+                <p><input  name="xxdz" type="text" placeholder="请输入详细地址信息,如道路、门牌号、小区、楼栋号、单元等信息" /></p>
             </div>
-            <div class="">
-                <p>邮政编码</p>
-                <p><input type="text" name="" /></p>
-            </div>
+<%--            <div class="">--%>
+<%--                <p>邮政编码</p>--%>
+<%--                <p><input type="text" name="" /></p>--%>
+<%--            </div>--%>
             <div class="">
                 <p>手机号码</p>
-                <p><input type="text" name="" /></p>
+                <p><input type="text" name="sjhm" /></p>
             </div>
-            <div class="">
-                <p>邮箱地址</p>
-                <p><input type="text" name="" /></p>
-            </div>
+<%--            <div class="">--%>
+<%--                <p>邮箱地址</p>--%>
+<%--                <p><input type="text" name="" /></p>--%>
+<%--            </div>--%>
             <div class="button-address">
-                <p><input type="button" value="保存地址" /></p>
+                <p><input type="button" value="保存地址"  name="xgdz"/></p>
             </div>
         </form>
     </div>
@@ -253,7 +253,7 @@
             <div class="clear"></div>
             <div class="xxdz">
                 <p>绑定邮箱</p>
-                <p><input type="text" placeholder="请输入详细地址信息,如道路、门牌号、小区、楼栋号、单元等信息" /></p>
+                <p><input type="text" placeholder="请输入邮箱账号" /></p>
             </div>
             <div class="">
                 <p>当前密码</p>
@@ -335,7 +335,68 @@
             })
 
 
+
+            /*
+         修改页面一进来时，调用查询方法，将原有数据显示到页面上
+      */
+            $.getJSON("Personal/queryAddress", {"userId": userId}, function (data) {
+                $("input[name=xxdz]").val(data.adAddress);
+                $("input[name=sjhm]").val(data.adPhone);
+                $("input[name=shmz]").val(data.adName);
+            })
         })
+
+
+         /*修改地址*/
+        /*
+            提交按钮点击事件
+         */
+        $("input[name=xgdz]").click(function () {
+            var phone = $("input[name=sjhm]").val();
+            var  name= $("input[name=shmz]").val();
+            var sf=$("#province2").val();
+            var cs=$("#city2").val();
+            var dq=$("district2").val();
+            var address=$("input[name=xgdz]").val();
+            var dz=sf+cs+dq+address;
+            if(phone == ""){
+                alert("手机号不能为空！");
+            }else if(name == ""){
+                alert("收货姓名不能为空！");
+            }else if(dz == ""){
+                alert("收货地址不能为空！");
+            }
+            else{
+                $.ajax({
+                    url: "Personal/updateAddress",
+                    type: "post",
+                    data: $("form").serialize(),
+                    dataType: "json",
+                    success: function (data) {
+                        if(data){
+                            alert("修改成功！");
+                            window.location.href = "index.jsp";
+                        }else{
+                            alert("修改失败！");
+                        }
+                    }
+                })
+            }
+        })
+
+        //获取地址栏参数,可以是中文参数
+        function getUrlParam(key) {
+            // 获取参数
+            var url = window.location.search;
+            // 正则筛选地址栏
+            var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+            // 匹配目标参数
+            var result = url.substr(1).match(reg);
+            //返回参数值
+            return result ? decodeURIComponent(result[2]) : null;
+        }
+
+
 
 
 

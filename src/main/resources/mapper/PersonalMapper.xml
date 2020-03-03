@@ -21,4 +21,57 @@
             </if>
         </where>
     </select>
+
+    <select id="queryAddress" resultType="com.kgc.exam.entity.Address">
+        select ad_id,ad_address,ad_phone,user_id,ad_sname,ad_name from address where user_id=#{userId}
+    </select>
+
+    <update id="updateAddress">
+        update address
+        <set>
+            <trim suffix="" suffixOverrides=",">
+                <if test="Address.adName != null and Address.adName != ''">
+                    ad_user=#{Address.adName},
+                </if>
+                <if test="Address.adAddress != null and Address.adAddress != ''">
+                    ad_address=#{Address.adAddress},
+                </if>
+                <if test="Address.adName != null and  Address.adName!= ''">
+                    ad_user=#{Address.adName},
+                </if>
+            </trim>
+        </set>
+        <where>
+            <if test="Address.adId != null">
+                ad_id=#{Address.adId}
+            </if>
+        </where>
+    </update>
+
+    <update id="updateUser">
+        update user
+        <set>
+            <trim suffix="" suffixOverrides=",">
+                <if test="User.nickname != null and User.nickname != ''">
+                    nickname=#{User.nickname},
+                </if>
+                <if test="User.userMail != null and Address.userMail != ''">
+                    user_mail=#{User.userMail},
+                </if>
+                <if test="User.userPhone != null and  User.userPhone!= ''">
+                    user_phone=#{User.userPhone},
+                </if>
+                <if test="User.userPwd != null and  User.userPwd!= ''">
+                    user_pwd=#{User.userPwd},
+                </if>
+            </trim>
+        </set>
+        <where>
+            <if test="User.userId != null">
+                user_id=#{User.userId}
+            </if>
+        </where>
+    </update>
+
+
 </mapper>

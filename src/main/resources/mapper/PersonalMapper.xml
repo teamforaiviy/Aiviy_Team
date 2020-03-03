@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.kgc.exam.mapper.PersonalMapper">
-    <resultMap id="orderMap" type="com.kgc.exam.entity.Order">
-        <id column="o_id" property="o_id"></id>
-        <result column="o_no" property="o_no"></result>
-        <result column="o_state" property="o_state"></result>
-        <result column="o_num" property="o_num"></result>
-        <result column="g_id" property="g_id"></result>
-        <result column="u_id" property="u_id"></result>
+    <resultMap id="orderMap" type="com.kgc.exam.entity.Orders">
+        <id column="o_id" property="oId"></id>
+        <result column="o_no" property="oNo"></result>
+        <result column="o_state" property="oState"></result>
+        <result column="o_num" property="oNum"></result>
         <association property="user" javaType="com.kgc.exam.entity.User">
-            <id column="user_id" property="user_id"></id>
-            <result column="user_money" property="user_money"></result>
+            <id column="user_id" property="userId"></id>
+            <result column="user_money" property="userMoney"></result>
         </association>
     </resultMap>
 
     <select id="queryOrder" resultMap="orderMap">
-        select o_id,o_no,o_state,o_num,g_id,u_id,user_id,user_money
-        from order INNER JOIN user on u_id=user_id
+        select O.o_id,O.o_no,O.o_state,O.o_num,O.user_id,U.user_money
+        from orders O INNER JOIN user U on O.user_id=U.user_id
         <where>
-            <if test="u_id!=null and u_id!=0">
+            <if test="userId!=null and userId!=0">
                 u_id=#{userId}
             </if>
         </where>

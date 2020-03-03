@@ -53,8 +53,8 @@ public class ShoppingServiceImpl implements ShoppingService {
     }
 
     @Override
-    public Boolean updateByUserIdAndGId(Integer userId, Integer gId, Integer sStatus) {
-        return shoppingMapper.updateByUserIdAndGId(userId,gId,sStatus)==1;
+    public Boolean updateSStatusByUserIdAndGId(Integer userId, Integer gId, Integer sStatus) {
+        return shoppingMapper.updateSStatusByUserIdAndGId(userId,gId,sStatus)==1;
     }
 
     @Override
@@ -64,7 +64,12 @@ public class ShoppingServiceImpl implements ShoppingService {
 
     @Override
     public List<Shopping> queryByUserIdAndSStatus(Integer userId, Integer sStatus) {
-        return null;
+        return shoppingMapper.queryByUserIdAndSStatus(userId,sStatus);
+    }
+
+    @Override
+    public Boolean updateByUserIdAndGId(Shopping shopping) {
+        return shoppingMapper.updateByUserIdAndGId(shopping)==shoppingMapper.countByUIdAndGId(shopping.getuId(),shopping.getgId());
     }
 
 

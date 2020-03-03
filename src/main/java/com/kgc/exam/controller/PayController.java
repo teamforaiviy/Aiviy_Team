@@ -5,7 +5,7 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.kgc.exam.entity.AlipayAttr;
-import com.kgc.exam.entity.Order;
+import com.kgc.exam.entity.Orders;
 import com.kgc.exam.entity.Shopping;
 import com.kgc.exam.entity.User;
 import com.kgc.exam.service.OrderService;
@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,8 +42,8 @@ public class PayController {
     public void payForGoods(@RequestParam("price") String price, HttpServletRequest request, HttpServletResponse response) throws IOException{
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        String phoneNumber = user.getUserName();
-        String name = user.getUserPhone();
+        String phoneNumber = user.getUserPhone();
+        String name = user.getUserName();
         AlipayClient alipayClient = new DefaultAlipayClient(
                 AlipayAttr.gatewayUrl, AlipayAttr.app_id,
                 AlipayAttr.merchant_private_key, "json", AlipayAttr.charset,
@@ -61,7 +60,7 @@ public class PayController {
         * 购物车中已生成的数据删除
         * 在订单-商品关系表中添加数据
         * */
-        Order order = new Order();
+        Orders order = new Orders();
         order.setoNo(out_trade_no);
         order.setoState(0);
         order.setoNum(Double.parseDouble(price));

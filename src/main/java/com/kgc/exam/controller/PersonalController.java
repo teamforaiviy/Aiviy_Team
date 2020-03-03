@@ -1,6 +1,6 @@
 package com.kgc.exam.controller;
 
-import com.kgc.exam.entity.Order;
+import com.kgc.exam.entity.Orders;
 import com.kgc.exam.service.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class PersonalController {
     private PersonalService personalService;
 
     @RequestMapping("order")
-    public List<Order> queryOrder(@RequestParam("userId") Integer userId){
+    public List<Orders> queryOrder(@RequestParam("userId") Integer userId){
         return personalService.queryOrder(userId);
     }
 

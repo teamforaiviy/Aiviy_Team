@@ -83,10 +83,25 @@ public class ShoppingController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if(sStatus==0){
-            return shoppingService.updateByUserIdAndGId(user.getUserId(),gId,1);
+            return shoppingService.updateSStatusByUserIdAndGId(user.getUserId(),gId,1);
         }else {
-            return shoppingService.updateByUserIdAndGId(user.getUserId(),gId,0);
+            return shoppingService.updateSStatusByUserIdAndGId(user.getUserId(),gId,0);
         }
 
+    }
+    /*
+    * 更新购物车中商品数量及总价
+    * */
+    @RequestMapping("updateNumAndTotalPrice")
+    public Boolean updateNumAndTotalPrice(Integer gId,Integer num,String totalPrice,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        User user =(User) session.getAttribute("user");
+        Double TotalPrice = Double.parseDouble(totalPrice);
+        Shopping shopping = new Shopping();
+        shopping.setgId(gId);
+        shopping.setsNum(num);
+        shopping.setsTotal(TotalPrice);
+        shopping.setuId(user.getUserId());
+        return shoppingService.updateByUserIdAndGId(shopping);
     }
 }

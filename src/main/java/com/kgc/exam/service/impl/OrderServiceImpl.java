@@ -1,7 +1,7 @@
 package com.kgc.exam.service.impl;
 
-import com.kgc.exam.entity.Order;
-import com.kgc.exam.mapper.OrderMapper;
+import com.kgc.exam.entity.Orders;
+import com.kgc.exam.mapper.OrdersMapper;
 import com.kgc.exam.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
-    private OrderMapper orderMapper;
+    private OrdersMapper orderMapper;
     @Override
-    public Integer insertIntoOrder(Order order) {
-        return orderMapper.insertSelective(order);
+    public Integer insertIntoOrder(Orders order) {
+        return orderMapper.insert(order);
     }
 
     @Override
     public Boolean updateOStateByONo(String oNo) {
-        Order order = orderMapper.queryAllByONo(oNo);
+        Orders order = orderMapper.queryAllByONo(oNo);
         order.setoState(1);
         return orderMapper.updateByPrimaryKey(order)==1;
     }

@@ -25,7 +25,7 @@
         }
         var gid = getUrlParam("gid");
         var uid = getUrlParam("uid");
-        var price = getUrlParam("price")
+        var price = getUrlParam("price");
         $(function () {
 
             $.getJSON("bill/queryaddress",{"uId":uid},function (data) {
@@ -36,23 +36,10 @@
                     $("input[name=address]").val(data.adAddress);
                     $("input[name=phone]").val(data.adPhone);
                     $("input[type=button]").click(function () {
-                        window.location.href="pay/payForGoods?price="+price;
-
+                        window.location.href="payforGoods.jsp"
                     })
                 }
-
             })
-
-
-
-
-
-
-
-
-
-
-
         })
 
     </script>
@@ -103,7 +90,7 @@
     </div>
 </div>
 <div class="close">
-    <input type="button" class="ok" value="确认订单" onclick="window.location.href='payforGoods.jsp'"></button>
+    <input type="button" class="ok" value="确认订单" onclick="window.location.href='pay/payForGoods?price='+price"></button>
 </div>
 
 </body>

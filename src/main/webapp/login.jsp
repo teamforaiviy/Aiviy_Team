@@ -20,30 +20,33 @@
 <body>
 <div id="background">
     <div class="whole">
-        <div class="aiviy"><img src="/img/logo.png"></div>
+        <div class="aiviy"><img src="/img/logo.png" onclick="window.location.href='index.jsp'" ></div>
         <form>
-            <div class="register">登录</div>
+            <div class="register" >登录</div>
             <div class="users">
                 <div class="user">
-                    <input type="text" name="userName" placeholder="用户名/邮箱/手机号" />
-                    <b><span id="my-element">i</span></b>
+                    <input type="text" name="username" placeholder="用户名/邮箱/手机号" />
                 </div>
                 <div class="usernameError"></div>
             </div>
             <div class="passwords">
                 <div class="password">
                     <input type="password" name="password" placeholder="密码" />
-                    <b><span id="">i</span></b>
                 </div>
                 <div class="passwordError"></div>
             </div>
             <div class="new">
-                <input type="submit" class="dl" value="登录">
+                <button type="button">登录</button>
             </div>
             <div class="zhuce">
-                <b><p>没有aiviy账号？</p></b>
+                <b><p>忘记密码？</p></b>
             </div>
         </form>
+        <div class="tail">
+            <a href="register.jsp">注册</a>
+            <span>|</span>
+            <a href="login.jsp">首页</a>
+        </div>
     </div>
 </div>
 </body>

@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: chensijia
+  Comment: chensijia
   Date: 2020/2/27
   Time: 10:02
   To change this template use File | Settings | File Templates.
@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>User</title>
+    <title>Comment</title>
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -35,7 +35,7 @@
         .pagination li {
             margin-left: 10px;
         }
-        #updateUser select {
+        #updateComment select {
             margin-top: 10px;
             background-color: #e9ecef;
             width: 100px;
@@ -57,34 +57,36 @@
             <div class="breadcrumb-holder container-fluid">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-                    <li class="breadcrumb-item active">User            </li>
+                    <li class="breadcrumb-item active">Comment            </li>
                 </ul>
             </div>
             <!-- Forms Section-->
-            <section class="User">
+            <section class="Comment">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header d-flex align-items-center">
-                                    <h3 class="h4">User</h3>
+                                    <h3 class="h4">Comment</h3>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="#" data-toggle="modal" data-target="#createUser">添加用户</a>
+                                    <a href="#" data-toggle="modal" data-target="#createComment">添加评论</a>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-striped" id="myTable">
                                             <thead>
                                             <tr>
-                                                <th>用户ID</th>
+                                                <td colspan="6">
+                                                    商品名：<input type="text" name="gName">
+                                                    <button type="button" class="btn btn-primary">查询</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>评论编号</th>
+                                                <th>评论内容</th>
                                                 <th>用户名</th>
-                                                <th>昵称</th>
-                                                <th>密码</th>
-                                                <th>邮箱</th>
-                                                <th>手机号</th>
-                                                <th>消费金额</th>
-                                                <th>会员等级</th>
-                                                <th>创建时间</th>
+                                                <th>商品名</th>
+                                                <th>评论时间</th>
                                                 <th>操作</th>
                                             </tr>
                                             </thead>
@@ -97,19 +99,19 @@
                                         </nav>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="createUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal fade" id="createComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel">添加用户</h4>
+                                                <h4 class="modal-title" id="myModalLabel">添加评论</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form>
                                                     <table>
                                                         <tr>
-                                                            <td>用户名：</td>
-                                                            <td><input type="text" class="form-control" name="userName"></td>
+                                                            <td>评论名：</td>
+                                                            <td><input type="text" class="form-control" name="CommentName"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>昵称：</td>
@@ -117,44 +119,44 @@
                                                         </tr>
                                                         <tr>
                                                             <td>密码：</td>
-                                                            <td><input type="password" class="form-control" name="userPwd"></td>
+                                                            <td><input type="password" class="form-control" name="CommentPwd"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>邮箱：</td>
-                                                            <td><input type="email" class="form-control" name="userMail"></td>
+                                                            <td><input type="email" class="form-control" name="CommentMail"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>手机号：</td>
-                                                            <td><input type="text" class="form-control" name="userPhone"></td>
+                                                            <td><input type="text" class="form-control" name="CommentPhone"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>消费金额：</td>
-                                                            <td><input type="text" class="form-control" name="userMoney"></td>
+                                                            <td><input type="text" class="form-control" name="CommentMoney"></td>
                                                         </tr>
                                                     </table>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" onclick="insertUser()">Save</button>
+                                                <button type="button" class="btn btn-primary" onclick="insertComment()">Save</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="updateUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+                                <div class="modal fade" id="updateComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel1">修改用户</h4>
+                                                <h4 class="modal-title" id="myModalLabel1">修改评论</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form>
-                                                    <input type="hidden" class="form-control" name="userId">
+                                                    <input type="hidden" class="form-control" name="CommentId">
                                                     <table>
                                                         <tr>
-                                                            <td>用户名：</td>
-                                                            <td><input type="text" class="form-control" name="userName"></td>
+                                                            <td>评论名：</td>
+                                                            <td><input type="text" class="form-control" name="CommentName"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>昵称：</td>
@@ -162,15 +164,15 @@
                                                         </tr>
                                                         <tr>
                                                             <td>邮箱：</td>
-                                                            <td><input type="email" class="form-control" name="userMail"></td>
+                                                            <td><input type="email" class="form-control" name="CommentMail"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>手机号：</td>
-                                                            <td><input type="text" class="form-control" name="userPhone"></td>
+                                                            <td><input type="text" class="form-control" name="CommentPhone"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>消费金额：</td>
-                                                            <td><input type="text" class="form-control" name="userMoney"></td>
+                                                            <td><input type="text" class="form-control" name="CommentMoney"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>会员等级：</td>
@@ -183,7 +185,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" onclick="updateUser()">Save</button>
+                                                <button type="button" class="btn btn-primary" onclick="updateComment()">Save</button>
                                             </div>
                                         </div>
                                     </div>
@@ -209,70 +211,63 @@
     var pn=1;
     var ps=5;
     $(function () {
-        queryUser(pn,ps)
-        $.getJSON("../member/queryAll",function (data) {
-            var opStr = "";
-            $(data).each(function () {
-                opStr +="<option value='"+this.vId+"'>"+this.vName+"</option>";
-            })
-            $("#updateUser select").append(opStr);
+        queryComment(pn,ps)
+        $("#myTable button").click(function () {
+            queryComment(pn,ps)
         })
     })
-    function queryUser(pn,ps) {
-        $.getJSON("../user/queryUser",{"pn":pn,"ps":ps},function (data) {
+    function queryComment(pn,ps) {
+        var gName = $("#myTable input[name=gName]").val();
+        $.getJSON("../comment/queryComment",{"pn":pn,"ps":ps,"gName":gName},function (data) {
             var page =eval(data);
             var str="";
             $(page.list).each(function() {
                 str += "<tr>" +
-                    "<td>"+this.userId+"</td>" +
-                    "<td>"+this.userName+"</td>" +
-                    "<td>"+this.nickname+"</td>" +
-                    "<td>"+this.userPwd+"</td>" +
-                    "<td>"+this.userMail+"</td>" +
-                    "<td>"+this.userPhone+"</td>" +
-                    "<td>"+(this.userMoney==null?"":this.userMoney)+"</td>" +
-                    "<td>"+this.member.vName+"</td>" +
-                    "<td>"+this.createddate+"</td>" +
-                    "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateUser\" onclick='queryById("+this.userId+")'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.userId+")'>删除</a></td>" +
+                    "<td>"+this.cId+"</td>" +
+                    "<td>"+this.cComment+"</td>" +
+                    "<td>"+this.user.userName+"</td>" +
+                    "<td>"+this.goods.gName+"</td>" +
+                    "<td>"+this.ctime+"</td>" +
+                    "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateComment\" onclick='queryById("+this.cId+")'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.cId+")'>删除</a></td>" +
                     "</tr>";
             })
             $("#myTable tbody").empty().append(str);
 
             var pageStr="";
-            pageStr +="<li><a href='javascript:queryUser(1,"+ps+")'>首页</a></li>";
+            pageStr +="<li><a href='javascript:queryComment(1,"+ps+")'>首页</a></li>";
             if(page.hasPreviousPage){
                 pageStr +="<li>" +
-                    "<a href='javascript:queryUser("+(page.pageNum-1)+","+ps+")' aria-label='Previous'>" +
+                    "<a href='javascript:queryComment("+(page.pageNum-1)+","+ps+")' aria-label='Previous'>" +
                     "<span aria-hidden=''true'>上一页</span>" +
                     "</a>" +
                     "</li>";
             }
             $(page.navigatepageNums).each(function () {
                 if(page.pageNum==this){
-                    pageStr +="<li><a class='active' href='javascript:queryUser("+this+","+ps+")'>"+this+"</a></li>";
+                    pageStr +="<li><a class='active' href='javascript:queryComment("+this+","+ps+")'>"+this+"</a></li>";
                 }else {
-                    pageStr +="<li><a href='javascript:queryUser("+this+","+ps+")'>"+this+"</a></li>";
+                    pageStr +="<li><a href='javascript:queryComment("+this+","+ps+")'>"+this+"</a></li>";
                 }
             })
             if(page.hasNextPage){
                 pageStr +="<li>" +
-                    "<a href='javascript:queryUser("+(page.pageNum+1)+","+ps+")' aria-label='Previous'>" +
+                    "<a href='javascript:queryComment("+(page.pageNum+1)+","+ps+")' aria-label='Previous'>" +
                     "<span aria-hidden='true'>下一页</span>" +
                     "</a>" +
                     "</li>";
             }
-            pageStr +="<li><a href='javascript:queryUser("+page.pages+","+ps+")'>尾页</a></li>";
+            pageStr +="<li><a href='javascript:queryComment("+page.pages+","+ps+")'>尾页</a></li>";
             $(".pagination").empty().append(pageStr);
         })
     }
     /**
-     * 添加用户
+     * 添加评论
      */
-    function insertUser() {
+    function insertComment() {
         $.ajax({
-            url:"../user/insert",
+            url:"../Comment/insert",
             type:"get",
-            data:$("#createUser form").serialize(),
+            data:$("#createComment form").serialize(),
             dataType:"json",
             success:function (data) {
                 if(data){
@@ -285,33 +280,33 @@
         })
     }
     /**
-     * 通过Id查询用户
+     * 通过Id查询评论
      */
-    function queryById(userId) {
+    function queryById(CommentId) {
         $.ajax({
-            url:"../user/queryById",
+            url:"../Comment/queryById",
             type:"get",
-            data:{"userId":userId},
+            data:{"CommentId":CommentId},
             dataType:"json",
             success:function (data) {
-                $("#updateUser input[name=userId]").val(data.userId);
-                $("#updateUser input[name=userName]").val(data.userName);
-                $("#updateUser input[name=nickname]").val(data.nickname);
-                $("#updateUser input[name=userMail]").val(data.userMail);
-                $("#updateUser input[name=userPhone]").val(data.userPhone);
-                $("#updateUser input[name=userMoney]").val(data.userMoney);
-                $("#updateUser select").val(data.member.vId);
+                $("#updateComment input[name=CommentId]").val(data.CommentId);
+                $("#updateComment input[name=CommentName]").val(data.CommentName);
+                $("#updateComment input[name=nickname]").val(data.nickname);
+                $("#updateComment input[name=CommentMail]").val(data.CommentMail);
+                $("#updateComment input[name=CommentPhone]").val(data.CommentPhone);
+                $("#updateComment input[name=CommentMoney]").val(data.CommentMoney);
+                $("#updateComment select").val(data.member.vId);
             }
         })
     }
     /**
-     * 修改用户
+     * 修改评论
      */
-    function updateUser() {
+    function updateComment() {
         $.ajax({
-            url:"../user/update",
+            url:"../Comment/update",
             type:"get",
-            data:$("#updateUser form").serialize(),
+            data:$("#updateComment form").serialize(),
             dataType:"json",
             success:function (data) {
                 if(data){
@@ -324,14 +319,14 @@
         })
     }
     /**
-     * 删除用户
+     * 删除评论
      */
-    function del(userId) {
-        if(confirm("确定删除用户吗？")){
+    function del(CommentId) {
+        if(confirm("确定删除评论吗？")){
             $.ajax({
-                url:"../user/del",
+                url:"../Comment/del",
                 type:"get",
-                data:{"userId":userId},
+                data:{"CommentId":CommentId},
                 dataType:"json",
                 success:function (data) {
                     if(data){

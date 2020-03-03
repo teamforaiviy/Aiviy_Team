@@ -41,6 +41,18 @@ public class Comment {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date ctime;
 
+    private Goods goods;
+
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Goods getGoods() {
         return goods;
     }
@@ -48,9 +60,6 @@ public class Comment {
     public void setGoods(Goods goods) {
         this.goods = goods;
     }
-
-    private Goods goods;
-
 
     public Integer getcId() {
         return cId;

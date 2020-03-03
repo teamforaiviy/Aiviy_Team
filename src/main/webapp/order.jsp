@@ -198,7 +198,8 @@
         return result ? decodeURIComponent(result[2]) : null;
     }
     var gid = getUrlParam("gid");
-    var uid = ${user.userId}
+    var uid = ${user.userId};
+    var userName = ${user.userName};
 
     //评论提交
     function fnDate(){
@@ -244,7 +245,7 @@
             if (content == "") {
                 return false;
             }
-            str += "<span>"+uid+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+            str += "<span>"+userName+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
                 "<span>"+date+"</span><br>"+
                 "<span>"+content+"</span><br>"+
                 "<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br>";
@@ -257,7 +258,7 @@
                 data:{"cComment":content,
                       "gId":gid,
                       "ctime":date,
-                       "uid":uid},
+                      "uid":uid},
                 dataType:"json",
                 success:function (data) {
                     if(data){

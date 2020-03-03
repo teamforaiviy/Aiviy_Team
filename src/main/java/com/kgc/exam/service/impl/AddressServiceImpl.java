@@ -24,4 +24,9 @@ public class AddressServiceImpl implements AddressService {
         return addressMapper.queryAddress(userName);
     }
 
+    @Override
+    public Address queryAllByUserId(Integer userId) {
+        return addressMapper.queryAllByUserId(userId);
+    }
+
 }

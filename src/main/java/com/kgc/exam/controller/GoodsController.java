@@ -29,11 +29,11 @@ public class GoodsController {
 
     @RequestMapping("/queryGood")
     public PageInfo queryGood(@RequestParam(value = "pn",defaultValue = "1") Integer pn,
-                                 @RequestParam(value = "ps",defaultValue = "5") Integer ps) {
+                                 @RequestParam(value = "ps",defaultValue = "6") Integer ps) {
         PageHelper.startPage(pn,ps);
         List<Goods> goods = goodsService.queryAllGoods();
         PageInfo pageInfo = new PageInfo(goods,3);
-        return  pageInfo;
+        return pageInfo;
     }
 
     @RequestMapping("/queryGoodByGname")
@@ -60,6 +60,18 @@ public class GoodsController {
     public List<Goods> queryGoodsWithImages(){
         return goodsService.queryGoodsWithImage();
     }
+
+
+    @RequestMapping("/queryAllOrBySearch")
+    public PageInfo queryAllOrBySearch(@RequestParam(value = "pn",defaultValue = "1") Integer pn,
+                                       @RequestParam(value = "ps",defaultValue = "6") Integer ps,
+                                       @RequestParam("gName")String gName) {
+        PageHelper.startPage(pn,ps);
+        List<Goods> goods = goodsService.queryByName(gName);
+        PageInfo pageInfo = new PageInfo(goods,3);
+        return pageInfo;
+    }
+
 
     @RequestMapping("/del")
     public Boolean del(@RequestParam("gId") Integer gId) {

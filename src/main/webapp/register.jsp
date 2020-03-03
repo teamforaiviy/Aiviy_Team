@@ -76,9 +76,9 @@
             </div>
         </form>
         <div class="tail">
-            <a href="">首页</a>
+            <a href="index.jsp">首页</a>
             <span>|</span>
-            <a href="login.html">登录</a>
+            <a href="login.jsp">登录</a>
         </div>
     </div>
 </div>
@@ -125,65 +125,87 @@
             }
         });
 
-        $(".btn-co").click(function() {
-            // var name = $("input[name=username]").val();
-            // var email = $("input[name=email]").val();
-            // var phone = $("input[name=phone]").val();
-            // var password = $("input[name=password]").val();
 
-            $.ajax({
-                url:"user/insert",
-                type: "post",
-                data:$("form").serialize(),
-                success:function (data) {
-                if (data){
-                    alert("注册成功！")
-                    window.location.href="index.jsp";
+        $(".btn-co").click(function() {
+             var name = $("input[name=username]").val();
+             var email = $("input[name=email]").val();
+             var phone = $("input[name=phone]").val();
+             var password = $("input[name=password]").val();
+
+                 if(name==""){
+                        alert("请确认你的用户名是否正确！")
+                    }else if(email==""){
+                        alert("请确认你的邮箱是否正确！")
+                    }else if(phone==""){
+                        alert("请确认你的手机号是否正确！")
+                    }else if(password==""){
+                        alert("请注意你的密码提示错误！")
+                    }else if (code == "") {
+                        alert("请输入验证码");
+                    } else {
+                $.ajax({
+                    url: "user/insert",
+                    type: "post",
+                    data: $("form").serialize(),
+                    success: function (data) {
+                        if (data) {
+                            alert("注册成功！")
+                            window.location.href = "index.jsp";
+                        }
                     }
-                }
+                })
+            }
             })
-         })
+
+
+
+        // $(".btn-co").click(function() {
+        //     var code = $("input[name=verifyCode]").val();
+        //     var usernameError=$(".usernameError").html();
+        //     var emailError=$(".emailError").html();
+        //
+        //     if(usernameError!=""){
+        //         alert("请确认你的用户名是否正确！")
+        //     }else if(emailError!=""){
+        //         alert("请确认你的邮箱是否正确！")
+        //     }else if($(".phoneError").val()!=""){
+        //         alert("请确认你的手机号是否正确！")
+        //     }else if($(".repasswordError").val()!=""){
+        //         alert("请注意你的密码提示错误！")
+        //     }else if (code == "") {
+        //         alert("请输入验证码");
+        //     } else {
+        //         if (sms == code) {
+        //             $.ajax({
+        //                 type:"user/insert",
+        //                 type:"post",
+        //                 data:$("form").serialize(),
+        //                 dataType:"json",
+        //                 success:function(data){
+        //                     if(data){
+        //                         alert("注册成功");
+        //                         window.location.href="index.jsp";
+        //                     }else{
+        //                         alert("注册失败")
+        //                     }
+        //                 }
+        //             })
+        //             // window.location.href = "index.jsp";
+        //         } else {
+        //             alert("验证码错误");
+        //         }
+        //     }
+        // })
+
+
+
+
+
         })
 
 
-    //     $(".btn-co").click(function() {
-    //         var code = $("input[name=verifyCode]").val();
-    //         var usernameError=$(".usernameError").html();
-    //         var emailError=$(".emailError").html();
-    //
-    //         if(usernameError!=""){
-    //             alert("请确认你的用户名是否正确！")
-    //         }else if(emailError!=""){
-    //             alert("请确认你的邮箱是否正确！")
-    //         }else if($(".phoneError").val()!=""){
-    //             alert("请确认你的手机号是否正确！")
-    //         }else if($(".repasswordError").val()!=""){
-    //             alert("请注意你的密码提示错误！")
-    //         }else if (code == "") {
-    //             alert("请输入验证码");
-    //         } else {
-    //             if (sms == code) {
-    //                 $.ajax({
-    //                     type:"user/insert",
-    //                     type:"post",
-    //                     data:$("form").serialize(),
-    //                     dataType:"json",
-    //                     success:function(data){
-    //                         if(data){
-    //                             alert("注册成功");
-    //                             window.location.href="index.jsp";
-    //                         }else{
-    //                             alert("注册失败")
-    //                         }
-    //                     }
-    //                 })
-    //                 // window.location.href = "index.jsp";
-    //             } else {
-    //                 alert("验证码错误");
-    //             }
-    //         }
-    //     })
-    // })
+
+
 
 
     $("input[name=username]").blur(checkName).focus(function(){

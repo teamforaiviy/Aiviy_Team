@@ -48,4 +48,8 @@ public interface GoodsService {
      */
     Boolean del(Integer gId);
 
+    /*
+    * 根据商品折扣状态查询商品
+    * */
+    List<Goods> queryGoodsWithImageByCountStatus(Integer countStatus);
 }

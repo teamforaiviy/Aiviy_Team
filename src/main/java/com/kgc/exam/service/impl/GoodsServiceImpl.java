@@ -58,4 +58,10 @@ public class GoodsServiceImpl implements GoodsService {
         imageMapper.deleteByGId(gId);
         return goodsMapper.del(gId)==1;
     }
+
+    @Override
+    public List<Goods> queryGoodsWithImageByCountStatus(Integer countStatus) {
+        return goodsMapper.queryGoodsWithImageByCountStatus(countStatus);
+    }
+
 }

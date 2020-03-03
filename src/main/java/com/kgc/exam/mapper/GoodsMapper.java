@@ -28,4 +28,5 @@ public interface GoodsMapper {
 
     List<Goods> queryGoodsWithImage();
 
+    List<Goods> queryGoodsWithImageByCountStatus(@Param("countStatus") Integer countStatus);
 }

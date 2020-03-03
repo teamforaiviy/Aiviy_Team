@@ -61,7 +61,6 @@
                         "        </div>";
                 })
                 $(".new-cotent-two>div").empty().append(newGoods);
-                $("span").html(page.pages);
 
                 var pageStr = "";
                 pageStr += "<li><a href='javascript:queryAll(1,"+ps+")'>首页</a></li>";

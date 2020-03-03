@@ -74,8 +74,7 @@
             <ul>
                 <li><a href="index.jsp">首页</a></li>
                 <li><a href="new.jsp">新品</a></li>
-                <li><a href="sale.jsp">秒杀</a></li>
-                <li><a href="Hot-commodities.jsp">最畅销</a></li>
+                <li><a href="sale.jsp">最畅销</a></li>
                 <li><a href="information.jsp">全部商品</a></li>
                 <li><a href="Group-buying.jsp">团购</a></li>
             </ul>

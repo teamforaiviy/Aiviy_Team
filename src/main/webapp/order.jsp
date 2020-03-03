@@ -42,15 +42,13 @@
         <span class="PC" name="gContent"></span>
         <h5><span>用户：</span></h5>
         <select name="">
-            <option value="" selected="selected">选择一个选项</option>
-            <option value="">windows</option>
+            <option value="" selected>windows</option>
         </select>
         <h5><span>许可</span>：</h5>
         <select name="">
-            <option value="">选择一个选项</option>
-            <option value="">一年</option>
+            <option value="" selected>一年</option>
         </select>
-        <span class="yuanjia">￥99.00</span><span class="qian">￥<span name="gPrice"></span>.00</span>
+        <span class="yuanjia">￥49.00</span><span class="qian">￥<span name="gPrice"></span>.00</span>
         <div class="add">
             <input type="button" class="minus" name="minus" value="-">
             <input type="text" class="amount" name="amount" value="1">
@@ -77,7 +75,9 @@
                 可以帮助用户释放更多磁盘空间。重新设计性能监视器给准确的实时数据的CPU、硬盘和主板的温度来帮助用户了解系统资源情况，另外提供了一个快速访问系统资源管理和故障诊断系统的性能功能。<br/>
                 新的 FaceID功能、冲浪保护、广告删除以及加强电脑安全保护。FaceID
                 自动捕获入侵者访问你的电脑窃听你的隐私。冲浪保护&广告清理带给你一个全新安全干净的在线冲浪体验。更大的隐私扫描数据库,间谍软件删除、实时保护帮助用户删除更多的威胁和解决隐私问题。<br/>
-                <img src="/img/order/intro001.png">
+                <div style="width: 700px;height: 400px;">
+
+                </div>
 <%--                <img src="img/order/intro002.png">--%>
                 <!-- <img src="img/order/intro003.png" > -->
             </div>
@@ -304,7 +304,10 @@
                 $("div[id=foneback]").css({"background-image":"url('"+data[0].imgUrl+"')",
                     "background-size":"578px 386px"}
                 )
-                str ="";
+                $(".d1 div").css({"background-image":"url('"+data[1].imgUrl+"')",
+                    "background-size":"700px 500px"}
+                )
+                var str ="";
                 $(data).each(function () {
                     str +="<li onclick='bg(\""+this.imgUrl+"\")'><img src='"+this.imgUrl+"' style='line-height: 27.5px;' ></li>"
                     //str +=`<li onclick="bg('`+this.imgUrl+`')"><img src='`+this.imgUrl+`' style='line-height: 27.5px;' ></li>`

@@ -4,4 +4,8 @@
     <select id="queryaddress" resultType="com.kgc.exam.entity.Address">
         select ad_id,ad_address,ad_phone,user_id,ad_sname,ad_name from address where user_id=#{uid}
     </select>
+    <insert id="add">
+        insert into address (ad_id,ad_address,ad_phone,ad_sname,user_id,ad_name)
+        values(#{address.adId},#{address.adAddress},#{address.adPhone},#{address.adSname},#{address.userId},#{address.adName})
+    </insert>
 </mapper>

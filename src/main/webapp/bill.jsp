@@ -24,9 +24,10 @@
             return result ? decodeURIComponent(result[2]) : null;
         }
         var gid = getUrlParam("gid");
-        var uid = getUrlParam("uid");
+        var uid = ${user.userId}
         var price = getUrlParam("price");
         $(function () {
+
 
             $.getJSON("bill/queryaddress",{"uId":uid},function (data) {
                 console.log(data);
@@ -39,6 +40,21 @@
                         window.location.href="payforGoods.jsp"
                     })
                 }
+            })
+
+
+            $(".ok").click(function () {
+                var sname = $("input[name=sname]").val();
+                var name =  $("input[name=name]").val();
+                var address =  $("input[name=address]").val();
+                var phone =  $("input[name=phone]").val();
+                $.getJSON("bill/add",{"sname":sname,"name":name,"address":address,"phone":phone,"uid":uid},function (data) {
+                    if(data){
+                        window.location.href='pay/payForGoods?price='+price;
+                    }
+
+                })
+
             })
         })
 
@@ -90,7 +106,7 @@
     </div>
 </div>
 <div class="close">
-    <input type="button" class="ok" value="确认订单" onclick="window.location.href='pay/payForGoods?price='+price"></button>
+    <input type="button" class="ok" value="确认订单"></button>
 </div>
 
 </body>

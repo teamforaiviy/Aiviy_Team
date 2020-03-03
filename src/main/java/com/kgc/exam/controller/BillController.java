@@ -18,4 +18,14 @@ public class BillController {
     public Address queryaddress(@RequestParam("uId") Integer uId){
         return billService.queryaddress(uId);
     }
+    @RequestMapping("add")
+    public Integer add(@RequestParam("sname") String adSname,@RequestParam("name") String adName,@RequestParam("address") String adAddress,@RequestParam("phone") String adPhone,@RequestParam("uid") Integer userId) {
+        Address address = new Address();
+        address.setAdAddress(adAddress);
+        address.setAdSname(adSname);
+        address.setAdName(adName);
+        address.setAdPhone(adPhone);
+        address.setUserId(userId);
+        return billService.add(address);
+    }
 }

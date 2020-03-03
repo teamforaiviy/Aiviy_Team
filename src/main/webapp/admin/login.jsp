@@ -53,19 +53,16 @@
                                 <div class="form-group">
                                     <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
                                     <label for="login-password" class="label-material">Password</label>
-                                </div><a id="login" href="index.jsp" class="btn btn-primary">Login</a>
+                                </div><a id="login" href="#" class="btn btn-primary">Login</a>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="copyrights text-center">
-        <p>Design by Aiviy_Team</a>
-            <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-        </p>
-    </div>
 </div>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <!-- JavaScript files-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/popper.js/umd/popper.min.js"> </script>
@@ -75,5 +72,21 @@
 <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- Main File-->
 <script src="js/front.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#login").click(function () {
+            var username =$("input[type=text]").val();
+            var password =$("input[type=password]").val();
+            if(username==""||password==""){
+                alert("用户名或密码不能为空！")
+            }else if(username!="admin"||password!="123456"){
+                alert("用户名或密码不正确！")
+            }else{
+                window.location.href="index.jsp";
+            }
+        })
+    })
+</script>
 </body>
 </html>

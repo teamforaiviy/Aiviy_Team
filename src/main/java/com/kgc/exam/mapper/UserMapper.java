@@ -2,6 +2,7 @@ package com.kgc.exam.mapper;
 
 import com.kgc.exam.entity.User;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -26,5 +27,6 @@ public interface UserMapper {
 
 	int deleteByUserId(@Param("userId")Integer userId);
 
+    int add(@Param("user") User user);
 
 }

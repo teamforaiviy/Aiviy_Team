@@ -15,17 +15,17 @@
 <body>
 <div id="background">
     <div class="whole">
-        <div class="aiviy"><img src="/img/logo.png" onclick="window.location.href='index.jsp'"></div>
+        <div class="aiviy" onclick="window.location.href='index.jsp'"><img src="/img/logo.png" ></div>
         <form>
             <div class="register">注册</div>
             <div class="username">
                 <span>用&nbsp;&nbsp;户&nbsp;名&nbsp;<span>*</span></span>
-                <input type="text" name="userName" placeholder="您的用户名即为您的账号" />
+                <input type="text" name="username" placeholder="您的用户名即为您的账号" />
                 <div class="usernameError"></div>
             </div>
             <div class="email">
                 <span>电子邮箱&nbsp;<span>*</span></span>
-                <input type="email" name="userMail" placeholder="电子邮箱" />
+                <input type="email" name="email" placeholder="电子邮箱" />
                 <div class="emailError"></div>
             </div>
             <div class="iphone">
@@ -47,16 +47,16 @@
                     <option value ="">+378 圣马力诺</option>
                     <option value ="">+7哈萨克斯坦</option>
                 </select>
-                <input type="text" name="userPhone" placeholder="手机账号" />
+                <input type="text" name="phone" placeholder="手机账号" />
                 <div class="phoneError"></div>
             </div>
-            <%--<div class="photocode">
-                <input type="text" name="" value="" placeholder="图形验证码"/>
-                <span><img src="/img/timg.jpg" ></span>
-            </div>--%>
+<%--            <div class="photocode">--%>
+<%--                <input type="text" name="" value="" placeholder="图形验证码"/>--%>
+<%--                <span><img src="/img/timg.jpg" ></span>--%>
+<%--            </div>--%>
             <div class="iphonecode">
-                <input type="text" name="verifyCode" value="" placeholder="手机验证码" />
-                <input type="submit" class="btn btn-default" id="btn" name="btn"  value="发送验证码" onclick="sendMessage()" />
+                <input type="text" name="" value="" placeholder="手机验证码"/>
+                <input id="btn" type="submit" value="发送验证码">
             </div>
             <div class="password">
                 <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;<span>*</span></span>
@@ -65,18 +65,18 @@
             </div>
             <div class="repassword">
                 <span>确认密码&nbsp;<span>*</span></span>
-                <input type="password" name="userPwd" value="" placeholder="确认密码"/>
+                <input type="password" name="repassword" value="" placeholder="确认密码"/>
                 <div class="repasswordError"></div>
             </div>
             <div class="service">
-                <input type="checkbox" name="" id="" value="" />我已经同意并接受《服务条款》。
+                <input type="checkbox" name="" value=""  checked="checked" />我已经同意并接受《服务条款》。
             </div>
             <div class="new">
                 <button type="button" class="btn-co">注册</button>
             </div>
         </form>
         <div class="tail">
-            <a href="index.jsp">首页</a>
+            <a href="index.jsp.jsp">首页</a>
             <span>|</span>
             <a href="login.jsp">登录</a>
         </div>
@@ -125,65 +125,39 @@
             }
         });
 
-        $(".btn-co").click(function() {
-            // var name = $("input[name=username]").val();
-            // var email = $("input[name=email]").val();
-            // var phone = $("input[name=phone]").val();
-            // var password = $("input[name=password]").val();
 
-            $.ajax({
-                url:"user/insert",
-                type: "post",
-                data:$("form").serialize(),
-                success:function (data) {
-                if (data){
-                    alert("注册成功！")
-                    window.location.href="login.jsp";
+        $(".btn-co").click(function() {
+            var name = $("input[name=username]").val();
+            var email = $("input[name=email]").val();
+            var phone = $("input[name=phone]").val();
+            var password = $("input[name=password]").val();
+
+            if(name==""||name==null){
+                alert("请确认你的用户名是否正确！")
+            }else if(email==""||email==null){
+                alert("请确认你的邮箱是否正确！")
+            }else if(phone==""||phone==null){
+                alert("请确认你的手机号是否正确！")
+            }else if(password==""||password==null){
+                alert("请注意你的密码提示错误！")
+            // }else if (code == "") {
+            //     alert("请输入验证码");
+            } else {
+                $.ajax({
+                    url: "user/add",
+                    type: "post",
+                    data: {"name":name,"email":email,"phone":phone,"password":password},
+                    success: function (data) {
+                        if (data) {
+                            alert("注册成功！")
+                            window.location.href = "index.jsp";
+                        }
                     }
-                }
-            })
-         })
+                })
+            }
         })
 
-
-    //     $(".btn-co").click(function() {
-    //         var code = $("input[name=verifyCode]").val();
-    //         var usernameError=$(".usernameError").html();
-    //         var emailError=$(".emailError").html();
-    //
-    //         if(usernameError!=""){
-    //             alert("请确认你的用户名是否正确！")
-    //         }else if(emailError!=""){
-    //             alert("请确认你的邮箱是否正确！")
-    //         }else if($(".phoneError").val()!=""){
-    //             alert("请确认你的手机号是否正确！")
-    //         }else if($(".repasswordError").val()!=""){
-    //             alert("请注意你的密码提示错误！")
-    //         }else if (code == "") {
-    //             alert("请输入验证码");
-    //         } else {
-    //             if (sms == code) {
-    //                 $.ajax({
-    //                     type:"user/insert",
-    //                     type:"post",
-    //                     data:$("form").serialize(),
-    //                     dataType:"json",
-    //                     success:function(data){
-    //                         if(data){
-    //                             alert("注册成功");
-    //                             window.location.href="index.jsp";
-    //                         }else{
-    //                             alert("注册失败")
-    //                         }
-    //                     }
-    //                 })
-    //                 // window.location.href = "index.jsp";
-    //             } else {
-    //                 alert("验证码错误");
-    //             }
-    //         }
-    //     })
-    // })
+    })
 
 
     $("input[name=username]").blur(checkName).focus(function(){

@@ -55,9 +55,14 @@ public class UserController {
         return userService.deleteByUserId(userId);
     }
 
-    @RequestMapping("add")
+    @RequestMapping("/add")
     @ResponseBody
-    public Boolean add(@RequestParam("user") User user){
+    public Boolean add(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("phone") String phone,@RequestParam("password") String password){
+        User user = new User();
+        user.setUserName(name);
+        user.setUserMail(email);
+        user.setUserPhone(phone);
+        user.setUserPwd(password);
         return userService.add(user);
     }
 

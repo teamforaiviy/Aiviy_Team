@@ -20,30 +20,33 @@
 <body>
 <div id="background">
     <div class="whole">
-        <div class="aiviy"><img src="/img/logo.png"></div>
+        <div class="aiviy"><img src="/img/logo.png" onclick="window.location.href='index.jsp'" ></div>
         <form>
-            <div class="register">登录</div>
+            <div class="register" >登录</div>
             <div class="users">
                 <div class="user">
-                    <input type="text" name="userName" placeholder="用户名/邮箱/手机号" />
-                    <b><span id="my-element">i</span></b>
+                    <input type="text" name="username" placeholder="用户名/邮箱/手机号" />
                 </div>
                 <div class="usernameError"></div>
             </div>
             <div class="passwords">
                 <div class="password">
                     <input type="password" name="password" placeholder="密码" />
-                    <b><span id="">i</span></b>
                 </div>
                 <div class="passwordError"></div>
             </div>
             <div class="new">
-                <input type="button" class="dl" value="登录">
+                <button type="button">登录</button>
             </div>
             <div class="zhuce">
-                <b><p>没有aiviy账号？</p></b>
+                <b><p>忘记密码？</p></b>
             </div>
         </form>
+        <div class="tail">
+            <a href="register.jsp">注册</a>
+            <span>|</span>
+            <a href="login.jsp">首页</a>
+        </div>
     </div>
 </div>
 </body>
@@ -51,25 +54,27 @@
 <script src='js/tooltip.js' type="text/javascript"></script>
 <script type="text/javascript">
 
-    //获取地址栏参数,可以是中文参数
-    function getUrlParam(key) {
-        // 获取参数
-        var url = window.location.search;
-        // 正则筛选地址栏
-        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
-        // 匹配目标参数
-        var result = url.substr(1).match(reg);
-        //返回参数值
-        return result ? decodeURIComponent(result[2]) : null;
-    }
-    var uId = getUrlParam("user_id");
-
+//   //获取地址栏参数,可以是中文参数
+//   function getUrlParam(key) {
+//       // 获取参数
+//       var url = window.location.search;
+//       // 正则筛选地址栏
+//       var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+//       // 匹配目标参数
+//       var result = url.substr(1).match(reg);
+//       //返回参数值
+//       return result ? decodeURIComponent(result[2]) : null;
+//   }
+//    var uId = getUrlParam("user_id");
     $(function () {
-``
         $(".dl").click(function () {
-
             var userName = $("input[name=userName]").val();
             var password = $("input[name=password]").val();
+            if(userName==null||userName==""){
+                alert("账号不能为空！")
+            }else if (password==null||password==""){
+                alert("密码不能为空！")
+            }else{
             $.ajax({
                 url:"user/login",
                 type:"get",
@@ -86,7 +91,54 @@
                     }
                 }
             })
+            }
         })
+
+
+        // // 表单提交
+        // function checkSubmit() {
+        //     // 去除前后空格
+        //     var userPhone = $.trim($('#userPhone').val());
+        //     var password = $.trim($('#password').val());
+        //     if(userPhone == ''){
+        //         showErrorMsg('手机号码不能为空！');
+        //         return false;
+        //     }
+        //     if(!checkMobile(userPhone)){
+        //         showErrorMsg('手机号码格式不对!');
+        //         return false;
+        //     }
+        //     if(password == ''){
+        //         showErrorMsg('密码不能为空！');
+        //         return false;
+        //     }
+        //
+        //     $.ajax({
+        //         type : 'post',
+        //         url : 'user/login',
+        //         data:{
+        //             userPhone:userPhone,
+        //             password:password
+        //         },
+        //         dataType:'json',
+        //         success:function(res){
+        //             if(res.status == 1){
+        //                 // 跳转
+        //                 window.location.href = res.url;
+        //             }else{
+        //                 showErrorMsg(res.msg);
+        //             }
+        //         },
+        //         error:function(XMLHttpRequest,textStatus,errorThrown){
+        //             showErrorMsg('网络失败，请刷新页面后重试')
+        //         }
+        //     })
+        // }
+        // // 信息提示
+        // function showErrorMsg(msg){
+        //     alert(msg);
+        // }
+
 
     })
 

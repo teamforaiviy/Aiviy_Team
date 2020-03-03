@@ -15,6 +15,6 @@ public interface PersonalMapper {
 
     Address queryAddress(@Param("userId") Integer userId);
 
-    Integer updateUser(@Param("address") User user);
+    Integer updateUser(@Param("user") User user);
 
 }

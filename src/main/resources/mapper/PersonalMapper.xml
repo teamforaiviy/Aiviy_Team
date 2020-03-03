@@ -30,20 +30,20 @@
         update address
         <set>
             <trim suffix="" suffixOverrides=",">
-                <if test="Address.adName != null and Address.adName != ''">
-                    ad_user=#{Address.adName},
+                <if test="address.adName != null and address.adName != ''">
+                    ad_user=#{address.adName},
                 </if>
-                <if test="Address.adAddress != null and Address.adAddress != ''">
-                    ad_address=#{Address.adAddress},
+                <if test="address.adAddress != null and address.adAddress != ''">
+                    ad_address=#{address.adAddress},
                 </if>
-                <if test="Address.adName != null and  Address.adName!= ''">
-                    ad_user=#{Address.adName},
+                <if test="address.adName != null and  address.adName!= ''">
+                    ad_user=#{address.adName},
                 </if>
             </trim>
         </set>
         <where>
-            <if test="Address.adId != null">
-                ad_id=#{Address.adId}
+            <if test="address.adId != null">
+                ad_id=#{address.adId}
             </if>
         </where>
     </update>
@@ -52,23 +52,23 @@
         update user
         <set>
             <trim suffix="" suffixOverrides=",">
-                <if test="User.nickname != null and User.nickname != ''">
-                    nickname=#{User.nickname},
+                <if test="user.nickname != null and user.nickname != ''">
+                    nickname=#{user.nickname},
                 </if>
-                <if test="User.userMail != null and Address.userMail != ''">
-                    user_mail=#{User.userMail},
+                <if test="user.userMail != null and user.userMail != ''">
+                    user_mail=#{user.userMail},
                 </if>
-                <if test="User.userPhone != null and  User.userPhone!= ''">
-                    user_phone=#{User.userPhone},
+                <if test="user.userPhone != null and  user.userPhone!= ''">
+                    user_phone=#{user.userPhone},
                 </if>
-                <if test="User.userPwd != null and  User.userPwd!= ''">
-                    user_pwd=#{User.userPwd},
+                <if test="user.userPwd != null and  user.userPwd!= ''">
+                    user_pwd=#{user.userPwd},
                 </if>
             </trim>
         </set>
         <where>
-            <if test="User.userId != null">
-                user_id=#{User.userId}
+            <if test="user.userId != null">
+                user_id=#{user.userId}
             </if>
         </where>
     </update>

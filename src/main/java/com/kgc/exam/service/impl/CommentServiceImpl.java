@@ -28,4 +28,9 @@ public class CommentServiceImpl implements CommentService {
     public Boolean insert(Comment comment) {
         return commentMapper.insert(comment)==1;
     }
+
+    @Override
+    public Boolean deleteByPrimaryKey(Integer cId) {
+        return commentMapper.deleteByPrimaryKey(cId)==1;
+    }
 }

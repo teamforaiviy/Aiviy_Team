@@ -187,8 +187,14 @@
   </delete>
 
   <insert id="add" >
-    insert into user(user_name,user_mail,user_phone,user_pwd,createdDate)
-    values(#{user.userName},#{user.userMail},#{user.userPhone},#{user.userPwd},now())
+    insert into user (user_name, user_mail, user_phone,
+      user_pwd,v_id, createdDate)
+    values (#{userName,jdbcType=VARCHAR}, #{userMail,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR},
+      #{userPwd,jdbcType=VARCHAR},1, now())
+--
+--
+--     insert into user(user_name,user_mail,user_phone,user_pwd,createdDate)
+--     values(#{user.userName},#{user.userMail},#{user.userPhone},#{user.userPwd},now())
   </insert>
 
 </mapper>

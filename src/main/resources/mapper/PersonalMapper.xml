@@ -26,19 +26,19 @@
         <set>
             <trim suffix="" suffixOverrides=",">
                 <if test="address.adName != null and address.adName != ''">
-                    ad_user=#{address.adName},
+                    ad_name=#{address.adName},
                 </if>
                 <if test="address.adAddress != null and address.adAddress != ''">
                     ad_address=#{address.adAddress},
                 </if>
-                <if test="address.adName != null and  address.adName!= ''">
-                    ad_user=#{address.adName},
+                <if test="address.adPhone != null and  address.adPhone!= ''">
+                    ad_phone=#{address.adPhone},
                 </if>
             </trim>
         </set>
         <where>
-            <if test="address.adId != null">
-                ad_id=#{address.adId}
+            <if test="address.userId != null">
+                user_id=#{address.userId}
             </if>
         </where>
     </update>

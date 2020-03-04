@@ -21,7 +21,7 @@
             <div class="register" >登录</div>
             <div class="users">
                 <div class="user">
-                    <input type="text" name="userName" placeholder="用户名/邮箱/手机号" />
+                    <input type="text" name="username" placeholder="用户名/邮箱/手机号" />
                 </div>
                 <div class="usernameError"></div>
             </div>
@@ -51,7 +51,7 @@
 <script type="text/javascript">
     $(function () {
         $(".new").click(function () {
-            var userName = $("input[name=userName]").val();
+            var userName = $("input[name=username]").val();
             var password = $("input[name=password]").val();
             if(userName==null||userName==""){
                 alert("账号不能为空！")
@@ -78,7 +78,7 @@
         })
     })
 
-    
+
     function checkName() {
         var name = $("input[name=userName]").val();
         var reg = /^\w{6,16}$/;

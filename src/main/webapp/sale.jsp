@@ -26,7 +26,7 @@
                         "           <div class=\"sale-cotent-two-first\">" +
                         "               <a href='order.jsp?gid="+this.gId+"'>" +
                         "                   <div class=\"sale-cotent-two-first-1\" style=\"background-image: url("+this.images[0].imgUrl+")\" onmouseout=\"this.style.backgroundImage='url("+this.images[0].imgUrl+")'\" onmouseover=\"this.style.backgroundImage='url("+this.images[1].imgUrl+")'\">" +
-                        "                       <span class=\"sale-flash\">最畅销</span>" +
+                        "                       <span class=\"sale-flash\">优惠</span>" +
                         "                   </div>" +
                         "                   <h2>"+this.gName+"</h2>" +
                         "                   <span class=\"price-lable\">价格</span><br />" +
@@ -49,7 +49,7 @@
     <div class="container">
 				<span class="bar-text">
 					<a href="index.html">首页</a>
-					&nbsp;&nbsp;/&nbsp;&nbsp;秒杀
+					&nbsp;&nbsp;/&nbsp;&nbsp;优惠
 				</span>
     </div>
 </div>

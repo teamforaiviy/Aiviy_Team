@@ -69,7 +69,7 @@
                                 <div class="card-header d-flex align-items-center">
                                     <h3 class="h4">Comment</h3>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="#" data-toggle="modal" data-target="#createComment">添加评论</a>
+                                    <%--<a href="#" data-toggle="modal" data-target="#createComment">添加评论</a>--%>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -97,50 +97,6 @@
                                             <ul class="pagination">
                                             </ul>
                                         </nav>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="createComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel">添加评论</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <table>
-                                                        <tr>
-                                                            <td>评论名：</td>
-                                                            <td><input type="text" class="form-control" name="CommentName"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>昵称：</td>
-                                                            <td><input type="text" class="form-control" name="nickname"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>密码：</td>
-                                                            <td><input type="password" class="form-control" name="CommentPwd"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>邮箱：</td>
-                                                            <td><input type="email" class="form-control" name="CommentMail"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>手机号：</td>
-                                                            <td><input type="text" class="form-control" name="CommentPhone"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>消费金额：</td>
-                                                            <td><input type="text" class="form-control" name="CommentMoney"></td>
-                                                        </tr>
-                                                    </table>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" onclick="insertComment()">Save</button>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 
@@ -182,7 +138,7 @@
                     "<td>"+this.user.userName+"</td>" +
                     "<td>"+this.goods.gName+"</td>" +
                     "<td>"+this.ctime+"</td>" +
-                    "<td>&nbsp;&nbsp;<a href='#' onclick='del("+this.cId+")'>删除</a></td>" +
+                    "<td><a href='#' onclick='del("+this.cId+")'>删除</a></td>" +
                     "</tr>";
             })
             $("#myTable tbody").empty().append(str);
@@ -215,34 +171,14 @@
         })
     }
     /**
-     * 添加评论
-     */
-    function insertComment() {
-        $.ajax({
-            url:"../Comment/insert",
-            type:"get",
-            data:$("#createComment form").serialize(),
-            dataType:"json",
-            success:function (data) {
-                if(data){
-                    alert("添加成功！")
-                    window.location.reload();
-                }else {
-                    alert("添加失败！")
-                }
-            }
-        })
-    }
-
-    /**
      * 删除评论
      */
-    function del(CommentId) {
+    function del(cId) {
         if(confirm("确定删除评论吗？")){
             $.ajax({
-                url:"../Comment/del",
+                url:"../comment/del",
                 type:"get",
-                data:{"CommentId":CommentId},
+                data:{"cId":cId},
                 dataType:"json",
                 success:function (data) {
                     if(data){

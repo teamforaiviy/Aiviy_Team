@@ -155,6 +155,9 @@
     FROM `goods` AS G
     INNER JOIN `image` AS I
     ON I.g_id=G.g_id
+    <where>
+      countStatus = #{countStatus}
+    </where>
   </select>
 
   <select id="queryNew" resultMap="goodsWithImageMap">

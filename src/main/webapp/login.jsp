@@ -21,7 +21,7 @@
             <div class="register" >登录</div>
             <div class="users">
                 <div class="user">
-                    <input type="text" name="username" placeholder="用户名/邮箱/手机号" />
+                    <input type="text" name="userName" placeholder="用户名/邮箱/手机号" />
                 </div>
                 <div class="usernameError"></div>
             </div>

@@ -62,7 +62,7 @@
                 </a>
             </div>--%>
             <div class="header-shop">
-                <a href="shoppingcar.jsp">
+                <a onclick="checkIfLogin()">
                     <div class="header-shop-sp2">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
                     </div>
@@ -83,6 +83,15 @@
 </header>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
+    function checkIfLogin(){
+        $.getJSON("user/ifLogin",{},function (data) {
+            if (!data){
+                alert("请登录，否则无法购买")
+            }else {
+                window.location.href="shoppingcar.jsp"
+            }
+        })
+    }
     $(function () {
         $(".header-bg input[type=button]").click(function () {
             var gName = $(".header-bg input[type=text]").val();

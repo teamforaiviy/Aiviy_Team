@@ -55,6 +55,7 @@ public class UploadController {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
                 goods.setUploadtime(date);
+                goods.setCountstatus(1);
                 goodsService.addGoods(goods);
             }
             //添加完成后再次查询

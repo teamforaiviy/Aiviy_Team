@@ -18,7 +18,26 @@
     <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="js/Center.js" ></script>
-
+    <script type="text/javascript">
+        function getUrlParam(key) {
+            // 获取参数
+            var url = window.location.search;
+            // 正则筛选地址栏
+            var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+            // 匹配目标参数
+            var result = url.substr(1).match(reg);
+            //返回参数值
+            return result ? decodeURIComponent(result[2]) : null;
+        }
+        var msg = getUrlParam("msg");
+        if(msg==undefined){
+            msg="";
+        }else if(msg=="0"){
+            alert("购买失败")
+        }else if (msg=="1"){
+            alert("购买成功")
+        }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>

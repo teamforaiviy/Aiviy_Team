@@ -34,28 +34,9 @@
             </tr>
             </thead>
             <tbody class="list"></tbody>
-            <%--            <tr>--%>
-            <%--                <td colspan="5">--%>
-            <%--                    <hr>--%>
-            <%--                </td>--%>
-            <%--            </tr>--%>
-            <%--            <tr>--%>
-            <%--                <td class="image"></td>--%>
-            <%--                <td class="sName"><span></span></td>--%>
-            <%--                <td class="price">¥<span class="sPrice"></span>.00</td>--%>
-            <%--                <td><input type="button" class="minus" name="minus" value="-">--%>
-            <%--                    <input type="button" class="amount" name="amount" value=" ">--%>
-            <%--                    <input type="button" class="plus" name="plus" value="+"></td>--%>
-            <%--                <td>¥<span class="sTotal"></span>.00</td>--%>
-            <%--                <td>☠</td>--%>
-            <%--            </tr>--%>
         </table>
 
         <div class="count">
-            <%--<div class="chead">
-                <span>购物车总计</span>
-                <hr>
-            </div>--%>
             <div class="cbody">
                 <table class="ttwo">
                     <tr style="border-bottom: 1px solid #DDDFE7;">
@@ -72,9 +53,7 @@
 
             </div>
             <div class="cfoot">
-                <button type="button" class="update">更新购物车</button>
                 <button type="button" href="结算页面.html" onclick="jump()">去结算GO☞</button>
-
             </div>
 
         </div>

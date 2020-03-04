@@ -46,7 +46,7 @@
         <li class="a7" style="cursor: pointer"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;账户修改</li>
     </ul>
 </div>
-<div class="personal-content">
+<div class="personal-content" id="ppppp">
     <div class="account" >
         <img src="/img/footer/footer-email.PNG">
         <p>您好!
@@ -78,22 +78,20 @@
     </div>
 
     <div class="wddd" style="display: none;">
-        <form>
-            <table>
-                <thead>
-                <tr class="ddt" style="border-bottom: 1px solid #E8DFC4;">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="ddt" style="border-bottom: 1px solid #E8DFC4;color: #1b6d85">
                     <th>订单</th>
                     <th>日期</th>
                     <th>状态</th>
                     <th>合计</th>
                     <th>操作</th>
                 </tr>
-                </thead>
-                <tbody class="dds">
+            </thead>
+                <tbody class="dds" style="text-align: center;">
 
                 </tbody>
-            </table>
-    </form>
+        </table>
     </div>
 
     <div class="vip" style="display: none;">
@@ -247,6 +245,20 @@
 <div class="clear"></div>
 <jsp:include page="footer.jsp"></jsp:include>
     <script type="text/javascript">
+        function deleteOrder(oState,oNo){
+            if(oState==1){
+                alert("您已支付！")
+            }else if (confirm("确定取消么")){
+                $.getJSON("order/del",{"oNo":oNo},function (data) {
+                    if (data){
+                        alert("已取消！")
+                        window.location.reload();
+                    } else {
+                        alert("取消失败！")
+                    }
+                })
+            }
+        }
 
         $(function () {
             var nickname="${sessionScope.user.nickname}";
@@ -278,7 +290,7 @@
                                 "<td>"+this.createddate+"</td>" +
                                 "<td>"+(this.oState==1?'已付款':'未付款')+"</td>" +
                                 "<td>"+this.oNum+"</td>" +
-                                "<td><a href=''>付款</a><span>取消</span></td>" +
+                                "<td><a onclick='deleteOrder("+this.oState+","+this.oNo+")'>取消</a></td>" +
                                 "</tr>"
                         })
                         $(".dds").empty().append(str);
@@ -301,7 +313,7 @@
          */
         $("input[name=xgdz]").click(function () {
             var phone = $("input[name=sjhm]").val();
-            var  name= $("input[name=shmz]").val();
+            var name= $("input[name=shmz]").val();
             var sf=$("#province2").val();
             var cs=$("#city2").val();
             var dq=$("district2").val();

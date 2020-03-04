@@ -11,47 +11,6 @@
 	color: white;
 }
 
-.ddt th{
-	border-bottom-color:rgb(221, 223, 231);
-	border-bottom-style:solid;
-	border-bottom-width:1px;
-	border-collapse:collapse;
-	border-image-outset:0px;
-	border-image-repeat: stretch;
-	border-image-slice: 100%;
-	border-image-source: none;
-	border-image-width: 1;
-	border-left-color: rgb(221, 223, 231);
-	border-left-style: solid;
-	border-left-width: 0px;
-	border-right-color: rgb(221, 223, 231);
-	border-right-style: solid;
-	border-right-width: 0px;
-	border-top-color: rgb(221, 223, 231);
-	border-top-style: solid;
-	border-top-width: 0px;
-	box-sizing: border-box;
-	color: rgb(70, 72, 85);
-	display: inline-block;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	font-size: 16px;
-	font-weight: 500;
-	height: 68.2px;
-	letter-spacing: 0.3px;
-	line-height: 27.36px;
-	overflow-wrap: break-word;
-	padding-bottom: 20px;
-	padding-left: 10px;
-	padding-right: 0px;
-	padding-top: 20px;
-	text-align: left;
-	text-size-adjust: 100%;
-	text-transform: uppercase;
-	vertical-align: text-bottom;
-	width: 150px;
-	word-break: normal;
-	-webkit-border-horizontal-spacing: 0px;
-}
 
 .personal-body {
 	width: 250px;
@@ -268,32 +227,6 @@ th {
 	height: 50px;
 	width: 80%;
 	padding: 8px
-}
-
-/*.wddd div:first-of-type {
-	width: 85%;
-	height: 50px;
-	!* border: 1px solid black;*!
-	background-color: #EDD0BE;
-	float: left;
-}*/
-
-/*.wddd div:last-of-type {
-	float: left;
-	background-color: #CFB2A0;
-	width: 15%;
-	height: 50px;
-}*/
-
-.wddd a {
-	color: white;
-	font-size: 16px;
-	text-align: center;
-}
-
-.wddd span {
-	color: white;
-	font-size: 16px;
 }
 
 .wdjf span {

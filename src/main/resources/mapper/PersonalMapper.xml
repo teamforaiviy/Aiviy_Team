@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "http://mybatis.org/dtd/mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.kgc.exam.mapper.PersonalMapper">
     <resultMap id="orderMap" type="com.kgc.exam.entity.Orders">
-        <id column="o_id" property="oId"></id>
-        <result column="o_no" property="oNo"></result>
-        <result column="o_state" property="oState"></result>
-        <result column="o_num" property="oNum"></result>
+        <id column="o_id" property="oId"/>
+        <result column="o_no" property="oNo"/>
+        <result column="o_state" property="oState"/>
+        <result column="o_num" property="oNum"/>
+        <result column="createdDate" property="createddate"/>
         <association property="user" javaType="com.kgc.exam.entity.User">
-            <id column="user_id" property="userId"></id>
-            <result column="user_money" property="userMoney"></result>
+            <id column="user_id" property="userId"/>
+            <result column="user_money" property="userMoney"/>
         </association>
     </resultMap>
 

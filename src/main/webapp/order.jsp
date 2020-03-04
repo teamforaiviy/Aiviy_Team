@@ -232,7 +232,7 @@
             var str = "";
 
                 $(data).each(function () {
-                    str +="<span>"+this.userName+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                    str +="<span>"+this.user.userName+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
                         "<span>"+this.ctime+"</span><br>"+
                         "<span>"+this.cComment+"</span><br>"+
                         "<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br>";

@@ -228,6 +228,20 @@ th {
 	padding: 8px
 }
 
+.wddd div:first-of-type {
+	width: 85%;
+	height: 50px;
+	/* border: 1px solid black;*/
+	background-color: #EDD0BE;
+	float: left;
+}
+
+.wddd div:last-of-type {
+	float: left;
+	background-color: #CFB2A0;
+	width: 15%;
+	height: 50px;
+}
 
 .wddd a {
 	color: white;
@@ -272,23 +286,105 @@ th {
 	border-radius: 5px;
 	outline: none;
 }
-.bar{
-	widows: 100%;
-	height: 55px;
-	background-color: #464855;
-	padding: 15px;
-}
-.bar-text{
-	font-family: "微软雅黑";
-	color: #CDCDCD;
-	
-}
-.bar-text a{
-	text-decoration: none;
-	color: #FFFFFF;
-}
-.bar-text a:hover{
-	text-decoration: none;
-	color: #CDCDCD;
+
+.ddt1{
+	widows: 15%;
 }
 
+/* .ddt1{
+	width: 15%;
+}
+.ddt2.ddt3.ddt4.ddt5{
+	width: 20%;
+} */
+
+.ddt th{
+	/* width: 60px; */
+	border-bottom-color:rgb(221, 223, 231);
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+	border-collapse:collapse;
+	border-image-outset:0px;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-source: none;
+	border-image-width: 1;
+	border-left-color: rgb(221, 223, 231);
+	border-left-style: solid;
+	border-left-width: 0px;
+	border-right-color: rgb(221, 223, 231);
+	border-right-style: solid;
+	border-right-width: 0px;
+	border-top-color: rgb(221, 223, 231);
+	border-top-style: solid;
+	border-top-width: 0px;
+	box-sizing: border-box;
+	color: rgb(70, 72, 85);
+	display: inline-block;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 16px;
+	font-weight: 500;
+	height: 68.2px;
+	letter-spacing: 0.3px;
+	line-height: 27.36px;
+	overflow-wrap: break-word;
+	padding-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 0px;
+	padding-top: 20px;
+	text-align: left;
+	text-size-adjust: 100%;
+	text-transform: uppercase;
+	vertical-align: text-bottom;
+	width: 150px;
+	word-break: normal;
+	-webkit-border-horizontal-spacing: 0px;
+}
+
+.grxxdz input{
+	  height: 30px;
+	  width: 70%;
+	    padding-left: 10px;
+	    border: none;
+	    outline: none;
+	    background-color: #FCFBFA;
+	    border-bottom: 2px solid #cbc5bf;
+}
+.grsjhm input{
+	height: 30px;
+	width: 70%;
+	  padding-left: 10px;
+	  border: none;
+	  outline: none;
+	  background-color: #FCFBFA;
+	  border-bottom: 2px solid #cbc5bf;
+}
+.grmz input{
+	height: 30px;
+	width: 70%;
+	  padding-left: 10px;
+	  border: none;
+	  outline: none;
+	  background-color: #FCFBFA;
+	  border-bottom: 2px solid #cbc5bf;
+}
+.grnc input{
+	height: 30px;
+	width: 70%;
+	  padding-left: 10px;
+	  border: none;
+	  outline: none;
+	  background-color: #FCFBFA;
+	  border-bottom: 2px solid #cbc5bf;
+	margin-bottom: 30px;
+}
+.xgxx input {
+	width: 70%;
+	height: 40px;
+	font-size: 20px;
+	color: white;
+	background-color: #25C6FC;
+	border: none;
+	margin-bottom: 100px;
+	margin-top: 20px;
+}

@@ -8,13 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<head>
-    <title>艾维商城个人中心</title>
-</head>
+
 <body>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>艾维商城个人中心</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 
@@ -91,11 +89,33 @@
 </div>
 <div class="personal-content">
     <div class="account" >
-        <img src="img/footer/footer-email.PNG">
+        <img src="/img/footer/footer-email.PNG">
         <p>您好!
-            <strong class="nc">${user.userName}</strong>
-            <a onclick="window.location.href='user/exit'">退出</a></p><br>
-        <p>在您的账户，您可查看<a href="order.jsp">最近的订单</a>增加您的<a href="">配送地址 </a>，并可<a href="">修改您的密码和账户详情</a></p>
+            <strong class="nc"></strong>
+            <a onclick="window.location.href='user/exit'">退出</a></p>
+        <div class="grmz">
+            <div>
+                <p>账号</p>
+                <p><input type="text" style="outline:none" name="username" disabled="disabled"></p>
+            </div>
+            <div class="usernameError"></div>
+        </div>
+        <div class="grnc">
+            <p>昵称</p>
+            <p><input type="text" style="outline:none" name="nichen" disabled="disabled"></p>
+        </div>
+        <div class="clear"></div>
+        <div class="grxxdz">
+            <p>电子邮箱</p>
+            <p><input type="text" style="outline:none" name="email" disabled="disabled"/></p>
+        </div>
+        <div class="grsjhm">
+            <p>手机号码</p>
+            <p><input type="text" style="outline:none" name="phone" disabled="disabled"/></p>
+        </div>
+        <div class="xgxx">
+            <input type="button" value="修改信息" >
+        </div>
     </div>
 
     <div class="wddd" style="display: none;">
@@ -222,18 +242,11 @@
                 <p>详细地址</p>
                 <p><input  name="xxdz" type="text" placeholder="请输入详细地址信息,如道路、门牌号、小区、楼栋号、单元等信息" /></p>
             </div>
-<%--            <div class="">--%>
-<%--                <p>邮政编码</p>--%>
-<%--                <p><input type="text" name="" /></p>--%>
-<%--            </div>--%>
             <div class="">
                 <p>手机号码</p>
                 <p><input type="text" name="sjhm" /></p>
             </div>
-<%--            <div class="">--%>
-<%--                <p>邮箱地址</p>--%>
-<%--                <p><input type="text" name="" /></p>--%>
-<%--            </div>--%>
+
             <div class="button-address">
                 <p><input type="button" value="保存地址"  name="xgdz"/></p>
             </div>
@@ -283,13 +296,22 @@
     <script type="text/javascript">
 
         $(function () {
-            var userName=${sessionScope.user.nickname};
+            var nickname="${sessionScope.user.nickname}";
+            var userName="${sessionScope.user.userName}";
+            var userMail="${sessionScope.user.userMail}";
+            var userPhone="${sessionScope.user.userPhone}";
 
-            if(userName==null){
-                $(".nc").html(${sessionScope.user.userName});
+            if(nickname==null){
+                $(".nc").html(userName);
             }else {
-                $(".nc").html(${sessionScope.user.nickname});
+                $(".nc").html(nickname);
             }
+
+            $("input[name=username]").val(userName);
+            $("input[name=nichen]").val(nickname);
+            $("input[name=email]").val(userMail);
+            $("input[name=phone]").val(userPhone);
+
 
 
             var userId=${sessionScope.user.userId};

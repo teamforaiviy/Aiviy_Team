@@ -6,6 +6,8 @@ import com.kgc.exam.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
@@ -20,5 +22,10 @@ public class OrderServiceImpl implements OrderService {
         Orders order = orderMapper.queryAllByONo(oNo);
         order.setoState(1);
         return orderMapper.updateByPrimaryKey(order)==1;
+    }
+
+    @Override
+    public List<Orders> queryOrders(String oNo) {
+        return orderMapper.queryOrders(oNo);
     }
 }

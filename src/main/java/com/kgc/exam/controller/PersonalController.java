@@ -22,7 +22,8 @@ public class PersonalController {
 
     @RequestMapping("order")
     public List<Orders> queryOrder(@RequestParam("userId") Integer userId){
-        return personalService.queryOrder(userId);
+        List<Orders> orders = personalService.queryOrder(userId);
+        return orders;
     }
 
     @RequestMapping("/updateAddress")

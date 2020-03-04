@@ -26,10 +26,9 @@ public interface GoodsService {
      * */
     List<Goods> queryByName(String gName);
 
-    /*
-     * 根据id查单个商品
-     * */
     Goods selectByPrimaryKey(Integer gId);
+
+    Boolean updateByPrimaryKeySelective(Goods goods);
   
     /*
      * 根据上传时间排序查新品
@@ -41,11 +40,10 @@ public interface GoodsService {
     * */
     List<Goods> queryGoodsWithImage();
 
-    /**
-     * 根据gId删除商品
-     * @param gId
-     * @return
-     */
     Boolean del(Integer gId);
 
+    /*
+    * 根据商品折扣状态查询商品
+    * */
+    List<Goods> queryGoodsWithImageByCountStatus(Integer countStatus);
 }

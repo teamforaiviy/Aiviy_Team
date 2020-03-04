@@ -27,7 +27,15 @@
         var uid = getUrlParam("uid");
         var price = getUrlParam("price");
         $(function () {
-
+            $.getJSON("bill/queryIfAddressIsNull",{},function (data) {
+                if (data){
+                    queryAddress();
+                }else {
+                    alert("没有地址，请添加");
+                }
+            })
+        })
+        function queryAddress() {
             $.getJSON("bill/queryaddress",{"uId":uid},function (data) {
                 console.log(data);
                 if (data!=" "){
@@ -35,13 +43,25 @@
                     $("input[name=name]").val(data.adName);
                     $("input[name=address]").val(data.adAddress);
                     $("input[name=phone]").val(data.adPhone);
-                    $("input[type=button]").click(function () {
-                        window.location.href="payforGoods.jsp"
-                    })
                 }
             })
-        })
-
+        }
+        function addAddressWhenNull() {
+            var adSname = $("input[name=sname]").val();
+            var adName = $("input[name=name]").val();
+            var adAddress = $("input[name=address]").val();
+            var adPhone = $("input[name=phone]").val();
+            var email = $("input[name=mail]").val();
+            if(adSname==''||adName==''||adAddress==''||adPhone==''||email==''){
+                alert("请将地址填写完整")
+            }else {
+                $.getJSON("bill/addAddressWhenNull",{"adSname":adSname,"adName":adName,"adAddress":adAddress,"adPhone":adPhone,"email":email},function (data) {
+                    if(data){
+                        window.location.href="pay/payForGoods?price="+price;
+                    }
+                })
+            }
+        }
     </script>
 </head>
 <body>
@@ -90,7 +110,7 @@
     </div>
 </div>
 <div class="close">
-    <input type="button" class="ok" value="确认订单" onclick="window.location.href='pay/payForGoods?price='+price"></button>
+    <input type="button" class="ok" value="确认订单" onclick="addAddressWhenNull()"></button>
 </div>
 
 </body>

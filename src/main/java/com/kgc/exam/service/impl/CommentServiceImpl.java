@@ -20,6 +20,11 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public List<Comment> queryComment(String gName) {
+        return commentMapper.queryComment(gName);
+    }
+
+    @Override
     public Boolean insert(Comment comment) {
         return commentMapper.insert(comment)==1;
     }

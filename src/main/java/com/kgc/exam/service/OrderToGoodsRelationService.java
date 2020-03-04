@@ -1,5 +1,6 @@
 package com.kgc.exam.service;
 
+import com.kgc.exam.entity.OrderToGoodsRelation;
 import com.kgc.exam.entity.Shopping;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface OrderToGoodsRelationService {
     * 插入成功则返回true
     * */
     Boolean addOrderToGoodsRelation(List<Shopping> goods, String oNo);
+
+    List<OrderToGoodsRelation> queryOrderWithGood(String oNo);
 }

@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  Good: chensijia
+  Orders: chensijia
   Date: 2020/2/27
   Time: 10:02
   To change this template use File | Settings | File Templates.
@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>GoodList</title>
+    <title>Orders</title>
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -31,12 +31,11 @@
         }
         .form-control{
             margin-top: 10px;
-            width: 250px;
         }
         .pagination li {
             margin-left: 10px;
         }
-        #updateGood select {
+        #updateOrders select {
             margin-top: 10px;
             background-color: #e9ecef;
             width: 100px;
@@ -58,29 +57,35 @@
             <div class="breadcrumb-holder container-fluid">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-                    <li class="breadcrumb-item active">GoodList            </li>
+                    <li class="breadcrumb-item active">Orders            </li>
                 </ul>
             </div>
             <!-- Forms Section-->
-            <section class="GoodList">
+            <section class="Orders">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header d-flex align-items-center">
-                                    <h3 class="h4">GoodList</h3>
+                                    <h3 class="h4">Orders</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-striped" id="myTable">
                                             <thead>
                                             <tr>
-                                                <th>商品编号</th>
-                                                <th>商品名</th>
-                                                <th>商品价格</th>
-                                                <th>商品描述</th>
-                                                <th>上传日期</th>
-                                                <th>状态</th>
+                                                <td colspan="6">
+                                                    订单号：<input type="text" name="oNo">
+                                                    <button type="button" class="btn btn-primary">查询</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>订单ID</th>
+                                                <th>订单号</th>
+                                                <th>订单状态</th>
+                                                <th>商品总价</th>
+                                                <th>用户</th>
+                                                <th>创建时间</th>
                                                 <th>操作</th>
                                             </tr>
                                             </thead>
@@ -93,37 +98,42 @@
                                         </nav>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="updateGood" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+
+                                <div class="modal fade" id="updateOrders" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel1">修改商品</h4>
+                                                <h4 class="modal-title" id="myModalLabel1">修改订单</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form>
-                                                    <input type="hidden" class="form-control" name="gId">
+                                                    <input type="hidden" class="form-control" name="OrdersId">
                                                     <table>
                                                         <tr>
-                                                            <td>商品名：</td>
-                                                            <td><input type="text" class="form-control" name="gName"></td>
+                                                            <td>订单名：</td>
+                                                            <td><input type="text" class="form-control" name="OrdersName"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>商品价格：</td>
-                                                            <td><input type="text" class="form-control" name="gPrice"></td>
+                                                            <td>昵称：</td>
+                                                            <td><input type="text" class="form-control" name="nickname"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>商品描述：</td>
-                                                            <td><input type="email" class="form-control" name="gContent"></td>
+                                                            <td>邮箱：</td>
+                                                            <td><input type="email" class="form-control" name="OrdersMail"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>状态：</td>
+                                                            <td>手机号：</td>
+                                                            <td><input type="text" class="form-control" name="OrdersPhone"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>消费金额：</td>
+                                                            <td><input type="text" class="form-control" name="OrdersMoney"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>会员等级：</td>
                                                             <td>
-                                                                <select name="countstatus">
-                                                                    <option value="0">默认</option>
-                                                                    <option value="1">新品</option>
-                                                                    <option value="2">热销</option>
-                                                                </select>
+                                                                <select name="vId"></select>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -131,7 +141,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" onclick="updateGood()">Save</button>
+                                                <button type="button" class="btn btn-primary" onclick="updateOrders()">Save</button>
                                             </div>
                                         </div>
                                     </div>
@@ -157,106 +167,85 @@
     var pn=1;
     var ps=5;
     $(function () {
-        queryGood(pn,ps)
+        queryOrders(pn,ps)
+        $("#myTable button").click(function () {
+            queryOrders(pn,ps)
+        })
     })
-    function queryGood(pn,ps) {
-        $.getJSON("../goods/queryGood",{"pn":pn,"ps":ps},function (data) {
+    function queryOrders(pn,ps) {
+        var oNo = $("#myTable input[name=oNo]").val();
+        $.getJSON("../order/queryOrders",{"pn":pn,"ps":ps,"oNo":oNo},function (data) {
             var page =eval(data);
             var str="";
             $(page.list).each(function() {
-                var cstatus="";
-                if(this.countstatus==0){
-                    cstatus="默认";
-                }else if(this.countstatus==1){
-                    cstatus="新品";
-                }else if(this.countstatus==2){
-                    cstatus="热销";
-                }
                 str += "<tr>" +
-                    "<td style='width: 82px'>"+this.gId+"</td>" +
-                    "<td style='width: 250px'>"+this.gName+"</td>" +
-                    "<td style='width: 82px'>"+this.gPrice+"</td>" +
-                    "<td style='width: 360px'>"+this.gContent+"</td>" +
-                    "<td style='width: 120px'>"+this.uploadtime+"</td>" +
-                    "<td style='width: 82px'>"+cstatus+"</td>" +
-                    "<td style='width: 41px'><a href='#' data-toggle=\"modal\" data-target=\"#updateGood\" onclick='queryById("+this.gId+")'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.gId+")'>删除</a></td>" +
+                    "<td>"+this.oId+"</td>" +
+                    "<td>"+this.oNo+"</td>" +
+                    "<td>"+(this.oState==0?'未支付':'已支付')+"</td>" +
+                    "<td>"+this.oNum+"</td>" +
+                    "<td>"+this.user.userName+"</td>" +
+                    "<td>"+this.createddate+"</td>" +
+                    "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateOrders\" onclick='queryById("+this.oNo+")'>查看详情</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.OrdersId+")'>删除</a></td>" +
                     "</tr>";
             })
             $("#myTable tbody").empty().append(str);
 
             var pageStr="";
-            pageStr +="<li><a href='javascript:queryGood(1,"+ps+")'>首页</a></li>";
+            pageStr +="<li><a href='javascript:queryOrders(1,"+ps+")'>首页</a></li>";
             if(page.hasPreviousPage){
                 pageStr +="<li>" +
-                    "<a href='javascript:queryGood("+(page.pageNum-1)+","+ps+")' aria-label='Previous'>" +
+                    "<a href='javascript:queryOrders("+(page.pageNum-1)+","+ps+")' aria-label='Previous'>" +
                     "<span aria-hidden=''true'>上一页</span>" +
                     "</a>" +
                     "</li>";
             }
             $(page.navigatepageNums).each(function () {
                 if(page.pageNum==this){
-                    pageStr +="<li><a class='active' href='javascript:queryGood("+this+","+ps+")'>"+this+"</a></li>";
+                    pageStr +="<li><a class='active' href='javascript:queryOrders("+this+","+ps+")'>"+this+"</a></li>";
                 }else {
-                    pageStr +="<li><a href='javascript:queryGood("+this+","+ps+")'>"+this+"</a></li>";
+                    pageStr +="<li><a href='javascript:queryOrders("+this+","+ps+")'>"+this+"</a></li>";
                 }
             })
             if(page.hasNextPage){
                 pageStr +="<li>" +
-                    "<a href='javascript:queryGood("+(page.pageNum+1)+","+ps+")' aria-label='Previous'>" +
+                    "<a href='javascript:queryOrders("+(page.pageNum+1)+","+ps+")' aria-label='Previous'>" +
                     "<span aria-hidden='true'>下一页</span>" +
                     "</a>" +
                     "</li>";
             }
-            pageStr +="<li><a href='javascript:queryGood("+page.pages+","+ps+")'>尾页</a></li>";
+            pageStr +="<li><a href='javascript:queryOrders("+page.pages+","+ps+")'>尾页</a></li>";
             $(".pagination").empty().append(pageStr);
         })
     }
     /**
-     * 通过Id查询商品
+     * 通过Id查询订单
      */
-    function queryById(gId) {
+    function queryById(OrdersId) {
         $.ajax({
-            url:"../goods/select",
+            url:"../Orders/queryById",
             type:"get",
-            data:{"gid":gId},
+            data:{"OrdersId":OrdersId},
             dataType:"json",
             success:function (data) {
-                $("#updateGood input[name=gId]").val(data.gId);
-                $("#updateGood input[name=gName]").val(data.gName);
-                $("#updateGood input[name=gPrice]").val(data.gPrice);
-                $("#updateGood input[name=gContent]").val(data.gContent);
-                $("#updateGood select").val(data.countstatus);
+                $("#updateOrders input[name=OrdersId]").val(data.OrdersId);
+                $("#updateOrders input[name=OrdersName]").val(data.OrdersName);
+                $("#updateOrders input[name=nickname]").val(data.nickname);
+                $("#updateOrders input[name=OrdersMail]").val(data.OrdersMail);
+                $("#updateOrders input[name=OrdersPhone]").val(data.OrdersPhone);
+                $("#updateOrders input[name=OrdersMoney]").val(data.OrdersMoney);
+                $("#updateOrders select").val(data.member.vId);
             }
         })
     }
     /**
-     * 修改商品
+     * 删除订单
      */
-    function updateGood() {
-        $.ajax({
-            url:"../goods/update",
-            type:"get",
-            data:$("#updateGood form").serialize(),
-            dataType:"json",
-            success:function (data) {
-                if(data){
-                    alert("修改成功！")
-                    window.location.reload();
-                }else {
-                    alert("修改失败！")
-                }
-            }
-        })
-    }
-    /**
-     * 删除商品
-     */
-    function del(gId) {
-        if("确认删除商品吗？"){
+    function del(OrdersId) {
+        if(confirm("确定删除订单吗？")){
             $.ajax({
-                url:"../goods/del",
+                url:"../Orders/del",
                 type:"get",
-                data:{"gId":gId},
+                data:{"OrdersId":OrdersId},
                 dataType:"json",
                 success:function (data) {
                     if(data){

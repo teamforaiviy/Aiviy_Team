@@ -51,4 +51,24 @@
     from ordertogoodsrelation
     where o_no=#{oNo,jdbcType=VARCHAR}
   </select>
+
+  <resultMap id="queryOrderWithGoodMap" type="com.kgc.exam.entity.OrderToGoodsRelation">
+    <!--@mbg.generated-->
+    <!--@Table ordertogoodsrelation-->
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="o_no" jdbcType="VARCHAR" property="oNo" />
+    <association property="goods" javaType="com.kgc.exam.entity.Goods">
+      <id column="g_id" property="gId"/>
+      <result column="g_name" property="gName"/>
+      <result column="g_price" property="gPrice"/>
+    </association>
+  </resultMap>
+
+  <select id="queryOrderWithGood" resultMap="queryOrderWithGoodMap">
+    select id o_no,ordertogoodsrelation.g_id,g_name,g_price
+    from ordertogoodsrelation
+    inner join goods
+    on ordertogoodsrelation.g_id=goods.g_id
+    where o_no=#{oNo}
+  </select>
 </mapper>

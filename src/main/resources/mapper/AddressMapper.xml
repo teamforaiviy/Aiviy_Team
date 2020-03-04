@@ -7,16 +7,26 @@
     <result column="ad_phone" jdbcType="VARCHAR" property="adPhone" />
     <result column="ad_name" jdbcType="VARCHAR" property="adName" />
     <result column="ad_name" jdbcType="VARCHAR" property="adSname" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+
+  <resultMap id="queryUserWithAddressMap" type="com.kgc.exam.entity.Address">
+    <id column="ad_id" jdbcType="INTEGER" property="adId" />
+    <result column="ad_address" jdbcType="VARCHAR" property="adAddress" />
+    <result column="ad_phone" jdbcType="VARCHAR" property="adPhone" />
+    <result column="ad_name" jdbcType="VARCHAR" property="adName" />
+    <result column="ad_name" jdbcType="VARCHAR" property="adSname" />
     <result column="aduserId" jdbcType="INTEGER" property="userId" />
     <association property="user" javaType="com.kgc.exam.entity.User">
       <id column="uuserId" property="userId"></id>
       <result column="user_name" property="userName"></result>
     </association>
   </resultMap>
+
   <sql id="Base_Column_List">
     ad_id, ad_address, ad_phone, ad_name, ad_sname, user_id
   </sql>
-  <select id="queryAddress" resultMap="BaseResultMap">
+  <select id="queryAddress" resultMap="queryUserWithAddressMap">
     select ad_id, ad_address, ad_phone, ad_name, ad_sname, ad.user_id aduserId,u.user_id uuserId,user_name
     from address ad inner join user u on ad.user_id=u.user_id
     <where>
@@ -118,4 +128,11 @@
       user_id = #{userId,jdbcType=INTEGER}
     where ad_id = #{adId,jdbcType=INTEGER}
   </update>
+
+  <select id="queryAllByUserId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from address
+    where user_id = #{userId}
+  </select>
 </mapper>

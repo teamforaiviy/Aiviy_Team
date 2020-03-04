@@ -5,4 +5,5 @@ import org.apache.ibatis.annotations.Param;
 
 public interface BillMapper {
     Address queryaddress(@Param("uid") Integer uId);
+    Integer add(@Param("address") Address address);
 }

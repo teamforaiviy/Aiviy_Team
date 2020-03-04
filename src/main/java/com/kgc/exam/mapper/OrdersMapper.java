@@ -1,8 +1,9 @@
 package com.kgc.exam.mapper;
 import org.apache.ibatis.annotations.Param;
-import java.util.List;
 
 import com.kgc.exam.entity.Orders;
+
+import java.util.List;
 
 public interface OrdersMapper {
     int deleteByPrimaryKey(Integer oId);
@@ -19,5 +20,10 @@ public interface OrdersMapper {
 
     Orders queryAllByONo(@Param("oNo")String oNo);
 
-
+    /**
+     * 通过订单号查询所有订单
+     * @param oNo
+     * @return
+     */
+    List<Orders> queryOrders(@Param("oNo")String oNo);
 }

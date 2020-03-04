@@ -3,7 +3,9 @@ package com.kgc.exam.controller;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.kgc.exam.entity.AlipayAttr;
+import com.kgc.exam.entity.User;
 import com.kgc.exam.service.OrderService;
+import com.kgc.exam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,6 +24,8 @@ public class AlipayReturnController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private UserService userService;
     /*
     * 阿里支付模块返回；
     * */
@@ -59,8 +64,14 @@ public class AlipayReturnController {
             request.setAttribute("msg", msg);
             try {
                 /*
-                 * 更新数据库，将订单状态修改为已支付
+                 * 更新数据库，将订单状态修改为已支付,更改用户消费金额
                  * */
+                HttpSession session = request.getSession();
+                User user = (User)session.getAttribute("user");
+                Double money = user.getUserMoney()==null?0.0:user.getUserMoney();
+                money+=Double.parseDouble(total_amount);
+                user.setUserMoney(money);
+                userService.update(user);
                 if(orderService.updateOStateByONo(out_trade_no)){
                     request.getRequestDispatcher("success.jsp?msg=1").forward(request, response);
 

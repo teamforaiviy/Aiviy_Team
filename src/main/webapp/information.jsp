@@ -49,11 +49,12 @@
              line-height: 74px;
          }
         .pagination{
-            vertical-align: middle;
+            /*vertical-align: middle;*/
+            margin-right: 40px;
 
         }
         .pagination li{
-
+          width: 40px;
         }
     </style>
     <script type="text/javascript">
@@ -353,7 +354,7 @@
 
 <div class="ccaazz">
 
-
+    <div class="dwdwdw">
         <select style="margin-top: 20px">
             <option selected="selected">默认产品排序</option>
             <option>接受关注度排序</option>
@@ -362,6 +363,15 @@
             <option>按价格从低到高</option>
             <option>按价格从高到低</option>
         </select>
+
+        <%--<ul style="display: inline-block">
+            <li style="display: inline-block" class="page">首页</li> |
+            <li style="display: inline-block" class="page"><< 上一页</li> |
+            <li style="display: inline-block" class="page">下一页 >></li> |
+            <li style="display: inline-block" class="page">尾页</li>
+            第<span class="pn"></span>页/共<span class="totalPage"></span>页（<span class="totalCount"></span>条）
+        </ul>--%>
+    </div>
 
         <div class="a">
             <div class="a1">

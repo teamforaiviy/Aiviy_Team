@@ -18,12 +18,12 @@
     </association>
   </resultMap>
 
-  <select id="queryAll" resultMap="CommentWithGoodsMap">
-    select c_id, c_comment, user_id, c.g_id,ctime, g.g_id, g_name, g_price, g_content, uploadTime, countStatus
-    from comment c inner join goods g on c.g_id=g.g_id
+  <select id="queryAll" resultMap="CommentMap">
+    select c_id, c_comment, c.user_id, c.g_id,ctime, g.g_id, g_name, g_price, g_content, uploadTime, countStatus,user_name
+    from comment c inner join goods g on c.g_id=g.g_id inner join user u on u.user_id=c.user_id
     <where>
-      <if test="g_id !=null and g_id != 0">
-        g_id = #{gId}
+      <if test="gId !=null and gId!= 0">
+        c.g_id = #{gId}
       </if>
     </where>
     order by ctime desc

@@ -23,7 +23,7 @@
                         <li><a onclick="window.location.href='user/exit'">退出登录</a></li>
                     </c:if>
                     <li><a href="register.jsp">注册</a></li>
-                    <li><a href="management.jsp">个人中心</a></li>
+                    <li><a href="" onclick="checkGoToPersonal()">个人中心</a></li>
                     <%--<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">服务 <span class="glyphicon glyphicon-menu-down"></span></a>
                         <ul class="dropdown-menu">
@@ -62,7 +62,7 @@
                 </a>
             </div>--%>
             <div class="header-shop">
-                <a href="shoppingcar.jsp">
+                <a onclick="checkIfLogin()">
                     <div class="header-shop-sp2">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
                     </div>
@@ -74,7 +74,7 @@
             <ul>
                 <li><a href="index.jsp">首页</a></li>
                 <li><a href="new.jsp">新品</a></li>
-                <li><a href="sale.jsp">最畅销</a></li>
+                <li><a href="sale.jsp">优惠</a></li>
                 <li><a href="information.jsp">全部商品</a></li>
 <%--                <li><a href="Group-buying.jsp">团购</a></li>--%>
             </ul>
@@ -83,6 +83,24 @@
 </header>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
+    function checkIfLogin(){
+        $.getJSON("user/ifLogin",{},function (data) {
+            if (!data){
+                alert("请先登录！")
+            }else {
+                window.location.href="shoppingcar.jsp"
+            }
+        })
+    }
+    function checkGoToPersonal(){
+        $.getJSON("user/ifLogin",{},function (data) {
+            if (!data){
+                alert("请先登录！")
+            }else {
+                window.location.href="management.jsp"
+            }
+        })
+    }
     $(function () {
         $(".header-bg input[type=button]").click(function () {
             var gName = $(".header-bg input[type=text]").val();

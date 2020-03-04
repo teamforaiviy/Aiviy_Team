@@ -73,10 +73,10 @@ public class AlipayReturnController {
                 user.setUserMoney(money);
                 userService.update(user);
                 if(orderService.updateOStateByONo(out_trade_no)){
-                    request.getRequestDispatcher("success.jsp?msg=1").forward(request, response);
+                    request.getRequestDispatcher("index.jsp?msg=1").forward(request, response);
 
                 }else {
-                    request.getRequestDispatcher("success.jsp？msg=0").forward(request, response);
+                    request.getRequestDispatcher("index.jsp？msg=0").forward(request, response);
 
                 }
             } catch (ServletException e) {

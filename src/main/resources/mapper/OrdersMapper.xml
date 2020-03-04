@@ -135,4 +135,8 @@
       </if>
     </where>
   </select>
+
+  <delete id="del">
+    delete from orders where o_no=#{oNo}
+  </delete>
 </mapper>

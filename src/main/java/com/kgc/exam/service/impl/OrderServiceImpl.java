@@ -1,6 +1,7 @@
 package com.kgc.exam.service.impl;
 
 import com.kgc.exam.entity.Orders;
+import com.kgc.exam.mapper.OrderToGoodsRelationMapper;
 import com.kgc.exam.mapper.OrdersMapper;
 import com.kgc.exam.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrdersMapper orderMapper;
+    @Autowired
+    private OrderToGoodsRelationMapper orderToGoodsRelationMapper;
     @Override
     public Integer insertIntoOrder(Orders order) {
         return orderMapper.insert(order);
@@ -27,5 +30,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Orders> queryOrders(String oNo) {
         return orderMapper.queryOrders(oNo);
+    }
+
+    @Override
+    public Boolean del(String oNo) {
+        orderToGoodsRelationMapper.del(oNo);
+        return orderMapper.del(oNo)==1;
     }
 }

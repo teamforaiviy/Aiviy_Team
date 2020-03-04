@@ -67,11 +67,11 @@
                                             <thead>
                                             <tr>
                                                 <td colspan="6">
-                                                    用户名：<input type="text" name="userName">
+                                                    用户名：<input type="text" name="userName" style="height: 35px">
                                                     <button type="button" class="btn btn-primary">查询</button>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <tr id="head">
                                                 <th>地址编号</th>
                                                 <th>用户名</th>
                                                 <th>收货地址</th>
@@ -82,7 +82,7 @@
                                             <tbody>
                                             </tbody>
                                         </table>
-                                        <nav aria-label="Page navigation">
+                                        <nav aria-label="Page navigation" id="page">
                                             <ul class="pagination">
                                             </ul>
                                         </nav>
@@ -120,16 +120,22 @@
         $.getJSON("../address/queryAddress",{"pn":pn,"ps":ps,"userName":userName},function (data) {
             var str="";
             var page =eval(data);
-            $(page.list).each(function() {
-                str += "<tr>" +
-                    "<td>"+this.adId+"</td>" +
-                    "<td>"+this.user.userName+"</td>" +
-                    "<td>"+this.adPhone+"</td>" +
-                    "<td>"+this.adAddress+"</td>" +
-                    "<td><a href='#'>修改</a>&nbsp;&nbsp;<a href='del("+this.adId+")'>删除</a></td>" +
-                    "</tr>";
-            })
-            $("#myTable tbody").empty().append(str);
+            if(page.list!=""){
+                $(page.list).each(function() {
+                    str += "<tr>" +
+                        "<td>"+this.adId+"</td>" +
+                        "<td>"+this.user.userName+"</td>" +
+                        "<td>"+this.adPhone+"</td>" +
+                        "<td>"+this.adAddress+"</td>" +
+                        "<td><a href='' onclick='del("+this.adId+")'>删除</a></td>" +
+                        "</tr>";
+                })
+                $("#myTable tbody").empty().append(str);
+                $("#head,#page").show();
+            }else {
+                $("#myTable tbody").empty().html("<h3 style='color: red;margin: 100px 0 100px 100px'>无地址</h3>");
+                $("#head,#page").hide();
+            }
 
             var pageStr="";
             pageStr +="<li><a href='javascript:queryAddress(1,"+ps+")'>首页</a></li>";
@@ -164,7 +170,7 @@
     function del(adId) {
         if("确认删除地址吗？"){
             $.ajax({
-                url:"../Address/del",
+                url:"../address/del",
                 type:"get",
                 data:{"adId":adId},
                 dataType:"json",

@@ -29,4 +29,9 @@ public class AddressServiceImpl implements AddressService {
         return addressMapper.queryAllByUserId(userId);
     }
 
+    @Override
+    public Boolean deleteByPrimaryKey(Integer adId) {
+        return addressMapper.deleteByPrimaryKey(adId)==1;
+    }
+
 }

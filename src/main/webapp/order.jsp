@@ -198,8 +198,8 @@
         return result ? decodeURIComponent(result[2]) : null;
     }
     var gid = getUrlParam("gid");
-    var uid = ${user.userId};
-    var userName = ${user.userName};
+    var uid = "${user.userId}";
+    var userName = "${user.userName}";
 
     //评论提交
     function fnDate(){
@@ -222,17 +222,11 @@
     }
 
     $(function() {
-        $.getJSON("user/ifLogin",{},function (data) {
-            if (!data){
-                alert("请登录，否则无法购买")
-            }
-        })
-
         $.getJSON("comment/queryAll",{"gId":gid},function (data) {
             var str = "";
 
                 $(data).each(function () {
-                    str +="<span>"+this.userName+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                    str +="<span>"+this.user.userName+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
                         "<span>"+this.ctime+"</span><br>"+
                         "<span>"+this.cComment+"</span><br>"+
                         "<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br>";
@@ -261,7 +255,6 @@
                 type:"post",
                 data:{"cComment":content,
                       "gId":gid,
-                      "ctime":date,
                       "uid":uid},
                 dataType:"json",
                 success:function (data) {
@@ -274,6 +267,7 @@
         })
 
             $("input[type=submit]").click(function () {
+                checkIfLogin();
                 var sName=$("h3[name=gName]").html();
                 var sPrice=$("span[name=gPrice]").html();
                 var sNum=$("input[name=amount]").val();
@@ -281,7 +275,6 @@
                     if (data){
                         window.location.href="shoppingcar.jsp?gid="+gid+"&uid="+uid;
                     }
-
                 })
 
             })
@@ -314,7 +307,6 @@
                 var str ="";
                 $(data).each(function () {
                     str +="<li onclick='bg(\""+this.imgUrl+"\")'><img src='"+this.imgUrl+"' style='line-height: 27.5px;' ></li>"
-                    //str +=`<li onclick="bg('`+this.imgUrl+`')"><img src='`+this.imgUrl+`' style='line-height: 27.5px;' ></li>`
                 })
                 $(".fone ul").append(str);
 

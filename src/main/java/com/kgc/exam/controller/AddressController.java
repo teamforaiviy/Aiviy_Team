@@ -34,4 +34,9 @@ public class AddressController {
         PageInfo pageInfo = new PageInfo(addresses,3);
         return  pageInfo;
     }
+
+    @RequestMapping("/del")
+    public Boolean del(@RequestParam("adId") Integer adId) {
+        return addressService.deleteByPrimaryKey(adId);
+    }
 }

@@ -1,5 +1,6 @@
 package com.kgc.exam.controller;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kgc.exam.entity.Address;
@@ -62,8 +63,19 @@ public class GoodsController {
     }
 
     @RequestMapping("/queryGoodsWithImages")
-        public List<Goods> queryGoodsWithImages(){
+    public List<Goods> queryGoodsWithImages(){
         return goodsService.queryGoodsWithImage(0);
+    }
+
+    @RequestMapping("quertGoodsWithImagesByCount")
+    public  PageInfo<Goods> quertGoodsWithImagesByCount(Integer pageNum,Integer pageSize){
+        pageNum = pageNum==null?1:pageNum;
+        pageSize = pageSize==null?16:pageSize;
+        Page<Goods> page = null;
+        PageInfo<Goods> pageInfo = null;
+        page = PageHelper.startPage(pageNum,pageSize);
+        pageInfo = new PageInfo<>(goodsService.queryGoodsWithImage(0));
+        return pageInfo;
     }
 
 

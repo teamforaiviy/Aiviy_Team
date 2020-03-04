@@ -104,4 +104,14 @@ public class ShoppingController {
         shopping.setuId(user.getUserId());
         return shoppingService.updateByUserIdAndGId(shopping);
     }
+
+    /*
+    * 查询购物车数据数目
+    * */
+    @RequestMapping("countBySStatusAndUserId")
+    public Integer countBySStatusAndUserId(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        User user =(User) session.getAttribute("user");
+        return shoppingService.countBySStatusAndUserId(user.getUserId(),0)+shoppingService.countBySStatusAndUserId(user.getUserId(),1);
+    }
 }

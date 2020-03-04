@@ -31,4 +31,9 @@ public interface ShoppingService {
     * 根据用户id以及商品id修改购物车数据
     * */
     Boolean updateByUserIdAndGId(Shopping shopping);
+
+    /*
+    * 根据用户id和购物车状态查询购物车数据数目
+    * */
+    Integer countBySStatusAndUserId(Integer userId,Integer sStatus);
 }

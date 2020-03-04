@@ -72,5 +72,10 @@ public class ShoppingServiceImpl implements ShoppingService {
         return shoppingMapper.updateByUserIdAndGId(shopping)==shoppingMapper.countByUIdAndGId(shopping.getuId(),shopping.getgId());
     }
 
+    @Override
+    public Integer countBySStatusAndUserId(Integer userId, Integer sStatus) {
+        return shoppingMapper.countBySStatusAndUserId(sStatus,userId);
+    }
+
 
 }

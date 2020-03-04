@@ -53,8 +53,7 @@
             <%--<div class="header-shop">
                 <a href="购物车.jsp">
                     <div class="header-shop-sp1">
-                        <span>￥1026</span><br />
-                        <span>3件</span>
+                        <span class="theNumOfShoppingCar">10101</span>
                     </div>
                     <div class="header-shop-sp2">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
@@ -66,6 +65,7 @@
                     <div class="header-shop-sp2">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
                     </div>
+                    <div class="theNumOfShoppingCar" style="display: inline-block"></div>
                 </a>
             </div>
         </div>
@@ -102,6 +102,10 @@
         })
     }
     $(function () {
+        $.getJSON("shop/countBySStatusAndUserId",function (data2) {
+            data2 = data2==0?"还没有商品，赶快买点吧":"共"+data2+"件商品，谢谢惠顾！"
+            $(".theNumOfShoppingCar").html(data2);
+        })
         $(".header-bg input[type=button]").click(function () {
             var gName = $(".header-bg input[type=text]").val();
             if(gName==""){

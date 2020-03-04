@@ -214,23 +214,23 @@
     $(function () {
         queryOrders(pn,ps)
         $("#myTable button").click(function () {
-            queryComment(pn,ps)
+            queryOrders(pn,ps)
         })
     })
     function queryOrders(pn,ps) {
         var oNo = $("#myTable input[name=oNo]").val();
-        $.getJSON("../Orders/queryOrders",{"pn":pn,"ps":ps,"oNo":oNo},function (data) {
+        $.getJSON("../order/queryOrders",{"pn":pn,"ps":ps,"oNo":oNo},function (data) {
             var page =eval(data);
             var str="";
             $(page.list).each(function() {
                 str += "<tr>" +
                     "<td>"+this.oId+"</td>" +
                     "<td>"+this.oNo+"</td>" +
-                    "<td>"+this.oState+"</td>" +
+                    "<td>"+(this.oState==0?'未支付':'已支付')+"</td>" +
                     "<td>"+this.oNum+"</td>" +
                     "<td>"+this.user.userName+"</td>" +
                     "<td>"+this.createddate+"</td>" +
-                    "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateOrders\" onclick='queryById("+this.OrdersId+")'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.OrdersId+")'>删除</a></td>" +
+                    "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateOrders\" onclick='queryById("+this.oNo+")'>查看详情</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.OrdersId+")'>删除</a></td>" +
                     "</tr>";
             })
             $("#myTable tbody").empty().append(str);

@@ -66,7 +66,7 @@
                                     <span class="col33"></span>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="order.jsp?gid=21">
                                         <img src="/img/footer/Aiviy-idm-box-418x418.jpg" />
                                         <span  class="col31">Internet Download Manager (IDM) 极速下载工具</span>
                                     </a>

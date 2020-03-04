@@ -70,7 +70,7 @@
                                         <li>摆脱恼人广告，在线跟踪， 拦截广告和危险网站 </li>
                                         <li>支持全平台设备：WIN/MAC/IOS/ANDROID</li>
                                     </ul>
-                                    <a href="#">立即购买</a>
+                                    <a href="order.jsp?gid=14">立即购买</a>
                                 </div>
                             </div>
                             <div class="content-body-two-right">
@@ -91,7 +91,7 @@
                                         <li>快速收藏任何图片，高效整理大量图片</li>
                                         <li>解决素材整理的各种难题</li>
                                     </ul>
-                                    <a href="订单页面.jsp">立即购买</a>
+                                    <a href="order.jsp?gid=15">立即购买</a>
                                 </div>
                             </div>
                             <div class="content-body-two-right">
@@ -112,7 +112,7 @@
                                         <li>提升您的Mac运行速度</li>
                                         <li>检测并删除恶意软件和病毒</li>
                                     </ul>
-                                    <a href="订单页面.html">立即购买</a>
+                                    <a href="order.jsp?gid=16">立即购买</a>
                                 </div>
                             </div>
                             <div class="content-body-two-right">
@@ -133,7 +133,7 @@
                                         <li>丰富多彩的 PDF 批注工具 </li>
                                         <li>合并、分享您的计划</li>
                                     </ul>
-                                    <a href="订单页面.jsp">立即购买</a>
+                                    <a href="order.jsp?gid=17">立即购买</a>
                                 </div>
                             </div>
                             <div class="content-body-two-right">
@@ -154,7 +154,7 @@
                                         <li>全天候访问办公室计算机 </li>
                                         <li>PC 机和服务器故障排除</li>
                                     </ul>
-                                    <a href="订单页面.jsp">立即购买</a>
+                                    <a href="order.jsp?gid=18">立即购买</a>
                                 </div>
                             </div>
                             <div class="content-body-two-right">
@@ -187,7 +187,7 @@
             <div class="content-one">
                 <div class="content-one-first">
                     <h2>S&nbsp;A&nbsp;L&nbsp;E&nbsp;</h2>
-                    <a href="#">#立即查看所有优惠商品#</a>
+                    <a href="sale.jsp">#立即查看所有优惠商品#</a>
                 </div>
             </div>
 
@@ -201,7 +201,7 @@
                                 <p>概念图、头脑风暴、流程图、应有具有。强大的视觉冲击力并提供整个主题的概述</p>
                                 <p>激发创造力，激发头脑从现在开始！</p><br />
                                 <img src="/img/index/Aiviy-trial_start-img.png" width="230px" height="130px" />
-                                <a href="">立即查看</a>
+                                <a href="order.jsp?gid=19">立即查看</a>
                             </div>
                         </div>
                     </div>
@@ -215,7 +215,7 @@
                                     <p>Office 2019应用程序包含 Word，Excel 和 PowerPoint</p>
                                     <p>平滑切换、缩放定位</p>
                                     <p>一次购买，终身使用！</p>
-                                    <a href="">立即购买</a>
+                                    <a href="order.jsp?gid=20">立即购买</a>
                                 </div>
                             </div>
                             <div class="content-two-second-2">
@@ -226,12 +226,12 @@
                     <div class="col-md-3">
                         <div class="content-two-third">
                             <div class="content-two-third-1">
-                                <a href="">
+                                <a href="order.jsp?gid=17">
                                     <img src="/img/index/PDF-Expert-icon.png" />
                                 </a>
                             </div>
                             <div class="content-two-third-2">
-                                <a href="">
+                                <a href="order.jsp?gid=21">
                                     <img src="/img/index/idm-icon.png" />
                                 </a>
                             </div>

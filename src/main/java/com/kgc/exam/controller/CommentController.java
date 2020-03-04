@@ -48,4 +48,9 @@ public class CommentController {
 
         return commentService.insert(comment1);
     }
+
+    @RequestMapping("/del")
+    public Boolean deleteByPrimaryKey(@RequestParam("cId") Integer cId) {
+        return commentService.deleteByPrimaryKey(cId);
+    }
 }

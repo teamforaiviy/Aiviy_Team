@@ -279,7 +279,7 @@
                                 "<td><a href=''>付款</a><span>取消</span></td>" +
                                 "</tr>"
                         })
-            $(".dds").append(str);
+                        $(".dds").empty().append(str);
                     }
                 })
 

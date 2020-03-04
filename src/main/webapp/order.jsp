@@ -199,7 +199,7 @@
     }
     var gid = getUrlParam("gid");
     var uid = ${user.userId};
-    var userName = ${user.userName};
+    var userName = "${user.userName}";
 
     //评论提交
     function fnDate(){
@@ -261,7 +261,6 @@
                 type:"post",
                 data:{"cComment":content,
                       "gId":gid,
-                      "ctime":date,
                       "uid":uid},
                 dataType:"json",
                 success:function (data) {

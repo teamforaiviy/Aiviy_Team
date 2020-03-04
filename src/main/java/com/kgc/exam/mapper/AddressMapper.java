@@ -6,6 +6,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface AddressMapper {
+    /**
+     * 通过id删除地址
+     * @param adId
+     * @return
+     */
     int deleteByPrimaryKey(Integer adId);
 
     int insert(@Param("address") Address address);

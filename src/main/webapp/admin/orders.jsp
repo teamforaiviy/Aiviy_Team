@@ -74,12 +74,12 @@
                                         <table class="table table-striped" id="myTable">
                                             <thead>
                                             <tr>
-                                                <td colspan="6">
-                                                    订单号：<input type="text" name="oNo">
+                                                <td colspan="7">
+                                                    订单号：<input type="text" name="oNo" style="height: 35px">
                                                     <button type="button" class="btn btn-primary">查询</button>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <tr id="head">
                                                 <th>订单ID</th>
                                                 <th>订单号</th>
                                                 <th>订单状态</th>
@@ -92,7 +92,7 @@
                                             <tbody>
                                             </tbody>
                                         </table>
-                                        <nav aria-label="Page navigation">
+                                        <nav aria-label="Page navigation" id="page">
                                             <ul class="pagination">
                                             </ul>
                                         </nav>
@@ -103,27 +103,16 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel1">查看订单</h4>
+                                                <h4 class="modal-title" id="myModalLabel1">订单号:<span></span></h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form>
                                                     <input type="hidden" class="form-control" name="oId">
-                                                    <table>
-                                                        <%--<tr>
-                                                            <td>订单号：</td>
-                                                            <td><input type="text" class="form-control" name="oNo"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>商品名：</td>
-                                                            <td><input type="text" class="form-control" name="gName"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>商品总价：</td>
-                                                            <td><input type="email" class="form-control" name="gPrice"></td>
-                                                        </tr>--%>
+                                                    <table class="table table-striped">
                                                         <thead>
                                                         <tr>
+                                                            <th>编号</th>
                                                             <th>商品名</th>
                                                             <th>商品价格</th>
                                                         </tr>
@@ -170,18 +159,24 @@
         $.getJSON("../order/queryOrders",{"pn":pn,"ps":ps,"oNo":oNo},function (data) {
             var page =eval(data);
             var str="";
-            $(page.list).each(function() {
-                str += "<tr>" +
-                    "<td>"+this.oId+"</td>" +
-                    "<td>"+this.oNo+"</td>" +
-                    "<td>"+(this.oState==0?'未支付':'已支付')+"</td>" +
-                    "<td>"+this.oNum+"</td>" +
-                    "<td>"+this.user.userName+"</td>" +
-                    "<td>"+this.createddate+"</td>" +
-                    "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateOrders\" onclick='queryById("+this.oNo+")'>查看详情</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.oNo+")'>删除</a></td>" +
-                    "</tr>";
-            })
-            $("#myTable tbody").empty().append(str);
+            if(page.list!=""){
+                $(page.list).each(function() {
+                    str += "<tr>" +
+                        "<td>"+this.oId+"</td>" +
+                        "<td>"+this.oNo+"</td>" +
+                        "<td>"+(this.oState==0?'未支付':'已支付')+"</td>" +
+                        "<td>"+this.oNum+"</td>" +
+                        "<td>"+this.user.userName+"</td>" +
+                        "<td>"+this.createddate+"</td>" +
+                        "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateOrders\" onclick='queryById("+this.oNo+")'>查看详情</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.oNo+")'>删除</a></td>" +
+                        "</tr>";
+                })
+                $("#myTable tbody").empty().append(str);
+                $("#head,#page").show();
+            }else {
+                $("#myTable tbody").empty().html("<h3 style='color: red;margin: 100px 0 100px 100px'>无订单</h3>");
+                $("#head,#page").hide();
+            }
 
             var pageStr="";
             pageStr +="<li><a href='javascript:queryOrders(1,"+ps+")'>首页</a></li>";
@@ -220,16 +215,17 @@
             data:{"oNo":oNo},
             dataType:"json",
             success:function (data) {
-                /*$("#updateOrders input[name=OrdersId]").val(data.OrdersId);
-                $("#updateOrders input[name=OrdersName]").val(data.OrdersName);
-                $("#updateOrders input[name=nickname]").val(data.nickname);*/
                 var ostr="";
+                var i=1;
                 $(data).each(function () {
                     ostr +="<tr>" +
-                        "<td>"+this.gName+"</td>" +
-                        "<td>"+this.gPrice+"</td>" +
+                        "<td style='width: 12%'>"+i+"</td>" +
+                        "<td style='width: 60%'>"+this.goods.gName+"</td>" +
+                        "<td style='width: 28%'>"+this.goods.gPrice+"</td>" +
                         "</tr>";
+                    i++;
                 })
+                $("#myModalLabel1 span").empty().html(oNo);
                 $("#updateOrders tbody").empty().append(ostr);
             }
         })

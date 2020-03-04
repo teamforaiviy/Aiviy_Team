@@ -447,7 +447,7 @@ width: 8px;
 	float: left;
 	margin-left: 80px;
 	margin-top: 40px;
-	border: 1px solid #0AB276;
+	border: 0px solid #0AB276;
 }
 
 .ccaazz li{
@@ -460,7 +460,7 @@ width: 8px;
 }
 
 .ccaazz ul{
-	margin-left: 600px;
+	/*margin-left: 600px;*/
 }
 .ccaazz select{
 	float: left;

@@ -43,6 +43,11 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public Boolean updateByPrimaryKeySelective(Goods goods) {
+        return goodsMapper.updateByPrimaryKeySelective(goods)==1;
+    }
+
+    @Override
     public List<Goods> queryNew(){
         return goodsMapper.queryNew();
 

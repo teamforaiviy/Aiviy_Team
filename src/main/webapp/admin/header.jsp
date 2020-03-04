@@ -6,11 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
 <!-- Main Navbar-->
 <header class="header">
     <nav class="navbar">
@@ -26,16 +21,16 @@
                 <!-- Navbar Header-->
                 <div class="navbar-header">
                     <!-- Navbar Brand --><a href="index.jsp" class="navbar-brand d-none d-sm-inline-block">
-                    <div class="brand-text d-none d-lg-inline-block"><span>Aiviy </span><strong>Dashboard</strong></div>
+                    <div class="brand-text d-none d-lg-inline-block"><span></span><strong>Aiviy后台管理</strong></div>
                     <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>Aiviy</strong></div></a>
                     <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
                 </div>
                 <!-- Navbar Menu -->
                 <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                     <!-- Search-->
-                    <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>
+                    <%--<li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>--%>
                     <!-- Notifications-->
-                    <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">12</span></a>
+                    <%--<li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">12</span></a>
                         <ul aria-labelledby="notifications" class="dropdown-menu">
                             <li><a rel="nofollow" href="#" class="dropdown-item">
                                 <div class="notification">
@@ -59,9 +54,9 @@
                                 </div></a></li>
                             <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>
                         </ul>
-                    </li>
+                    </li>--%>
                     <!-- Messages                        -->
-                    <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope-o"></i><span class="badge bg-orange badge-corner">10</span></a>
+                    <%--<li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope-o"></i><span class="badge bg-orange badge-corner">10</span></a>
                         <ul aria-labelledby="notifications" class="dropdown-menu">
                             <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                                 <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
@@ -80,7 +75,7 @@
                                 </div></a></li>
                             <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>Read all messages   </strong></a></li>
                         </ul>
-                    </li>
+                    </li>--%>
                     <!-- Languages dropdown    -->
                     <%--<li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
                         <ul aria-labelledby="languages" class="dropdown-menu">
@@ -95,5 +90,3 @@
         </div>
     </nav>
 </header>
-</body>
-</html>

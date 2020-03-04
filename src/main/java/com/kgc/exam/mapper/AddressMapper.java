@@ -19,4 +19,6 @@ public interface AddressMapper {
     int updateByPrimaryKey(Address record);
 
     List<Address> queryAddress(@Param("userName") String userName);
+
+    Address queryAllByUserId(@Param("userId") Integer userId);
 }

@@ -11,6 +11,213 @@
     <meta charset="utf-8" />
     <title>艾维商城-注册</title>
     <link rel="stylesheet" type="text/css" href="css/register.css"/>
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        var InterValObj; //timer变量，控制时间
+        var count = 60; //间隔函数，1秒执行
+        var curCount;//当前剩余秒数
+        function sendMessage() {
+            curCount = count;
+            $("#btn").attr("disabled", "true");
+            $("#btn").val(curCount + "秒后可重新发送");
+            InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次请求后台发送验证码 TODO
+        }
+        //timer处理函数
+        function SetRemainTime() {
+            if (curCount == 0) {
+                window.clearInterval(InterValObj);//停止计时器
+                $("#btn").removeAttr("disabled");//启用按钮
+                $("#btn").val("重新发送");
+            } else {
+                curCount--;
+                $("#btn").val(curCount + "秒后可重新发送");
+            }
+        }
+        var sms = "";
+        $(function () {
+            $("input[name=username]").blur(checkName).focus(function(){
+                $("input[name=username]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
+                $(".usernameError").html("");
+                $(".username").css({"margin-bottom":"20px"})
+                $(".usernameError").hide();
+            })
+            $("input[name=email]").blur(checkEmail).focus(function(){
+                $("input[name=email]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
+                $(".emailError").html("");
+                $(".email").css({"margin-bottom":"20px"})
+                $(".emailError").hide();
+            })
+            $("input[name=phone]").blur(checkPhone).focus(function(){
+                $("input[name=phone]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
+                $(".phoneError").html("");
+                $(".phone").css({"margin-bottom":"20px"})
+                $(".phoneError").hide();
+            })
+            $("input[name=password]").blur(checkPassword).focus(function(){
+                $("input[name=password]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
+                $(".passwordError").html("");
+                $(".password").css({"margin-bottom":"20px"})
+                $(".passwordError").hide();
+            })
+            $("input[name=repassword]").blur(checkRepassword).focus(function(){
+                $("input[name=repassword]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
+                $(".repasswordError").html("");
+                $(".repassword").css({"margin-bottom":"20px"})
+                $(".repasswordError").hide();
+            })
+
+            $("#btn").click(function() {
+                var phone = $("input[name=phone]").val();
+                if (phone != "") {
+                    $.ajax({
+                        url : "message/sendMsg",  //发送请求
+                        type : "post",
+                        data:{"phoneNumber":phone},
+                        success : function(data) {
+                            sms = data;
+                        }
+                    });
+                } else {
+                    alert("请输入手机号");
+                    return false;
+                }
+            });
+
+
+            $(".btn-co").click(function() {
+                var name = $("input[name=username]").val();
+                var email = $("input[name=email]").val();
+                var phone = $("input[name=phone]").val();
+                var password = $("input[name=password]").val();
+                var checkMsg = $("input[name=checkMsg]").val();
+                if(name==""||name==null){
+                    alert("请确认你的用户名是否正确！")
+                }else if(email==""||email==null){
+                    alert("请确认你的邮箱是否正确！")
+                }else if(phone==""||phone==null){
+                    alert("请确认你的手机号是否正确！")
+                }else if(password==""||password==null){
+                    alert("请注意你的密码提示错误！")
+                }else if(checkMsg==""){
+                    alert("请输入验证码!")
+                }else if(checkMsg!=sms){
+                    alert("验证码不正确!")
+                }else {
+                    $.ajax({
+                        url: "user/add",
+                        type: "post",
+                        data: {"name":name,"email":email,"phone":phone,"password":password},
+                        success: function (data) {
+                            if (data) {
+                                alert("注册成功！")
+                                window.location.href = "index.jsp";
+                            }
+                        }
+                    })
+                }
+            })
+
+        })
+
+
+
+        function checkName(){
+            var name = $("input[name=username]").val();
+            var reg = /^\w{6,16}$/;
+            $("input[name=username]").css({"border-bottom":"2px solid #cbc5bf","background-color":"#FCFBFA"})
+            $(".username").css({"margin-bottom":"10px"})
+            $(".usernameError").css({"color":"red"})
+            if(name==""){
+                $(".usernameError").html("用户名不能为空");
+                $(".usernameError").show();
+                return false;
+            }else if(!reg.test(name)){
+                $(".usernameError").html("用户名格式不正确");
+                $(".usernameError").show();
+                return false;
+            }
+            return true;
+        }
+
+
+
+        function checkEmail(){
+            var email = $("input[name=email]").val();
+            var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            $("input[name=email]").css({"border-bottom":"2px solid #cbc5bf","background-color":"#FCFBFA"})
+            $(".email").css({"margin-bottom":"10px"})
+            $(".emailError").css({"color":"red"})
+            if(email==""){
+                $(".emailError").html("电子邮箱不能为空");
+                $(".emailError").show();
+                return false;
+            }else if(!reg.test(email)){
+                $(".emailError").html("邮箱格式不正确");
+                $(".emailError").show();
+                return false;
+            }
+            return true;
+        }
+
+
+
+        function checkPhone(){
+            var phone = $("input[name=phone]").val();
+            var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+            $("input[name=phone]").css({"border-bottom":"2px solid #cbc5bf","background-color":"#FCFBFA"})
+            $(".phone").css({"margin-bottom":"10px"})
+            $(".phoneError").css({"color":"red"})
+            if(phone==""){
+                $(".phoneError").html("手机号不能为空");
+                $(".phoneError").show();
+                return false;
+            }else if(!reg.test(phone)){
+                $(".phoneError").html("手机号不存在");
+                $(".phoneError").show();
+                return false;
+            }
+            return true;
+        }
+
+
+        function checkPassword(){
+            var password = $("input[name=password]").val();
+            var reg = /^[a-zA-Z]\w{5,17}$/;
+            $("input[name=password]").css({"border-bottom":"2px solid #cbc5bf","background-color":"#FCFBFA"})
+            $(".password").css({"margin-bottom":"10px"})
+            $(".passwordError").css({"color":"red"})
+            if(password==""){
+                $(".passwordError").html("密码不能为空");
+                $(".passwordError").show();
+                return false;
+            }else if(!reg.test(password)){
+                $(".passwordError").html("密码格式不正确");
+                $(".passwordError").show();
+                return false;
+            }
+            return true;
+        }
+
+
+
+        function checkRepassword(){
+            var repassword = $("input[name=repassword]").val();
+            var password = $("input[name=password]").val();
+            $("input[name=repassword]").css({"border-bottom":"2px solid #cbc5bf","background-color":"#FCFBFA"})
+            $(".repassword").css({"margin-bottom":"10px"})
+            $(".repasswordError").css({"color":"red"})
+            if(repassword==""){
+                $(".repasswordError").html("请确认密码");
+                $(".repasswordError").show();
+                return false;
+            }else if(password!=repassword){
+                $(".repasswordError").html("两次密码不一样，请重新输入");
+                $(".repasswordError").show();
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
 <div id="background">
@@ -55,8 +262,8 @@
 <%--                <span><img src="/img/timg.jpg" ></span>--%>
 <%--            </div>--%>
             <div class="iphonecode">
-                <input type="text" name="" value="" placeholder="手机验证码"/>
-                <input id="btn" type="submit" value="发送验证码">
+                <input type="text" name="checkMsg"placeholder="手机验证码"/>
+                <input id="btn" type="button" value="发送验证码" onclick="sendMessage()">
             </div>
             <div class="password">
                 <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;<span>*</span></span>
@@ -83,209 +290,4 @@
     </div>
 </div>
 </body>
-<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-    var InterValObj; //timer变量，控制时间
-    var count = 60; //间隔函数，1秒执行
-    var curCount;//当前剩余秒数
-    function sendMessage() {
-        curCount = count;
-        $("#btn").attr("disabled", "true");
-        $("#btn").val(curCount + "秒后可重新发送");
-        InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次请求后台发送验证码 TODO
-    }
-    //timer处理函数
-    function SetRemainTime() {
-        if (curCount == 0) {
-            window.clearInterval(InterValObj);//停止计时器
-            $("#btn").removeAttr("disabled");//启用按钮
-            $("#btn").val("重新发送验证码");
-        } else {
-            curCount--;
-            $("#btn").val(curCount + "秒后可重新发送");
-        }
-    }
-    var sms = "";
-    $(function () {
-
-        $("#btn").click(function() {
-            var phone = $("input[name=phone]").val();
-            if (phone != "") {
-                $.ajax({
-                    url : "message/sendMsg",  //发送请求
-                    type : "post",
-                    data:{"phoneNumber":phone},
-                    success : function(data) {
-                        sms = data;
-                    }
-                });
-            } else {
-                alert("请输入手机号");
-                return false;
-            }
-        });
-
-
-        $(".btn-co").click(function() {
-            var name = $("input[name=username]").val();
-            var email = $("input[name=email]").val();
-            var phone = $("input[name=phone]").val();
-            var password = $("input[name=password]").val();
-
-            if(name==""||name==null){
-                alert("请确认你的用户名是否正确！")
-            }else if(email==""||email==null){
-                alert("请确认你的邮箱是否正确！")
-            }else if(phone==""||phone==null){
-                alert("请确认你的手机号是否正确！")
-            }else if(password==""||password==null){
-                alert("请注意你的密码提示错误！")
-            // }else if (code == "") {
-            //     alert("请输入验证码");
-            } else {
-                $.ajax({
-                    url: "user/add",
-                    type: "post",
-                    data: {"name":name,"email":email,"phone":phone,"password":password},
-                    success: function (data) {
-                        if (data) {
-                            alert("注册成功！")
-                            window.location.href = "index.jsp";
-                        }
-                    }
-                })
-            }
-        })
-
-    })
-
-
-    $("input[name=username]").blur(checkName).focus(function(){
-        $("input[name=username]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
-        $(".usernameError").html("");
-        $(".username").css({"margin-bottom":"20px"})
-        $(".usernameError").hide();
-    })
-
-    function checkName(){
-        var name = $("input[name=username]").val();
-        var reg = /^\w{6,16}$/;
-        $("input[name=username]").css({"border-bottom":"2px solid #cbc5bf","background-color":"#FCFBFA"})
-        $(".username").css({"margin-bottom":"10px"})
-        $(".usernameError").css({"color":"red"})
-        if(name==""){
-            $(".usernameError").html("用户名不能为空");
-            $(".usernameError").show();
-            return false;
-        }else if(!reg.test(name)){
-            $(".usernameError").html("用户名格式不正确");
-            $(".usernameError").show();
-            return false;
-        }
-        return true;
-    }
-
-
-    $("input[name=email]").blur(checkEmail).focus(function(){
-        $("input[name=email]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
-        $(".emailError").html("");
-        $(".email").css({"margin-bottom":"20px"})
-        $(".emailError").hide();
-    })
-
-    function checkEmail(){
-        var email = $("input[name=email]").val();
-        var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-        $("input[name=email]").css({"border-bottom":"2px solid #cbc5bf","background-color":"#FCFBFA"})
-        $(".email").css({"margin-bottom":"10px"})
-        $(".emailError").css({"color":"red"})
-        if(email==""){
-            $(".emailError").html("电子邮箱不能为空");
-            $(".emailError").show();
-            return false;
-        }else if(!reg.test(email)){
-            $(".emailError").html("邮箱格式不正确");
-            $(".emailError").show();
-            return false;
-        }
-        return true;
-    }
-
-
-    $("input[name=phone]").blur(checkPhone).focus(function(){
-        $("input[name=phone]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
-        $(".phoneError").html("");
-        $(".phone").css({"margin-bottom":"20px"})
-        $(".phoneError").hide();
-    })
-
-    function checkPhone(){
-        var phone = $("input[name=phone]").val();
-        var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
-        $("input[name=phone]").css({"border-bottom":"2px solid #cbc5bf","background-color":"#FCFBFA"})
-        $(".phone").css({"margin-bottom":"10px"})
-        $(".phoneError").css({"color":"red"})
-        if(phone==""){
-            $(".phoneError").html("手机号不能为空");
-            $(".phoneError").show();
-            return false;
-        }else if(!reg.test(phone)){
-            $(".phoneError").html("手机号不存在");
-            $(".phoneError").show();
-            return false;
-        }
-        return true;
-    }
-
-    $("input[name=password]").blur(checkPassword).focus(function(){
-        $("input[name=password]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
-        $(".passwordError").html("");
-        $(".password").css({"margin-bottom":"20px"})
-        $(".passwordError").hide();
-    })
-
-    function checkPassword(){
-        var password = $("input[name=password]").val();
-        var reg = /^[a-zA-Z]\w{5,17}$/;
-        $("input[name=password]").css({"border-bottom":"2px solid #cbc5bf","background-color":"#FCFBFA"})
-        $(".password").css({"margin-bottom":"10px"})
-        $(".passwordError").css({"color":"red"})
-        if(password==""){
-            $(".passwordError").html("密码不能为空");
-            $(".passwordError").show();
-            return false;
-        }else if(!reg.test(password)){
-            $(".passwordError").html("密码格式不正确");
-            $(".passwordError").show();
-            return false;
-        }
-        return true;
-    }
-
-
-    $("input[name=repassword]").blur(checkRepassword).focus(function(){
-        $("input[name=repassword]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
-        $(".repasswordError").html("");
-        $(".repassword").css({"margin-bottom":"20px"})
-        $(".repasswordError").hide();
-    })
-
-    function checkRepassword(){
-        var repassword = $("input[name=repassword]").val();
-        var password = $("input[name=password]").val();
-        $("input[name=repassword]").css({"border-bottom":"2px solid #cbc5bf","background-color":"#FCFBFA"})
-        $(".repassword").css({"margin-bottom":"10px"})
-        $(".repasswordError").css({"color":"red"})
-        if(repassword==""){
-            $(".repasswordError").html("请确认密码");
-            $(".repasswordError").show();
-            return false;
-        }else if(password!=repassword){
-            $(".repasswordError").html("两次密码不一样，请重新输入");
-            $(".repasswordError").show();
-            return false;
-        }
-        return true;
-    }
-</script>
 </html>

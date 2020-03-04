@@ -43,6 +43,11 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public Boolean updateByPrimaryKeySelective(Goods goods) {
+        return goodsMapper.updateByPrimaryKeySelective(goods)==1;
+    }
+
+    @Override
     public List<Goods> queryNew(){
         return goodsMapper.queryNew();
 
@@ -58,4 +63,10 @@ public class GoodsServiceImpl implements GoodsService {
         imageMapper.deleteByGId(gId);
         return goodsMapper.del(gId)==1;
     }
+
+    @Override
+    public List<Goods> queryGoodsWithImageByCountStatus(Integer countStatus) {
+        return goodsMapper.queryGoodsWithImageByCountStatus(countStatus);
+    }
+
 }

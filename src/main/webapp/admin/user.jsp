@@ -154,23 +154,23 @@
                                                     <table>
                                                         <tr>
                                                             <td>用户名：</td>
-                                                            <td><input type="text" class="form-control" name="userName" readonly></td>
+                                                            <td><input type="text" class="form-control" name="userName"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>昵称：</td>
-                                                            <td><input type="text" class="form-control" name="nickname" readonly></td>
+                                                            <td><input type="text" class="form-control" name="nickname"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>邮箱：</td>
-                                                            <td><input type="email" class="form-control" name="userMail" readonly></td>
+                                                            <td><input type="email" class="form-control" name="userMail"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>手机号：</td>
-                                                            <td><input type="text" class="form-control" name="userPhone" readonly></td>
+                                                            <td><input type="text" class="form-control" name="userPhone"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>消费金额：</td>
-                                                            <td><input type="text" class="form-control" name="userMoney" readonly></td>
+                                                            <td><input type="text" class="form-control" name="userMoney"></td>
                                                         </tr>
                                                         <tr>
                                                             <td>会员等级：</td>

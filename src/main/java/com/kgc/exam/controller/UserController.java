@@ -88,4 +88,18 @@ public class UserController {
         return "redirect:/index.jsp";
     }
 
+    /*
+    * 校验是否登录
+    * */
+    @RequestMapping("ifLogin")
+    @ResponseBody
+    public Boolean ifLogin(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user==null){
+            return false;
+        }else {
+            return true;
+        }
+    }
 }

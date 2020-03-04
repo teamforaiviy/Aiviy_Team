@@ -76,7 +76,7 @@
                 <li><a href="new.jsp">新品</a></li>
                 <li><a href="sale.jsp">最畅销</a></li>
                 <li><a href="information.jsp">全部商品</a></li>
-                <li><a href="Group-buying.jsp">团购</a></li>
+<%--                <li><a href="Group-buying.jsp">团购</a></li>--%>
             </ul>
         </div>
     </div>
@@ -91,7 +91,7 @@
             }else {
                 $.getJSON("goods/queryByName",{"gName":gName},function (data) {
                     if(data.length>1){
-                        window.location.href="information.jsp";
+                        window.location.href="information.jsp?gName="+gName;
                     }else {
                         window.location.href="order.jsp?gid="+data[0].gId;
                     }

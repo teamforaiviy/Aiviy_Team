@@ -124,11 +124,17 @@
     where g_name = #{gName}
   </select>
 
-  <select id="queryByName" resultMap="BaseResultMap">
+  <select id="queryByName" resultMap="goodsWithImageMap">
     select
-    <include refid="Base_Column_List"/>
-    from goods
-    where g_name like concat('%',#{gName},'%')
+    G.g_id,g_name,g_price,g_content,uploadTime,countStatus,I.img_id,I.img_url
+    FROM `goods` AS G
+    INNER JOIN `image` AS I
+    ON I.g_id=G.g_id
+    <where>
+      <if test="gName != null and gName !=''">
+        g_name like concat('%',#{gName},'%')
+      </if>
+    </where>
   </select>
 
   <resultMap id="goodsWithImageMap" type="com.kgc.exam.entity.Goods">
@@ -157,6 +163,14 @@
     INNER JOIN `image` AS I
     ON I.g_id=G.g_id
     where countStatus =1
+  </select>
+
+  <select id="queryGoodsWithImageByCountStatus" resultMap="goodsWithImageMap">
+    SELECT G.g_id,g_name,g_price,g_content,uploadTime,countStatus,I.img_id,I.img_url
+    FROM `goods` AS G
+    INNER JOIN `image` AS I
+    ON I.g_id=G.g_id
+    where countStatus =#{countStatus}
   </select>
 
 </mapper>

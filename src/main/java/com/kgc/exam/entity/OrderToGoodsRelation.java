@@ -1,11 +1,23 @@
 package com.kgc.exam.entity;
 
+import java.util.List;
+
 public class OrderToGoodsRelation {
     private Integer id;
 
     private String oNo;
 
     private Integer gId;
+
+    private Goods goods;
+
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
 
     public Integer getId() {
         return id;

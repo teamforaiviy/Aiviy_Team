@@ -112,4 +112,27 @@
         from orders
         where o_no=#{oNo,jdbcType=VARCHAR}
     </select>
+
+  <resultMap id="orderMap" type="com.kgc.exam.entity.Orders">
+    <id column="o_id" jdbcType="INTEGER" property="oId" />
+    <result column="o_no" jdbcType="VARCHAR" property="oNo" />
+    <result column="o_state" jdbcType="INTEGER" property="oState" />
+    <result column="o_num" jdbcType="DOUBLE" property="oNum" />
+    <result column="ouserId" jdbcType="INTEGER" property="userId" />
+    <result column="ocreatedDate" jdbcType="TIMESTAMP" property="createddate" />
+    <association property="user" javaType="com.kgc.exam.entity.User">
+      <id column="uuserId" property="userId"></id>
+      <result column="user_name" property="userName"></result>
+    </association>
+  </resultMap>
+  <select id="queryOrders" resultMap="orderMap">
+    select
+    o_id, o_no, o_state, o_num, o.user_id ouserId, o.createdDate ocreatedDate,u.user_id uuserId,user_name
+    from orders o inner join user u on o.user_id=u.user_id
+    <where>
+      <if test="oNo != null and oNo !=''">
+        o_no=#{oNo}
+      </if>
+    </where>
+  </select>
 </mapper>

@@ -20,6 +20,77 @@
     <script type="text/javascript" src="js/Center.js" ></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+        var pn = 1;
+        var ps = 6;
+        $(function () {
+            queryAll(pn,ps);
+            $("header-search-btn").click(function () {
+                queryAll(pn,ps);
+            })
+        })
+
+        function getUrlParam(key) {
+            // 获取参数
+            var url = window.location.search;
+            // 正则筛选地址栏
+            var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+            // 匹配目标参数
+            var result = url.substr(1).match(reg);
+            //返回参数值
+            return result ? decodeURIComponent(result[2]) : null;
+        }
+
+        function queryAll(pn,ps) {
+            var gName = getUrlParam("gName");
+            $.getJSON("goods/queryAllOrBySearch",{"pn":pn,"ps":ps,"gName":gName},function (data) {
+                var page = data;
+                var newGoods = "";
+                $(page.list).each(function () {
+                    newGoods +="<div class=\"col-md-3\">" +
+                        "           <div class=\"new-cotent-two-first\">" +
+                        "               <a href='order.jsp?gid="+this.gId+"'>" +
+                        "                   <div class=\"new-cotent-two-first-1\" style=\"background-image: url("+this.images[0].imgUrl+")\" onmouseout=\"this.style.backgroundImage='url("+this.images[0].imgUrl+")'\" onmouseover=\"this.style.backgroundImage='url("+this.images[1].imgUrl+")'\">" +
+                        "                       <span class=\"new-flash\">新品</span>" +
+                        "                   </div>" +
+                        "                   <h2>"+this.gName+"</h2>" +
+                        "                   <span class=\"price-lable\">价格</span><br />" +
+                        "                   <span class=\"price\">￥"+this.gPrice+"</span>" +
+                        "               </a>" +
+                        "            </div>" +
+                        "        </div>";
+                })
+                $(".new-cotent-two>div").empty().append(newGoods);
+
+                var pageStr = "";
+                pageStr += "<li><a href='javascript:queryAll(1,"+ps+")'>首页</a></li>";
+                if(page.hasPreviousPage){
+                    pageStr += "<li>" +
+                        "<a href='javascript:queryAll("+(page.pageNum-1)+","+ps+")' aria-label='Previous'>" +
+                        "<span aria-hidden='true'>上一页</span>" +
+                        "</a>" +
+                        "</li>";
+                }
+                $(page.navigatepageNums).each(function () {
+                    if(page.pageNum==this){
+                        pageStr += "<li class='active'><a href='javascript:queryAll("+this+","+ps+")'>"+this+"</a></li>";
+                    }else{
+                        pageStr += "<li><a href='javascript:queryAll("+this+","+ps+")'>"+this+"</a></li>";
+                    }
+                })
+                if(page.hasNextPage){
+                    pageStr += "<li>" +
+                        "<a href='javascript:queryAll("+(page.pageNum+1)+","+ps+")' aria-label='Next'>" +
+                        "<span aria-hidden='true'>下一页</span>" +
+                        "</a>" +
+                        "</li>";
+                }
+                pageStr += "<li><a href='javascript:queryAll("+page.pages+","+ps+")'>未页</a></li>";
+                $(".pagination").empty();
+                $(".pagination").append(pageStr);
+            })
+        }
+    </script>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -256,18 +327,23 @@
         </select>
 
         <ul>
-            <li><img src="img/information/left.png"/></li>
+            <%--<li><img src="img/information/left.png"/></li>
             <li>1</li>
             <li>2</li>
             <li>3</li>
-            <li><img src="img/information/right.png"/></li>
+            <li><img src="img/information/right.png"/></li>--%>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+
+                </ul>
+            </nav>
         </ul>
     </div>
 
     <div class="new-cotent-two">
         <div class="row">
 
-            <div class="col-md-3">
+            <%--<div class="col-md-3">
                 <div class="new-cotent-two-first">
                     <a href="#">
                         <div class="new-cotent-two-first-1">
@@ -292,75 +368,14 @@
                         <span class="price"><span>￥249.00</span>￥99.00</span>
                     </a>
                 </div>
-            </div>
+            </div>--%>
 
         </div>
     </div>
 
-    <div class="new-cotent-two">
-        <div class="row">
 
-            <div class="col-md-3">
-                <div class="new-cotent-two-first">
-                    <a href="#">
-                        <div class="new-cotent-two-first-1">
-                            <span class="new-flash">新品</span>
-                        </div>
-                        <h2>DAEMON Tools Ultra 5 虚拟光驱软件 -旗舰版</h2>
-                        <span class="price-lable">价格</span><br />
-                        <span class="price">￥298.00</span>
-                    </a>
-                </div>
-            </div>
 
-            <div class="col-md-3">
-                <div class="new-cotent-two-first">
-                    <a href="#">
-                        <div class="new-cotent-two-first-2">
-                            <span class="discount">优惠 60% OFF!</span>
-                            <span class="new-flash">新品</span>
-                        </div>
-                        <h2>Boom 3D Mac必备 – 个性化音效增强工具</h2>
-                        <span class="price-lable">价格</span><br />
-                        <span class="price"><span>￥249.00</span>￥99.00</span>
-                    </a>
-                </div>
-            </div>
 
-        </div>
-    </div>
-
-    <div class="new-cotent-two">
-        <div class="row">
-
-            <div class="col-md-3">
-                <div class="new-cotent-two-first">
-                    <a href="#">
-                        <div class="new-cotent-two-first-1">
-                            <span class="new-flash">新品</span>
-                        </div>
-                        <h2>DAEMON Tools Ultra 5 虚拟光驱软件 -旗舰版</h2>
-                        <span class="price-lable">价格</span><br />
-                        <span class="price">￥298.00</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="new-cotent-two-first">
-                    <a href="#">
-                        <div class="new-cotent-two-first-2">
-                            <span class="discount">优惠 60% OFF!</span>
-                            <span class="new-flash">新品</span>
-                        </div>
-                        <h2>Boom 3D Mac必备 – 个性化音效增强工具</h2>
-                        <span class="price-lable">价格</span><br />
-                        <span class="price"><span>￥249.00</span>￥99.00</span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
     </div>
 
 
@@ -369,7 +384,7 @@
 
 
 
-<!-------------------------------footer----------------------------------->
-<jsp:include page="footer.jsp"></jsp:include>
+<%--<!-------------------------------footer----------------------------------->--%>
+<%--<jsp:include page="footer.jsp"></jsp:include>--%>
 </body>
 </html>

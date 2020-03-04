@@ -9,4 +9,6 @@ public interface AddressService {
     Boolean insert(Address address);
 
     List<Address> queryAddress(String userName);
+
+    Address queryAllByUserId(Integer userId);
 }

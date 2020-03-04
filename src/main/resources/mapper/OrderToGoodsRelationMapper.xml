@@ -57,11 +57,11 @@
     <!--@Table ordertogoodsrelation-->
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="o_no" jdbcType="VARCHAR" property="oNo" />
-    <collection property="goods" ofType="com.kgc.exam.entity.Goods">
+    <association property="goods" javaType="com.kgc.exam.entity.Goods">
       <id column="g_id" property="gId"/>
       <result column="g_name" property="gName"/>
       <result column="g_price" property="gPrice"/>
-    </collection>
+    </association>
   </resultMap>
 
   <select id="queryOrderWithGood" resultMap="queryOrderWithGoodMap">

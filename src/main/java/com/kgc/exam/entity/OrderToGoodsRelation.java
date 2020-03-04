@@ -9,13 +9,13 @@ public class OrderToGoodsRelation {
 
     private Integer gId;
 
-    private List<Goods> goods;
+    private Goods goods;
 
-    public List<Goods> getGoods() {
+    public Goods getGoods() {
         return goods;
     }
 
-    public void setGoods(List<Goods> goods) {
+    public void setGoods(Goods goods) {
         this.goods = goods;
     }
 

@@ -7,17 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>登录</title>
-</head>
 <body>
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>登录</title>
     <link rel="stylesheet" type="text/css" href="css/login.css" />
     <link rel="stylesheet" href="css/tooltip.css" type="text/css" />
 </head>
-<body>
 <div id="background">
     <div class="whole">
         <div class="aiviy"><img src="/img/logo.png" onclick="window.location.href='index.jsp'" ></div>
@@ -36,7 +32,7 @@
                 <div class="passwordError"></div>
             </div>
             <div class="new">
-                <button type="button">登录</button>
+                <button type="button" class="dl">登录</button>
             </div>
             <div class="zhuce">
                 <b><p>忘记密码？</p></b>
@@ -49,7 +45,7 @@
         </div>
     </div>
 </div>
-</body>
+
 <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script src='js/tooltip.js' type="text/javascript"></script>
 <script type="text/javascript">

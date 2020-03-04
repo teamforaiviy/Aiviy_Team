@@ -34,4 +34,9 @@ public class OrderToGoodsRelationServiceImpl implements OrderToGoodsRelationServ
         * */
         return num==orderToGoodsRelationMapper.countByONo(oNo);
     }
+
+    @Override
+    public List<OrderToGoodsRelation> queryOrderWithGood(String oNo) {
+        return orderToGoodsRelationMapper.queryOrderWithGood(oNo);
+    }
 }

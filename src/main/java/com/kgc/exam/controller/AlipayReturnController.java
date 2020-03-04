@@ -68,7 +68,9 @@ public class AlipayReturnController {
                  * */
                 HttpSession session = request.getSession();
                 User user = (User)session.getAttribute("user");
-                user.setUserMoney(Double.parseDouble(total_amount));
+                Double money = user.getUserMoney()==null?0.0:user.getUserMoney();
+                money+=Double.parseDouble(total_amount);
+                user.setUserMoney(money);
                 userService.update(user);
                 if(orderService.updateOStateByONo(out_trade_no)){
                     request.getRequestDispatcher("success.jsp?msg=1").forward(request, response);

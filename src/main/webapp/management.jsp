@@ -220,19 +220,19 @@
             <div class="clear"></div>
             <div class="xxdz">
                 <p>绑定邮箱</p>
-                <p><input type="text" placeholder="请输入邮箱账号" name="bb" /></p>
+                <p><input type="email" placeholder="请输入邮箱账号" name="bb" /></p>
             </div>
             <div class="">
                 <p>当前密码</p>
-                <p><input type="text" name="cc" /></p>
+                <p><input type="password" name="cc" /></p>
             </div>
-            <div class="">
+                <div class="">
                 <p>新密码</p>
-                <p><input type="text" name="dd" /></p>
+                <p><input type="password" name="dd" /></p>
             </div>
             <div class="">
                 <p>确认新密码</p>
-                <p><input type="text" name="ee" /></p>
+                <p><input type="password" name="ee" /></p>
             </div>
             <div class="button-address">
                 <p><input type="button" value="保存更改" name="bcxg" /></p>
@@ -258,20 +258,24 @@
             }
         }
 
+        var time="";
         $(function () {
-            var nickname="${sessionScope.user.nickname}";
-            var userName="${sessionScope.user.userName}";
-            var userMail="${sessionScope.user.userMail}";
-            var userPhone="${sessionScope.user.userPhone}";
-            if(nickname==null){
-                $(".nc").html(userName);
-            }else {
-                $(".nc").html(nickname);
-            }
-            $("input[name=username]").val(userName);
-            $("input[name=nichen]").val(nickname);
-            $("input[name=email]").val(userMail);
-            $("input[name=phone]").val(userPhone);
+            var userId="${sessionScope.user.userId}";
+            $.getJSON("user/queryById",{"userId":userId},function (data) {
+                $("input[name=username]").val(data.userName);
+                $("input[name=nichen]").val(data.nickname);
+                $("input[name=email]").val(data.userMail);
+                $("input[name=phone]").val(data.userPhone);
+                time = data.createddate;
+                if(data.nickname==null||data.nickname==""){
+                    $(".nc").html(data.userName);
+                }else {
+                    $(".nc").html(data.nickname);
+                }
+            })
+
+
+
             //$(".nc").html("${sessionScope.user.userName}");
             var userId="${sessionScope.user.userId}";
             /*账单*/
@@ -299,7 +303,6 @@
 
             $(".a3").click(function () {
                 var vId="${sessionScope.user.vId}";
-                var time="${sessionScope.user.createddate}";
 
                 $(".zcsj").html(time);
                 if(vId==1){

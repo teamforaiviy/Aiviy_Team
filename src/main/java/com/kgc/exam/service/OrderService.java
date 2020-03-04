@@ -15,4 +15,6 @@ public interface OrderService {
     Boolean updateOStateByONo(String oNo);
 
     List<Orders> queryOrders(String oNo);
+
+    Boolean del(String oNo);
 }

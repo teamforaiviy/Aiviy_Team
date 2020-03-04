@@ -71,4 +71,8 @@
     on ordertogoodsrelation.g_id=goods.g_id
     where o_no=#{oNo}
   </select>
+
+  <delete id="del">
+    delete from ordertogoodsrelation where o_no=#{oNo}
+  </delete>
 </mapper>

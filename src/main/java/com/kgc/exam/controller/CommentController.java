@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kgc.exam.entity.Comment;
 import com.kgc.exam.service.CommentService;
+import org.aspectj.bridge.ICommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,8 @@ public class CommentController {
     private CommentService commentService;
 
     @RequestMapping("queryAll")
-    public List<Comment> queryAll(@RequestParam("gId") Integer gId){
+    public List<Comment> queryAll(Integer gId){
+        List<Comment> aa = commentService.queryAll(gId);
         return commentService.queryAll(gId);
     }
 
@@ -37,13 +39,10 @@ public class CommentController {
     }
 
     @RequestMapping("insert")
-    public Boolean insert(@RequestParam("gId") Integer gId,
-                          @RequestParam("cComment") String comment,
-                          @RequestParam("ctime") Date ctime,
-                          @RequestParam("uid") Integer uid){
+    public Boolean insert( Integer gId, String cComment, Integer uid){
         Comment comment1 = new Comment();
-        comment1.setcComment(comment);
-        comment1.setCtime(ctime);
+        comment1.setcComment(cComment);
+        comment1.setCtime(new Date());
         comment1.setgId(gId);
         comment1.setUserId(uid);
 

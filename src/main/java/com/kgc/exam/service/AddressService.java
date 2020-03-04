@@ -11,4 +11,6 @@ public interface AddressService {
     List<Address> queryAddress(String userName);
 
     Address queryAllByUserId(Integer userId);
+
+    Boolean deleteByPrimaryKey(Integer adId);
 }

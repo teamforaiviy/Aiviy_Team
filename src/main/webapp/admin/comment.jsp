@@ -77,7 +77,7 @@
                                             <thead>
                                             <tr>
                                                 <td colspan="6">
-                                                    商品名：<input type="text" name="gName">
+                                                    商品名：<input type="text" name="gName" style="height: 35px">
                                                     <button type="button" class="btn btn-primary">查询</button>
                                                 </td>
                                             </tr>

@@ -69,7 +69,7 @@ public class GoodsController {
 
     @RequestMapping("/queryAllOrBySearch")
     public PageInfo queryAllOrBySearch(@RequestParam(value = "pn",defaultValue = "1") Integer pn,
-                                       @RequestParam(value = "ps",defaultValue = "6") Integer ps,
+                                       @RequestParam(value = "ps",defaultValue = "12") Integer ps,
                                        @RequestParam("gName")String gName) {
         PageHelper.startPage(pn,ps);
         List<Goods> goods = goodsService.queryByName(gName);

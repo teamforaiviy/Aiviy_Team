@@ -20,6 +20,11 @@ public interface CommentMapper {
 
     Comment selectByPrimaryKey(Integer cId);
 
+    /**
+     * 通过id删除评论
+     * @param cId
+     * @return
+     */
     int deleteByPrimaryKey(Integer cId);
 
     int insertSelective(Comment record);

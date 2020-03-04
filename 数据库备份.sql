@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.08 (64 bit)
 MySQL - 5.0.45-community-nt : Database - aiviy
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -63,6 +64,16 @@ CREATE TABLE `goods` (
 /*Data for the table `goods` */
 
 insert  into `goods`(`g_id`,`g_name`,`g_price`,`g_content`,`uploadTime`,`countStatus`) values (1,'Advanced SystemCare 12 Ultimate 清理杀毒软件',129,'全新的反病毒引擎，超敏感的检测和删除最新的病毒，木马软件，间谍软件','2020-02-21 14:21:29',0),(2,'Advanced SystemCare 13 Pro 清理优化工具',149,'一键清理优化和修复、深度您的PC，清理Windows注册表、自动在线反浏览器跟踪保护隐私，提升电脑速度高达200％。','2020-02-25 10:29:23',0),(3,'AMC Security 手机管家- 清理',99,'加速、安全','2020-02-25 10:32:01',0),(4,'Ashampoo Burning Studio 20 刻录软件 许可证',50,'许可证','2020-02-25 10:33:20',0),(5,'Avast Business Antivirus Pro Plus 商业专业增强版 企业全面保护',379,'防护软件','2020-02-25 10:34:32',0),(6,'Avast Business Antivirus Pro Plus 商业专业增强版 企业全面保护',254,'许可证','2020-02-25 10:35:19',0),(7,'Avast Business Antivirus Pro 商业专业版 企业杀毒软件',216,'许可证','2020-02-25 10:35:47',0),(8,'Avast Business Antivirus 商业版 小型企业防病毒软件',230,'许可证','2020-02-25 10:36:11',0),(9,'Avast Premier 杀毒软件 高级版 激活码',99,'许可证','2020-02-25 10:36:53',1),(10,'AVG PC TuneUp 2019 系统优化神器 序列码',152,'序列码','2020-02-25 10:41:10',1),(11,'Axure RP 9.0 PRO 专业版 原型设计软件 一年/终身授权',60,'安全软件','2020-02-25 10:41:12',1),(12,'Bitlocker 赤友数据恢复 PC/Mac 专业版',98,'数据恢复','2020-02-25 10:41:15',1),(13,'Bitl 数据恢复 PC/Mac 专业版',85,'数据恢复2','2020-02-25 10:42:46',0);
+insert  into `goods`(`g_id`,`g_name`,`g_price`,`g_content`,`uploadTime`,`countStatus`)
+values
+(14,'AdGuard 广告拦截 隐私保护 软件 3设备',69,'拦截广告和危险网站，加速网页载入，保护儿童的在线安全','2020-03-03 10:21:29',0),
+(15,'Eagle 图片收藏 素材整理 图库管理软件',199,'快速收藏任何图片，高效整理大量图片','2020-03-03 10:42:46',0),
+(16,'MacBooster 8 Mac清理工具兼杀毒软件 中文版',180,'一键智能清理系统垃圾。','2020-03-03 11:42:46',0),
+(17,'PDF Expert for Mac – 序列码 – 永久授权',319,'轻松在Mac上完成PDF编辑、阅读、批注、编辑文本、添加照片','2020-03-03 12:42:46',0),
+(18,'Radmin 专业的远程控制软件 永久授权',329,'Radmin 是现今最为安全和可靠的远程访问软件产品，全球超过 10 万家企业选择 Radmin 为员工提供远程技术支持','2020-03-03 13:42:46',0),
+(19,'XMind 8 Pro/ZEN&移动版 思维导图和头脑风暴软件',388,'风靡全球的思维导图和头脑风暴软件，融合艺术与创造力，让思维清晰可见','2020-03-03 14:42:46',0),
+(20,'Office 家庭和学生版 2019 for Mac 办公软件',598,'产品代码通过电子邮件发送','2020-03-03 15:42:46',0),
+(21,'Internet Download Manager (IDM) 极速下载工具',129,'提升你的下载速度最多达5倍','2020-03-03 16:42:46',0);
 
 /*Table structure for table `image` */
 
@@ -78,6 +89,24 @@ CREATE TABLE `image` (
 /*Data for the table `image` */
 
 insert  into `image`(`img_id`,`img_url`,`g_id`) values (1,'/img/Goods/Aiviy-iobit-asc-box-418x418.jpg',1),(2,'/img/Goods/Aiviy-iobit-ascu-img01-418x418.jpg',1),(3,'/img/Goods/Good2-1.jpg',2),(4,'/img/Goods/Good2-2.png',2),(5,'/img/Goods/Good3-1.jpg',3),(6,'/img/Goods/Good3-2.jpg',3),(7,'/img/Goods/Good4-1.jpg',4),(8,'/img/Goods/Good4-2.jpg',4),(9,'/img/Goods/Good5-1.jpg',5),(10,'/img/Goods/Good5-2.png',5),(11,'/img/Goods/Good6-1.jpg',6),(12,'/img/Goods/Good6-2.png',6),(13,'/img/Goods/Good7-1.jpg',7),(14,'/img/Goods/Good7-2.png',7),(15,'/img/Goods/Good8-1.jpg',8),(16,'/img/Goods/Good8-2.jpg',8),(17,'/img/Goods/Good9-1.jpg',9),(18,'/img/Goods/Good9-2.jpg',9),(19,'/img/Goods/Good10-1.jpg',10),(20,'/img/Goods/Good10-2.jpg',10),(21,'/img/Goods/Good11-1.png',11),(22,'/img/Goods/Good11-2.png',11),(23,'/img/Goods/Good12-1.jpg',12),(24,'/img/Goods/Good12-2.jpg',12),(25,'/img/Goods/Good12-1.jpg',13),(26,'/img/Goods/Good12-2.jpg',13);
+insert  into `image`(`img_id`,`img_url`,`g_id`)
+values
+(27,'/img/Goods/Aiviy-AdGuard-box-418x418.png',14),
+(28,'/img/Goods/Aiviy-AdGuard-box01-418x418.png',14),
+(29,'/img/Goods/Aiviy-eagle-box01-418x418.jpg',15),
+(30,'/img/Goods/Aiviy-eagle-box04-418x418.jpg',15),
+(31,'/img/Goods/Aiviy-macbooster-box-2-418x418.jpg',16),
+(32,'/img/Goods/Aiviy-macbooster-box01-418x418.jpg',16),
+(33,'/img/Goods/Aiviy_PDFExpert_box-418x418.jpg',17),
+(34,'/img/Goods/Aiviy_PDFExpert_box01-418x418.jpg',17),
+(35,'/img/Goods/Aiviy-radmin3-box-418x418.jpg',18),
+(36,'/img/Goods/Aiviy-radmin3-box01-418x418.jpg',18),
+(37,'/img/Goods/Aiviy-xmind-box-418x418.jpg',19),
+(38,'/img/Goods/Aiviy-xmind-box02-418x418.jpg',19),
+(39,'/img/Goods/Aiviy-office2019home-box-418x418.jpg',20),
+(40,'/img/Goods/Aiviy-office2019home-box01-418x418.jpg',20),
+(41,'/img/Goods/Aiviy-idm-box-418x418.jpg',21),
+(42,'/img/Goods/Aiviy-idm-img01-418x418.jpg',21);
 
 /*Table structure for table `member` */
 

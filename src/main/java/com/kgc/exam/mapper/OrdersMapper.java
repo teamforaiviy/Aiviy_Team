@@ -26,4 +26,11 @@ public interface OrdersMapper {
      * @return
      */
     List<Orders> queryOrders(@Param("oNo")String oNo);
+
+    /**
+     * 通过订单号删除订单
+     * @param oNo
+     * @return
+     */
+    Integer del(@Param("oNo")String oNo);
 }

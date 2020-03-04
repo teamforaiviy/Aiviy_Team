@@ -13,4 +13,11 @@ public interface OrderToGoodsRelationMapper {
     Integer countByONo(@Param("oNo")String oNo);
 
     List<OrderToGoodsRelation> queryOrderWithGood(@Param("oNo") String oNo);
+
+    /**
+     * 通过订单号删除商品
+     * @param oNo
+     * @return
+     */
+    Integer del(@Param("oNo")String oNo);
 }

@@ -57,7 +57,7 @@
             <div class="breadcrumb-holder container-fluid">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
-                    <li class="breadcrumb-item active">Orders            </li>
+                    <li class="breadcrumb-item active">Order            </li>
                 </ul>
             </div>
             <!-- Forms Section-->
@@ -67,7 +67,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header d-flex align-items-center">
-                                    <h3 class="h4">Orders</h3>
+                                    <h3 class="h4">Order</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -103,45 +103,38 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel1">修改订单</h4>
+                                                <h4 class="modal-title" id="myModalLabel1">查看订单</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form>
-                                                    <input type="hidden" class="form-control" name="OrdersId">
+                                                    <input type="hidden" class="form-control" name="oId">
                                                     <table>
-                                                        <tr>
-                                                            <td>订单名：</td>
-                                                            <td><input type="text" class="form-control" name="OrdersName"></td>
+                                                        <%--<tr>
+                                                            <td>订单号：</td>
+                                                            <td><input type="text" class="form-control" name="oNo"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>昵称：</td>
-                                                            <td><input type="text" class="form-control" name="nickname"></td>
+                                                            <td>商品名：</td>
+                                                            <td><input type="text" class="form-control" name="gName"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>邮箱：</td>
-                                                            <td><input type="email" class="form-control" name="OrdersMail"></td>
-                                                        </tr>
+                                                            <td>商品总价：</td>
+                                                            <td><input type="email" class="form-control" name="gPrice"></td>
+                                                        </tr>--%>
+                                                        <thead>
                                                         <tr>
-                                                            <td>手机号：</td>
-                                                            <td><input type="text" class="form-control" name="OrdersPhone"></td>
+                                                            <th>商品名</th>
+                                                            <th>商品价格</th>
                                                         </tr>
-                                                        <tr>
-                                                            <td>消费金额：</td>
-                                                            <td><input type="text" class="form-control" name="OrdersMoney"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>会员等级：</td>
-                                                            <td>
-                                                                <select name="vId"></select>
-                                                            </td>
-                                                        </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
                                                     </table>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" onclick="updateOrders()">Save</button>
+<%--                                                <button type="button" class="btn btn-primary" onclick="updateOrders()">Save</button>--%>
                                             </div>
                                         </div>
                                     </div>
@@ -185,7 +178,7 @@
                     "<td>"+this.oNum+"</td>" +
                     "<td>"+this.user.userName+"</td>" +
                     "<td>"+this.createddate+"</td>" +
-                    "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateOrders\" onclick='queryById("+this.oNo+")'>查看详情</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.OrdersId+")'>删除</a></td>" +
+                    "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateOrders\" onclick='queryById("+this.oNo+")'>查看详情</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.oNo+")'>删除</a></td>" +
                     "</tr>";
             })
             $("#myTable tbody").empty().append(str);
@@ -220,32 +213,36 @@
     /**
      * 通过Id查询订单
      */
-    function queryById(OrdersId) {
+    function queryById(oNo) {
         $.ajax({
-            url:"../Orders/queryById",
+            url:"../order/queryOrderWithGood",
             type:"get",
-            data:{"OrdersId":OrdersId},
+            data:{"oNo":oNo},
             dataType:"json",
             success:function (data) {
-                $("#updateOrders input[name=OrdersId]").val(data.OrdersId);
+                /*$("#updateOrders input[name=OrdersId]").val(data.OrdersId);
                 $("#updateOrders input[name=OrdersName]").val(data.OrdersName);
-                $("#updateOrders input[name=nickname]").val(data.nickname);
-                $("#updateOrders input[name=OrdersMail]").val(data.OrdersMail);
-                $("#updateOrders input[name=OrdersPhone]").val(data.OrdersPhone);
-                $("#updateOrders input[name=OrdersMoney]").val(data.OrdersMoney);
-                $("#updateOrders select").val(data.member.vId);
+                $("#updateOrders input[name=nickname]").val(data.nickname);*/
+                var ostr="";
+                $(data).each(function () {
+                    ostr +="<tr>" +
+                        "<td>"+this.gName+"</td>" +
+                        "<td>"+this.gPrice+"</td>" +
+                        "</tr>";
+                })
+                $("#updateOrders tbody").empty().append(ostr);
             }
         })
     }
     /**
      * 删除订单
      */
-    function del(OrdersId) {
+    function del(oNo) {
         if(confirm("确定删除订单吗？")){
             $.ajax({
-                url:"../Orders/del",
+                url:"../order/del",
                 type:"get",
-                data:{"OrdersId":OrdersId},
+                data:{"oNo":oNo},
                 dataType:"json",
                 success:function (data) {
                     if(data){

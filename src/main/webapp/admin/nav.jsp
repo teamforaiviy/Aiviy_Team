@@ -33,7 +33,7 @@
                 <li><a href="addGood.jsp">AddGood</a></li>
             </ul>
         </li>
-        <li> <a href="orders.jsp"> <i class="icon-list"></i>Orders </a></li>
+        <li> <a href="orders.jsp"> <i class="icon-list"></i>Order </a></li>
         <li> <a href="comment.jsp"> <i class="icon-check"></i>Comment </a></li>
     </ul>
 </nav>

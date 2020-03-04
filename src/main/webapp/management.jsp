@@ -72,9 +72,10 @@
             <p>手机号码</p>
             <p><input type="text" style="outline:none" name="phone" disabled="disabled"/></p>
         </div>
-        <div class="xgxx">
-            <input type="button" value="修改信息" >
-        </div>
+<%--        <div class="grdz">--%>
+<%--            <p>地址</p>--%>
+<%--            <p><input type="text" style="outline:none" name="phone" disabled="disabled"/></p>--%>
+<%--        </div>--%>
     </div>
 
     <div class="wddd" style="display: none;">
@@ -107,8 +108,8 @@
             </tr>
             <tr class="one-two">
                 <td class="hydj"></td>
-                <td>${sessionScope.user.createddate}</td>
-                <td>N/A</td>
+                <td class="zcsj"></td>
+                <td>永久</td>
                 <td>有效</td>
             </tr>
         </table>
@@ -178,27 +179,27 @@
                 <p>名字</p>
                 <p><input type="text" name="shmz"></p>
             </div>
-            <div class="">
-                <p>地址</p>
-                <div data-toggle="distpicker">
-                    <div class="form-group">
-                        <label class="sr-only" for="province2">Province</label>
-                        <select class="form-control" id="province2" data-province="---- 选择省 ----"></select>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="city2">City</label>
-                        <select class="form-control" id="city2" data-city="---- 选择市 ----"></select>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="district2">District</label>
-                        <select class="form-control" id="district2" data-district="---- 选择区 ----"></select>
-                    </div>
-                </div>
-            </div>
+<%--            <div class="">--%>
+<%--                <p>地址</p>--%>
+<%--                <div data-toggle="distpicker">--%>
+<%--                    <div class="form-group">--%>
+<%--                        <label class="sr-only" for="province2">Province</label>--%>
+<%--                        <select class="form-control" id="province2" data-province="---- 选择省 ----"></select>--%>
+<%--                    </div>--%>
+<%--                    <div class="form-group">--%>
+<%--                        <label class="sr-only" for="city2">City</label>--%>
+<%--                        <select class="form-control" id="city2" data-city="---- 选择市 ----"></select>--%>
+<%--                    </div>--%>
+<%--                    <div class="form-group">--%>
+<%--                        <label class="sr-only" for="district2">District</label>--%>
+<%--                        <select class="form-control" id="district2" data-district="---- 选择区 ----"></select>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
             <div class="clear"></div>
             <div class="xxdz">
                 <p>详细地址</p>
-                <p><input  name="xxdz" type="text" placeholder="请输入详细地址信息,如道路、门牌号、小区、楼栋号、单元等信息" /></p>
+                <p><input  name="xxdz" type="text" placeholder="请具体详细地址信息,如道路、门牌号、小区、楼栋号、单元等信息" /></p>
             </div>
             <div class="">
                 <p>手机号码</p>
@@ -206,7 +207,7 @@
             </div>
 
             <div class="button-address">
-                <p><input type="button" value="保存地址"  name="xgdz"/></p>
+                <p><input type="button" value="修改地址"  name="xgdz"/></p>
             </div>
         </form>
     </div>
@@ -215,31 +216,28 @@
         <p>修改个人信息</p>
         <form action="" method="post">
             <div class="">
-                <p>名字</p>
-                <p><input type="text"></p>
-            </div>
-            <div class="">
-                <p>显示名称</p>
+                <p>昵称</p>
+                <p><input type="text" name="aa"></p>
             </div>
             <div class="clear"></div>
             <div class="xxdz">
                 <p>绑定邮箱</p>
-                <p><input type="text" placeholder="请输入邮箱账号" /></p>
+                <p><input type="text" placeholder="请输入邮箱账号" name="bb" /></p>
             </div>
             <div class="">
                 <p>当前密码</p>
-                <p><input type="text" name="" /></p>
+                <p><input type="text" name="cc" /></p>
             </div>
             <div class="">
                 <p>新密码</p>
-                <p><input type="text" name="" /></p>
+                <p><input type="text" name="dd" /></p>
             </div>
             <div class="">
                 <p>确认新密码</p>
-                <p><input type="text" name="" /></p>
+                <p><input type="text" name="ee" /></p>
             </div>
             <div class="button-address">
-                <p><input type="button" value="保存更改" /></p>
+                <p><input type="button" value="保存更改" name="bcxg" /></p>
             </div>
         </form>
     </div>
@@ -281,56 +279,117 @@
                                 "<td><a href=''>付款</a><span>取消</span></td>" +
                                 "</tr>"
                         })
-            $(".dds").append(str);            
+            $(".dds").append(str);
                     }
                 })
+
+
+
+            $(".a3").click(function () {
+                var vId="${sessionScope.user.vId}";
+                var time="${sessionScope.user.createddate}";
+
+                $(".zcsj").html(time);
+                if(vId==1){
+                    $(".hydj").html("普通会员");
+                }else if(vId==2){
+                    $(".hydj").html("银牌会员");
+                }else if(vId==3){
+                    $(".hydj").html("金牌会员");
+                }else if(vId==4){
+                    $(".hydj").html("钻石会员");
+                }
+
+            })
+
+
             /*
          修改页面一进来时，调用查询方法，将原有数据显示到页面上
       */
-            $.getJSON("Personal/queryAddress", {"userId": userId}, function (data) {
-                $("input[name=xxdz]").val(data.adAddress);
-                $("input[name=sjhm]").val(data.adPhone);
-                $("input[name=shmz]").val(data.adName);
+           // $(".a6").click(function () {
+               $.getJSON("bill/queryaddress",{"uId": userId},function(data){
+                   $("input[name=xxdz]").val(data.adAddress);
+                   $("input[name=sjhm]").val(data.adPhone);
+                   $("input[name=shmz]").val(data.adName);
+               })
+
+           // })
+
+
+
+            /*修改地址*/
+            /*
+                提交按钮点击事件
+             */
+            $("input[name=xgdz]").click(function () {
+                var phone = $("input[name=sjhm]").val();
+                var  name= $("input[name=shmz]").val();
+                var address=$("input[name=xxdz]").val();
+                // if(phone == ""){
+                //     alert("手机号不能为空！");
+                // }else if(name == ""){
+                //     alert("收货姓名不能为空！");
+                // }else if(address == ""){
+                //     alert("收货地址不能为空！");
+                // }
+                // else{
+                    $.ajax({
+                        url: "Personal/updateAddress",
+                        type: "post",
+                        data: {"phone":phone,"name":name,"address":address,"userId":userId},
+                        dataType: "json",
+                        success: function (data) {
+                            if(data){
+                                alert("修改成功！");
+                                window.location.reload();
+                            }else{
+                                alert("修改失败！");
+                            }
+                        }
+                    })
+                // }
             })
-        })
 
 
-         /*修改地址*/
-        /*
-            提交按钮点击事件
-         */
-        $("input[name=xgdz]").click(function () {
-            var phone = $("input[name=sjhm]").val();
-            var  name= $("input[name=shmz]").val();
-            var sf=$("#province2").val();
-            var cs=$("#city2").val();
-            var dq=$("district2").val();
-            var address=$("input[name=xgdz]").val();
-            var dz=sf+cs+dq+address;
-            if(phone == ""){
-                alert("手机号不能为空！");
-            }else if(name == ""){
-                alert("收货姓名不能为空！");
-            }else if(dz == ""){
-                alert("收货地址不能为空！");
-            }
-            else{
+            $("input[name=bcxg]").click(function () {
+                var pwd="${sessionScope.user.userPwd}";
+                var name = $("input[name=aa]").val();
+                var  email= $("input[name=bb]").val();
+                var oldpwd=$("input[name=cc]").val();
+                var password=$("input[name=dd]").val();
+                var repwd=$("input[name=ee]").val();
+                if(oldpwd == ""){
+                    alert("原密码未输入！");
+                }else if(oldpwd!=pwd){
+                    alert("密码不正确！")
+                }else if(password==""){
+                    alert("未输入新密码！")
+                }else if(repwd==""||repwd!=password){
+                    alert("请再次确认密码！")
+                }
+                else {
                 $.ajax({
-                    url: "Personal/updateAddress",
-                    type: "post",
-                    data: $("form").serialize(),
-                    dataType: "json",
-                    success: function (data) {
+                    url:"Personal/updateUser",
+                    type:"post",
+                    data:{"pwd":password,"name":name,"email":email,"userId":userId},
+                    dataType:"json",
+                    success:function (data) {
                         if(data){
                             alert("修改成功！");
-                            window.location.href = "index.jsp";
+                            window.location.reload();
                         }else{
                             alert("修改失败！");
                         }
                     }
                 })
-            }
+                }
+            })
+
+
         })
+
+
+
 
         //获取地址栏参数,可以是中文参数
         function getUrlParam(key) {

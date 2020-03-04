@@ -49,8 +49,8 @@ public class User {
     /**
     * 创建日期
     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GTM+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")//后台到前台时间格式转换
+    @DateTimeFormat(pattern = "yyyy-MM-dd")//前台到后台时间格式转换
     private Date createddate;
 
     private Member member;

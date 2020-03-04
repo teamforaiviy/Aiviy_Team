@@ -168,7 +168,7 @@
                             "                    <input type=\"button\" class=\"amount\" name=\"amount\" value='" + this.sNum + "'>\n" +
                             "                    <input type=\"button\" class=\"plus\" name=\"plus\" value=\"+\" onclick='plus(this,"+this.gId+")'></td>\n" +
                             "                <td style='text-align: center'>¥<span class=\"sTotal\">" + (this.sNum) * (this.sPrice) + "</span>.00</td>\n" +
-                            "                <td style=\"text-align: center\" class='del' ><button class=\"btn btn-default btn-danger\"><span class='glyphicon glyphicon-trash' style='cursor:pointer' onclick='del(" + this.gId + ")'></span>&nbsp;&nbsp;删除</button></td>\n" +
+                            "                <td style=\"text-align: center\" class='del' ><button class=\"btn btn-default btn-danger\" onclick='del(" + this.gId + ")'><span class='glyphicon glyphicon-trash' style='cursor:pointer' ></span>&nbsp;&nbsp;删除</button></td>\n" +
                             "            </tr> "
                     }else {
                         str += "<tr>\n" +
@@ -187,7 +187,7 @@
                             "                    <input type=\"button\" class=\"amount\" name=\"amount\" value='" + this.sNum + "'>\n" +
                             "                    <input type=\"button\" class=\"plus\" name=\"plus\" value=\"+\" onclick='plus(this,"+this.gId+")'></td>\n" +
                             "                <td style='text-align: center'>¥<span class=\"sTotal\">" + (this.sNum) * (this.sPrice) + "</span>.00</td>\n" +
-                            "                <td style=\"text-align: center\" class='del' ><button class=\"btn btn-default btn-danger\"><span class='glyphicon glyphicon-trash' style='cursor:pointer' onclick='del(" + this.gId + ")'></span>&nbsp;&nbsp;删除</button></td>\n" +
+                            "                <td style=\"text-align: center\" class='del' ><button class=\"btn btn-default btn-danger\" onclick='del(" + this.gId + ")'><span class='glyphicon glyphicon-trash' style='cursor:pointer' ></span>&nbsp;&nbsp;删除</button></td>\n" +
                             "            </tr> "
                     }
                     // $(".sName").html(data[0].sName);

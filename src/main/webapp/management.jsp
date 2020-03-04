@@ -10,9 +10,6 @@
 <html>
 <head>
     <title>艾维商城个人中心</title>
-</head>
-<body>
-<head>
     <meta charset="utf-8" />
     <title></title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -23,51 +20,11 @@
 
     <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-
+    <script type="text/javascript" src="js/distpicker.data.js"></script>
+    <script type="text/javascript" src="js/distpicker.js"></script>
+    <script type="text/javascript" src="js/Center.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        .ddt th{
-            border-bottom-color:rgb(221, 223, 231);
-            border-bottom-style:solid;
-            border-bottom-width:1px;
-            border-collapse:collapse;
-            border-image-outset:0px;
-            border-image-repeat: stretch;
-            border-image-slice: 100%;
-            border-image-source: none;
-            border-image-width: 1;
-            border-left-color: rgb(221, 223, 231);
-            border-left-style: solid;
-            border-left-width: 0px;
-            border-right-color: rgb(221, 223, 231);
-            border-right-style: solid;
-            border-right-width: 0px;
-            border-top-color: rgb(221, 223, 231);
-            border-top-style: solid;
-            border-top-width: 0px;
-            box-sizing: border-box;
-            color: rgb(70, 72, 85);
-            display: inline-block;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            font-size: 16px;
-            font-weight: 500;
-            height: 68.2px;
-            letter-spacing: 0.3px;
-            line-height: 27.36px;
-            overflow-wrap: break-word;
-            padding-bottom: 20px;
-            padding-left: 10px;
-            padding-right: 0px;
-            padding-top: 20px;
-            text-align: left;
-            text-size-adjust: 100%;
-            text-transform: uppercase;
-            vertical-align: text-bottom;
-            width: 150px;
-            word-break: normal;
-            -webkit-border-horizontal-spacing: 0px;
-        }
-    </style>
+
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -80,18 +37,18 @@
 </div>
 <div class="personal-body">
     <ul>
-        <li class="a1"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;账户详情</li>
-        <li class="a2"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;我的订单</li>
-        <li class="a3"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;我的会员</li>
+        <li class="a1" style="cursor: pointer"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;账户详情</li>
+        <li class="a2" style="cursor: pointer"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;我的订单</li>
+        <li class="a3" style="cursor: pointer"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;我的会员</li>
 <%--        <li class="a4"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;我的积分</li>--%>
 <%--        <li class="a5"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;拍卖设置</li>--%>
-        <li class="a6"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;添加地址</li>
-        <li class="a7"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;账户修改</li>
+        <li class="a6" style="cursor: pointer"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;添加地址</li>
+        <li class="a7" style="cursor: pointer"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp&nbsp;账户修改</li>
     </ul>
 </div>
 <div class="personal-content">
     <div class="account" >
-        <img src="img/footer/footer-email.PNG">
+        <img src="/img/footer/footer-email.PNG">
         <p>您好!
             <strong class="nc">${user.userName}</strong>
             <a onclick="window.location.href='user/exit'">退出</a></p><br>
@@ -275,64 +232,57 @@
 </div>
 <div class="clear"></div>
 <jsp:include page="footer.jsp"></jsp:include>
-</body>
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/distpicker.data.js"></script>
-    <script type="text/javascript" src="js/distpicker.js"></script>
-    <script type="text/javascript" src="js/Center.js"></script>
     <script type="text/javascript">
 
         $(function () {
-            var userName=${sessionScope.user.nickname};
-
-            if(userName==null){
-                $(".nc").html(${sessionScope.user.userName});
-            }else {
-                $(".nc").html(${sessionScope.user.nickname});
-            }
-
-
+            $(".nc").html("${sessionScope.user.userName}");
             var userId=${sessionScope.user.userId};
-            var vId=${sessionScope.user.vId};
-            $.ajax({
-                url:"Personal/order",
-                type:"post",
-                dataType:"json",
-                data:{"userId":userId},
-                success:function (data) {
-                    var i= this.user.vId;
-                    if (i==1){
-                        $(".hydj").html("普通会员");
-                    }else if (i==2){
-                        $(".hydj").html("银牌会员");
-                    }else if (i==3){
-                        $(".hydj").html("金牌会员");
-                    }else if (i==4){
-                        $(".hydj").html("钻石会员");
-                    }
-                }
-            })
+            //var vId=${sessionScope.user.vId};
+            // $.ajax({
+            //     url:"Personal/order",
+            //     type:"post",
+            //     dataType:"json",
+            //     data:{"userId":userId},
+            //     success:function (data) {
+            //         var i= this.user.vId;
+            //         if (i==1){
+            //             $(".hydj").html("普通会员");
+            //         }else if (i==2){
+            //             $(".hydj").html("银牌会员");
+            //         }else if (i==3){
+            //             $(".hydj").html("金牌会员");
+            //         }else if (i==4){
+            //             $(".hydj").html("钻石会员");
+            //         }
+            //     }
+            // })
 
 
             /*账单*/
-            var str="";
-            $.ajax({
-                url:"Personal/order",
-                type:"post",
-                dataType:"json",
-                data:{"userId":userId},
-                success:function (data) {
-                    $(data).each(function () {
-                        str+="<tr>" +
-                            "<td>"+this.oNo+"</td>" +
-                            "<td>"+this.oData+"</td>" +
-                            "<td>"+this.oState+"</td>" +
-                            "<td>"+this.oNum+"</td>" +
-                            "<td><a href=''>付款</a><span>取消</span></td>" +
-                            "</tr>"
-                    })
-                }
-            })
+
+                var str="";
+                $.ajax({
+                    url:"Personal/order",
+                    type:"post",
+                    dataType:"json",
+                    data:{"userId":userId},
+                    success:function (data) {
+                        $(data).each(function () {
+                            str+="<tr>" +
+                                "<td>"+this.oNo+"</td>" +
+                                "<td>"+this.createddate+"</td>" +
+                                "<td>"+(this.oState==1?'已付款':'未付款')+"</td>" +
+                                "<td>"+this.oNum+"</td>" +
+                                "<td><a href=''>付款</a><span>取消</span></td>" +
+                                "</tr>"
+                        })
+                        $(".dds").append(str);
+
+
+                    }
+                })
+
+
 
 
 

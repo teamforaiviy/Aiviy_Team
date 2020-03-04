@@ -13,13 +13,7 @@
     </resultMap>
 
     <select id="queryOrder" resultMap="orderMap">
-        select O.o_id,O.o_no,O.o_state,O.o_num,O.user_id,U.user_money
-        from orders O INNER JOIN user U on O.user_id=U.user_id
-        <where>
-            <if test="userId!=null and userId!=0">
-                u_id=#{userId}
-            </if>
-        </where>
+        SELECT o_num,o_id,o_no,o_state,user_id,createdDate FROM orders WHERE user_id=#{userId}
     </select>
 
     <select id="queryAddress" resultType="com.kgc.exam.entity.Address">

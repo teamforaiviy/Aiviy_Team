@@ -17,12 +17,48 @@
 
     <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/Center.js" ></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /*.dwdwdw select{
+            float: left;
+        }
+
+        .dwdwdw nav{
+            float: left;
+        }
+        .dwdwdw{
+            height: 40px;
+        }*/
+
+        input[name=pn] {
+            width: 30px;
+            height: 30px;
+        }
+
+        .a {
+            float: right;
+        }
+        .a1{
+            float: left;
+        }.a2{
+             font-size: 20px;
+             float: right;
+             line-height: 74px;
+         }
+        .pagination{
+            vertical-align: middle;
+
+        }
+        .pagination li{
+
+        }
+    </style>
     <script type="text/javascript">
         var pn = 1;
-        var ps = 6;
+        var ps = 12;
         $(function () {
             queryAll(pn,ps);
             $("header-search-btn").click(function () {
@@ -67,7 +103,7 @@
                 if(page.hasPreviousPage){
                     pageStr += "<li>" +
                         "<a href='javascript:queryAll("+(page.pageNum-1)+","+ps+")' aria-label='Previous'>" +
-                        "<span aria-hidden='true'>上一页</span>" +
+                        "<span aria-hidden='true'><<<</span>" +
                         "</a>" +
                         "</li>";
                 }
@@ -81,11 +117,11 @@
                 if(page.hasNextPage){
                     pageStr += "<li>" +
                         "<a href='javascript:queryAll("+(page.pageNum+1)+","+ps+")' aria-label='Next'>" +
-                        "<span aria-hidden='true'>下一页</span>" +
+                        "<span aria-hidden='true'>>>></span>" +
                         "</a>" +
                         "</li>";
                 }
-                pageStr += "<li><a href='javascript:queryAll("+page.pages+","+ps+")'>未页</a></li>";
+                pageStr += "<li><a href='javascript:queryAll("+page.pages+","+ps+")'>末页</a></li>";
                 $(".pagination").empty();
                 $(".pagination").append(pageStr);
             })
@@ -316,8 +352,9 @@
 
 
 <div class="ccaazz">
-    <div>
-        <select>
+
+
+        <select style="margin-top: 20px">
             <option selected="selected">默认产品排序</option>
             <option>接受关注度排序</option>
             <option>按好评度排序</option>
@@ -326,52 +363,24 @@
             <option>按价格从高到低</option>
         </select>
 
-        <ul>
-            <%--<li><img src="img/information/left.png"/></li>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li><img src="img/information/right.png"/></li>--%>
-            <nav aria-label="Page navigation">
-                <ul class="pagination">
+        <div class="a">
+            <div class="a1">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
 
-                </ul>
-            </nav>
-        </ul>
-    </div>
+                    </ul>
+                </nav>
+            </div>
+        </div>
 
-    <div class="new-cotent-two">
-        <div class="row">
+            <div class="new-cotent-two">
+                <div class="row">
 
-            <%--<div class="col-md-3">
-                <div class="new-cotent-two-first">
-                    <a href="#">
-                        <div class="new-cotent-two-first-1">
-                            <span class="new-flash">新品</span>
-                        </div>
-                        <h2>DAEMON Tools Ultra 5 虚拟光驱软件 -旗舰版</h2>
-                        <span class="price-lable">价格</span><br />
-                        <span class="price">￥298.00</span>
-                    </a>
                 </div>
             </div>
 
-            <div class="col-md-3">
-                <div class="new-cotent-two-first">
-                    <a href="#">
-                        <div class="new-cotent-two-first-2">
-                            <span class="discount">优惠 60% OFF!</span>
-                            <span class="new-flash">新品</span>
-                        </div>
-                        <h2>Boom 3D Mac必备 – 个性化音效增强工具</h2>
-                        <span class="price-lable">价格</span><br />
-                        <span class="price"><span>￥249.00</span>￥99.00</span>
-                    </a>
-                </div>
-            </div>--%>
 
-        </div>
-    </div>
+
 
 
 

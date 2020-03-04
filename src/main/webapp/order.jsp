@@ -199,7 +199,7 @@
     }
     var gid = getUrlParam("gid");
     var uid = ${user.userId};
-    var userName = ${user.userName};
+    var userName = "${user.userName}";
 
     //评论提交
     function fnDate(){
@@ -232,7 +232,7 @@
             var str = "";
 
                 $(data).each(function () {
-                    str +="<span>"+this.userName+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                    str +="<span>"+this.user.userName+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
                         "<span>"+this.ctime+"</span><br>"+
                         "<span>"+this.cComment+"</span><br>"+
                         "<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br>";
@@ -261,7 +261,6 @@
                 type:"post",
                 data:{"cComment":content,
                       "gId":gid,
-                      "ctime":date,
                       "uid":uid},
                 dataType:"json",
                 success:function (data) {

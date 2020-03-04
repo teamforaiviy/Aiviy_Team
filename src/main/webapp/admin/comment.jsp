@@ -143,53 +143,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="updateComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel1">修改评论</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <input type="hidden" class="form-control" name="CommentId">
-                                                    <table>
-                                                        <tr>
-                                                            <td>评论名：</td>
-                                                            <td><input type="text" class="form-control" name="CommentName"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>昵称：</td>
-                                                            <td><input type="text" class="form-control" name="nickname"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>邮箱：</td>
-                                                            <td><input type="email" class="form-control" name="CommentMail"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>手机号：</td>
-                                                            <td><input type="text" class="form-control" name="CommentPhone"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>消费金额：</td>
-                                                            <td><input type="text" class="form-control" name="CommentMoney"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>会员等级：</td>
-                                                            <td>
-                                                                <select name="vId"></select>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" onclick="updateComment()">Save</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -228,7 +182,7 @@
                     "<td>"+this.user.userName+"</td>" +
                     "<td>"+this.goods.gName+"</td>" +
                     "<td>"+this.ctime+"</td>" +
-                    "<td><a href='#' data-toggle=\"modal\" data-target=\"#updateComment\" onclick='queryById("+this.cId+")'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.cId+")'>删除</a></td>" +
+                    "<td>&nbsp;&nbsp;<a href='#' onclick='del("+this.cId+")'>删除</a></td>" +
                     "</tr>";
             })
             $("#myTable tbody").empty().append(str);
@@ -279,45 +233,7 @@
             }
         })
     }
-    /**
-     * 通过Id查询评论
-     */
-    function queryById(CommentId) {
-        $.ajax({
-            url:"../Comment/queryById",
-            type:"get",
-            data:{"CommentId":CommentId},
-            dataType:"json",
-            success:function (data) {
-                $("#updateComment input[name=CommentId]").val(data.CommentId);
-                $("#updateComment input[name=CommentName]").val(data.CommentName);
-                $("#updateComment input[name=nickname]").val(data.nickname);
-                $("#updateComment input[name=CommentMail]").val(data.CommentMail);
-                $("#updateComment input[name=CommentPhone]").val(data.CommentPhone);
-                $("#updateComment input[name=CommentMoney]").val(data.CommentMoney);
-                $("#updateComment select").val(data.member.vId);
-            }
-        })
-    }
-    /**
-     * 修改评论
-     */
-    function updateComment() {
-        $.ajax({
-            url:"../Comment/update",
-            type:"get",
-            data:$("#updateComment form").serialize(),
-            dataType:"json",
-            success:function (data) {
-                if(data){
-                    alert("修改成功！")
-                    window.location.reload();
-                }else {
-                    alert("修改失败！")
-                }
-            }
-        })
-    }
+
     /**
      * 删除评论
      */

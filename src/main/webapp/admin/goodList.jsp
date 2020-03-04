@@ -25,16 +25,24 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <style>
-        /*table{
+        table{
             width: 80%;
             margin: auto;
-        }*/
+        }
         .form-control{
             margin-top: 10px;
             width: 250px;
         }
         .pagination li {
             margin-left: 10px;
+        }
+        #updateGood select {
+            margin-top: 10px;
+            background-color: #e9ecef;
+            width: 100px;
+            height: 30px;
+            border: 0px;
+            padding-left: 10px;
         }
     </style>
 </head>
@@ -72,7 +80,7 @@
                                                 <th>商品价格</th>
                                                 <th>商品描述</th>
                                                 <th>上传日期</th>
-                                                <th>折扣状态</th>
+                                                <th>状态</th>
                                                 <th>操作</th>
                                             </tr>
                                             </thead>
@@ -83,6 +91,49 @@
                                             <ul class="pagination">
                                             </ul>
                                         </nav>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="updateGood" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel1">修改商品</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <input type="hidden" class="form-control" name="gId">
+                                                    <table>
+                                                        <tr>
+                                                            <td>商品名：</td>
+                                                            <td><input type="text" class="form-control" name="gName"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>商品价格：</td>
+                                                            <td><input type="text" class="form-control" name="gPrice"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>商品描述：</td>
+                                                            <td><input type="email" class="form-control" name="gContent"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>状态：</td>
+                                                            <td>
+                                                                <select name="countstatus">
+                                                                    <option value="0">默认</option>
+                                                                    <option value="1">新品</option>
+                                                                    <option value="2">热销</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" onclick="updateGood()">Save</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -113,14 +164,22 @@
             var page =eval(data);
             var str="";
             $(page.list).each(function() {
+                var cstatus="";
+                if(this.countstatus==0){
+                    cstatus="默认";
+                }else if(this.countstatus==1){
+                    cstatus="新品";
+                }else if(this.countstatus==2){
+                    cstatus="热销";
+                }
                 str += "<tr>" +
                     "<td style='width: 82px'>"+this.gId+"</td>" +
                     "<td style='width: 250px'>"+this.gName+"</td>" +
                     "<td style='width: 82px'>"+this.gPrice+"</td>" +
                     "<td style='width: 360px'>"+this.gContent+"</td>" +
                     "<td style='width: 120px'>"+this.uploadtime+"</td>" +
-                    "<td style='width: 82px'>"+this.countstatus+"</td>" +
-                    "<td style='width: 41px'><a href='#'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.gId+")'>删除</a></td>" +
+                    "<td style='width: 82px'>"+cstatus+"</td>" +
+                    "<td style='width: 41px'><a href='#' data-toggle=\"modal\" data-target=\"#updateGood\" onclick='queryById("+this.gId+")'>修改</a>&nbsp;&nbsp;<a href='#' onclick='del("+this.gId+")'>删除</a></td>" +
                     "</tr>";
             })
             $("#myTable tbody").empty().append(str);
@@ -150,6 +209,43 @@
             }
             pageStr +="<li><a href='javascript:queryGood("+page.pages+","+ps+")'>尾页</a></li>";
             $(".pagination").empty().append(pageStr);
+        })
+    }
+    /**
+     * 通过Id查询商品
+     */
+    function queryById(gId) {
+        $.ajax({
+            url:"../goods/select",
+            type:"get",
+            data:{"gid":gId},
+            dataType:"json",
+            success:function (data) {
+                $("#updateGood input[name=gId]").val(data.gId);
+                $("#updateGood input[name=gName]").val(data.gName);
+                $("#updateGood input[name=gPrice]").val(data.gPrice);
+                $("#updateGood input[name=gContent]").val(data.gContent);
+                $("#updateGood select").val(data.countstatus);
+            }
+        })
+    }
+    /**
+     * 修改商品
+     */
+    function updateGood() {
+        $.ajax({
+            url:"../goods/update",
+            type:"get",
+            data:$("#updateGood form").serialize(),
+            dataType:"json",
+            success:function (data) {
+                if(data){
+                    alert("修改成功！")
+                    window.location.reload();
+                }else {
+                    alert("修改失败！")
+                }
+            }
         })
     }
     /**

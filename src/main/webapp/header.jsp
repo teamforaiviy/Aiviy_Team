@@ -112,11 +112,17 @@
                 window.location.href="information.jsp";
             }else {
                 $.getJSON("goods/queryByName",{"gName":gName},function (data) {
-                    if(data.length>1){
+                    if(data==""){
+                        alert("无相关商品！");
+                        window.location.href="information.jsp";
+                    }else {
+                        window.location.href="information.jsp?gName="+gName;
+                    }
+                    /*if(data.length>1){
                         window.location.href="information.jsp?gName="+gName;
                     }else {
                         window.location.href="order.jsp?gid="+data[0].gId;
-                    }
+                    }*/
                 })
             }
         })

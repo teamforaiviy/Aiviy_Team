@@ -10,4 +10,7 @@ public interface CommentService {
     List<Comment> queryComment(String gName);
 
     Boolean insert(Comment comment);
+
+    Boolean deleteByPrimaryKey(Integer cId);
+
 }

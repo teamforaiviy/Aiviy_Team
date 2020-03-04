@@ -62,8 +62,8 @@ public class GoodsController {
     }
 
     @RequestMapping("/queryGoodsWithImages")
-    public List<Goods> queryGoodsWithImages(){
-        return goodsService.queryGoodsWithImage();
+        public List<Goods> queryGoodsWithImages(){
+        return goodsService.queryGoodsWithImage(0);
     }
 
 

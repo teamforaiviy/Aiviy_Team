@@ -38,7 +38,7 @@ public interface GoodsService {
     /*
     * 查询商品以及图片
     * */
-    List<Goods> queryGoodsWithImage();
+    List<Goods> queryGoodsWithImage(Integer countStatus);
 
     Boolean del(Integer gId);
 

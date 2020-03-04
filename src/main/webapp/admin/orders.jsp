@@ -68,8 +68,6 @@
                             <div class="card">
                                 <div class="card-header d-flex align-items-center">
                                     <h3 class="h4">Orders</h3>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="#" data-toggle="modal" data-target="#createOrders">添加订单</a>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -100,50 +98,7 @@
                                         </nav>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="createOrders" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel">添加订单</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <table>
-                                                        <tr>
-                                                            <td>订单名：</td>
-                                                            <td><input type="text" class="form-control" name="OrdersName"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>昵称：</td>
-                                                            <td><input type="text" class="form-control" name="nickname"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>密码：</td>
-                                                            <td><input type="password" class="form-control" name="OrdersPwd"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>邮箱：</td>
-                                                            <td><input type="email" class="form-control" name="OrdersMail"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>手机号：</td>
-                                                            <td><input type="text" class="form-control" name="OrdersPhone"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>消费金额：</td>
-                                                            <td><input type="text" class="form-control" name="OrdersMoney"></td>
-                                                        </tr>
-                                                    </table>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" onclick="insertOrders()">Save</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="modal fade" id="updateOrders" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -263,25 +218,6 @@
         })
     }
     /**
-     * 添加订单
-     */
-    function insertOrders() {
-        $.ajax({
-            url:"../Orders/insert",
-            type:"get",
-            data:$("#createOrders form").serialize(),
-            dataType:"json",
-            success:function (data) {
-                if(data){
-                    alert("添加成功！")
-                    window.location.reload();
-                }else {
-                    alert("添加失败！")
-                }
-            }
-        })
-    }
-    /**
      * 通过Id查询订单
      */
     function queryById(OrdersId) {
@@ -298,25 +234,6 @@
                 $("#updateOrders input[name=OrdersPhone]").val(data.OrdersPhone);
                 $("#updateOrders input[name=OrdersMoney]").val(data.OrdersMoney);
                 $("#updateOrders select").val(data.member.vId);
-            }
-        })
-    }
-    /**
-     * 修改订单
-     */
-    function updateOrders() {
-        $.ajax({
-            url:"../Orders/update",
-            type:"get",
-            data:$("#updateOrders form").serialize(),
-            dataType:"json",
-            success:function (data) {
-                if(data){
-                    alert("修改成功！")
-                    window.location.reload();
-                }else {
-                    alert("修改失败！")
-                }
             }
         })
     }

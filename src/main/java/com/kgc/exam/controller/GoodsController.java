@@ -51,6 +51,11 @@ public class GoodsController {
         return  goodsService.selectByPrimaryKey(gId);
     }
 
+    @RequestMapping("/update")
+    public Boolean updateByPrimaryKeySelective(Goods goods) {
+        return goodsService.updateByPrimaryKeySelective(goods);
+    }
+
     @RequestMapping("/queryNew")
     public List<Goods> queryNew() {
         return goodsService.queryNew();

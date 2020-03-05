@@ -35,30 +35,45 @@
         }
         var sms = "";
         $(function () {
+            /*
+            * 姓名输入框聚焦失焦事件，校验并显示报错信息
+            * */
             $("input[name=username]").blur(checkName).focus(function(){
                 $("input[name=username]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
                 $(".usernameError").html("");
                 $(".username").css({"margin-bottom":"20px"})
                 $(".usernameError").hide();
             })
+            /*
+            * 邮箱输入框聚焦失焦事件，校验并显示报错信息
+            * */
             $("input[name=email]").blur(checkEmail).focus(function(){
                 $("input[name=email]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
                 $(".emailError").html("");
                 $(".email").css({"margin-bottom":"20px"})
                 $(".emailError").hide();
             })
+            /*
+            * 手机号输入框聚焦失焦事件，校验并显示报错信息
+            * */
             $("input[name=phone]").blur(checkPhone).focus(function(){
                 $("input[name=phone]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
                 $(".phoneError").html("");
                 $(".phone").css({"margin-bottom":"20px"})
                 $(".phoneError").hide();
             })
+            /*
+            * 密码输入框聚焦失焦事件，校验并显示报错信息
+            * */
             $("input[name=password]").blur(checkPassword).focus(function(){
                 $("input[name=password]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
                 $(".passwordError").html("");
                 $(".password").css({"margin-bottom":"20px"})
                 $(".passwordError").hide();
             })
+            /*
+            * 重新输入密码输入框聚焦失焦事件，校验并显示报错信息
+            * */
             $("input[name=repassword]").blur(checkRepassword).focus(function(){
                 $("input[name=repassword]").css({"border-bottom":"2px solid #25D0FD","background-color":"white"})
                 $(".repasswordError").html("");
@@ -66,6 +81,9 @@
                 $(".repasswordError").hide();
             })
 
+            /*
+            * 点击发送验证码时触发
+            * */
             $("#btn").click(function() {
                 var phone = $("input[name=phone]").val();
                 if (phone != "") {
@@ -83,22 +101,26 @@
                 }
             });
 
-
+            /*
+            * 当注册按钮点击时触发
+            * */
             $(".btn-co").click(function() {
                 var name = $("input[name=username]").val();
                 var email = $("input[name=email]").val();
                 var phone = $("input[name=phone]").val();
                 var password = $("input[name=password]").val();
                 var checkMsg = $("input[name=checkMsg]").val();
-                if(name==""||name==null){
+                if(!checkName()){
                     alert("请确认你的用户名是否正确！")
-                }else if(email==""||email==null){
+                }else if(!checkEmail()){
                     alert("请确认你的邮箱是否正确！")
-                }else if(phone==""||phone==null){
+                }else if(!checkPhone()){
                     alert("请确认你的手机号是否正确！")
-                }else if(password==""||password==null){
+                }else if(!checkPassword()){
                     alert("请注意你的密码提示错误！")
-                }else if(checkMsg==""){
+                }else if (!checkRepassword()){
+                    alert("请注意重新输入的密码提示错误！")
+                } else if(checkMsg==""){
                     alert("请输入验证码!")
                 }else if(checkMsg!=sms){
                     alert("验证码不正确!")
@@ -118,9 +140,9 @@
             })
 
         })
-
-
-
+        /*
+        * 校验用户名
+        * */
         function checkName(){
             var name = $("input[name=username]").val();
             var reg = /^\w{6,16}$/;
@@ -138,9 +160,9 @@
             }
             return true;
         }
-
-
-
+        /*
+        * 校验邮箱
+        * */
         function checkEmail(){
             var email = $("input[name=email]").val();
             var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
@@ -158,9 +180,9 @@
             }
             return true;
         }
-
-
-
+        /*
+        * 校验手机号
+        * */
         function checkPhone(){
             var phone = $("input[name=phone]").val();
             var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
@@ -178,8 +200,9 @@
             }
             return true;
         }
-
-
+        /*
+        * 校验密码
+        * */
         function checkPassword(){
             var password = $("input[name=password]").val();
             var reg = /^[a-zA-Z]\w{5,17}$/;
@@ -197,9 +220,9 @@
             }
             return true;
         }
-
-
-
+        /*
+        * 校验重新输入的密码
+        * */
         function checkRepassword(){
             var repassword = $("input[name=repassword]").val();
             var password = $("input[name=password]").val();

@@ -2,8 +2,7 @@
 SQLyog Ultimate v12.08 (64 bit)
 MySQL - 5.0.45-community-nt : Database - aiviy
 *********************************************************************
-*/
-
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -29,9 +28,11 @@ CREATE TABLE `address` (
   `user_id` int(8) default NULL COMMENT '用户id',
   `ad_name` varchar(55) default NULL COMMENT '收货人名',
   PRIMARY KEY  (`ad_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `address` */
+
+insert  into `address`(`ad_id`,`ad_address`,`ad_phone`,`ad_sname`,`user_id`,`ad_name`) values (2,'南京市建邺区153135','13675141997','陈',1,'瑞祥');
 
 /*Table structure for table `comment` */
 
@@ -42,10 +43,13 @@ CREATE TABLE `comment` (
   `c_comment` varchar(255) default NULL COMMENT '评论内容',
   `user_id` int(8) default NULL COMMENT '用户id',
   `g_id` int(8) default NULL COMMENT '商品编号',
+  `ctime` datetime default NULL COMMENT '评论时间',
   PRIMARY KEY  (`c_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `comment` */
+
+insert  into `comment`(`c_id`,`c_comment`,`user_id`,`g_id`,`ctime`) values (1,'测试评论一',1,9,'2020-03-04 08:58:13'),(2,'amdsad',1,1,'2020-03-04 16:37:02'),(3,'15151515',1,10,'2020-03-04 16:39:51');
 
 /*Table structure for table `goods` */
 
@@ -59,21 +63,11 @@ CREATE TABLE `goods` (
   `uploadTime` datetime default NULL COMMENT '上传日期',
   `countStatus` int(10) default '0' COMMENT '折扣状态',
   PRIMARY KEY  (`g_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 /*Data for the table `goods` */
 
-insert  into `goods`(`g_id`,`g_name`,`g_price`,`g_content`,`uploadTime`,`countStatus`) values (1,'Advanced SystemCare 12 Ultimate 清理杀毒软件',129,'全新的反病毒引擎，超敏感的检测和删除最新的病毒，木马软件，间谍软件','2020-02-21 14:21:29',0),(2,'Advanced SystemCare 13 Pro 清理优化工具',149,'一键清理优化和修复、深度您的PC，清理Windows注册表、自动在线反浏览器跟踪保护隐私，提升电脑速度高达200％。','2020-02-25 10:29:23',0),(3,'AMC Security 手机管家- 清理',99,'加速、安全','2020-02-25 10:32:01',0),(4,'Ashampoo Burning Studio 20 刻录软件 许可证',50,'许可证','2020-02-25 10:33:20',0),(5,'Avast Business Antivirus Pro Plus 商业专业增强版 企业全面保护',379,'防护软件','2020-02-25 10:34:32',0),(6,'Avast Business Antivirus Pro Plus 商业专业增强版 企业全面保护',254,'许可证','2020-02-25 10:35:19',0),(7,'Avast Business Antivirus Pro 商业专业版 企业杀毒软件',216,'许可证','2020-02-25 10:35:47',0),(8,'Avast Business Antivirus 商业版 小型企业防病毒软件',230,'许可证','2020-02-25 10:36:11',0),(9,'Avast Premier 杀毒软件 高级版 激活码',99,'许可证','2020-02-25 10:36:53',1),(10,'AVG PC TuneUp 2019 系统优化神器 序列码',152,'序列码','2020-02-25 10:41:10',1),(11,'Axure RP 9.0 PRO 专业版 原型设计软件 一年/终身授权',60,'安全软件','2020-02-25 10:41:12',1),(12,'Bitlocker 赤友数据恢复 PC/Mac 专业版',98,'数据恢复','2020-02-25 10:41:15',1),(13,'Bitl 数据恢复 PC/Mac 专业版',85,'数据恢复2','2020-02-25 10:42:46',0);
-insert  into `goods`(`g_id`,`g_name`,`g_price`,`g_content`,`uploadTime`,`countStatus`)
-values
-(14,'AdGuard 广告拦截 隐私保护 软件 3设备',69,'拦截广告和危险网站，加速网页载入，保护儿童的在线安全','2020-03-03 10:21:29',0),
-(15,'Eagle 图片收藏 素材整理 图库管理软件',199,'快速收藏任何图片，高效整理大量图片','2020-03-03 10:42:46',0),
-(16,'MacBooster 8 Mac清理工具兼杀毒软件 中文版',180,'一键智能清理系统垃圾。','2020-03-03 11:42:46',0),
-(17,'PDF Expert for Mac – 序列码 – 永久授权',319,'轻松在Mac上完成PDF编辑、阅读、批注、编辑文本、添加照片','2020-03-03 12:42:46',0),
-(18,'Radmin 专业的远程控制软件 永久授权',329,'Radmin 是现今最为安全和可靠的远程访问软件产品，全球超过 10 万家企业选择 Radmin 为员工提供远程技术支持','2020-03-03 13:42:46',0),
-(19,'XMind 8 Pro/ZEN&移动版 思维导图和头脑风暴软件',388,'风靡全球的思维导图和头脑风暴软件，融合艺术与创造力，让思维清晰可见','2020-03-03 14:42:46',0),
-(20,'Office 家庭和学生版 2019 for Mac 办公软件',598,'产品代码通过电子邮件发送','2020-03-03 15:42:46',0),
-(21,'Internet Download Manager (IDM) 极速下载工具',129,'提升你的下载速度最多达5倍','2020-03-03 16:42:46',0);
+insert  into `goods`(`g_id`,`g_name`,`g_price`,`g_content`,`uploadTime`,`countStatus`) values (1,'Advanced SystemCare 12 Ultimate 清理杀毒软件',129,'全新的反病毒引擎，超敏感的检测和删除最新的病毒，木马软件，间谍软件','2020-02-21 14:21:29',0),(2,'Advanced SystemCare 13 Pro 清理优化工具',149,'一键清理优化和修复、深度您的PC，清理Windows注册表、自动在线反浏览器跟踪保护隐私，提升电脑速度高达200％。','2020-02-25 10:29:23',0),(3,'AMC Security 手机管家- 清理',99,'加速、安全','2020-02-25 10:32:01',0),(4,'Ashampoo Burning Studio 20 刻录软件 许可证',50,'许可证','2020-02-25 10:33:20',0),(5,'Avast Business Antivirus Pro Plus 商业专业增强版 企业全面保护',379,'防护软件','2020-02-25 10:34:32',0),(6,'Avast Business Antivirus Pro Plus 商业专业增强版 企业全面保护',254,'许可证','2020-02-25 10:35:19',0),(7,'Avast Business Antivirus Pro 商业专业版 企业杀毒软件',216,'许可证','2020-02-25 10:35:47',0),(8,'Avast Business Antivirus 商业版 小型企业防病毒软件',230,'许可证','2020-02-25 10:36:11',0),(9,'Avast Premier 杀毒软件 高级版 激活码',99,'许可证','2020-02-25 10:36:53',0),(10,'AVG PC TuneUp 2019 系统优化神器 序列码',152,'序列码','2020-02-25 10:41:10',0),(11,'Axure RP 9.0 PRO 专业版 原型设计软件 一年/终身授权',60,'安全软件','2020-02-25 10:41:12',0),(12,'Bitlocker 赤友数据恢复 PC/Mac 专业版',98,'数据恢复','2020-02-25 10:41:15',1),(13,'Bitl 数据恢复 PC/Mac 专业版',85,'数据恢复2','2020-02-25 10:42:46',1),(14,'测试商品1',10000,'测试商品1简介','2020-03-04 17:04:46',1),(15,'测试商品2',999,'没有','2020-03-04 17:11:46',1);
 
 /*Table structure for table `image` */
 
@@ -84,29 +78,11 @@ CREATE TABLE `image` (
   `img_url` varchar(255) default NULL COMMENT '图片路径',
   `g_id` int(8) default NULL COMMENT '商品编号',
   PRIMARY KEY  (`img_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 /*Data for the table `image` */
 
-insert  into `image`(`img_id`,`img_url`,`g_id`) values (1,'/img/Goods/Aiviy-iobit-asc-box-418x418.jpg',1),(2,'/img/Goods/Aiviy-iobit-ascu-img01-418x418.jpg',1),(3,'/img/Goods/Good2-1.jpg',2),(4,'/img/Goods/Good2-2.png',2),(5,'/img/Goods/Good3-1.jpg',3),(6,'/img/Goods/Good3-2.jpg',3),(7,'/img/Goods/Good4-1.jpg',4),(8,'/img/Goods/Good4-2.jpg',4),(9,'/img/Goods/Good5-1.jpg',5),(10,'/img/Goods/Good5-2.png',5),(11,'/img/Goods/Good6-1.jpg',6),(12,'/img/Goods/Good6-2.png',6),(13,'/img/Goods/Good7-1.jpg',7),(14,'/img/Goods/Good7-2.png',7),(15,'/img/Goods/Good8-1.jpg',8),(16,'/img/Goods/Good8-2.jpg',8),(17,'/img/Goods/Good9-1.jpg',9),(18,'/img/Goods/Good9-2.jpg',9),(19,'/img/Goods/Good10-1.jpg',10),(20,'/img/Goods/Good10-2.jpg',10),(21,'/img/Goods/Good11-1.png',11),(22,'/img/Goods/Good11-2.png',11),(23,'/img/Goods/Good12-1.jpg',12),(24,'/img/Goods/Good12-2.jpg',12),(25,'/img/Goods/Good12-1.jpg',13),(26,'/img/Goods/Good12-2.jpg',13);
-insert  into `image`(`img_id`,`img_url`,`g_id`)
-values
-(27,'/img/Goods/Aiviy-AdGuard-box-418x418.png',14),
-(28,'/img/Goods/Aiviy-AdGuard-box01-418x418.png',14),
-(29,'/img/Goods/Aiviy-eagle-box01-418x418.jpg',15),
-(30,'/img/Goods/Aiviy-eagle-box04-418x418.jpg',15),
-(31,'/img/Goods/Aiviy-macbooster-box-2-418x418.jpg',16),
-(32,'/img/Goods/Aiviy-macbooster-box01-418x418.jpg',16),
-(33,'/img/Goods/Aiviy_PDFExpert_box-418x418.jpg',17),
-(34,'/img/Goods/Aiviy_PDFExpert_box01-418x418.jpg',17),
-(35,'/img/Goods/Aiviy-radmin3-box-418x418.jpg',18),
-(36,'/img/Goods/Aiviy-radmin3-box01-418x418.jpg',18),
-(37,'/img/Goods/Aiviy-xmind-box-418x418.jpg',19),
-(38,'/img/Goods/Aiviy-xmind-box02-418x418.jpg',19),
-(39,'/img/Goods/Aiviy-office2019home-box-418x418.jpg',20),
-(40,'/img/Goods/Aiviy-office2019home-box01-418x418.jpg',20),
-(41,'/img/Goods/Aiviy-idm-box-418x418.jpg',21),
-(42,'/img/Goods/Aiviy-idm-img01-418x418.jpg',21);
+insert  into `image`(`img_id`,`img_url`,`g_id`) values (1,'/img/Goods/Aiviy-iobit-asc-box-418x418.jpg',1),(2,'/img/Goods/Aiviy-iobit-ascu-img01-418x418.jpg',1),(3,'/img/Goods/Good2-1.jpg',2),(4,'/img/Goods/Good2-2.png',2),(5,'/img/Goods/Good3-1.jpg',3),(6,'/img/Goods/Good3-2.jpg',3),(7,'/img/Goods/Good4-1.jpg',4),(8,'/img/Goods/Good4-2.jpg',4),(9,'/img/Goods/Good5-1.jpg',5),(10,'/img/Goods/Good5-2.png',5),(11,'/img/Goods/Good6-1.jpg',6),(12,'/img/Goods/Good6-2.png',6),(13,'/img/Goods/Good7-1.jpg',7),(14,'/img/Goods/Good7-2.png',7),(15,'/img/Goods/Good8-1.jpg',8),(16,'/img/Goods/Good8-2.jpg',8),(17,'/img/Goods/Good9-1.jpg',9),(18,'/img/Goods/Good9-2.jpg',9),(19,'/img/Goods/Good10-1.jpg',10),(20,'/img/Goods/Good10-2.jpg',10),(21,'/img/Goods/Good11-1.png',11),(22,'/img/Goods/Good11-2.png',11),(23,'/img/Goods/Good12-1.jpg',12),(24,'/img/Goods/Good11-2.jpg',12),(25,'/img/Goods/Good9-1.jpg',13),(26,'/img/Goods/Good10-2.jpg',13),(27,'/img/Goods/测试商品1-图片.jpg',14),(28,'/img/Goods/测试商品1-图片2.png',14),(29,'/img/Goods/测试商品2-图片1.jpg',15),(30,'/img/Goods/测试商品1-图片2.png',15);
 
 /*Table structure for table `member` */
 
@@ -117,9 +93,11 @@ CREATE TABLE `member` (
   `v_name` varchar(4) default NULL COMMENT '等级描述',
   `v_count` double default NULL COMMENT '折扣',
   PRIMARY KEY  (`v_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `member` */
+
+insert  into `member`(`v_id`,`v_name`,`v_count`) values (1,'一级',0.95),(2,'二级',0.9);
 
 /*Table structure for table `orders` */
 
@@ -133,11 +111,11 @@ CREATE TABLE `orders` (
   `user_id` int(11) NOT NULL COMMENT '用户id',
   `createdDate` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY  (`o_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 /*Data for the table `orders` */
 
-insert  into `orders`(`o_id`,`o_no`,`o_state`,`o_num`,`user_id`,`createdDate`) values (1,'199717199457',0,272,1,'2020-02-28 00:00:00'),(2,'199729575180',0,272,1,'2020-03-02 19:29:57'),(3,'199746556214',0,272,1,'2020-03-02 19:46:55'),(4,'199747473781',0,272,1,'2020-03-02 19:47:52'),(5,'199748041625',0,272,1,'2020-03-02 19:48:07'),(6,'19975027453',0,272,1,'2020-03-02 19:50:27'),(7,'199751333254',0,272,1,'2020-03-02 19:51:33'),(8,'199753019978',0,272,1,'2020-03-02 19:53:01'),(9,'199754371359',0,272,1,'2020-03-02 19:54:37'),(10,'199759005786',0,272,1,'2020-03-02 19:59:00'),(11,'199759199339',0,272,1,'2020-03-02 19:59:19'),(12,'199701317080',0,272,1,'2020-03-02 20:01:31'),(13,'199703389321',0,272,1,'2020-03-02 20:03:38'),(14,'199758534609',1,410,1,'2020-03-03 08:58:53');
+insert  into `orders`(`o_id`,`o_no`,`o_state`,`o_num`,`user_id`,`createdDate`) values (18,'199730136254',1,494,1,'2020-03-03 17:30:13'),(19,'19974104279',1,15200,1,'2020-03-04 16:41:04');
 
 /*Table structure for table `ordertogoodsrelation` */
 
@@ -148,11 +126,11 @@ CREATE TABLE `ordertogoodsrelation` (
   `o_no` varchar(12) NOT NULL,
   `g_id` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 /*Data for the table `ordertogoodsrelation` */
 
-insert  into `ordertogoodsrelation`(`id`,`o_no`,`g_id`) values (1,'199703389321',10),(2,'199703389321',11),(3,'199758534609',9),(4,'199758534609',10),(5,'199758534609',11);
+insert  into `ordertogoodsrelation`(`id`,`o_no`,`g_id`) values (10,'199730136254',9),(11,'199730136254',12),(12,'19974104279',10);
 
 /*Table structure for table `shoppingcar` */
 
@@ -168,9 +146,11 @@ CREATE TABLE `shoppingcar` (
   `user_id` int(11) NOT NULL,
   `s_status` int(11) NOT NULL default '0' COMMENT '默认0表示未生成订单，1表示已生成订单',
   PRIMARY KEY  (`s_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 /*Data for the table `shoppingcar` */
+
+insert  into `shoppingcar`(`s_id`,`s_name`,`s_price`,`s_num`,`s_total`,`g_id`,`user_id`,`s_status`) values (21,'测试商品1',10000,1,10000,14,1,0),(22,'测试商品2',999,1,999,15,1,0);
 
 /*Table structure for table `user` */
 
@@ -187,11 +167,11 @@ CREATE TABLE `user` (
   `v_id` int(8) NOT NULL COMMENT '会员id',
   `createdDate` datetime NOT NULL COMMENT '创建日期',
   PRIMARY KEY  (`user_id`,`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user` */
 
-insert  into `user`(`user_id`,`user_name`,`user_mail`,`user_phone`,`user_pwd`,`user_money`,`nickname`,`v_id`,`createdDate`) values (1,'admin','631671241@qq.com','13675141997','123456',NULL,NULL,1,'2020-03-02 16:20:06');
+insert  into `user`(`user_id`,`user_name`,`user_mail`,`user_phone`,`user_pwd`,`user_money`,`nickname`,`v_id`,`createdDate`) values (1,'admin','631671241@qq.com','13675141997','111111',15694,'大傻逼',1,'2020-03-02 16:20:06'),(2,'crx','631671241@qq.com','13675141997','c123456',NULL,'',1,'2020-03-04 11:50:26'),(4,'crx1997','631671241@qq.com','13675141997','a123456',NULL,'',1,'2020-03-05 10:42:24');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
